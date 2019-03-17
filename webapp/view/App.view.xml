@@ -2,7 +2,7 @@
 	controllerName="programmeMotse.controller.App"  xmlns:html="http://www.w3.org/1999/xhtml">
 	<App id="app">
 		<pages>
-			<Page>
+			<Page title="Title">
 				<content></content>
 			</Page>
 		</pages>

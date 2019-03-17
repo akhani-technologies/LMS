@@ -64,23 +64,6 @@ sap.ui.define([
 			this._oPopover.close();
 		},
 
-		// onGetFacilitators: function() {
-		// 	var oSelect = this.byId("cmbFac");
-		// 	var facilitatorModel = new sap.ui.model.json.JSONModel();
-		// 	$.ajax({
-		// 		url: 'PHP/getFacilitators.php',
-		// 		async: false,
-		// 		success: function(data) {
-		// 			var oData = data.result;
-		// 			facilitatorModel.setData(oData);
-		// 			oSelect.setModel(facilitatorModel);
-		// 		},
-		// 		error: function(err, e, xhr) {
-
-		// 		}
-		// 	});
-		// },
-
 		onSaveDetails: function(oEvent) {
 			var oData = {};
 			oData.FacilitatorID = parseInt(("" + Math.random()).substring(2, 5));

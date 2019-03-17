@@ -20,7 +20,7 @@ if ($conn->connect_error) {
  
  while($row = mysqli_fetch_array($res)){
  array_push($result, 
- array('PersonID'=>$row[0],'Type'=>$row[1],'Name'=>$row[2],'oNumber'=>$row[3],'mNumber'=>$row[4], 'Email'=>$row[5], 'IDNumber'=>$row[7]));
+ array('PersonID'=>$row[0],'Type'=>$row[1],'Name'=>$row[2],'oNumber'=>$row[3],'mNumber'=>$row[4], 'Email'=>$row[5], 'IDNumber'=>$row[7],'Surname'=>$row[8] ));
  }
  header('Content-Type: application/json');
  echo json_encode(array('result'=>$result));

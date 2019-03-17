@@ -5,32 +5,39 @@
 				<content>
 				    <Table noDataText="Drop column list items here and columns in the area above" id="__table0">
 				        <items>
-				            <ColumnListItem id="__item1">
+				            <ColumnListItem>
 				                <cells>
 				                    <Text text="Row 2 Cell 1" id="__text3"/>
 				                    <Text text="Row 2 Cell 2" id="__text4"/>
 				                    <Text text="Row 2 Cell 3" id="__text5"/>
-				                    <Text text="No text specified" id="__text7"/></cells>
+				                    <Text text="No text specified" id="__text7"/>
+				                    <Text text="jhav"/>
+				                    </cells>
 				            </ColumnListItem></items>
 				        <columns>
 				            <Column id="__column0">
 				                <header>
-				                    <Label text="Learner"/>
+				                    <Label text="Name"/>
 				                </header>
 				            </Column>
 				            <Column id="__column1">
 				                <header>
-				                    <Label text="Email Address"/>
+				                    <Label text=" Type of user"/>
 				                </header>
 				            </Column>
 				            <Column id="__column2">
 				                <header>
-				                    <Label text="Program"/>
+				                    <Label text="Date"/>
 				                </header>
 				            </Column>
 				            <Column>
 				                <header>
-				                    <Text text="Date"/>
+				                    <Text text="Time In"/>
+				                </header>
+				            </Column>
+				            <Column>
+				                <header>
+				                    <Text text="Time Out" id="__text1"/>
 				                </header>
 				            </Column></columns>
 				        <headerToolbar>
@@ -38,7 +45,7 @@
 				                <content>
 				                    <Title text="Attendance Register" width="100%"/>
 				                    <ToolbarSpacer id="__spacer0"/>
-				                    <Button width="auto" icon="sap-icon://filter" type="Reject"/>
+				                    <Button width="auto" icon="sap-icon://filter" type="Reject" text="Filter"/>
 				                </content>
 				            </Toolbar>
 				        </headerToolbar></Table>

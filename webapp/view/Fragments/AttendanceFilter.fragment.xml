@@ -1,0 +1,16 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<ViewSettingsDialog confirm="handleFilterDialogConfirm">
+		<filterItems>
+			<ViewSettingsFilterItem text="Type of user" key="UserType" multiSelect="false">
+				<items>
+					<ViewSettingsItem text="Less than 1000" key="PersonType___EQ___{UserType}"/>
+				</items>
+			</ViewSettingsFilterItem>
+			<ViewSettingsFilterItem text="Date" key="Date" multiSelect="false">
+				<items>
+					<ViewSettingsItem text="Less Than 100" key="Date___EQ___{Date}"/>
+				</items>
+			</ViewSettingsFilterItem>
+		</filterItems>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>

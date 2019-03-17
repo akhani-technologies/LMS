@@ -20,6 +20,8 @@
 											</ComboBox>
 											<Label xmlns="sap.m" text="Name" width="100%" />
 											<Input xmlns="sap.m" width="70%" id="inpName"/>
+											<Label xmlns="sap.m" text="Surname" width="100%" />
+											<Input xmlns="sap.m" width="70%" id="inpSurname"/>
 											<Label text="ID Number" />
 											<Input id="inpID" width="70%" />
 											<Label text="Office Number" width="100%" />

@@ -47,7 +47,7 @@
 							<Toolbar width="100%">
 								<content>
 									<SearchField width="100%" placeholder="Search by ID Number" liveChange="onSearch"/>
-									<ToolbarSpacer/>
+									<ToolbarSpacer width="100%"/>
 									<Button text="Filters" width="100px" type="Reject" icon="sap-icon://filter" press="handleFilterButtonPressed"/>
 								</content>
 							</Toolbar>

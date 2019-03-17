@@ -39,6 +39,7 @@ sap.ui.define([
 			oData.Email = this.byId("inpEmail").getValue();
 			oData.ProofOfReg = window.Content;
 			oData.IDNumber = this.byId("inpID").getValue();
+			oData.Surname = this.byId("inpSurname").getValue();
 
 			$.ajax({
 				type: "POST",
