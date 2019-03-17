@@ -1,0 +1,218 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+	controllerName="programmeMotse.controller.Implementation">
+	<App>
+		<pages>
+			<Page backgroundDesign="Solid" showNavButton="true" navButtonPress="onNavBack">
+				<content>
+					<ObjectHeader title="Implementation Plan" numberUnit="eur" introActive="true" titleActive="true" icon="sap-icon://workflow-tasks"/>
+					<IconTabBar>
+						<items>
+							<IconTabFilter class="iconFlt" text="Pre-Implementation Phase " icon="sap-icon://checklist-item" iconColor="Critical" design="Horizontal">
+								<content>
+									<sap.ui.layout.form:SimpleForm width="100%" editable="true" layout="ResponsiveGridLayout" xmlns:sap.ui.layout.form="sap.ui.layout.form">
+										<sap.ui.layout.form:content>
+											<core:Title text="Pre-Implementation Phase "/>
+											<Label text="Project"/>
+											<Input id="inpPrePorject" width="80%"/>
+											<Label text="Project Approval" textAlign="Begin" width="100%"/>
+											<Slider id="rate1" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+											<Label text="Sign Funding Agreement" textAlign="Begin" width="100%"/>
+											<Slider id="rate2" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+											<Label text="Establish Project Steering Committee" wrapping="true" width="100%"/>
+											<Slider id="rate3" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+											<Label text="Submit Project Plan" width="100%"/>
+											<Slider id="rate4" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+											<Label text="Recruit, Select and Contract Learners" wrapping="true" width="100%"/>
+											<Slider id="rate5" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+											<Label text="Perform verification of learner beneficiary types" wrapping="true" width="100%"/>
+											<Slider id="rate6" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+											<Label text="Appoint Training Service Providers" wrapping="true" width="100%"/>
+											<Slider id="rate7" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+											<Label text="Perform learner uploads" width="100%"/>
+											<Slider id="rate8" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+											<Label text="Conduct learner induction" width="100%"/>
+											<Slider id="rate9" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+											<Label text="Procure PPE and Toolboxes" width="100%"/>
+											<Slider id="rate10" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+											<Label text="Arrange Theoretical Training Venues" wrapping="true" width="100%"/>
+											<Slider id="rate11" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+											<Label text="Arrange Practical Training Venues" wrapping="true" width="100%"/>
+											<Slider id="rate12" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+											<Label text="Arrange workplaces " width="100%"/>
+											<Slider id="rate13" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+										</sap.ui.layout.form:content>
+									</sap.ui.layout.form:SimpleForm>
+									<FlexBox class="sapUiLargeMarginTop" width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
+										<items>
+											<Button press="createPreImp" text="Save Progress" width="auto" icon="sap-icon://save" type="Reject"/>
+											<!--<Button text="Print List" width="auto" icon="sap-icon://print" type="Emphasized"/>-->
+										</items>
+									</FlexBox>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter class="iconFlt" text="Implementation Phase " icon="sap-icon://checklist-item-2" iconColor="Positive" design="Horizontal">
+								<content>
+									<sap.ui.layout.form:SimpleForm columnsL="1" width="100%" editable="true" layout="ResponsiveGridLayout"
+										xmlns:sap.ui.layout.form="sap.ui.layout.form">
+										<sap.ui.layout.form:content>
+											<core:Title text="Implementation Phase"/>
+											<Label text="Project"/>
+											<Input id="inpImpPorject" width="80%"/>
+											<Label text="Theoretical Training" textAlign="Begin" width="100%"/>
+											<Slider id="TT" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+											<Label text="Assessment Reports" textAlign="Begin" width="100%"/>
+											<Slider id="AR" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+											<Label text="Submission of attendance registers" width="100%"/>
+											<Slider id="SOAR" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+											<Label text="Pay stipends" width="100%"/>
+											<Slider id="PS" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+											<Label text="M And E visits" width="100%"/>
+											<Slider id="MAEV" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+											<core:Title text="Second Progress Report"/>
+											<Label text="Proof that learners were furnished with PPE And Toolboxes" wrapping="true" width="100%"/>
+											<Slider id="PTLWFWPAT" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+											<Label text="Practical Training" width="100%"/>
+											<Slider id="PrT" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+											<Label text="Assessment Reports" width="100%"/>
+											<Slider id="ASR" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+											<Label text="Submission of attendance registers" wrapping="true" width="100%"/>
+											<Slider id="SOAR2" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+											<Label text="Pay stipends" width="100%"/>
+											<Slider id="PS2" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+											<Label text="M And E visits" width="100%"/>
+											<Slider id="MAEV2" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+											<Label text="Moderator Reports" width="100%"/>
+											<Slider id="MR" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+											<Label text="Interventions for not-yet-competent learners" wrapping="true" width="100%"/>
+											<Slider id="IFNYCL" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+											<core:Title text="Third Progress Report"/>
+											<Label text="Preparation of workplaces" width="100%"/>
+											<Slider id="POW" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+											<Label text="Workplace Training " width="100%"/>
+											<Slider id="WT" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+											<Label text="Submission of logbooks" width="100%"/>
+											<Slider id="SOL" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+											<Label text="Submission of progress reports" width="100%"/>
+											<Slider id="SOPR" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+											<Label text="Pay stipends" width="100%"/>
+											<Slider id="PS3" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+											<Label text="M And E visits" width="100%"/>
+											<Slider id="MAEV3" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+										</sap.ui.layout.form:content>
+									</sap.ui.layout.form:SimpleForm>
+									<FlexBox class="sapUiLargeMarginTop" width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
+										<items>
+											<Button text="Save Progress" press="onCreateImplementation" width="auto" icon="sap-icon://save" type="Reject"/>
+											<!--<Button text="Print List" width="auto" icon="sap-icon://print" type="Emphasized"/>-->
+										</items>
+									</FlexBox>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter class="iconFlt" text="Post-Implementation Phase" icon="sap-icon://checklist-2" design="Horizontal" iconColor="Negative">
+								<content>
+									<sap.ui.layout.form:SimpleForm width="100%" editable="true" layout="ResponsiveGridLayout" xmlns:sap.ui.layout.form="sap.ui.layout.form">
+										<sap.ui.layout.form:content>
+											<core:Title text="Post-Implementation Phase "/>
+											<Label text="Project"/>
+											<Input id="inpPostPorject" width="80%"/>
+											<Label text="ETQA verification visits" textAlign="Begin" width="100%"/>
+											<Slider id="ETQAVV" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+											<Label text="Sign Funding Agreement" textAlign="Begin" width="100%"/>
+											<Slider id="SFA" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+											<Label text="Statement of Results" width="100%"/>
+											<Slider id="SOF" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+											<Label text="Learner certification" width="100%"/>
+											<Slider id="LC" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+											<Label text="Close-out Report" width="100%"/>
+											<Slider id="COR" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+										</sap.ui.layout.form:content>
+									</sap.ui.layout.form:SimpleForm>
+									<FlexBox class="sapUiLargeMarginTop" width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
+										<items>
+											<Button press="createPostImp" text="Save Progress" width="auto" icon="sap-icon://save" type="Reject"/>
+											<!--<Button text="Print List" width="auto" icon="sap-icon://print" type="Emphasized"/>-->
+										</items>
+									</FlexBox>
+								</content>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

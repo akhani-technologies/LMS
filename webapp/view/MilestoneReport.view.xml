@@ -1,0 +1,189 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="programmeMotse.controller.MilestoneReport"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page showNavButton="true" navButtonPress="onNavBack">
+				<content>
+					<IconTabBar >
+						<items>
+							<IconTabFilter  class="iconFlt" text="Pre-Implementation Phase " icon="sap-icon://checklist-item" iconColor="Critical" design="Horizontal">
+								<content>
+									<sap.ui.layout.form:SimpleForm id="icon1" width="100%" editable="true" layout="ResponsiveGridLayout" xmlns:sap.ui.layout.form="sap.ui.layout.form">
+										<sap.ui.layout.form:content>
+											<core:Title text="Pre-Implementation Phase "/>
+											<Label text="Project" textAlign="Begin" width="100%"/>
+											<ComboBox change="onSelectPre" id="preCmb" items="{path: '/'}" class="sapUiMediumMarginBottom" width="80%">
+												<items>
+													<core:ListItem text="{PreProject}"/>
+												</items>
+											</ComboBox>
+											<Label text="Project Approval" textAlign="Begin" width="100%"/>
+											<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{ path: 'PreRate1', formatter: '.formatter.sumOfAllFields' }"
+												displayValue="{ path: 'PreRate1' } %" showValue="true" state="Warning" displayOnly="true"/>
+											<Label text="Sign Funding Agreement" textAlign="Begin" width="100%"/>
+											<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{ path: 'PreRate2', formatter: '.formatter.sumOfAllFields' }"
+												displayValue="{ path: 'PreRate2' } %" showValue="true" state="Warning" displayOnly="true"/>
+											<Label text="Establish Project Steering Committee" wrapping="true" width="100%"/>
+											<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{ path: 'PreRate3', formatter: '.formatter.sumOfAllFields' }"
+												displayValue="{ path: 'PreRate3' } %" showValue="true" state="Warning" displayOnly="true"/>
+											<Label text="Submit Project Plan" width="100%"/>
+											<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{ path: 'PreRate4', formatter: '.formatter.sumOfAllFields' }"
+												displayValue="{ path: 'PreRate4' } %" showValue="true" state="Warning" displayOnly="true"/>
+											<Label text="Recruit, Select and Contract Learners" wrapping="true" width="100%"/>
+											<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{ path: 'PreRate5', formatter: '.formatter.sumOfAllFields' }"
+												displayValue="{ path: 'PreRate5' } %" showValue="true" state="Warning" displayOnly="true"/>
+											<Label text="Perform verification of learner beneficiary types" wrapping="true" width="100%"/>
+											<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{ path: 'PreRate6', formatter: '.formatter.sumOfAllFields' }"
+												displayValue="{ path: 'PreRate6' } %" showValue="true" state="Warning" displayOnly="true"/>
+											<Label text="Appoint Training Service Providers" wrapping="true" width="100%"/>
+											<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{ path: 'PreRate7', formatter: '.formatter.sumOfAllFields' }"
+												displayValue="{ path: 'PreRate7' } %" showValue="true" state="Warning" displayOnly="true"/>
+											<Label text="Perform learner uploads" width="100%"/>
+											<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{ path: 'PreRate8', formatter: '.formatter.sumOfAllFields' }"
+												displayValue="{ path: 'PreRate8' } %" showValue="true" state="Warning" displayOnly="true"/>
+											<Label text="Conduct learner induction" width="100%"/>
+											<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{ path: 'PreRate9', formatter: '.formatter.sumOfAllFields' }"
+												displayValue="{ path: 'PreRate9' } %" showValue="true" state="Warning" displayOnly="true"/>
+											<Label text="Procure PPE and Toolboxes" width="100%"/>
+											<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{ path: 'PreRate10', formatter: '.formatter.sumOfAllFields' }"
+												displayValue="{ path: 'PreRate10' } %" showValue="true" state="Warning" displayOnly="true"/>
+											<Label text="Arrange Theoretical Training Venues" wrapping="true" width="100%"/>
+											<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{ path: 'PreRate11', formatter: '.formatter.sumOfAllFields' }"
+												displayValue="{ path: 'PreRate11' } %" showValue="true" state="Warning" displayOnly="true"/>
+											<Label text="Arrange Practical Training Venues" wrapping="true" width="100%"/>
+											<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{ path: 'PreRate12', formatter: '.formatter.sumOfAllFields' }"
+												displayValue="{ path: 'PreRate12' } %" showValue="true" state="Warning" displayOnly="true"/>
+											<Label text="Arrange workplaces " width="100%"/>
+											<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{ path: 'PreRate13', formatter: '.formatter.sumOfAllFields' }"
+												displayValue="{ path: 'PreRate13' } %" showValue="true" state="Warning" displayOnly="true"/>
+										</sap.ui.layout.form:content>
+									</sap.ui.layout.form:SimpleForm>
+									<FlexBox class="sapUiLargeMarginTop" width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
+										<items>
+											<Button press="onPrint" text="Print List" width="auto" icon="sap-icon://print" type="Emphasized"/>
+										</items>
+									</FlexBox>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter class="iconFlt" text="Implementation Phase " icon="sap-icon://checklist-item-2" iconColor="Positive" design="Horizontal">
+								<content>
+									<sap.ui.layout.form:SimpleForm columnsL="1" width="100%" editable="true" layout="ResponsiveGridLayout"
+										xmlns:sap.ui.layout.form="sap.ui.layout.form">
+										<sap.ui.layout.form:content>
+											<core:Title text="Implementation Phase"/>
+											<Label text="Project"/>
+											<ComboBox change="onSelectImp" id="ImpCmb" items="{path: '/'}" class="sapUiMediumMarginBottom" width="80%">
+												<items>
+													<core:ListItem text="{Project}"/>
+												</items>
+											</ComboBox>
+											<Label text="Theoretical Training" textAlign="Begin" width="100%"/>
+											<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{ path: 'Rate1', formatter: '.formatter.sumOfAllFields' }"
+												displayValue="{ path: 'Rate1' } %" showValue="true" state="Success" displayOnly="true"/>
+											<Label text="Assessment Reports" textAlign="Begin" width="100%"/>
+											<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{ path: 'Rate2', formatter: '.formatter.sumOfAllFields' }"
+												displayValue="{ path: 'Rate2' } %" showValue="true" state="Success" displayOnly="true"/>
+											<Label text="Submission of attendance registers" width="100%"/>
+											<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{ path: 'Rate3', formatter: '.formatter.sumOfAllFields' }"
+												displayValue="{ path: 'Rate3' } %" showValue="true" state="Success" displayOnly="true"/>
+											<Label text="Pay stipends" width="100%"/>
+											<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{ path: 'Rate4', formatter: '.formatter.sumOfAllFields' }"
+												displayValue="{ path: 'Rate4' } %" showValue="true" state="Success" displayOnly="true"/>
+											<Label text="M And E visits" width="100%"/>
+											<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{ path: 'Rate5', formatter: '.formatter.sumOfAllFields' }"
+												displayValue="{ path: 'Rate5' } %" showValue="true" state="Success" displayOnly="true"/>
+											<core:Title text="Second Progress Report"/>
+											<Label text="Proof that learners were furnished with PPE And Toolboxes" wrapping="true" width="100%"/>
+											<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{ path: 'Rate6', formatter: '.formatter.sumOfAllFields' }"
+												displayValue="{ path: 'Rate6' } %" showValue="true" state="Success" displayOnly="true"/>
+											<Label text="Practical Training" width="100%"/>
+											<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{ path: 'Rate7', formatter: '.formatter.sumOfAllFields' }"
+												displayValue="{ path: 'Rate7' } %" showValue="true" state="Success" displayOnly="true"/>
+											<Label text="Assessment Reports" width="100%"/>
+											<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{ path: 'Rate8', formatter: '.formatter.sumOfAllFields' }"
+												displayValue="{ path: 'Rate8' } %" showValue="true" state="Success" displayOnly="true"/>
+											<Label text="Submission of attendance registers" wrapping="true" width="100%"/>
+											<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{ path: 'Rate9', formatter: '.formatter.sumOfAllFields' }"
+												displayValue="{ path: 'Rate9' } %" showValue="true" state="Success" displayOnly="true"/>
+											<Label text="Pay stipends" width="100%"/>
+											<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{ path: 'Rate10', formatter: '.formatter.sumOfAllFields' }"
+												displayValue="{ path: 'Rate10' } %" showValue="true" state="Success" displayOnly="true"/>
+											<Label text="M And E visits" width="100%"/>
+											<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{ path: 'Rate11', formatter: '.formatter.sumOfAllFields' }"
+												displayValue="{ path: 'Rate11' } %" showValue="true" state="Success" displayOnly="true"/>
+											<Label text="Moderator Reports" width="100%"/>
+											<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{ path: 'Rate12', formatter: '.formatter.sumOfAllFields' }"
+												displayValue="{ path: 'Rate12' } %" showValue="true" state="Success" displayOnly="true"/>
+											<Label text="Interventions for not-yet-competent learners" wrapping="true" width="100%"/>
+											<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{ path: 'Rate13', formatter: '.formatter.sumOfAllFields' }"
+												displayValue="{ path: 'Rate13' } %" showValue="true" state="Success" displayOnly="true"/>
+											<core:Title text="Third Progress Report"/>
+											<Label text="Preparation of workplaces" width="100%"/>
+											<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{ path: 'Rate14', formatter: '.formatter.sumOfAllFields' }"
+												displayValue="{ path: 'Rate14' } %" showValue="true" state="Success" displayOnly="true"/>
+											<Label text="Workplace Training " width="100%"/>
+											<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{ path: 'Rate15', formatter: '.formatter.sumOfAllFields' }"
+												displayValue="{ path: 'Rate15' } %" showValue="true" state="Success" displayOnly="true"/>
+											<Label text="Submission of logbooks" width="100%"/>
+											<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{ path: 'Rate16', formatter: '.formatter.sumOfAllFields' }"
+												displayValue="{ path: 'Rate16' } %" showValue="true" state="Success" displayOnly="true"/>
+											<Label text="Submission of progress reports" width="100%"/>
+											<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{ path: 'Rate17', formatter: '.formatter.sumOfAllFields' }"
+												displayValue="{ path: 'Rate17' } %" showValue="true" state="Success" displayOnly="true"/>
+											<Label text="Pay stipends" width="100%"/>
+											<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{ path: 'Rate18', formatter: '.formatter.sumOfAllFields' }"
+												displayValue="{ path: 'Rate18' } %" showValue="true" state="Success" displayOnly="true"/>
+											<Label text="M And E visits" width="100%"/>
+											<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{ path: 'Rate19', formatter: '.formatter.sumOfAllFields' }"
+												displayValue="{ path: 'Rate19' } %" showValue="true" state="Success" displayOnly="true"/>
+										</sap.ui.layout.form:content>
+									</sap.ui.layout.form:SimpleForm>
+									<FlexBox class="sapUiLargeMarginTop" width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
+										<items>
+											<Button press="onPrint" text="Print List" width="auto" icon="sap-icon://print" type="Emphasized"/>
+										</items>
+									</FlexBox>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter class="iconFlt" text="Post-Implementation Phase" icon="sap-icon://checklist-2" design="Horizontal" iconColor="Negative">
+								<content>
+									<sap.ui.layout.form:SimpleForm width="100%" editable="true" layout="ResponsiveGridLayout" xmlns:sap.ui.layout.form="sap.ui.layout.form">
+										<sap.ui.layout.form:content>
+											<core:Title text="Post-Implementation Phase "/>
+											<Label text="Project"/>
+											<ComboBox id="PostCmb" change="onSelectPost" items="{path: '/'}" class="sapUiMediumMarginBottom" width="80%">
+												<items>
+													<core:ListItem text="{PostProject}"/>
+												</items>
+											</ComboBox>
+											<Label text="ETQA verification visits" textAlign="Begin" width="100%"/>
+											<ProgressIndicator class="sapUiMediumMarginBottom" percentValue="{ path: 'PostRate1', formatter: '.formatter.sumOfAllFields' }"
+												displayValue="{ path: 'PostRate1' } %" showValue="true" state="Error" displayOnly="true"/>
+											<Label text="Sign Funding Agreement" textAlign="Begin" width="100%"/>
+											<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{ path: 'PostRate2', formatter: '.formatter.sumOfAllFields' }"
+												displayValue="{ path: 'PostRate1' } %" showValue="true" state="Error" displayOnly="true"/>
+											<Label text="Statement of Results" width="100%"/>
+											<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{ path: 'PostRate3', formatter: '.formatter.sumOfAllFields' }"
+												displayValue="{ path: 'PostRate1' } %" showValue="true" state="Error" displayOnly="true"/>
+											<Label text="Learner certification" width="100%"/>
+											<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{ path: 'PostRate4', formatter: '.formatter.sumOfAllFields' }"
+												displayValue="{ path: 'PostRate1' } %" showValue="true" state="Error" displayOnly="true"/>
+											<Label text="Close-out Report" width="100%"/>
+											<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="{ path: 'PostRate5', formatter: '.formatter.sumOfAllFields' }"
+												displayValue="{ path: 'PostRate1' } %" showValue="true" state="Error" displayOnly="true"/>
+										</sap.ui.layout.form:content>
+									</sap.ui.layout.form:SimpleForm>
+									<FlexBox class="sapUiLargeMarginTop" width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
+										<items>
+											<Button press="onPrint" text="Print List" width="auto" icon="sap-icon://print" type="Emphasized"/>
+										</items>
+									</FlexBox>
+								</content>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

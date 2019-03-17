@@ -1,0 +1,480 @@
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:u="sap.ui.unified" controllerName="programmeMotse.controller.LearnerInfo" displayBlock="true" id="IconPersonal">
+	<App>
+		<pages>
+			<Page title="Learner Information" backgroundDesign="Solid" showNavButton="true" navButtonPress="onNavBack">
+				<content>
+					<IconTabBar id="IconBar" select="onSelect">
+						<items>
+							<IconTabFilter text="Personal details" iconColor="Negative" icon="sap-icon://account" key="key1" id="IconPersonal" design="Horizontal">
+								<content>
+									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout">
+										<sap.ui.layout.form:content>
+											<core:Title xmlns:core="sap.ui.core" text="Learner Information" icon="sap-icon://study-leave"/>
+											<Label xmlns="sap.m" text="Name"/>
+											<Input xmlns="sap.m" width="70%" id="inpName"/>
+											<Label xmlns="sap.m" text="Surname"/>
+											<Input xmlns="sap.m" width="70%" id="inpSurname"/>
+											<Label xmlns="sap.m" text="ID Number" width="100%"/>
+											<Input xmlns="sap.m" width="70%" id="inpID"/>
+											<Label xmlns="sap.m"/>
+											<HBox xmlns="sap.m" width="100%">
+												<Label text="Gender" width="100%"/>
+												<RadioButtonGroup width="100%" columns="2" selectedIndex="-1" id="radioGender">
+													<buttons>
+														<RadioButton selected="true" groupName="__group0" text="Male"/>
+														<RadioButton groupName="__group0" text="Female"/>
+													</buttons>
+												</RadioButtonGroup>
+											</HBox>
+											<Label xmlns="sap.m" text="Age" width="100%"/>
+											<Input xmlns="sap.m" width="70%" id="inpAge"/>
+											<Label xmlns="sap.m" text="Contact number" width="100%"/>
+											<Input xmlns="sap.m" width="70%" id="inpNumber"/>
+											<Label xmlns="sap.m" text="Email address" width="100%"/>
+											<Input xmlns="sap.m" width="70%" id="inpEmail"/>
+											<Label xmlns="sap.m" text="Address 1" width="100%"/>
+											<Input xmlns="sap.m" width="70%" id="inpLine1"/>
+											<Label xmlns="sap.m" text="Address 2" width="100%"/>
+											<Input xmlns="sap.m" width="70%" id="inpLine2"/>
+											<Label xmlns="sap.m" text="City" width="100%"/>
+											<Input xmlns="sap.m" width="70%" id="inpCity"/>
+											<Label xmlns="sap.m" text="Province" width="100%"/>
+											<ComboBox xmlns="sap.m" width="70%" id="slctProv">
+												<items>
+													<core:ListItem text="Eastern Cape" key="EC"/>
+													<core:ListItem text="Free State" key="FS"/>
+													<core:ListItem text="Gauteng" key="GP"/>
+													<core:ListItem text="KwaZulu-Natal" key="KZN"/>
+													<core:ListItem text="Limpopo" key="LP"/>
+													<core:ListItem text="Mpumalanga" key="MP"/>
+													<core:ListItem text="Northern Cape" key="NC"/>
+													<core:ListItem text="North West" key="NW"/>
+													<core:ListItem text="Western Cape" key="WC"/>
+												</items>
+											</ComboBox>
+											<Label xmlns="sap.m" text="Highest Qualification" width="100%"/>
+											<ComboBox width="70%" id="slctQual">
+												<items>
+													<core:ListItem xmlns:core="sap.ui.core" text="Grade 12 (National Senior Certificate) and National (vocational) Cert. level 4"/>
+													<core:ListItem xmlns:core="sap.ui.core" text="Higher Certificates and Advanced National (vocational) Cert. level 5"/>
+													<core:ListItem xmlns:core="sap.ui.core" text="National Diploma and Advanced certificates. level 6"/>
+													<core:ListItem xmlns:core="sap.ui.core" text="Bachelor's degree, Advanced Diplomas, Post Graduate Certificate and B-tech. level 7"/>
+													<core:ListItem xmlns:core="sap.ui.core" text="Honours degree, Post Graduate diploma and Professional Qualifications. level 8"/>
+													<core:ListItem xmlns:core="sap.ui.core" text="Master's degree. level 9"/>
+													<core:ListItem xmlns:core="sap.ui.core" text="Doctorate degree. level 10"/>
+												</items>
+											</ComboBox>
+											<!--<Label xmlns="sap.m" text="Certified ID" width="100%"/>-->
+											<!--<u:FileUploader xmlns:u="sap.ui.unified" id="uploadID" change="onIDAttachmentChange" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>-->
+											<!--<Label xmlns="sap.m" text="Certified Qualification" width="100%"/>-->
+											<!--<u:FileUploader xmlns:u="sap.ui.unified" change="onQualAttachmentChange" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete" id="__uploader2"/>-->
+											<!--<Label xmlns="sap.m"/>-->
+											<!--<HBox xmlns="sap.m" width="100%">-->
+											<!--	<items>-->
+											<!--		<Label text="Overall size" width="100%" class="sapUiTinyMarginEnd"/>-->
+											<!--		<Input width="30%" id="inpOverall"/>-->
+											<!--		<Label text="Shoe size" width="100%" class="sapUiTinyMarginEnd"/>-->
+											<!--		<Input width="30%" id="inpShoe"/>-->
+											<!--	</items>-->
+											<!--</HBox>-->
+											<!--<Label xmlns="sap.m" text="Signed Learner Agreement" width="100%"/>-->
+											<!--<u:FileUploader xmlns:u="sap.ui.unified" change="onIDAttachmentChange" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>-->
+											<Label width="100%"/>
+											<HBox alignContent="End" alignItems="End" justifyContent="End">
+												<items>
+													<Button text="Next" width="auto" icon="sap-icon://feeder-arrow" type="Reject" press="onNextPress"/>
+												</items>
+											</HBox>
+										</sap.ui.layout.form:content>
+									</sap.ui.layout.form:SimpleForm>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter text="Additional Info" icon="sap-icon://task" iconColor="Critical" design="Horizontal" key="Key2">
+								<content>
+									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" columnsL="1">
+										<sap.ui.layout.form:content>
+											<core:Title text="Employment Information" icon="sap-icon://eam-work-order"/>
+											<Label text="Employment status"/>
+											<RadioButtonGroup width="100%" columns="2" selectedIndex="-1" id="radioEmploy">
+												<buttons>
+													<RadioButton selected="true" groupName="__group1" text="Employed"/>
+													<RadioButton groupName="__group1" text="Unemployed"/></buttons>
+											</RadioButtonGroup>
+											<core:Title text="Learner Type" icon="sap-icon://group"/>
+											<Label text="Select Learner type "/>
+											<ComboBox width="70%" id="slctLType">
+												<items>
+													<core:ListItem text="Peri-Urban" key="Peri-Urban"/>
+													<core:ListItem text="Rural" key="Rural"/>
+													<core:ListItem text="Urban" key="Urban"/></items>
+											</ComboBox>
+											<core:Title text="Disability " icon="sap-icon://message-information"/>
+											<Label text="Type of Disability" width="100%"/>
+											<ComboBox width="70%" id="slctDisability">
+												<items>
+													<core:ListItem text="Physical impairment" key="Physical impairment"/>
+													<core:ListItem text="vision Impairment." key="vision Impairment."/>
+													<core:ListItem text="hearing Impairment." key="hearing Impairment."/>
+													<core:ListItem text="N/A"/></items>
+											</ComboBox>
+											<core:Title text="Ethnicity" icon="sap-icon://family-care"/>
+											<Label text="Race" width="100%"/>
+											<ComboBox width="70%" id="slctRace">
+												<items>
+													<core:ListItem text="African" key="African"/>
+													<core:ListItem text="White" key="White"/>
+													<core:ListItem text="Coloured" key="Coloured"/>
+													<core:ListItem text="Indian/Asian" key="Indian/Asian"/></items>
+											</ComboBox>
+											<Label text="UIF" width="100%"/>
+											<ComboBox width="70%" id="slctUIF">
+												<items>
+													<core:ListItem text="Contributor" key="Contributor"/>
+													<core:ListItem text="Non-Contributor" key="Non-Contributor"/></items>
+											</ComboBox>
+											<Label width="100%"/>
+											<HBox width="100%" alignContent="End" alignItems="End" justifyContent="End">
+												<items>
+													<Button text="Next" width="100px" icon="sap-icon://feeder-arrow" type="Reject"/>
+												</items>
+											</HBox>
+										</sap.ui.layout.form:content>
+									</sap.ui.layout.form:SimpleForm>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter id="PhotoIcon" text="Add image" iconColor="Neutral" icon="sap-icon://add-photo" key="key3" design="Horizontal">
+								<content>
+									<HBox width="auto" alignContent="Center" alignItems="Center" justifyContent="Center">
+										<items>
+											<Button class="sapUiLargeMarginEnd" text="Start" press="startWebcam" type="Emphasized"/>
+											<Button class="sapUiLargeMarginEnd" text="Take a photo" width="auto" icon="sap-icon://add-photo" type="Accept" press="takepicture"/>
+											<Button class="sapUiLargeMarginEnd" text="Save Image" width="auto" type="Reject" press="stopWebcam"/>
+										</items>
+									</HBox>
+									<VBox height="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
+										<core:HTML content="&lt;video onclick=&quot;snapshot(this);&quot; width=400 height=400 id=&quot;video&quot; controls autoplay&gt;&lt;/video&gt;"/>
+									</VBox>
+									<VBox visible="false" height="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
+										<Image width="140px" height="140px" id="photo"/>
+									</VBox>
+									<VBox height="100%" visible="{viewModel>/delivery}" alignContent="Center" alignItems="Center" justifyContent="Center">
+										<core:HTML content="&lt;canvas id=&quot;canvas&quot; &quot;&gt;&lt;/canvas&gt;"/>
+									</VBox>
+									<HBox alignContent="End" alignItems="End" justifyContent="End">
+										<items>
+											<Button text="Next" width="auto" icon="sap-icon://feeder-arrow" type="Reject" press="onCameraNext"/>
+										</items>
+									</HBox>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter id="PrintsIcon" text="Finger prints" icon="sap-icon://mri-scan" iconColor="Critical" key="key4" design="Horizontal">
+								<content>
+									<MessageStrip text="Please take a finger print of your right index finger" showIcon="true" showCloseButton="true"/>
+									<FlexBox width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
+										<items>
+											<Button class="sapUiLargeMarginEnd" text="Start" width="auto" icon="sap-icon://restart" type="Emphasized" press="onStartFingerPrint"/>
+											<Button class="sapUiLargeMarginEnd" text="Clear" width="auto" icon="sap-icon://cancel" type="Reject"/>
+											<Button class="sapUiLargeMarginEnd" text="Save" width="auto" icon="sap-icon://save" type="Accept" press="onSaveFingerPrint"/>
+										</items>
+									</FlexBox>
+									<FlexBox width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
+										<items>
+											<Image class="signatureB sapUiLargeMarginEnd" src="images/index.png" width="340px" height="340px" id="finger1"/>
+										</items>
+									</FlexBox>
+									<HBox width="100%" alignContent="End" alignItems="End" justifyContent="End">
+										<items>
+											<Button text="Next" press="onNextPrint" width="auto" icon="sap-icon://arrow-right" type="Reject"/>
+										</items>
+									</HBox>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter text="Banking details" icon="sap-icon://money-bills" iconColor="Negative" key="key5" id="IconBank" design="Horizontal">
+								<content>
+									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout">
+										<sap.ui.layout.form:content>
+											<core:Title text="Add banking details" icon="sap-icon://add-activity"/>
+											<Label text="Bank Name" width="100%"/>
+											<Input width="100%" id="inpBankName"/>
+											<Label text="Account number" width="100%"/>
+											<Input width="100%" id="inpAccNum"/>
+											<Label text="Branch number" width="100%"/>
+											<Input width="100%" id="branch"/>
+											<Label text="Account Type" width="100%"/>
+											<Input width="100%" id="AccType"/>
+										</sap.ui.layout.form:content>
+									</sap.ui.layout.form:SimpleForm>
+									<HBox width="100%" alignContent="End" alignItems="End" justifyContent="End">
+										<items>
+											<Button text="Next" width="auto" icon="sap-icon://arrow-right" type="Reject" press="onNextBank"/>
+										</items>
+									</HBox>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter id="ProgramIcon" text="Program enrolment" icon="sap-icon://course-program" iconColor="Positive" key="key6" design="Horizontal">
+								<content>
+									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout">
+										<sap.ui.layout.form:content>
+											<core:Title text="Assign program" icon="sap-icon://study-leave"/>
+											<Label text="Select progarm description"/>
+											<ComboBox width="50%" id="cmbProgram" items="{path: '/'}">
+												<items>
+													<core:ListItem text="{ProgramText}" key="{ProgramText}"/>
+												</items>
+											</ComboBox>
+										</sap.ui.layout.form:content>
+									</sap.ui.layout.form:SimpleForm>
+									<HBox width="100%" alignContent="End" alignItems="End" justifyContent="End">
+										<items>
+											<Button text="Next" width="auto" press="onNextProg" icon="sap-icon://arrow-right" type="Reject"/>
+										</items>
+									</HBox>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter text="Attachments" icon="sap-icon://attachment" iconColor="Critical" design="Horizontal" key="Key7">
+								<content>
+									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout">
+										<sap.ui.layout.form:content>
+											<core:Title text="Add attachements" icon="sap-icon://add-coursebook"/>
+											<Label text="Proof of banking details"/>
+											<u:FileUploader xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:u="sap.ui.unified" change="onBankAttachmentChange" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete" id="__uploader1"/>
+											<Label text="Proof of Address" width="100%"/>
+											<u:FileUploader xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:u="sap.ui.unified" change="onBankAttachmentChange" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete" id="__uploader3"/>
+											<Label text="Medical Certificate" width="100%"/>
+											<u:FileUploader xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:u="sap.ui.unified" change="onBankAttachmentChange" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete" id="__uploader4"/>
+											<Label text="ID Photo" width="100%"/>
+											<u:FileUploader xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:u="sap.ui.unified" change="onBankAttachmentChange" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete" id="__uploader5"/>
+											<Label width="100%"/>
+											<HBox width="100%" alignContent="End" alignItems="End" justifyContent="End">
+												<items>
+													<Button text="Next" width="100px" icon="sap-icon://feeder-arrow" type="Reject"/>
+												</items>
+											</HBox>
+										</sap.ui.layout.form:content>
+									</sap.ui.layout.form:SimpleForm>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter id="SummIcon" text="Summary" icon="sap-icon://list" key="key8" design="Horizontal">
+								
+								<content>
+									<sap.ui.layout.form:Form xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true">
+										<sap.ui.layout.form:formContainers>
+											<sap.ui.layout.form:FormContainer>
+												<sap.ui.layout.form:formElements>
+													<sap.ui.layout.form:FormElement>
+														<sap.ui.layout.form:label>
+															<Label text="Name" width="100%"/>
+														</sap.ui.layout.form:label>
+														<sap.ui.layout.form:fields>
+															<Text id="txtName"/>
+														</sap.ui.layout.form:fields>
+													</sap.ui.layout.form:FormElement>
+													<sap.ui.layout.form:FormElement>
+														<sap.ui.layout.form:fields>
+															<Text id="txtSurname"/>
+														</sap.ui.layout.form:fields>
+														<sap.ui.layout.form:label>
+															<Label text="Surname" width="100%"/>
+														</sap.ui.layout.form:label>
+													</sap.ui.layout.form:FormElement>
+													<sap.ui.layout.form:FormElement>
+														<sap.ui.layout.form:fields>
+															<Text id="txtIDNumber"/>
+														</sap.ui.layout.form:fields>
+														<sap.ui.layout.form:label>
+															<Label text="ID Number" width="100%"/>
+														</sap.ui.layout.form:label>
+													</sap.ui.layout.form:FormElement>
+													<sap.ui.layout.form:FormElement>
+														<sap.ui.layout.form:fields>
+															<Text id="txtAge"/>
+														</sap.ui.layout.form:fields>
+														<sap.ui.layout.form:label>
+															<Label text="Age" width="100%"/>
+														</sap.ui.layout.form:label>
+													</sap.ui.layout.form:FormElement>
+													<sap.ui.layout.form:FormElement>
+														<sap.ui.layout.form:fields>
+															<Text id="txtNumber"/>
+														</sap.ui.layout.form:fields>
+														<sap.ui.layout.form:label>
+															<Label text="Mobile number" width="100%"/>
+														</sap.ui.layout.form:label>
+													</sap.ui.layout.form:FormElement>
+													<sap.ui.layout.form:FormElement>
+														<sap.ui.layout.form:fields>
+															<Text id="txtEmail"/>
+														</sap.ui.layout.form:fields>
+														<sap.ui.layout.form:label>
+															<Label text="Email address" width="100%"/>
+														</sap.ui.layout.form:label>
+													</sap.ui.layout.form:FormElement>
+													<sap.ui.layout.form:FormElement>
+														<sap.ui.layout.form:fields>
+															<Text id="txtAddress"/>
+														</sap.ui.layout.form:fields>
+														<sap.ui.layout.form:label>
+															<Label text="Address" width="100%"/>
+														</sap.ui.layout.form:label>
+													</sap.ui.layout.form:FormElement>
+													<sap.ui.layout.form:FormElement>
+														<sap.ui.layout.form:fields>
+															<Text id="txtQual"/>
+														</sap.ui.layout.form:fields>
+														<sap.ui.layout.form:label>
+															<Label text="Highest Qualification" width="100%"/>
+														</sap.ui.layout.form:label>
+													</sap.ui.layout.form:FormElement>
+													<sap.ui.layout.form:FormElement>
+														<sap.ui.layout.form:fields>
+															<Text id="txtProgram"/>
+														</sap.ui.layout.form:fields>
+														<sap.ui.layout.form:label>
+															<Label text="Program" width="100%"/>
+														</sap.ui.layout.form:label>
+													</sap.ui.layout.form:FormElement>
+												</sap.ui.layout.form:formElements>
+												<sap.ui.layout.form:title>
+													<core:Title text="Personal details" icon="sap-icon://account"/>
+												</sap.ui.layout.form:title>
+											</sap.ui.layout.form:FormContainer>
+											<sap.ui.layout.form:FormContainer>
+												<sap.ui.layout.form:formElements>
+													<sap.ui.layout.form:FormElement id="__element20">
+														<sap.ui.layout.form:fields>
+															<Text id="txtBankName"/>
+														</sap.ui.layout.form:fields>
+														<sap.ui.layout.form:label>
+															<Label text="Bank Name" width="100%"/>
+														</sap.ui.layout.form:label>
+													</sap.ui.layout.form:FormElement>
+													<sap.ui.layout.form:FormElement>
+														<sap.ui.layout.form:fields>
+															<Text id="txtAcc"/>
+														</sap.ui.layout.form:fields>
+														<sap.ui.layout.form:label>
+															<Label text="Account number" width="100%"/>
+														</sap.ui.layout.form:label>
+													</sap.ui.layout.form:FormElement>
+													<sap.ui.layout.form:FormElement label="Branch Number">
+														<sap.ui.layout.form:fields>
+															<Text id="txtBranch"/>
+														</sap.ui.layout.form:fields>
+													</sap.ui.layout.form:FormElement>
+													<sap.ui.layout.form:FormElement label="Account Type">
+														<sap.ui.layout.form:fields>
+															<Text text="No text specified" id="txtAccType"/>
+														</sap.ui.layout.form:fields>
+													</sap.ui.layout.form:FormElement>
+												</sap.ui.layout.form:formElements>
+												<sap.ui.layout.form:title>
+													<core:Title text="Banking details" icon="sap-icon://monitor-payments"/>
+												</sap.ui.layout.form:title>
+											</sap.ui.layout.form:FormContainer>
+											<f:FormContainer>
+												<f:formElements>
+													<f:FormElement>
+														<f:label>
+															<Label text="Employment Status" width="100%"/>
+														</f:label>
+														<f:fields>
+															<Text id="txtEmployement"/>
+														</f:fields>
+													</f:FormElement>
+													<f:FormElement>
+														<f:label>
+															<Label text="Learner Type" width="100%"/>
+														</f:label>
+														<f:fields>
+															<Text id="txtLType"/>
+														</f:fields>
+													</f:FormElement>
+													<f:FormElement>
+														<f:label>
+															<Label text="Disability" width="100%"/>
+														</f:label>
+														<f:fields>
+															<Text id="txtDisability"/>
+														</f:fields>
+													</f:FormElement>
+													<f:FormElement>
+														<f:label>
+															<Label text="Race" width="100%"/>
+														</f:label>
+														<f:fields>
+															<Text id="txtRace"/>
+														</f:fields>
+													</f:FormElement>
+													<f:FormElement>
+														<f:label>
+															<Label text="UIF" width="100%"/>
+														</f:label>
+														<f:fields>
+															<Text id="txtUIF"/>
+														</f:fields>
+													</f:FormElement>
+												</f:formElements>
+												<f:title>
+													<core:Title text="Additional Information" icon="sap-icon://employee"/>
+												</f:title>
+											</f:FormContainer>
+											<sap.ui.layout.form:FormContainer>
+												<sap.ui.layout.form:formElements>
+
+													<sap.ui.layout.form:FormElement>
+														<sap.ui.layout.form:fields>
+															<Image id="userIMG" width="250px" height="250px" />
+														</sap.ui.layout.form:fields>
+													</sap.ui.layout.form:FormElement>
+												</sap.ui.layout.form:formElements>
+												<sap.ui.layout.form:title>
+													<core:Title text="Image" icon="sap-icon://camera"/>
+												</sap.ui.layout.form:title>
+											</sap.ui.layout.form:FormContainer>
+										</sap.ui.layout.form:formContainers>
+										<sap.ui.layout.form:layout>
+											<sap.ui.layout.form:ResponsiveGridLayout/>
+										</sap.ui.layout.form:layout>
+									</sap.ui.layout.form:Form>
+									<VBox height="100%" id="mapBox" visible="{viewModel>/delivery}" alignContent="Center" alignItems="Center" justifyContent="Center">
+										<core:HTML class="signatureB" content="&lt;canvas id=&quot;cnv&quot; style=&quot;width: 500px; height: 100px; border-style: double;&quot;&gt;&lt;/canvas&gt;" id="map_canvas_intent"/>
+									</VBox>
+									<FlexBox width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
+										<items>
+											<Button class="sapUiLargeMarginEnd" text="Start" width="auto" type="Emphasized" icon="sap-icon://restart" press="onSign"/>
+											<Button class="sapUiLargeMarginEnd" text="Clear" width="auto" type="Reject" icon="sap-icon://cancel" press="onClear"/>
+											<Button text="Done" width="100px" icon="sap-icon://accept" type="Accept" press="onDone"/>
+										</items>
+									</FlexBox>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter text="Generate Contract" icon="sap-icon://signature" design="Horizontal" iconColor="Negative">
+							    <content>
+							        <f:SimpleForm editable="true" layout="ResponsiveGridLayout" >
+							            <f:content>
+							                <core:Title text="Generate Learner Contract" icon="sap-icon://write-new-document"/>
+							                <Label text="Select Contract Type"/>
+							                <ComboBox change="onGenerateContract">
+							                    <items>
+							                        <core:ListItem text="AgriSeta" key="AgriSeta"/>
+							                        <core:ListItem text="MerSeta" key="MerSeta"/>
+							                        <core:ListItem text="Ceta" key="Ceta"/></items>
+							                </ComboBox></f:content>
+							        </f:SimpleForm>
+							    </content>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</content>
+				<footer>
+					<Toolbar width="100%">
+						<content>
+							<ToolbarSpacer/>
+							<Button text="Save details" width="auto" type="Reject" icon="sap-icon://save" press="onSaveDetails"/>
+						</content>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

@@ -1,0 +1,46 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+	controllerName="programmeMotse.controller.IncidentReport">
+	<App>
+		<pages>
+			<Page backgroundDesign="Solid" showNavButton="true" navButtonPress="onNavBack">
+				<content>
+					<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout">
+						<sap.ui.layout.form:content>
+							<core:Title text="Incident Report" emphasized="true" icon="sap-icon://incident"/>
+							<Label text="Incident For"/>
+							<ComboBox id="cmbType" change="onSelectFor" width="70%">
+								<items>
+									<core:ListItem text="Learner" key="item1" id="__item0"/>
+									<core:ListItem text="Venue" key="item2" id="__item1"/>
+								</items>
+							</ComboBox>
+							<Label id="lblLearner" visible="false" text="Select Learner" width="100%"/>
+							<ComboBox items="{path: '/'}" id="cmbLearner" width="70%" visible="false">
+								<items>
+									<core:ListItem text="{Name} {Surname} ({IDNumber})" key="item1"/>
+								</items>
+							</ComboBox>
+							<Label visible="false" id="lblvenue" text="Select Venue" width="100%"/>
+							<ComboBox visible="false" items="{path: '/'}" width="70%" id="cmbVenue">
+								<items>
+									<core:ListItem text="{VenueName} ({VenueType})"/>
+								</items>
+							</ComboBox>
+							<Label text="Incident" width="100%"/>
+							<TextArea id="txtDescr" width="70%"/>
+						</sap.ui.layout.form:content>
+					</sap.ui.layout.form:SimpleForm>
+				</content>
+				<footer>
+					<Toolbar width="100%">
+						<content>
+							<Button press="onNavBack" text="Cancel" width="100px" icon="sap-icon://cancel" type="Reject"/>
+							<ToolbarSpacer id="__spacer0"/>
+							<Button press="onSaveIncident" text="Sumbit" width="auto" type="Accept" icon="sap-icon://save"/>
+						</content>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

@@ -1,0 +1,30 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified">
+	<Dialog title="Learner verification">
+		<content>
+			<ObjectHeader title="{Name} {Surname}" introActive="true" titleActive="true" icon="sap-icon://account" id="objLearner"/>
+			<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout">
+				<sap.ui.layout.form:content>
+					<core:Title text="Add Learner tools"/>
+					<Label text="Training tool"/>
+					<ComboBox id="cmbTool">
+						<items>
+							<core:ListItem text="Hat" key="Hat"/>
+							<core:ListItem text="Earplugs" key="Earplugs"/>
+							<core:ListItem text="Mask" key="Mask"/>
+							<core:ListItem text="Gloves" key="Gloves"/>
+							<core:ListItem text="Overalls"/>
+							<core:ListItem text="Books"/>
+							<core:ListItem text="ToolBox"/></items>
+					</ComboBox>
+					<Label text="Quantity"/>
+					<Input width="100%" id="inpQty"/></sap.ui.layout.form:content>
+			</sap.ui.layout.form:SimpleForm>
+		</content>
+	<beginButton>
+	    <Button text="Cancel" press="onCancelItem" width="100px" icon="sap-icon://cancel" type="Reject"/>
+	</beginButton>
+	<endButton>
+	    <Button text="Submit" press="onUpdateTools" width="100px" icon="sap-icon://accept" type="Accept"/>
+	</endButton>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,124 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="programmeMotse.controller.RegisterPage">
+	<App>
+		<pages>
+			<Page title="User Registration">
+				<content>
+					<IconTabBar>
+						<items>
+							<IconTabFilter text="General Information" icon="sap-icon://message-information" iconColor="Neutral">
+								<content>
+									<sap.ui.layout.form:SimpleForm xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" id="__form0">
+										<sap.ui.layout.form:content>
+											<core:Title xmlns:core="sap.ui.core" text="User details" icon="sap-icon://add-contact" emphasized="true"/>
+											<Label text="Name"/>
+											<Input width="50%" id="inpName"/>
+											<Label text="Surname"/>
+											<Input width="50%" id="inpSurname"/>
+											<Label text="Date of birth" width="100%"/>
+											<DatePicker width="50%" id="inpDOB"/>
+											<Label text="Enter password" width="100%"/>
+											<Input width="50%" id="inpPassword" type="Password"/>
+											<Label text="Repeat password" width="100%"/>
+											<Input width="50%" id="__input5" type="Password"/>
+										</sap.ui.layout.form:content>
+									</sap.ui.layout.form:SimpleForm>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter text="Address" icon="sap-icon://addresses" iconColor="Positive">
+								<content>
+									<sap.ui.layout.form:Form xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" id="__form1">
+										<sap.ui.layout.form:formContainers>
+											<f:FormContainer id="AddressCont">
+												<f:title>
+													<core:Title icon="sap-icon://home" text="Physical Address"/>
+												</f:title>
+												<f:formElements>
+													<f:FormElement>
+														<f:label>
+															<Label required="true" text="Address line1" width="100%"/>
+														</f:label>
+														<f:fields>
+															<Input id="strNum" width="100px" placeholder="Street No."/>
+															<Input id="strName" width="300px" placeholder="StreetName">
+																<layoutData>
+																	<l:GridData span="L9"/>
+																</layoutData>
+															</Input>
+														</f:fields>
+													</f:FormElement>
+													<f:FormElement>
+														<f:label>
+															<Label text="Address line2" width="100%"/>
+														</f:label>
+														<f:fields>
+															<Input id="addr2" width="400px"/>
+														</f:fields>
+													</f:FormElement>
+													<f:FormElement>
+														<f:label>
+															<Label required="true" text="Suburb" width="100%"/>
+														</f:label>
+														<f:fields>
+															<Input id="suburbId" valueStateText="Enter Suburb" width="400px"/>
+														</f:fields>
+													</f:FormElement>
+													<f:FormElement>
+														<f:label>
+															<Label required="true" text="Postal Code" width="100%"/>
+														</f:label>
+														<f:fields>
+															<MaskInput id="code" mask="9999" placeholderSymbol=" " width="100px"/>
+														</f:fields>
+													</f:FormElement>
+													<f:FormElement>
+														<f:label>
+															<Label required="true" text="Region" width="100%"/>
+														</f:label>
+														<f:fields>
+															<Select id="slctProv" width="400px">
+																<items>
+																	<core:ListItem key="Gauteng" text="Gauteng"/>
+																</items>
+																<layoutData>
+																	<f:GridElementData hCells="3"/>
+																</layoutData>
+															</Select>
+														</f:fields>
+													</f:FormElement>
+												</f:formElements>
+											</f:FormContainer>
+										</sap.ui.layout.form:formContainers>
+										<sap.ui.layout.form:layout>
+											<sap.ui.layout.form:ResponsiveGridLayout id="__layout0"/>
+										</sap.ui.layout.form:layout>
+									</sap.ui.layout.form:Form>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter text="Contact details" icon="sap-icon://contacts" iconColor="Critical">
+								<content>
+									<f:SimpleForm editable="true" layout="ResponsiveGridLayout">
+										<f:content>
+											<core:Title text="Contact details" emphasized="true" icon="sap-icon://customer-and-contacts"/>
+											<Label text="Contact number"/>
+											<Input width="50%" id="contactNumber"/>
+											<Label text="Email Address"/>
+											<Input width="50%" id="email"/></f:content>
+									</f:SimpleForm>
+								</content>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</content>
+				<footer>
+					<Toolbar width="100%" id="__toolbar1">
+						<content>
+							<Button text="Cancel" width="auto" icon="sap-icon://cancel" type="Reject" press="onCancel"/>
+							<ToolbarSpacer id="__spacer0"/>
+							<Button text="Save details" width="auto" icon="sap-icon://save" type="Reject" press="onRegister"/>
+						</content>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

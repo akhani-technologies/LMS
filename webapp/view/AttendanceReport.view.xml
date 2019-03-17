@@ -1,0 +1,57 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="programmeMotse.controller.AttendanceReport">
+	<App>
+		<pages>
+			<Page backgroundDesign="Solid" showNavButton="true" navButtonPress="onNavBack">
+				<content>
+				    <Table noDataText="Drop column list items here and columns in the area above" id="__table0">
+				        <items>
+				            <ColumnListItem id="__item1">
+				                <cells>
+				                    <Text text="Row 2 Cell 1" id="__text3"/>
+				                    <Text text="Row 2 Cell 2" id="__text4"/>
+				                    <Text text="Row 2 Cell 3" id="__text5"/>
+				                    <Text text="No text specified" id="__text7"/></cells>
+				            </ColumnListItem></items>
+				        <columns>
+				            <Column id="__column0">
+				                <header>
+				                    <Label text="Learner"/>
+				                </header>
+				            </Column>
+				            <Column id="__column1">
+				                <header>
+				                    <Label text="Email Address"/>
+				                </header>
+				            </Column>
+				            <Column id="__column2">
+				                <header>
+				                    <Label text="Program"/>
+				                </header>
+				            </Column>
+				            <Column>
+				                <header>
+				                    <Text text="Date"/>
+				                </header>
+				            </Column></columns>
+				        <headerToolbar>
+				            <Toolbar width="100%" id="__toolbar1">
+				                <content>
+				                    <Title text="Attendance Register" width="100%"/>
+				                    <ToolbarSpacer id="__spacer0"/>
+				                    <Button width="auto" icon="sap-icon://filter" type="Reject"/>
+				                </content>
+				            </Toolbar>
+				        </headerToolbar></Table>
+				</content>
+			<footer>
+			    <Toolbar width="100%" id="__toolbar2">
+			        <content>
+			            <ToolbarSpacer id="__spacer1"/>
+			            <Button text="Print List" width="auto" type="Reject" icon="sap-icon://print"/>
+			        </content>
+			    </Toolbar>
+			</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

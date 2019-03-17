@@ -1,0 +1,297 @@
+{
+	"_version": "1.5.0",
+	"sap.app": {
+		"id": "programmeMotse",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "ui5template.basicSAPUI5ApplicationProject",
+			"version": "1.40.12"
+		}
+	},
+
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_belize"
+
+		]
+	},
+
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "programmeMotse.view.App",
+			"type": "XML"
+		},
+		"dependencies": {
+			"minUI5Version": "1.30.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ui.layout": {},
+				"sap.ushell": {},
+				"sap.collaboration": {},
+				"sap.ui.comp": {},
+				"sap.uxap": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "programmeMotse.i18n.i18n"
+				}
+			}
+		},
+
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "programmeMotse.view",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"async": true
+			},
+			"routes": [{
+				"pattern": "",
+				"name": "LoginPage",
+				"target": "LoginPage"
+			}, {
+				"pattern": "MenuPage",
+				"name": "MenuPage",
+				"target": "MenuPage"
+			}, {
+				"pattern": "LearnerInfo/:Mode:,:Person:",
+				"name": "LearnerInfo",
+				"target": "LearnerInfo"
+			}, {
+				"pattern": "TrainingVenue",
+				"name": "TrainingVenue",
+				"target": "TrainingVenue"
+			}, {
+				"pattern": "Facilitator",
+				"name": "Facilitator",
+				"target": "Facilitator"
+			}, {
+				"pattern": "Training",
+				"name": "Training",
+				"target": "Training"
+			}, {
+				"pattern": "Attendance",
+				"name": "Attendance",
+				"target": "Attendance"
+			}, {
+				"pattern": "RegisterPage",
+				"name": "RegisterPage",
+				"target": "RegisterPage"
+			}, {
+				"pattern": "LearnerList",
+				"name": "LearnerList",
+				"target": "LearnerList"
+			}, {
+				"pattern": "LearnerDetails/{learnerPath}",
+				"name": "LearnerDetails",
+				"target": "LearnerDetails"
+			}, {
+				"pattern": "Reporting",
+				"name": "Reporting",
+				"target": "Reporting"
+			}, {
+				"pattern": "Implementation",
+				"name": "Implementation",
+				"target": "Implementation"
+			}, {
+				"pattern": "TrainingTool",
+				"name": "TrainingTool",
+				"target": "TrainingTool"
+			}, {
+				"pattern": "ModAssesor",
+				"name": "ModAssesor",
+				"target": "ModAssesor"
+			}, {
+				"pattern": "Monitoring",
+				"name": "Monitoring",
+				"target": "Monitoring"
+			}, {
+				"pattern": "MilestoneReport",
+				"name": "MilestoneReport",
+				"target": "MilestoneReport"
+			}, {
+				"pattern": "IncidentReport",
+				"name": "IncidentReport",
+				"target": "IncidentReport"
+			}, {
+				"pattern": "ForgotPassword",
+				"name": "ForgotPassword",
+				"target": "ForgotPassword"
+			}, {
+				"pattern": "AgriSeta",
+				"name": "AgriSeta",
+				"target": "AgriSeta"
+			}, {
+				"pattern": "Merseta",
+				"name": "Merseta",
+				"target": "Merseta"
+			}, {
+				"pattern": "Ceta",
+				"name": "Ceta",
+				"target": "Ceta"
+			}, {
+				"pattern": "LearnerMenu",
+				"name": "LearnerMenu",
+				"target": "LearnerMenu"
+			}, {
+				"pattern": "CaptureResults",
+				"name": "CaptureResults",
+				"target": "CaptureResults"
+			}, {
+				"pattern": "IncidentList",
+				"name": "IncidentList",
+				"target": "IncidentList"
+			}, {
+				"pattern": "AttendanceReport",
+				"name": "AttendanceReport",
+				"target": "AttendanceReport"
+			}, {
+				"pattern": "Tools/{learnerPath}",
+				"name": "Tools",
+				"target": "Tools"
+			}],
+			"targets": {
+				"LoginPage": {
+					"viewID": "LoginPage",
+					"viewName": "LoginPage"
+				},
+				"MenuPage": {
+					"viewID": "MenuPage",
+					"viewName": "MenuPage"
+				},
+				"LearnerInfo": {
+					"viewId": "LearnerInfo",
+					"viewName": "LearnerInfo"
+				},
+				"TrainingVenue": {
+					"viewId": "TrainingVenue",
+					"viewName": "TrainingVenue"
+				},
+				"Facilitator": {
+					"viewId": "Facilitator",
+					"viewName": "Facilitator"
+				},
+				"Training": {
+					"viewId": "Training",
+					"viewName": "Training"
+				},
+				"Attendance": {
+					"viewId": "Attendance",
+					"viewName": "Attendance"
+				},
+				"RegisterPage": {
+					"viewId": "RegisterPage",
+					"viewName": "RegisterPage"
+				},
+				"LearnerList": {
+					"viewId": "LearnerList",
+					"viewName": "LearnerList"
+				},
+				"LearnerDetails": {
+					"viewId": "LearnerDetails",
+					"viewName": "LearnerDetails"
+				},
+				"Reporting": {
+					"viewId": "Reporting",
+					"viewName": "Reporting"
+				},
+				"Implementation": {
+					"viewId": "Implementation",
+					"viewName": "Implementation"
+				},
+				"TrainingTool": {
+					"viewId": "TrainingTool",
+					"viewName": "TrainingTool"
+				},
+				"ModAssesor": {
+					"viewId": "ModAssesor",
+					"viewName": "ModAssesor"
+				},
+				"Monitoring": {
+					"viewId": "Monitoring",
+					"viewName": "Monitoring"
+				},
+				"MilestoneReport": {
+					"viewId": "MilestoneReport",
+					"viewName": "MilestoneReport"
+				},
+				"IncidentReport": {
+					"viewId": "IncidentReport",
+					"viewName": "IncidentReport"
+				},
+				"ForgotPassword": {
+					"viewId": "ForgotPassword",
+					"viewName": "ForgotPassword"
+				},
+				"AgriSeta": {
+					"viewId": "AgriSeta",
+					"viewName": "AgriSeta"
+				},
+				"Merseta": {
+					"viewId": "Merseta",
+					"viewName": "Merseta"
+				},
+				"Ceta": {
+					"viewId": "Ceta",
+					"viewName": "Ceta"
+				},
+				"LearnerMenu": {
+					"viewId": "LearnerMenu",
+					"viewName": "LearnerMenu"
+				},
+				"CaptureResults": {
+					"viewId": "CaptureResults",
+					"viewName": "CaptureResults"
+				},
+				"IncidentList": {
+					"viewId": "IncidentList",
+					"viewName": "IncidentList"
+				},
+				"AttendanceReport": {
+					"viewId": "AttendanceReport",
+					"viewName": "AttendanceReport"
+				},
+				"Tools": {
+					"viewId": "Tools",
+					"viewName": "Tools"
+				}
+			}
+		},
+		"resources": {
+			"css": [{
+				"uri": "css/style.css"
+			}]
+		}
+	}
+}

@@ -1,0 +1,83 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+	controllerName="programmeMotse.controller.Ceta">
+	<App>
+		<pages>
+			<Page id="cetaPage" backgroundDesign="Solid">
+				<content>
+					<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" id="frm">
+						<sap.ui.layout.form:content>
+							<HBox width="100%" class="sapUiLargeMarginEnd" height="30%" alignContent="Center" alignItems="Center" justifyContent="Center">
+								<items>
+									<Image class="sapUiLargeMarginEnd" width="auto" height="200px" src="images/CETA.png" backgroundPosition="center"/>
+								</items>
+							</HBox>
+							<core:Title text="Province where you Reside"/>
+							<Label/>
+							<CheckBox id="GP" enabled="false" text="Gauteng"/>
+							<Label width="100%"/>
+							<CheckBox id="WC" enabled="false" text="Western Cape"/>
+							<Label width="100%"/>
+							<CheckBox id="KZN" enabled="false" text="KwaZulu Natal"/>
+							<core:Title/>
+							<Label width="100%"/>
+							<CheckBox id="NW" enabled="false" text="North West"/>
+							<Label width="100%"/>
+							<CheckBox id="NC" enabled="false" text="Nothern Cape"/>
+							<Label width="100%"/>
+							<CheckBox id="FC" enabled="false" text="Free State"/>
+							<core:Title/>
+							<Label width="100%"/>
+							<CheckBox id="LP" enabled="false" text="Limpopo"/>
+							<Label width="100%"/>
+							<CheckBox id="EC" enabled="false" text="Eastern Cape"/>
+							<Label width="100%"/>
+							<CheckBox id="MP" enabled="false" text="Mpumalanga"/>
+							<core:Title text="Personal Information" level="H2" emphasized="true"/>
+							<Label width="100%" text="Name"/>
+							<Input value="{/Name}" enabled="false" width="70%"/>
+							<Label text="Surname"/>
+							<Input enabled="false" value="{/Surname}" width="70%"/>
+							<Label text="ID Number" width="100%"/>
+							<Input value="{/IDNumber}" enabled="false" width="70%"/>
+							<Label text="Race" width="100%"/>
+							<Input value="{/Race}" enabled="false" width="70%"/>
+							<Label text="Gender" width="100%"/>
+							<Input value="{/Gender}" enabled="false" width="70%"/>
+							<Label text="Disability" width="100%"/>
+							<Input value="{/Disability}" enabled="false" width="70%"/>
+							<Label text="Physical Address" width="100%"/>
+							<Input value="{/AddressLine1} {/AddressLine2} {/City} {/Province}" enabled="false" width="70%"/>
+							<Label text="Contact Numbers" width="100%"/>
+							<Input enabled="false" value="{/ContactNumber}" width="70%"/>
+							<Label text="E-Mail Address" width="100%"/>
+							<Input value="{/EmailAddress}" enabled="false" width="70%"/>
+							<Label text="Are you Currently Employed" width="100%"/>
+							<Input value="{/EmploymentStatus}" enabled="false" width="70%"/>
+							<Label text="Highest Qualification" width="100%"/>
+							<Input value="{/HighestQualification}" enabled="false" width="70%"/>
+							<Label width="100%"/>
+							<VBox xmlns="sap.m" width="100%" alignContent="Center" justifyContent="Center" alignItems="Center" direction="Column">
+								<items>
+									<Label xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:html="http://www.w3.org/1999/xhtml"
+										xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns="sap.m" text="Learner signature" width="100%"/>
+									<Image src="{/Signature}" width="340px" height="140px"/>
+									<Label text="Date" width="100%"/>
+									<Text id="txtDate" text="31/12/2019"/>
+								</items>
+							</VBox>
+						</sap.ui.layout.form:content>
+					</sap.ui.layout.form:SimpleForm>
+				</content>
+				<footer>
+					<Toolbar width="100%" id="footer">
+						<content>
+							<Button text="Done" width="auto" icon="sap-icon://accept" type="Emphasized" press="onDone"/>
+							<ToolbarSpacer id="__spacer0"/>
+							<Button text="Print Contract" width="auto" icon="sap-icon://print" type="Reject" press="onPrint"/>
+						</content>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

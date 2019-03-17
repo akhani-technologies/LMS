@@ -1,0 +1,54 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="programmeMotse.controller.TrainingTool">
+	<App>
+		<pages>
+			<Page title="Learner Training tools" backgroundDesign="Solid" showNavButton="true" navButtonPress="onNavBack">
+				<content>
+					<Table items="{path: '/'}" noDataText="Drop column list items here and columns in the area above" id="__table0">
+						<items>
+							<ColumnListItem type="Navigation" press="onItemPress">
+								<cells>
+									<Text text="{Name} {Surname}"/>
+									<Text text="{Gender}"/>
+									<Text text="{EmailAddress}"/></cells>
+							</ColumnListItem>
+						</items>
+						<columns>
+							<Column>
+								<header>
+									<Label text="Learner Name"/>
+								</header>
+							</Column>
+							<Column>
+								<header>
+									<Label text="Gender"/>
+								</header>
+							</Column>
+							<Column>
+								<header>
+									<Label text="Email Address"/>
+								</header>
+							</Column>
+						</columns>
+						<headerToolbar>
+							<Toolbar width="100%">
+								<content>
+									<Title text="Select Learner" width="100%"/>
+									<ToolbarSpacer id="__spacer1"/>
+									<SearchField width="100%" placeholder="Search for learner by name" liveChange="onSearch" search="onSearch"/>
+								</content>
+							</Toolbar>
+						</headerToolbar>
+					</Table>
+				</content>
+			<footer>
+			    <Toolbar width="100%" id="__toolbar2">
+			        <content>
+			            <ToolbarSpacer id="__spacer0"/>
+			            <Button text="Save " width="100px" icon="sap-icon://save" type="Reject" press="onSaveLearnerTools"/>
+			        </content>
+			    </Toolbar>
+			</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

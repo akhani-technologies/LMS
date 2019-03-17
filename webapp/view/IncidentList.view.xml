@@ -1,0 +1,62 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+	controllerName="programmeMotse.controller.IncidentList">
+	<App>
+		<pages>
+			<Page backgroundDesign="Solid" showNavButton="true" navButtonPress="onNavBack">
+				<content>
+					<Table items="{path: '/'}" noDataText="No Incidents logged" id="tblIncidents">
+						<items>
+							<ColumnListItem >
+								<cells>
+									<Text text="{IncidentID}"/>
+									<Text text="{IncidentType}"/>
+									<Text text="{IncidentFor}"/>
+									<Text text="{IncidentDescription}"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+						<columns>
+							<Column >
+								<header>
+									<Label text="IncidentID"/>
+								</header>
+							</Column>
+							<Column >
+								<header>
+									<Label text="Incident Type"/>
+								</header>
+							</Column>
+							<Column >
+								<header>
+									<Label text="Incident For"/>
+								</header>
+							</Column>
+							<Column>
+								<header>
+									<Text text="Incident Description"/>
+								</header>
+							</Column>
+						</columns>
+						<headerToolbar>
+							<Toolbar width="100%">
+								<content>
+									<Title text="Incidents" width="100%"/>
+									<ToolbarSpacer/>
+									<Button width="auto" press="handleFilterButtonPressed" icon="sap-icon://filter" type="Reject"/>
+								</content>
+							</Toolbar>
+						</headerToolbar>
+					</Table>
+				</content>
+				<footer>
+					<Toolbar width="100%">
+						<content>
+							<Toolbar width="100%"/>
+							<Button text="PrintList" press="onPrint" width="auto" icon="sap-icon://print" type="Reject"/>
+						</content>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

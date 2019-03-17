@@ -1,0 +1,16 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified">
+	<Dialog title="Learner verification">
+	<content>
+	    <sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout">
+	        <sap.ui.layout.form:content>
+	            <Label text="Enter learner ID Number"/>
+	            <Input width="100%" id="verID"/>
+	            <FlexBox width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
+	                <items>
+	                    <Button width="100px" press="onCheck" text="Check" type="Reject" icon="sap-icon://check-availability"/>
+	                </items>
+	            </FlexBox></sap.ui.layout.form:content>
+	    </sap.ui.layout.form:SimpleForm>
+	</content>
+	</Dialog>
+</core:FragmentDefinition>

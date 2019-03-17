@@ -1,0 +1,18 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<ViewSettingsDialog
+		confirm="handleFilterIncidentConfirm">
+		<filterItems>
+			<ViewSettingsFilterItem
+				text="Incident Type"
+				key="IncidentType"
+				multiSelect="false">
+				<items>
+					<ViewSettingsItem text="Venue" key="IncidentType___EQ___Venue" />
+					<ViewSettingsItem text="Learner" key="IncidentType___EQ___Learner" />
+				</items>
+			</ViewSettingsFilterItem>
+		</filterItems>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>

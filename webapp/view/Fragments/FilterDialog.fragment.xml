@@ -1,0 +1,19 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<ViewSettingsDialog resetFilters="onClearSetting" confirm="handleFilterDialogConfirm">
+		<filterItems>
+			<ViewSettingsFilterItem text="LearnerType" key="LearnerType" multiSelect="false">
+				<items>
+					<ViewSettingsItem text="Peri-Urban"  key="LearnerType___EQ___Peri-Urban"/>
+					<ViewSettingsItem text="Rural" key="LearnerType___EQ___Rural"/>
+					<ViewSettingsItem text="Urban" key="LearnerType___EQ___Urban"/>
+				</items>
+			</ViewSettingsFilterItem>
+			<ViewSettingsFilterItem text="Gender" key="Gender" multiSelect="false">
+				<items>
+					<ViewSettingsItem text="Female" key="Gender___EQ___Female"/>
+					<ViewSettingsItem text="Male" key="Gender___EQ___Male"/>
+				</items>
+			</ViewSettingsFilterItem>
+		</filterItems>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>

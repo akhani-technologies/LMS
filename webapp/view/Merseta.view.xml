@@ -1,0 +1,238 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+	controllerName="programmeMotse.controller.Merseta">
+	<App>
+		<pages>
+			<Page backgroundDesign="Solid">
+				<content>
+					<sap.ui.layout.form:SimpleForm id="frm" xmlns:sap.ui.layout.form="sap.ui.layout.form" class="sapUiLargeMarginBegin" editable="true"
+						layout="ResponsiveGridLayout" columnsL="1">
+						<sap.ui.layout.form:content>
+							<HBox width="100%" class="sapUiLargeMarginEnd" height="30%" alignContent="Center" alignItems="Center" justifyContent="Center">
+								<items>
+									<Image class="sapUiLargeMarginEnd" width="auto" height="200px" src="images/merseta.png" backgroundPosition="center"/>
+								</items>
+							</HBox>
+							<core:Title text="Learner Details" emphasized="true" level="H2"/>
+							<Label text="Learner Surname"/>
+							<Input enabled="false" value="{/Surname}" width="70%"/>
+							<Label text="Learner Name"/>
+							<Input enabled="false" width="70%" value="{/Name}"/>
+							<Label wrapping="true" text="Learner South African Id number" width="100%"/>
+							<Input enabled="false" value="{/IDNumber}" width="70%"/>
+							<Label text="Race" width="100%"/>
+							<Input enabled="false" value="{/Race}" width="70%" id="__input5"/>
+							<Label text="Gender" width="100%"/>
+							<Input enabled="false" value="{/Gender}" width="70%"/>
+							<Label text="Learner Home Address" width="100%"/>
+							<Input enabled="false" value="{/AddressLine1} {/AddressLine2} {/City} {/Province}" width="70%"/>
+							<Label text="Learner Phone Number" width="100%"/>
+							<Input enabled="false" width="70%" value="{/ContactNumber}"/>
+							<Label text="E-Mail Address" width="100%"/>
+							<Input value="{/EmailAddress}" enabled="false" width="70%"/>
+							<core:Title text="Course Information" emphasized="true" level="H2"/>
+							<Label wrapping="true" text="NSDS Target (Employed/ Unemployed)"/>
+							<Input enabled="false" value="{/EmploymentStatus}" width="70%"/>
+							<Label wrapping="true" text="Name of course attending" width="70%"/>
+							<Input enabled="false" value="{/Program}" width="70%"/>
+							<Label text="Highest Qualification" width="100%"/>
+							<Input value="{/HighestQualification}" enabled="false" width="70%"/>
+							<Label width="100%"/>
+							<VBox xmlns="sap.m" width="100%" alignContent="Center" justifyContent="Center" alignItems="Center" direction="Column">
+								<items>
+									<Label xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:html="http://www.w3.org/1999/xhtml"
+										xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns="sap.m" text="Learner signature" width="100%"/>
+									<Image src="{/Signature}" width="340px" height="140px"/>
+									<Label text="Date" width="100%"/>
+									<Text id="txtDate" text="31/12/2019"/>
+								</items>
+							</VBox>
+						</sap.ui.layout.form:content>
+					</sap.ui.layout.form:SimpleForm>
+					<!--<Table>-->
+					<!--	<items>-->
+					<!--		<ColumnListItem>-->
+					<!--			<cells>-->
+					<!--				<HBox width="100%" alignItems="Center" alignContent="End" justifyContent="Inherit">-->
+					<!--					<items>-->
+					<!--						<Label class="sapUiLargeMarginEnd" text="Name: " width="100%"/>-->
+					<!--						<Input value="{/Name}" width="100%" enabled="false"/>-->
+					<!--					</items>-->
+					<!--				</HBox>-->
+					<!--				<HBox width="100%" alignItems="Center" alignContent="Inherit" justifyContent="Inherit">-->
+					<!--					<items>-->
+					<!--						<Label class="sapUiTinyMarginEnd" text="Surname:" width="100%"/>-->
+					<!--						<Input value="{/Surname}" width="100%" enabled="false"/>-->
+					<!--					</items>-->
+					<!--				</HBox>-->
+					<!--				<HBox width="100%" alignItems="Center" alignContent="Inherit" justifyContent="Inherit">-->
+					<!--					<items>-->
+					<!--						<Label class="sapUiSmallMarginEnd" width="100%" text="ID No. :"/>-->
+					<!--						<Input value="{/IDNumber}" width="100%" enabled="false"/>-->
+					<!--					</items>-->
+					<!--				</HBox>-->
+					<!--			</cells>-->
+					<!--		</ColumnListItem>-->
+					<!--		<ColumnListItem>-->
+					<!--			<cells>-->
+					<!--				<HBox width="100%" alignItems="Center" alignContent="Inherit" justifyContent="Inherit">-->
+					<!--					<items>-->
+					<!--						<Label class="sapUiLargeMarginEnd" text="Gender." width="100%"/>-->
+					<!--						<Input value="{/Gender}" width="100%" enabled="false"/>-->
+					<!--					</items>-->
+					<!--				</HBox>-->
+					<!--				<HBox width="100%" alignItems="Center" alignContent="Inherit" justifyContent="Inherit">-->
+					<!--					<items>-->
+					<!--						<Label class="sapUiSmallMarginEnd" text="Contact No. :" width="100%"/>-->
+					<!--						<Input value="{/ContactNumber}" width="100%" enabled="false"/>-->
+					<!--					</items>-->
+					<!--				</HBox>-->
+					<!--				<HBox width="100%" alignItems="Center" alignContent="Inherit" justifyContent="Inherit">-->
+					<!--					<items>-->
+					<!--						<Label class="sapUiTinyMarginEnd" text="E-mail Address:" width="100%"/>-->
+					<!--						<Input value="{/EmailAddress}" width="100%" enabled="false"/>-->
+					<!--					</items>-->
+					<!--				</HBox>-->
+					<!--			</cells>-->
+					<!--		</ColumnListItem>-->
+					<!--		<ColumnListItem>-->
+					<!--			<cells>-->
+					<!--				<HBox width="100%" alignItems="Center" alignContent="Inherit" justifyContent="Inherit">-->
+					<!--					<items>-->
+					<!--						<Label class="sapUiTinyMarginEnd" text="Program :" width="100%"/>-->
+					<!--						<Input value="{/Program}" width="100%" enabled="false"/>-->
+					<!--					</items>-->
+					<!--				</HBox>-->
+					<!--				<HBox width="100%" alignItems="Center" alignContent="Inherit" justifyContent="Inherit">-->
+					<!--					<items>-->
+					<!--						<Label class="sapUiMediumMarginEnd" text="Highest Qualification:" width="100%"/>-->
+					<!--						<Input value="{/HighestQualification}" width="100%" enabled="false"/>-->
+					<!--					</items>-->
+					<!--				</HBox>-->
+					<!--			</cells>-->
+					<!--		</ColumnListItem>-->
+					<!--	</items>-->
+					<!--	<columns>-->
+					<!--		<Column/>-->
+					<!--		<Column/>-->
+					<!--		<Column/>-->
+					<!--	</columns>-->
+					<!--	<headerToolbar>-->
+					<!--		<Toolbar width="100%" design="Solid">-->
+					<!--			<content>-->
+					<!--				<Title text="Learner Details" width="100%" textAlign="Center" titleStyle="H2"/>-->
+					<!--			</content>-->
+					<!--		</Toolbar>-->
+					<!--	</headerToolbar>-->
+					<!--</Table>-->
+					<!--<Table class="sapUiSmallMarginBottom">-->
+					<!--	<items>-->
+					<!--		<ColumnListItem>-->
+					<!--			<cells>-->
+					<!--				<HBox width="100%" alignItems="Center">-->
+					<!--					<items>-->
+					<!--						<Label class="sapUiMediumMarginEnd" text="Race:" width="100%"/>-->
+					<!--						<Input value="{/Race}" width="100%" enabled="false"/>-->
+					<!--					</items>-->
+					<!--				</HBox>-->
+					<!--				<HBox width="100%">-->
+					<!--					<items>-->
+					<!--						<Label class="sapUiTinyMarginEnd" text="Area Type: " width="100%"/>-->
+					<!--						<Input value="{/LearnerType}" width="100%" enabled="false"/>-->
+					<!--					</items>-->
+					<!--				</HBox>-->
+					<!--			</cells>-->
+					<!--		</ColumnListItem>-->
+					<!--		<ColumnListItem>-->
+					<!--			<cells>-->
+					<!--				<HBox width="100%" alignItems="Center">-->
+					<!--					<items>-->
+					<!--						<Label class="sapUiTinyMarginEnd" text="Disability:" width="100%"/>-->
+					<!--						<Input value="{/Disability}" width="100%" enabled="false"/>-->
+					<!--					</items>-->
+					<!--				</HBox>-->
+					<!--			</cells>-->
+					<!--		</ColumnListItem>-->
+					<!--	</items>-->
+					<!--	<columns>-->
+					<!--		<Column/>-->
+					<!--		<Column/>-->
+					<!--	</columns>-->
+					<!--	<headerToolbar>-->
+					<!--		<Toolbar width="100%" design="Solid">-->
+					<!--			<content>-->
+					<!--				<Title text="Race" width="100%" textAlign="Center" titleStyle="H2"/>-->
+					<!--			</content>-->
+					<!--		</Toolbar>-->
+					<!--	</headerToolbar>-->
+					<!--</Table>-->
+					<!--<Table>-->
+					<!--	<items>-->
+					<!--		<ColumnListItem>-->
+					<!--			<cells>-->
+					<!--				<Input value="{/AddressLine1}" width="100%" enabled="false"/>-->
+					<!--			</cells>-->
+					<!--		</ColumnListItem>-->
+					<!--		<ColumnListItem>-->
+					<!--			<cells>-->
+					<!--				<Input value="{/AddressLine2}" width="100%" enabled="false"/>-->
+					<!--			</cells>-->
+					<!--		</ColumnListItem>-->
+					<!--		<ColumnListItem>-->
+					<!--			<cells>-->
+					<!--				<HBox width="100%" alignItems="Center">-->
+					<!--					<items>-->
+					<!--						<Label class="sapUiLargeMarginEnd" text="City:" width="100%"/>-->
+					<!--						<Input value="{/City}" width="100%" enabled="false"/>-->
+					<!--					</items>-->
+					<!--				</HBox>-->
+					<!--			</cells>-->
+					<!--		</ColumnListItem>-->
+					<!--		<ColumnListItem>-->
+					<!--			<cells>-->
+					<!--				<HBox width="100%" alignItems="Center">-->
+					<!--					<items>-->
+					<!--						<Label class="sapUiSmallMarginEnd" text="Province:" width="100%"/>-->
+					<!--						<Input value="{/Province}" width="100%" enabled="false"/>-->
+					<!--					</items>-->
+					<!--				</HBox>-->
+					<!--			</cells>-->
+					<!--		</ColumnListItem>-->
+					<!--		<ColumnListItem>-->
+					<!--			<cells>-->
+					<!--				<HBox width="100%" alignItems="Center">-->
+					<!--					<items>-->
+					<!--						<Label class="sapUiMediumMarginEnd" text="E-Mail:" width="100%"/>-->
+					<!--						<Input value="{/EmailAddress}" width="100%" enabled="false"/>-->
+					<!--					</items>-->
+					<!--				</HBox>-->
+					<!--				<HBox width="100%" alignItems="Center">-->
+					<!--					<items>-->
+					<!--						<Label class="sapUiTinyMarginEnd" text="Contact Number:" width="100%"/>-->
+					<!--						<Input value="{/ContactNumber}" width="100%" enabled="false"/>-->
+					<!--					</items>-->
+					<!--				</HBox>-->
+					<!--			</cells>-->
+					<!--		</ColumnListItem>-->
+					<!--	</items>-->
+					<!--	<columns>-->
+					<!--		<Column>-->
+					<!--			<header>-->
+					<!--				<Label text="Address"/>-->
+					<!--			</header>-->
+					<!--		</Column>-->
+					<!--	</columns>-->
+					<!--</Table>-->
+				</content>
+				<footer>
+					<Toolbar width="100%" id="footer">
+						<content>
+							<Button text="Done" width="auto" icon="sap-icon://accept" type="Emphasized" press="onDone"/>
+							<ToolbarSpacer id="__spacer0"/>
+							<Button text="Print Contract" width="auto" icon="sap-icon://print" type="Reject" press="onPrint"/>
+						</content>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

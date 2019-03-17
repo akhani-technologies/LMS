@@ -1,0 +1,53 @@
+.body {
+    background-color: black;
+}
+
+.border {
+    border: 3px solid black;
+}
+
+.txt {
+    color: blue;
+}
+
+.iconFlt {
+    width: 30rem;
+    text-align: left;
+    align-content: center;
+    display: inline-block;
+}
+
+.tile:hover {
+    background-color: #f44336;
+}
+
+,
+.txtTitle {
+    font-size: 250%;
+    font-weight: bold;
+}
+
+.custom_tile {
+    width: 6rem;
+    height: 6rem;
+}
+
+.sapMGT.OneByOne {
+    width: 11rem;
+    height: 11rem;
+    border-color: lightblue;
+    border-style: solid;
+}
+.captured {
+  border-style: solid;
+  border-color: green;
+  border-width:5px 5px 5px 5px;
+}
+
+.grad {
+    background-image: linear-gradient(to bottom right, red, black);
+}
+
+.signatureB {
+    border-style: double;
+}

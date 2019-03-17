@@ -1,0 +1,160 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="programmeMotse.controller.LearnerDetails">
+	<App>
+		<pages>
+			<Page title="Learner details" showNavButton="true" navButtonPress="onNavBack">
+				<content>
+					<ObjectHeader title="{/Name}{/Surname}" introActive="true" titleActive="true" icon="sap-icon://person-placeholder">
+						<!--<statuses>-->
+						<!--	<ObjectStatus title="status" text="{/Status}"/>-->
+						<!--</statuses>-->
+					</ObjectHeader>
+					<IconTabBar id="IconBar" select="onSelect">
+						<items>
+							<IconTabFilter text="Personal details" iconColor="Negative" icon="sap-icon://account" key="key1" id="IconPersonal" design="Horizontal">
+								<content>
+									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout">
+										<sap.ui.layout.form:content>
+											<core:Title xmlns:core="sap.ui.core" text="Learner Information" icon="sap-icon://study-leave"/>
+											<Label text="Name"/>
+											<Input enabled="{viewModel>/Edit}" value="{/Name}" width="70%" id="inpName"/>
+											<Label text="Surname"/>
+											<Input enabled="{viewModel>/Edit}" value="{/Surname}" width="70%" id="inpSurname"/>
+											<Label text="ID Number" width="100%"/>
+											<Text text="{/IDNumber}"/>
+											<!--<Input enabled="{viewModel>/Edit}" value="{/IDNumber}" width="70%" id="inpID"/>-->
+											<Label text="Gender" width="100%"/>
+											<Text text="{/Gender}"/>
+											<Label text="Contact number" width="100%"/>
+											<Input enabled="{viewModel>/Edit}" value="{/ContactNumber}" width="70%" id="inpNumber"/>
+											<Label text="Email address" width="100%"/>
+											<Input enabled="{viewModel>/Edit}" value="{/EmailAddress}" width="70%" id="inpEmail"/>
+											<Label text="Address 1" width="100%"/>
+											<Input enabled="{viewModel>/Edit}" width="70%" value="{/AddressLine1}" id="inpLine1"/>
+											<Label text="Address 2" width="100%"/>
+											<Input enabled="{viewModel>/Edit}" value="{/AddressLine2}" width="70%" id="inpLine2"/>
+											<Label text="City" width="100%"/>
+											<Input enabled="{viewModel>/Edit}" value="{/City}" width="70%" id="inpCity"/>
+											<Label xmlns="sap.m" text="Province" width="100%"/>
+											<Input visible="{viewModel>/View}" value="{/Province}" width="70%" enabled="{viewModel>/Edit}"/>
+											<ComboBox visible="{viewModel>/Edit}" width="70%" id="slctProv">
+												<items>
+													<core:ListItem text="Eastern Cape" key="EC"/>
+													<core:ListItem text="Free State" key="FS"/>
+													<core:ListItem text="Gauteng" key="GP"/>
+													<core:ListItem text="KwaZulu-Natal" key="KZN"/>
+													<core:ListItem text="Limpopo" key="LP"/>
+													<core:ListItem text="Mpumalanga" key="MP"/>
+													<core:ListItem text="Northern Cape" key="NC"/>
+													<core:ListItem text="North West" key="NW"/>
+													<core:ListItem text="Western Cape" key="WC"/>
+												</items>
+											</ComboBox>
+											<Label xmlns="sap.m" text="Highest Qualification" width="100%"/>
+											<Text visible="{viewModel>/View}" text="{/HighestQualification}"/>
+											<ComboBox visible="{viewModel>/Edit}" width="70%" id="slctQual">
+												<items>
+													<core:ListItem xmlns:core="sap.ui.core" text="Grade 12 (National Senior Certificate) and National (vocational) Cert. level 4"/>
+													<core:ListItem xmlns:core="sap.ui.core" text="Higher Certificates and Advanced National (vocational) Cert. level 5"/>
+													<core:ListItem xmlns:core="sap.ui.core" text="National Diploma and Advanced certificates. level 6"/>
+													<core:ListItem xmlns:core="sap.ui.core" text="Bachelor's degree, Advanced Diplomas, Post Graduate Certificate and B-tech. level 7"/>
+													<core:ListItem xmlns:core="sap.ui.core" text="Honours degree, Post Graduate diploma and Professional Qualifications. level 8"/>
+													<core:ListItem xmlns:core="sap.ui.core" text="Master's degree. level 9"/>
+													<core:ListItem xmlns:core="sap.ui.core" text="Doctorate degree. level 10"/>
+												</items>
+											</ComboBox>
+										</sap.ui.layout.form:content>
+									</sap.ui.layout.form:SimpleForm>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter text="Additional Info" icon="sap-icon://task" iconColor="Critical" design="Horizontal" key="Key2">
+								<content>
+									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" columnsL="1">
+										<sap.ui.layout.form:content>
+											<core:Title text="Employment Information" icon="sap-icon://eam-work-order"/>
+											<Label text="Employment status"/>
+											<Input visible="{viewModel>/View}" enabled="{viewModel>/Edit}" value="{/EmploymentStatus}"/>
+											<RadioButtonGroup visible="{viewModel>/Edit}" width="100%" columns="2" selectedIndex="-1" id="radioEmploy">
+												<buttons>
+													<RadioButton selected="true" groupName="__group1" text="Employed"/>
+													<RadioButton groupName="__group1" text="Unemployed"/></buttons>
+											</RadioButtonGroup>
+											<core:Title text="Learner Type" icon="sap-icon://group"/>
+											<Label text="Select Learner type "/>
+											<Input visible="{viewModel>/View}" enabled="{viewModel>/Edit}" value="{/LearnerType}"/>
+											<ComboBox visible="{viewModel>/Edit}" width="70%" id="slctLType">
+												<items>
+													<core:ListItem text="Peri-Urban" key="Peri-Urban"/>
+													<core:ListItem text="Rural" key="Rural"/>
+													<core:ListItem text="Urban" key="Urban"/></items>
+											</ComboBox>
+											<core:Title text="Disability " icon="sap-icon://message-information"/>
+											<Label text="Type of Disability" width="100%"/>
+											<Input visible="{viewModel>/View}" enabled="{viewModel>/Edit}" value="{/Disability}"/>
+											<ComboBox visible="{viewModel>/Edit}" width="70%" id="slctDisability">
+												<items>
+													<core:ListItem text="Physical impairment" key="Physical impairment"/>
+													<core:ListItem text="vision Impairment." key="vision Impairment."/>
+													<core:ListItem text="hearing Impairment." key="hearing Impairment."/>
+													<core:ListItem text="N/A"/></items>
+											</ComboBox>
+											<core:Title text="Ethnicity" icon="sap-icon://family-care"/>
+											<Label text="Race" width="100%"/>
+											<Text text="{/Race}"/>
+											<Label text="UIF" width="100%"/>
+											<Input visible="{viewModel>/View}" enabled="{viewModel>/Edit}" value="{/UIF}"/>
+											<ComboBox visible="{viewModel>/Edit}" width="70%" id="slctUIF">
+												<items>
+													<core:ListItem text="Contributor" key="Contributor"/>
+													<core:ListItem text="Non-Contributor" key="Non-Contributor"/></items>
+											</ComboBox>
+										</sap.ui.layout.form:content>
+									</sap.ui.layout.form:SimpleForm>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter text="Banking details" icon="sap-icon://money-bills" iconColor="Negative" key="key5" id="IconBank" design="Horizontal">
+								<content>
+									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout">
+										<sap.ui.layout.form:content>
+											<core:Title text="Banking details" icon="sap-icon://add-activity"/>
+											<Label text="Bank Name" width="100%"/>
+											<Input enabled="{viewModel>/Edit}" value="{/BankName}" width="70%" id="inpBankName"/>
+											<Label text="Account number" width="100%"/>
+											<Input enabled="{viewModel>/Edit}" value="{/AccountNumber}" width="70%" id="inpAccNum"/>
+											<Label text="Account Type" width="100%"/>
+											<Input enabled="{viewModel>/Edit}" value="{/AccountType}" width="70%" id="AccType"/>
+										</sap.ui.layout.form:content>
+									</sap.ui.layout.form:SimpleForm>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter id="ProgramIcon" text="Program enrolment" icon="sap-icon://course-program" iconColor="Positive" key="key6" design="Horizontal">
+								<content>
+									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout">
+										<sap.ui.layout.form:content>
+											<core:Title text="Assign program" icon="sap-icon://study-leave"/>
+											<Label text="Select progarm description"/>
+											<Input visible="{viewModel>/View}" enabled="{viewModel>/Edit}" value="{/Program}" width="70%"/>
+											<ComboBox visible="{viewModel>/Edit}" width="50%" id="cmbProgram" items="{path: '/'}">
+												<items>
+													<core:ListItem text="{ProgramText}" key="{ProgramText}"/>
+												</items>
+											</ComboBox>
+										</sap.ui.layout.form:content>
+									</sap.ui.layout.form:SimpleForm>
+								</content>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</content>
+			<footer>
+			    <Toolbar width="100%">
+			        <content>
+			            <Button text="Edit Details" press="onEditDetails" width="auto" icon="sap-icon://edit" type="Accept"/>
+			            <ToolbarSpacer id="__spacer0"/>
+			            <Button text="Update details" width="auto" icon="sap-icon://refresh" type="Reject" press="onSaveDetails"/>
+			        </content>
+			    </Toolbar>
+			</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

@@ -1,0 +1,60 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="programmeMotse.controller.LearnerList">
+	<App>
+		<pages>
+			<Page showNavButton="true" navButtonPress="onNavBack">
+				<content>
+					<ObjectHeader title="Learner list" numberUnit="eur" introActive="true" titleActive="true" icon="sap-icon://collaborate"/>
+					<Table id="tblLearners" items="{path: '/'}">
+						<items>
+							<ColumnListItem type="Navigation" press="onLearner">
+								<cells>
+									<Text text="{Name} {Surname}"/>
+									<Text text="{Gender}"/>
+									<Text text="{EmailAddress}"/>
+									<Text text="{LearnerType}"/>
+									<Text text="{IDNumber}"/>
+									</cells>
+							</ColumnListItem>
+						</items>
+						<columns>
+							<Column>
+								<header>
+									<Label text="Learner Name"/>
+								</header>
+							</Column>
+							<Column>
+								<header>
+									<Label text="Gender"/>
+								</header>
+							</Column>
+							<Column>
+								<header>
+									<Label text="Email"/>
+								</header>
+							</Column>
+							<Column id="__column3">
+							    <header>
+							        <Text text="LearnerType"/>
+							    </header>
+							</Column>
+							<Column>
+							    <header>
+							        <Text text="ID Number"/>
+							    </header>
+							</Column>
+						</columns>
+						<headerToolbar>
+							<Toolbar width="100%">
+								<content>
+									<SearchField width="100%" placeholder="Search by ID Number" liveChange="onSearch"/>
+									<ToolbarSpacer/>
+									<Button text="Filters" width="100px" type="Reject" icon="sap-icon://filter" press="handleFilterButtonPressed"/>
+								</content>
+							</Toolbar>
+						</headerToolbar>
+					</Table>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

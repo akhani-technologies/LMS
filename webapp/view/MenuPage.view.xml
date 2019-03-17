@@ -1,0 +1,39 @@
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="programmeMotse.controller.MenuPage" displayBlock="true">
+	<App>
+		<pages>
+			<Page backgroundDesign="Transparent" >
+				<content>
+					<TileContainer allowAdd="true" class="sapUiTinyMarginTop">
+						<tiles>
+							<StandardTile class="border tile" title="Learner" icon="images/learner.png" activeIcon="sap-icon://customer" infoState="Success"
+								removable="false" press="onLearnerInfoPress" type="Monitor"/>
+							<StandardTile class="border tile" title="Attendance" icon="images/attendace.png" infoState="Warning" removable="false"
+								press="onAttendencePress" type="Monitor"/>
+							<StandardTile class="border tile" title="Training Service Provider Information" icon="images/training.jpg" activeIcon="sap-icon://customer"
+								infoState="Success" removable="false" press="onTrainingPress" type="Monitor"/>
+							<StandardTile class="border tile" title="Training Venue" icon="images/venue.svg" infoState="Warning" removable="false" press="onUserPress"
+								type="Monitor"/>
+							<StandardTile class="border tile" title="Facilitators" icon="images/monitor.png" activeIcon="sap-icon://customer" infoState="Success"
+								removable="false" press="onMonitorPress" type="Monitor"/>
+							<StandardTile class="border tile" title="Implementaion Plan" icon="images/implementation.png" type="Monitor"
+								activeIcon="sap-icon://customer" infoState="Success" press="onImplementationPress"/>
+							<StandardTile class="border tile" title="Learner Training tool" icon="images/training.jpg" type="Monitor" activeIcon="sap-icon://customer"
+								infoState="Success" press="onTrainingTool"/>
+							<StandardTile class="border tile" title="Assessor/Moderator" icon="images/user.png" type="Monitor" activeIcon="sap-icon://customer"
+								infoState="Success" press="onModAssesor"/>
+							<StandardTile class="border tile" title="Report Incidents" icon="images/incident.png" type="Monitor" activeIcon="sap-icon://customer"
+								infoState="Success" press="onIncidentReport"/>
+							<!--<StandardTile class="border tile" title="Monitor and Evaluation" icon="images/monitor.png" type="Monitor" activeIcon="sap-icon://customer" infoState="Success" press="onMonitor"/>-->
+							<StandardTile class="border tile" title="Reporting" icon="images/report.png" infoState="Warning" removable="false" press="onReportingPress"
+								type="Monitor"/>
+						</tiles>
+					</TileContainer>
+				</content>
+				<headerContent>
+					<Button width="auto" icon="sap-icon://log" text="Logout" type="Reject" press="handleConfirmationMessageBoxPress"/>
+				</headerContent>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
