@@ -36,6 +36,7 @@ sap.ui.define([
 				);
 			};
 			this.onGetPrograms();
+			
 
 		},
 
@@ -62,43 +63,33 @@ sap.ui.define([
 				var samples = JSON.parse(s.samples);
 				fingerprint.setSrc("data:image/png;base64," + Fingerprint.b64UrlTo64(samples[0]));
 				this.fingerprint = Fingerprint.b64UrlTo64(samples[0]);
+				console.log("finger ...   " + this.fingerprint);
 
-			};
+			}.bind(this);
 		},
 
 		// onSampleAcquired2:function
 
 		onSaveFingerPrint: function() {
-			$.ajax({
-				type: "POST",
-				url: 'https://petstore.swagger.io/v2/pet',
-				async: false,
-				contentType: 'application/json',
-				dataType: 'json',
-				accept: "application/json",
-				data: JSON.stringify({
-					id: 1988,
-					category: {
-						id: 1,
-						name: "Neo"
-					},
-					name: "doggie",
-					photoUrls: [
-						"string"
-					],
-					tags: [{
-						id: 1,
-						name: "Lehoko"
-					}],
-					status: "available"
-				}),
-				success: function(data, s, xhr) {
-					alert("success " + s);
-				}.bind(this),
-				error: function(err, e, xhr) {
-					alert("error " + e);
-				}
-			});
+			// $.ajax({
+			// 	type: "POST",
+			// 	url: 'http://35.229.36.224:8080/swagger-ui.html#',
+			// 	async: false,
+			// 	contentType: 'application/json',
+			// 	dataType: 'json',
+			// 	accept: "application/json",
+			// 	data: JSON.stringify({
+			// 		action: "ENROL",
+			// 		fingerPrintData: this.fingerprint,
+			// 		idNumber: "8002064019183"
+			// 	}),
+			// 	success: function(data, s, xhr) {
+			// 		alert("success " + s);
+			// 	}.bind(this),
+			// 	error: function(err, e, xhr) {
+			// 		alert("error " + e);
+			// 	}
+			// });
 		},
 
 		onSelect: function(oEvent) {
@@ -111,15 +102,7 @@ sap.ui.define([
 		},
 
 		onNavBack: function() {
-			var sPreviousHash = History.getInstance().getPreviousHash();
-			if (sPreviousHash !== undefined) {
-				// The history contains a previous entry
-				history.go(-1);
-			} else {
-				// Otherwise we go backwards with a forward history
-				var bReplace = true;
-				this.getRouter().navTo("master", {}, bReplace);
-			}
+			this.getRouter().navTo("LearnerMenu");
 		},
 
 		onSaveDetails: function(oEvent) {
@@ -165,21 +148,21 @@ sap.ui.define([
 
 			sLearnerModel.setData(oData);
 			sap.ui.getCore().setModel(sLearnerModel, "sLearnerModel");
-			// $.ajax({
-			// 	type: "POST",
-			// 	async: false,
-			// 	cache: false,
-			// 	url: 'PHP/createLearner.php',
-			// 	data: oData,
-			// 	//successfully logged on 
-			// 	success: function(data, response, xhr) {
-			// 		sap.ui.core.BusyIndicator.hide();
-			// 		oThat.handleSuccessMessageBoxPress();
-			// 	}.bind(this),
-			// 	error: function(e, status, xhr) {
+			$.ajax({
+				type: "POST",
+				async: false,
+				cache: false,
+				url: 'PHP/createLearner.php',
+				data: oData,
+				//successfully logged on 
+				success: function(data, response, xhr) {
+					sap.ui.core.BusyIndicator.hide();
+					oThat.handleSuccessMessageBoxPress();
+				}.bind(this),
+				error: function(e, status, xhr) {
 
-			// 	}
-			// });
+				}
+			});
 			// oLearnerModel.setData(oData);
 			// sap.ui.getCore().setModel(oLearnerModel, "oLearnerModel");
 			// this.handleSuccessMessageBoxPress();
@@ -190,10 +173,10 @@ sap.ui.define([
 			var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
 			MessageBox.success(
 				"Learner information successfully submitted", {
-					styleClass: bCompact ? "sapUiSizeCompact" : "",
-					onClose: function(sAction) {
-						that.oRouter.navTo("MenuPage");
-					}
+					styleClass: bCompact ? "sapUiSizeCompact" : ""
+						// onClose: function(sAction) {
+						// 	that.oRouter.navTo("MenuPage");
+						// }
 				}
 			);
 		},
@@ -220,9 +203,53 @@ sap.ui.define([
 			this._oPopover.openBy(oEvent.getSource());
 		},
 
-		onNextPress: function(oEvent) {
-			this.byId("PhotoIcon").setEnabled(true);
-			this.byId("IconBar").setSelectedKey("key2");
+		onNextPress: function() {
+			this.byId("IconAdditional").setEnabled(true);
+			var oIconTabBar = this.getView().byId("oIconTB");
+			oIconTabBar.setSelectedKey("Key2");
+		},
+		
+		onValidateAdditional:function(){
+			var oNextButton = this.byId("btnNextAdd");
+			var oLearnerType = this.byId("slctLType");
+			var oDisability = this.byId("slctDisability");
+			var oRace = this.byId("slctRace");
+			var oUIF = this.byId("slctUIF");
+			
+			if(oLearnerType === null || oDisability === null || oRace === null || oUIF === null){
+				oNextButton.setEnabled(false);
+			}else{
+				oNextButton.setEnabled(true);
+			}
+		},
+
+		/**
+		 * Checks if the save button can be enabled
+		 * @private
+		 */
+		_validateRequiredInputFields: function() {
+			var aInputControls = this._getSimpleFormFields(this.byId("PersonalForm"));
+			var oInputControl;
+			var sValue;
+			for (var m = 0; m < aInputControls.length; m++) {
+				oInputControl = aInputControls[m].control;
+				var _roadCtrlType = oInputControl.getMetadata().getName();
+
+				if (aInputControls[m].required) {
+					if (_roadCtrlType === "sap.m.Input") {
+						sValue = oInputControl.getValue();
+					} else {
+						sValue = oInputControl.getSelectedItem();
+					}
+
+					if (!sValue) {
+						this.byId("btnPNext").setEnabled(false);
+						return;
+					} else {
+						this.byId("btnPNext").setEnabled(true);
+					}
+				}
+			}
 		},
 
 		onCameraNext: function(oEvent) {
@@ -253,6 +280,22 @@ sap.ui.define([
 			} else {
 				jQuery.sap.log.error("onPrint needs a valid target container [view|data:targetId=\"SID\"]");
 			}
+		},
+
+		_getSimpleFormFields: function(oSimpleForm) {
+			var aControls = [];
+			var aFormContent = oSimpleForm.getContent();
+			var sControlType;
+			for (var i = 0; i < aFormContent.length; i++) {
+				sControlType = aFormContent[i].getMetadata().getName();
+				if (sControlType === "sap.m.Input" || sControlType === "sap.m.ComboBox") {
+					aControls.push({
+						control: aFormContent[i],
+						required: aFormContent[i - 1].getRequired && aFormContent[i - 1].getRequired()
+					});
+				}
+			}
+			return aControls;
 		},
 
 		onSummaryPageFill: function(oEvent) {

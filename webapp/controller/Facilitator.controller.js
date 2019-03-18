@@ -10,6 +10,9 @@ sap.ui.define([
 		onInit: function() {
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			this.oRouter.getRoute("Facilitator").attachPatternMatched(this._onObjectMatched, this);
+			if (!this.sdk) {
+				this.sdk = new Fingerprint.WebApi();
+			}
 		},
 
 		_onObjectMatched: function() {
@@ -103,6 +106,34 @@ sap.ui.define([
 					}
 				}
 			);
+		},
+
+		onStartFingerPrint: function() {
+			this.sdk.startAcquisition(Fingerprint.SampleFormat.PngImage).then(function() {
+				this.onSampleAcquired();
+			}.bind(this), function(error) {
+				console.log(error.message);
+			});
+
+		},
+
+		onStopFingerPrint: function() {
+			this.sdk.stopAcquisition().then(function() {
+				console.log("Capturing stopped !!!");
+			}, function(error) {
+				showMessage(error.message);
+			});
+		},
+
+		onSampleAcquired: function() {
+			var fingerprint = this.byId("finger1");
+			this.sdk.onSamplesAcquired = function(s) {
+				var samples = JSON.parse(s.samples);
+				fingerprint.setSrc("data:image/png;base64," + Fingerprint.b64UrlTo64(samples[0]));
+				this.fingerprint = Fingerprint.b64UrlTo64(samples[0]);
+				console.log("finger ...   " + this.fingerprint);
+
+			}.bind(this);
 		},
 
 		onSaveLearners: function() {

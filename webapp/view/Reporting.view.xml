@@ -1,22 +1,14 @@
-<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
-	xmlns:viz="sap.viz.ui5.controls" xmlns:layout="sap.ui.layout" controllerName="programmeMotse.controller.Reporting">
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:viz="sap.viz.ui5.controls" xmlns:layout="sap.ui.layout" controllerName="programmeMotse.controller.Reporting">
 	<App>
 		<pages>
 			<Page title="Reporting" backgroundDesign="Solid" showNavButton="true" navButtonPress="onNavBack">
 				<content>
-					<TileContainer allowAdd="true" class="sapUiTinyMarginTop">
-						<tiles>
-							<StandardTile title="Progress Against Milestone" icon="sap-icon://bar-chart" press="onMilestone" numberUnit="eur" infoState="Success"
-								removable="false"/>
+					<FlexBox class="sapUiLargeMarginTop" alignContent="Center" alignItems="Center" justifyContent="Center">
+						<StandardTile title="Progress Against Milestone" icon="sap-icon://bar-chart" press="onMilestone" numberUnit="eur" infoState="Success" removable="false"/>
 							<StandardTile title="Incident Report" icon="sap-icon://incident" press="onIncidentReport" infoState="Success" removable="false"/>
-							<!--<StandardTile title="Assessor/Moderator Results" icon="sap-icon://employee-pane" activeIcon="sap-icon://customer" infoState="Success"-->
-							<!--	removable="false"/>-->
-							<!--<StandardTile title="Survey results" icon="sap-icon://crm-service-manager" activeIcon="sap-icon://customer" infoState="Success"-->
-							<!--	removable="false"/>-->
-							<!--<StandardTile title="Expenditure report" icon="sap-icon://expense-report" activeIcon="sap-icon://customer" infoState="Success"-->
-							<!--	removable="false"/>-->
-							<StandardTile title="Attendance" icon="sap-icon://list" activeIcon="sap-icon://customer" press="onAttendanceList" infoState="Success" removable="false"/></tiles>
-					</TileContainer>
+							<StandardTile title="Attendance" icon="sap-icon://list" activeIcon="sap-icon://customer" press="onAttendanceList" infoState="Success" removable="false"/>
+					</FlexBox>
+
 				</content>
 			</Page>
 		</pages>

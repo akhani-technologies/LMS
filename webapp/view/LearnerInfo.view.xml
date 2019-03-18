@@ -3,19 +3,19 @@
 		<pages>
 			<Page title="Learner Information" backgroundDesign="Solid" showNavButton="true" navButtonPress="onNavBack">
 				<content>
-					<IconTabBar id="IconBar" select="onSelect">
+					<IconTabBar id="oIconTB" select="onSelect">
 						<items>
 							<IconTabFilter text="Personal details" iconColor="Negative" icon="sap-icon://account" key="key1" id="IconPersonal" design="Horizontal">
 								<content>
-									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout">
+									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" id="PersonalForm">
 										<sap.ui.layout.form:content>
 											<core:Title xmlns:core="sap.ui.core" text="Learner Information" icon="sap-icon://study-leave"/>
-											<Label xmlns="sap.m" text="Name"/>
-											<Input xmlns="sap.m" width="70%" id="inpName"/>
-											<Label xmlns="sap.m" text="Surname"/>
-											<Input xmlns="sap.m" width="70%" id="inpSurname"/>
-											<Label xmlns="sap.m" text="ID Number" width="100%"/>
-											<Input xmlns="sap.m" width="70%" id="inpID"/>
+											<Label xmlns="sap.m" text="Name" required="true"/>
+											<Input xmlns="sap.m" width="70%" id="inpName" required="true" liveChange="_validateRequiredInputFields"/>
+											<Label xmlns="sap.m" text="Surname" required="true"/>
+											<Input xmlns="sap.m" width="70%" id="inpSurname" required="true" liveChange="_validateRequiredInputFields"/>
+											<Label xmlns="sap.m" text="ID Number" width="100%" required="true"/>
+											<Input xmlns="sap.m" width="70%" id="inpID" required="true" liveChange="_validateRequiredInputFields"/>
 											<Label xmlns="sap.m"/>
 											<HBox xmlns="sap.m" width="100%">
 												<Label text="Gender" width="100%"/>
@@ -26,20 +26,20 @@
 													</buttons>
 												</RadioButtonGroup>
 											</HBox>
-											<Label xmlns="sap.m" text="Age" width="100%"/>
-											<Input xmlns="sap.m" width="70%" id="inpAge"/>
-											<Label xmlns="sap.m" text="Contact number" width="100%"/>
-											<Input xmlns="sap.m" width="70%" id="inpNumber"/>
-											<Label xmlns="sap.m" text="Email address" width="100%"/>
-											<Input xmlns="sap.m" width="70%" id="inpEmail"/>
-											<Label xmlns="sap.m" text="Address 1" width="100%"/>
-											<Input xmlns="sap.m" width="70%" id="inpLine1"/>
+											<Label xmlns="sap.m" text="Age" width="100%" required="true"/>
+											<Input xmlns="sap.m" width="70%" id="inpAge" required="true" liveChange="_validateRequiredInputFields"/>
+											<Label xmlns="sap.m" text="Contact number" width="100%" required="true"/>
+											<Input xmlns="sap.m" width="70%" id="inpNumber" liveChange="_validateRequiredInputFields"/>
+											<Label xmlns="sap.m" text="Email address" width="100%" required="true"/>
+											<Input xmlns="sap.m" width="70%" id="inpEmail" required="true" liveChange="_validateRequiredInputFields"/>
+											<Label xmlns="sap.m" text="Address 1" width="100%" required="true"/>
+											<Input xmlns="sap.m" width="70%" id="inpLine1" required="true" liveChange="_validateRequiredInputFields"/>
 											<Label xmlns="sap.m" text="Address 2" width="100%"/>
-											<Input xmlns="sap.m" width="70%" id="inpLine2"/>
-											<Label xmlns="sap.m" text="City" width="100%"/>
-											<Input xmlns="sap.m" width="70%" id="inpCity"/>
-											<Label xmlns="sap.m" text="Province" width="100%"/>
-											<ComboBox xmlns="sap.m" width="70%" id="slctProv">
+											<Input xmlns="sap.m" width="70%" id="inpLine2" liveChange="_validateRequiredInputFields"/>
+											<Label xmlns="sap.m" text="City" width="100%" required="true"/>
+											<Input xmlns="sap.m" width="70%" id="inpCity" required="true" liveChange="_validateRequiredInputFields"/>
+											<Label xmlns="sap.m" text="Province" width="100%" required="true"/>
+											<ComboBox xmlns="sap.m" width="70%" id="slctProv" required="true" change="_validateRequiredInputFields">
 												<items>
 													<core:ListItem text="Eastern Cape" key="EC"/>
 													<core:ListItem text="Free State" key="FS"/>
@@ -52,8 +52,8 @@
 													<core:ListItem text="Western Cape" key="WC"/>
 												</items>
 											</ComboBox>
-											<Label xmlns="sap.m" text="Highest Qualification" width="100%"/>
-											<ComboBox width="70%" id="slctQual">
+											<Label xmlns="sap.m" text="Highest Qualification" width="100%" required="true"/>
+											<ComboBox width="70%" id="slctQual" change="_validateRequiredInputFields">
 												<items>
 													<core:ListItem xmlns:core="sap.ui.core" text="Grade 12 (National Senior Certificate) and National (vocational) Cert. level 4"/>
 													<core:ListItem xmlns:core="sap.ui.core" text="Higher Certificates and Advanced National (vocational) Cert. level 5"/>
@@ -64,32 +64,17 @@
 													<core:ListItem xmlns:core="sap.ui.core" text="Doctorate degree. level 10"/>
 												</items>
 											</ComboBox>
-											<!--<Label xmlns="sap.m" text="Certified ID" width="100%"/>-->
-											<!--<u:FileUploader xmlns:u="sap.ui.unified" id="uploadID" change="onIDAttachmentChange" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>-->
-											<!--<Label xmlns="sap.m" text="Certified Qualification" width="100%"/>-->
-											<!--<u:FileUploader xmlns:u="sap.ui.unified" change="onQualAttachmentChange" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete" id="__uploader2"/>-->
-											<!--<Label xmlns="sap.m"/>-->
-											<!--<HBox xmlns="sap.m" width="100%">-->
-											<!--	<items>-->
-											<!--		<Label text="Overall size" width="100%" class="sapUiTinyMarginEnd"/>-->
-											<!--		<Input width="30%" id="inpOverall"/>-->
-											<!--		<Label text="Shoe size" width="100%" class="sapUiTinyMarginEnd"/>-->
-											<!--		<Input width="30%" id="inpShoe"/>-->
-											<!--	</items>-->
-											<!--</HBox>-->
-											<!--<Label xmlns="sap.m" text="Signed Learner Agreement" width="100%"/>-->
-											<!--<u:FileUploader xmlns:u="sap.ui.unified" change="onIDAttachmentChange" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>-->
 											<Label width="100%"/>
 											<HBox alignContent="End" alignItems="End" justifyContent="End">
 												<items>
-													<Button text="Next" width="auto" icon="sap-icon://feeder-arrow" type="Reject" press="onNextPress"/>
+													<Button id="btnPNext" text="Next" width="auto" icon="sap-icon://feeder-arrow" type="Reject" press="onNextPress"/>
 												</items>
 											</HBox>
 										</sap.ui.layout.form:content>
 									</sap.ui.layout.form:SimpleForm>
 								</content>
 							</IconTabFilter>
-							<IconTabFilter text="Additional Info" icon="sap-icon://task" iconColor="Critical" design="Horizontal" key="Key2">
+							<IconTabFilter text="Additional Info" enabled="true" id="IconAdditional" icon="sap-icon://task" iconColor="Critical" design="Horizontal" key="Key2">
 								<content>
 									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" columnsL="1">
 										<sap.ui.layout.form:content>
@@ -102,7 +87,7 @@
 											</RadioButtonGroup>
 											<core:Title text="Learner Type" icon="sap-icon://group"/>
 											<Label text="Select Learner type "/>
-											<ComboBox width="70%" id="slctLType">
+											<ComboBox width="70%" id="slctLType" change="onValidateAdditional">
 												<items>
 													<core:ListItem text="Peri-Urban" key="Peri-Urban"/>
 													<core:ListItem text="Rural" key="Rural"/>
@@ -110,7 +95,7 @@
 											</ComboBox>
 											<core:Title text="Disability " icon="sap-icon://message-information"/>
 											<Label text="Type of Disability" width="100%"/>
-											<ComboBox width="70%" id="slctDisability">
+											<ComboBox width="70%" id="slctDisability" change="onValidateAdditional">
 												<items>
 													<core:ListItem text="Physical impairment" key="Physical impairment"/>
 													<core:ListItem text="vision Impairment." key="vision Impairment."/>
@@ -119,7 +104,7 @@
 											</ComboBox>
 											<core:Title text="Ethnicity" icon="sap-icon://family-care"/>
 											<Label text="Race" width="100%"/>
-											<ComboBox width="70%" id="slctRace">
+											<ComboBox width="70%" id="slctRace" change="onValidateAdditional">
 												<items>
 													<core:ListItem text="African" key="African"/>
 													<core:ListItem text="White" key="White"/>
@@ -127,7 +112,7 @@
 													<core:ListItem text="Indian/Asian" key="Indian/Asian"/></items>
 											</ComboBox>
 											<Label text="UIF" width="100%"/>
-											<ComboBox width="70%" id="slctUIF">
+											<ComboBox width="70%" id="slctUIF" change="onValidateAdditional">
 												<items>
 													<core:ListItem text="Contributor" key="Contributor"/>
 													<core:ListItem text="Non-Contributor" key="Non-Contributor"/></items>
@@ -135,7 +120,7 @@
 											<Label width="100%"/>
 											<HBox width="100%" alignContent="End" alignItems="End" justifyContent="End">
 												<items>
-													<Button text="Next" width="100px" icon="sap-icon://feeder-arrow" type="Reject"/>
+													<Button id="btnNextAdd" enabled="false" text="Next" width="100px" icon="sap-icon://feeder-arrow" type="Reject"/>
 												</items>
 											</HBox>
 										</sap.ui.layout.form:content>
@@ -423,7 +408,7 @@
 
 													<sap.ui.layout.form:FormElement>
 														<sap.ui.layout.form:fields>
-															<Image id="userIMG" width="250px" height="250px" />
+															<Image id="userIMG" width="250px" height="250px"/>
 														</sap.ui.layout.form:fields>
 													</sap.ui.layout.form:FormElement>
 												</sap.ui.layout.form:formElements>
@@ -450,7 +435,7 @@
 							</IconTabFilter>
 							<IconTabFilter text="Generate Contract" icon="sap-icon://signature" design="Horizontal" iconColor="Negative">
 							    <content>
-							        <f:SimpleForm editable="true" layout="ResponsiveGridLayout" >
+							        <f:SimpleForm editable="true" layout="ResponsiveGridLayout">
 							            <f:content>
 							                <core:Title text="Generate Learner Contract" icon="sap-icon://write-new-document"/>
 							                <Label text="Select Contract Type"/>

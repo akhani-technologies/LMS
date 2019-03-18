@@ -38,6 +38,8 @@ sap.ui.define([
 			this.onGetModerators();
 			this.onGetLearner();
 		},
+		
+		
 
 		onGetFacilitators: function() {
 			var oSelect = this.byId("cmbFacilitator");
