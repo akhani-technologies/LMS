@@ -36,12 +36,11 @@ sap.ui.define([
 				);
 			};
 			this.onGetPrograms();
-			
 
 		},
 
 		onStartFingerPrint: function() {
-			this.sdk.startAcquisition(Fingerprint.SampleFormat.PngImage).then(function() {
+			this.sdk.startAcquisition(Fingerprint.SampleFormat.Raw).then(function() {
 				this.onSampleAcquired();
 			}.bind(this), function(error) {
 				console.log(error.message);
@@ -63,7 +62,7 @@ sap.ui.define([
 				var samples = JSON.parse(s.samples);
 				fingerprint.setSrc("data:image/png;base64," + Fingerprint.b64UrlTo64(samples[0]));
 				this.fingerprint = Fingerprint.b64UrlTo64(samples[0]);
-				console.log("finger ...   " + this.fingerprint);
+				console.log("Raw Format  " + samples[0]);
 
 			}.bind(this);
 		},
@@ -71,6 +70,7 @@ sap.ui.define([
 		// onSampleAcquired2:function
 
 		onSaveFingerPrint: function() {
+
 			// $.ajax({
 			// 	type: "POST",
 			// 	url: 'http://35.229.36.224:8080/swagger-ui.html#',
@@ -208,18 +208,43 @@ sap.ui.define([
 			var oIconTabBar = this.getView().byId("oIconTB");
 			oIconTabBar.setSelectedKey("Key2");
 		},
-		
-		onValidateAdditional:function(){
-			var oNextButton = this.byId("btnNextAdd");
-			var oLearnerType = this.byId("slctLType");
-			var oDisability = this.byId("slctDisability");
-			var oRace = this.byId("slctRace");
-			var oUIF = this.byId("slctUIF");
-			
-			if(oLearnerType === null || oDisability === null || oRace === null || oUIF === null){
-				oNextButton.setEnabled(false);
-			}else{
-				oNextButton.setEnabled(true);
+
+		// onValidateAdditional:function(){
+		// 	var oNextButton = this.byId("btnNextAdd");
+		// 	var oLearnerType = this.byId("slctLType");
+		// 	var oDisability = this.byId("slctDisability");
+		// 	var oRace = this.byId("slctRace");
+		// 	var oUIF = this.byId("slctUIF");
+
+		// 	if(oLearnerType === null || oDisability === null || oRace === null || oUIF === null){
+		// 		oNextButton.setEnabled(false);
+		// 	}else{
+		// 		oNextButton.setEnabled(true);
+		// 	}
+		// },
+
+		onValidateAdditional: function() {
+			var aInputControls = this._getSimpleFormFields(this.byId("AdditionalFrm"));
+			var oInputControl;
+			var sValue;
+			for (var m = 0; m < aInputControls.length; m++) {
+				oInputControl = aInputControls[m].control;
+				var _roadCtrlType = oInputControl.getMetadata().getName();
+
+				if (aInputControls[m].required) {
+					if (_roadCtrlType === "sap.m.Input") {
+						sValue = oInputControl.getValue();
+					} else {
+						sValue = oInputControl.getSelectedItem();
+					}
+
+					if (!sValue) {
+						this.byId("btnNextAdd").setEnabled(false);
+						return;
+					} else {
+						this.byId("btnNextAdd").setEnabled(true);
+					}
+				}
 			}
 		},
 
@@ -552,6 +577,7 @@ sap.ui.define([
 		},
 
 		stopWebcam: function() {
+			this.byId("btnImageNext").setEnabled(true);
 			var video = document.getElementById('video');
 			this.image = this.data;
 			video.pause();

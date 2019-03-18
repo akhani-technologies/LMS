@@ -76,7 +76,7 @@
 							</IconTabFilter>
 							<IconTabFilter text="Additional Info" enabled="true" id="IconAdditional" icon="sap-icon://task" iconColor="Critical" design="Horizontal" key="Key2">
 								<content>
-									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" columnsL="1">
+									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" id="AdditionalFrm" editable="true" layout="ResponsiveGridLayout" columnsL="1">
 										<sap.ui.layout.form:content>
 											<core:Title text="Employment Information" icon="sap-icon://eam-work-order"/>
 											<Label text="Employment status"/>
@@ -86,16 +86,16 @@
 													<RadioButton groupName="__group1" text="Unemployed"/></buttons>
 											</RadioButtonGroup>
 											<core:Title text="Learner Type" icon="sap-icon://group"/>
-											<Label text="Select Learner type "/>
-											<ComboBox width="70%" id="slctLType" change="onValidateAdditional">
+											<Label text="Select Learner type " required="true"/>
+											<ComboBox width="70%" id="slctLType" change="onValidateAdditional" required="true">
 												<items>
 													<core:ListItem text="Peri-Urban" key="Peri-Urban"/>
 													<core:ListItem text="Rural" key="Rural"/>
 													<core:ListItem text="Urban" key="Urban"/></items>
 											</ComboBox>
 											<core:Title text="Disability " icon="sap-icon://message-information"/>
-											<Label text="Type of Disability" width="100%"/>
-											<ComboBox width="70%" id="slctDisability" change="onValidateAdditional">
+											<Label text="Type of Disability" width="100%" required="true"/>
+											<ComboBox width="70%" id="slctDisability" change="onValidateAdditional" required="true">
 												<items>
 													<core:ListItem text="Physical impairment" key="Physical impairment"/>
 													<core:ListItem text="vision Impairment." key="vision Impairment."/>
@@ -103,16 +103,16 @@
 													<core:ListItem text="N/A"/></items>
 											</ComboBox>
 											<core:Title text="Ethnicity" icon="sap-icon://family-care"/>
-											<Label text="Race" width="100%"/>
-											<ComboBox width="70%" id="slctRace" change="onValidateAdditional">
+											<Label text="Race" width="100%" required="true"/>
+											<ComboBox width="70%" id="slctRace" change="onValidateAdditional" required="true">
 												<items>
 													<core:ListItem text="African" key="African"/>
 													<core:ListItem text="White" key="White"/>
 													<core:ListItem text="Coloured" key="Coloured"/>
 													<core:ListItem text="Indian/Asian" key="Indian/Asian"/></items>
 											</ComboBox>
-											<Label text="UIF" width="100%"/>
-											<ComboBox width="70%" id="slctUIF" change="onValidateAdditional">
+											<Label text="UIF" width="100%" required="true"/>
+											<ComboBox width="70%" id="slctUIF" change="onValidateAdditional" required="true">
 												<items>
 													<core:ListItem text="Contributor" key="Contributor"/>
 													<core:ListItem text="Non-Contributor" key="Non-Contributor"/></items>
@@ -147,7 +147,7 @@
 									</VBox>
 									<HBox alignContent="End" alignItems="End" justifyContent="End">
 										<items>
-											<Button text="Next" width="auto" icon="sap-icon://feeder-arrow" type="Reject" press="onCameraNext"/>
+											<Button text="Next" enabled="false" width="auto" icon="sap-icon://feeder-arrow" type="Reject" press="onCameraNext" id="btnImageNext"/>
 										</items>
 									</HBox>
 								</content>
