@@ -40,7 +40,7 @@ sap.ui.define([
 		},
 
 		onStartFingerPrint: function() {
-			this.sdk.startAcquisition(Fingerprint.SampleFormat.PngImage).then(function() {
+			this.sdk.startAcquisition(Fingerprint.SampleFormat.Compressed).then(function() {
 				this.onSampleAcquired();
 			}.bind(this), function(error) {
 				console.log(error.message);
@@ -71,25 +71,25 @@ sap.ui.define([
 
 		onSaveFingerPrint: function() {
 
-			// $.ajax({
-			// 	type: "POST",
-			// 	url: 'http://10.142.0.3:8080/api/fingerprint/enrol-verify/{id-number}',
-			// 	async: false,
-			// 	contentType: 'application/json',
-			// 	dataType: 'json',
-			// 	accept: "application/json",
-			// 	data: JSON.stringify({
-			// 		action: "ENROL",
-			// 		fingerPrintData: this.fingerprint,
-			// 		idNumber: "8002064019183"
-			// 	}),
-			// 	success: function(data, s, xhr) {
-			// 		alert("success " + s);
-			// 	}.bind(this),
-			// 	error: function(err, e, xhr) {
-			// 		alert("error " + e);
-			// 	}
-			// });
+			$.ajax({
+				type: "POST",
+				url: 'http://10.142.0.3:8080/api/fingerprint/enrol-verify/{8002064019183}',
+				async: false,
+				contentType: 'application/json',
+				dataType: 'jsonp',
+				accept: "*/*",
+				data: JSON.stringify({
+					action: "ENROL",
+					fingerPrintData: this.fingerprint,
+					idNumber: "8002064019183"
+				}),
+				success: function(data, s, xhr) {
+					alert("success " + s);
+				}.bind(this),
+				error: function(err, e, xhr) {
+					alert("error " + e);
+				}
+			});
 		},
 
 		onSelect: function(oEvent) {
