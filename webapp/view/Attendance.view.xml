@@ -12,10 +12,10 @@
 								<items>
 									<core:ListItem text="Learner"/>
 									<core:ListItem text="Facilitator"/>
-									<core:ListItem text="Assessor/Moderator"/></items>
+								</items>
 							</ComboBox>
-							<Label text="Learner"/>
-							<ComboBox items="{path: '/'}" id="cmbLearner" width="60%">
+							<Label visible="false" id="lblLearner" text="Learner"/>
+							<ComboBox visible="false" items="{path: '/'}" id="cmbLearner" width="60%">
 								<items>
 									<core:ListItem text="{Name} {Surname}({IDNumber})"/>
 								</items>
@@ -26,14 +26,8 @@
 							<!--		<core:ListItem text="{VenueName} ({VenueType})"/>-->
 							<!--	</items>-->
 							<!--</ComboBox>-->
-							<Label text="Facilitator"/>
-							<ComboBox items="{path: '/'}" id="cmbFacilitator" width="60%">
-								<items>
-									<core:ListItem text="{Name}"/>
-								</items>
-							</ComboBox>
-							<Label text="Assessor/Moderator"/>
-							<ComboBox items="{path: '/'}" id="cmbMod" width="60%">
+							<Label visible="false" id="lblFacilitator" text="Facilitator"/>
+							<ComboBox visible="false" items="{path: '/'}" id="cmbFacilitator" width="60%">
 								<items>
 									<core:ListItem text="{Name}"/>
 								</items>

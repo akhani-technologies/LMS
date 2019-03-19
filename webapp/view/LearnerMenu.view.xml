@@ -6,7 +6,7 @@
 					<FlexBox class="sapUiLargeMarginTop" alignContent="Center" alignItems="Center" justifyContent="Center">
 						<StandardTile title="Create Learner" press="onLearnerInfoPress" icon="sap-icon://add-contact" activeIcon="sap-icon://customer" numberUnit="eur" infoState="Success" removable="false"/>
 							<StandardTile title="Search for learners" press="onLearnerList" icon="sap-icon://search" activeIcon="sap-icon://customer" infoState="Success" removable="false"/>
-							<StandardTile title="Capture Results" press="onCaptureResults" icon="sap-icon://activity-individual" activeIcon="sap-icon://customer" numberUnit="eur" infoState="Success"/>
+							<StandardTile title="Capture Learner Outcomes" press="onCaptureResults" icon="sap-icon://activity-individual" activeIcon="sap-icon://customer" numberUnit="eur" infoState="Success"/>
 					</FlexBox>
 					<!--<TileContainer allowAdd="true">-->
 					<!--	<tiles>-->

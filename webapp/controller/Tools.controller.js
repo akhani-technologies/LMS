@@ -91,6 +91,7 @@ sap.ui.define([
 				});
 			}
 		},
+		
 		handleSuccessMessageBoxPress: function(oEvent) {
 			var that = this;
 			var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;

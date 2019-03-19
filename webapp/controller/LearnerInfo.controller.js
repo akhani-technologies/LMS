@@ -40,7 +40,7 @@ sap.ui.define([
 		},
 
 		onStartFingerPrint: function() {
-			this.sdk.startAcquisition(Fingerprint.SampleFormat.Raw).then(function() {
+			this.sdk.startAcquisition(Fingerprint.SampleFormat.PngImage).then(function() {
 				this.onSampleAcquired();
 			}.bind(this), function(error) {
 				console.log(error.message);
@@ -62,7 +62,7 @@ sap.ui.define([
 				var samples = JSON.parse(s.samples);
 				fingerprint.setSrc("data:image/png;base64," + Fingerprint.b64UrlTo64(samples[0]));
 				this.fingerprint = Fingerprint.b64UrlTo64(samples[0]);
-				console.log("Raw Format  " + samples[0]);
+				console.log("PNG Format  " + this.fingerprint);
 
 			}.bind(this);
 		},
@@ -73,7 +73,7 @@ sap.ui.define([
 
 			// $.ajax({
 			// 	type: "POST",
-			// 	url: 'http://35.229.36.224:8080/swagger-ui.html#',
+			// 	url: 'http://10.142.0.3:8080/api/fingerprint/enrol-verify/{id-number}',
 			// 	async: false,
 			// 	contentType: 'application/json',
 			// 	dataType: 'json',
@@ -102,7 +102,7 @@ sap.ui.define([
 		},
 
 		onNavBack: function() {
-			this.getRouter().navTo("LearnerMenu");
+			this.oRouter.navTo("LearnerMenu");
 		},
 
 		onSaveDetails: function(oEvent) {

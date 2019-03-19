@@ -1,92 +1,97 @@
-<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="programmeMotse.controller.Training" displayBlock="true">
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="programmeMotse.controller.Training" displayBlock="true">
 	<App>
 		<pages>
 			<Page title="Training information" backgroundDesign="Solid" showNavButton="true" navButtonPress="onNavBack">
 				<content>
-				<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" id="__form0">
-				    <sap.ui.layout.form:content>
-				        <core:Title text="Training service provider information" icon="sap-icon://add-coursebook"/>
-				        <Label text="Accreditation Number"/>
-				        <Input width="70%" id="inpAccreNum"/>
-				        <Label text="Contact Person Name"/>
-				        <Input width="70%" id="inpContactPerson"/>
-				        <Label text="Position" width="100%"/>
-				        <Input width="70%" id="inpPosition"/>
-				        <Label text="Office Number" width="100%"/>
-				        <Input width="70%" id="inpOffice"/>
-				        <Label text="Mobile Number" width="100%"/>
+					<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" id="__form0">
+						<sap.ui.layout.form:content>
+							<core:Title text="Training service provider information" icon="sap-icon://add-coursebook"/>
+							<Label text="Accreditation Number"/>
+							<Input width="70%" id="inpAccreNum"/>
+							<Label text="Training Provider Name"/>
+							<Input width="70%" id="inpContactPerson"/>
+							<Label text="Position" width="100%"/>
+							<Input width="70%" id="inpPosition"/>
+							<Label text="Office Number" width="100%"/>
+							<Input width="70%" id="inpOffice"/>
+							<Label text="Mobile Number" width="100%"/>
 							<Input width="70%" id="inpMobile"/>
-				        <Label text="Email Address" width="100%"/>
-				        <Input width="70%" id="inpEmail"/></sap.ui.layout.form:content>
-				</sap.ui.layout.form:SimpleForm>
-						<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout">
-			<sap.ui.layout.form:content>
-				<core:Title text="Add banking details" icon="sap-icon://add-activity"/>
-				<Label text="Bank Name" width="100%"/>
-				<Input width="70%" id="inpBankName"/>
-				<Label text="Account number" width="100%"/>
-				<Input width="70%" id="inpAccNum"/>
-				<Label text="Branch number" width="100%"/>
-				<Input width="70%" id="branch"/>
-				<Label text="Account Type" width="100%"/>
-				<Input width="70%" id="AccType"/>
-				<Label text="Proof of Bank Account" width="100%"/>
-				<u:FileUploader xmlns:u="sap.ui.unified" change="onBankAttachmentChange" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
-			</sap.ui.layout.form:content>
-		</sap.ui.layout.form:SimpleForm>
-				<Table noDataText="Click on the &quot;+&quot; button to add items" id="tblTrain">
-				    <columns>
-				        <Column id="__column0">
-				            <header>
-				                <Label text="Accreditation"/>
-				            </header>
-				        </Column>
-				        <Column id="__column1">
-				            <header>
-				                <Label text="NQF Level"/>
-				            </header>
-				        </Column>
-				        <Column id="__column2">
-				            <header>
-				                <Label text="ETQA"/>
-				            </header>
-				        </Column>
-				        <Column>
-				            <header>
-				                <Text text="Expiry Date"/>
-				            </header>
-				        </Column>
-				        <Column>
-				            <header>
-				                <Text text="Accreditation Attached"/>
-				            </header>
-				        </Column>
-				        <Column id="__column3">
-				            <header>
-				                <Text text="Learning Programme"/>
-				            </header>
-				        </Column></columns>
-				    <headerToolbar>
-				        <Toolbar width="100%" id="__toolbar1">
-				            <content>
-				                <core:Icon src="sap-icon://task" size="2em"/>
-				                <Title text="ACCREDITATION DETAILS" width="100%"/>
-				                <ToolbarSpacer id="__spacer0"/>
-				                <Button width="auto" icon="sap-icon://add" type="Emphasized" press="onAddItems"/>
-				            </content>
-				        </Toolbar>
-				    </headerToolbar></Table>
-				<FlexBox width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
-				</FlexBox>
+							<Label text="Email Address" width="100%"/>
+							<Input width="70%" id="inpEmail"/>
+							<Label text="Registration Number" width="100%"/>
+							<Input width="70%" id="inpRegNum"/>
+							<Label text="CSD Report" width="100%"/>
+							<u:FileUploader xmlns:u="sap.ui.unified" change="onBankAttachmentChange" name="myFileUpload" uploadUrl="upload/"
+								tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
+						</sap.ui.layout.form:content>
+					</sap.ui.layout.form:SimpleForm>
+					<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout">
+						<sap.ui.layout.form:content>
+							<core:Title text="Add banking details" icon="sap-icon://add-activity"/>
+							<Label text="Bank Name" width="100%"/>
+							<Input width="70%" id="inpBankName"/>
+							<Label text="Account number" width="100%"/>
+							<Input width="70%" id="inpAccNum"/>
+							<Label text="Branch number" width="100%"/>
+							<Input width="70%" id="branch"/>
+							<Label text="Account Type" width="100%"/>
+							<Input width="70%" id="AccType"/>
+							<Label text="Proof of Bank Account" width="100%"/>
+							<u:FileUploader xmlns:u="sap.ui.unified" change="onBankAttachmentChange" name="myFileUpload" uploadUrl="upload/"
+								tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
+						</sap.ui.layout.form:content>
+					</sap.ui.layout.form:SimpleForm>
+					<Table noDataText="Click on the &quot;+&quot; button to add items" id="tblTrain">
+						<columns>
+							<Column >
+								<header>
+									<Label text="Accreditation Number"/>
+								</header>
+							</Column>
+							<Column >
+								<header>
+									<Label text="Learning Programme"/>
+								</header>
+							</Column>
+							<Column >
+								<header>
+									<Label text="ETQA"/>
+								</header>
+							</Column>
+							<Column>
+								<header>
+									<Text text="Expiry Date"/>
+								</header>
+							</Column>
+							<Column>
+								<header>
+									<Text text="Accreditation Attached"/>
+								</header>
+							</Column>
+						</columns>
+						<headerToolbar>
+							<Toolbar width="100%">
+								<content>
+									<core:Icon src="sap-icon://task" size="2em"/>
+									<Title text="ACCREDITATION DETAILS" width="100%"/>
+									<ToolbarSpacer/>
+									<Button width="auto" icon="sap-icon://add" type="Emphasized" press="onAddItems"/>
+								</content>
+							</Toolbar>
+						</headerToolbar>
+					</Table>
+					<FlexBox width="100%" alignContent="Center" alignItems="Center" justifyContent="Center"></FlexBox>
 				</content>
-			<footer>
-			    <Toolbar width="100%">
-			        <content>
-			            <ToolbarSpacer xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" id="__spacer1"/>
-			            <Button xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" text="Save details" width="auto" type="Accept" icon="sap-icon://save" press="onSaveDetails"/>
-			        </content>
-			    </Toolbar>
-			</footer>
+				<footer>
+					<Toolbar width="100%">
+						<content>
+							<ToolbarSpacer xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" id="__spacer1"/>
+							<Button xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" text="Save details"
+								width="auto" type="Accept" icon="sap-icon://save" press="onSaveDetails"/>
+						</content>
+					</Toolbar>
+				</footer>
 			</Page>
 		</pages>
 	</App>

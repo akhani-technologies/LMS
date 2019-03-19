@@ -34,12 +34,8 @@ sap.ui.define([
 				);
 			};
 			this.onGetFacilitators();
-			// this.onGetVenue();
-			this.onGetModerators();
 			this.onGetLearner();
 		},
-		
-		
 
 		onGetFacilitators: function() {
 			var oSelect = this.byId("cmbFacilitator");
@@ -75,24 +71,7 @@ sap.ui.define([
 			});
 		},
 
-		onGetModerators: function() {
-			this.ModModel = new sap.ui.model.json.JSONModel();
-			var Select = this.byId("cmbMod");
-			$.ajax({
-				url: 'PHP/getModerator.php',
-				async: false,
-				success: function(data) {
-					var oData = data.result;
-					this.ModModel.setData(oData);
-					Select.setModel(this.ModModel);
-				}.bind(this),
-				error: function(err, e, xhr) {
-
-				}
-			});
-		},
-		
-		onGetLearner:function(){
+		onGetLearner: function() {
 			this.LearnerModel = new sap.ui.model.json.JSONModel();
 			var Select = this.byId("cmbLearner");
 			$.ajax({
@@ -137,30 +116,28 @@ sap.ui.define([
 
 			this.handleSuccessMessageBoxPress();
 		},
-		
-		onTypeSelect:function(oEvent){
+
+		onTypeSelect: function(oEvent) {
 			var type = oEvent.getSource().getSelectedItem().getText();
-			
-			if(type === "Learner"){
+
+			if (type === "Learner") {
 				// this.byId("cmbVenue").setVisible(false);
 				this.byId("cmbFacilitator").setVisible(false);
-				this.byId("cmbMod").setVisible(false);
 				this.byId("cmbLearner").setVisible(true);
-			}else if(type === "Facilitator"){
+				this.byId("lblFacilitator").setVisible(false);
+				this.byId("lblLearner").setVisible(true);
+			} else if (type === "Facilitator") {
 				// this.byId("cmbVenue").setVisible(false);
 				this.byId("cmbFacilitator").setVisible(true);
-				this.byId("cmbMod").setVisible(false);
 				this.byId("cmbLearner").setVisible(false);
-			}else if (type === ""){
+				this.byId("lblFacilitator").setVisible(true);
+				this.byId("lblLearner").setVisible(false);
+			} else {
 				// this.byId("cmbVenue").setVisible(false);
 				this.byId("cmbFacilitator").setVisible(false);
-				this.byId("cmbMod").setVisible(false);
 				this.byId("cmbLearner").setVisible(false);
-			}else{
-				// this.byId("cmbVenue").setVisible(false);
-				this.byId("cmbFacilitator").setVisible(false);
-				this.byId("cmbMod").setVisible(true);
-				this.byId("cmbLearner").setVisible(false);
+				this.byId("lblFacilitator").setVisible(false);
+				this.byId("lblLearner").setVisible(false);
 			}
 		},
 

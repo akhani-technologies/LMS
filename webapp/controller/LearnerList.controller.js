@@ -38,7 +38,7 @@ sap.ui.define([
 		},
 
 		onNavBack: function() {
-			this.getRouter().navTo("LearnerMenu");
+			this.oRouter.navTo("LearnerMenu");
 		},
 
 		handleFilterButtonPressed: function(oEvent) {

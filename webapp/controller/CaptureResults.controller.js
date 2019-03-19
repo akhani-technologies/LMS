@@ -41,7 +41,7 @@ sap.ui.define([
 		},
 
 		onNavBack: function() {
-			this.getRouter().navTo("LearnerMenu");
+			this.oRouter.navTo("LearnerMenu");
 		},
 
 		onSaveDetails: function(oEvent) {
@@ -51,6 +51,7 @@ sap.ui.define([
 			oData.LearnerID = this.LearnerId;
 			oData.Competence = this.byId("cmbComptence").getSelectedItem().getText();
 			oData.LearnerMark = this.byId("inpMark").getValue();
+			oData.UnitStandard = this.byId("inpUnitStandard").getValue();
 
 			if (oData.LearnerID === undefined || oData.Competence === undefined || oData.LearnerMark === "") {
 				MessageBox.alert(

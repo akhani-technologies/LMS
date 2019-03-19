@@ -1,4 +1,6 @@
-<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:u="sap.ui.unified" controllerName="programmeMotse.controller.LearnerInfo" displayBlock="true" id="IconPersonal">
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:u="sap.ui.unified" controllerName="programmeMotse.controller.LearnerInfo" displayBlock="true"
+	id="IconPersonal">
 	<App>
 		<pages>
 			<Page title="Learner Information" backgroundDesign="Solid" showNavButton="true" navButtonPress="onNavBack">
@@ -74,9 +76,11 @@
 									</sap.ui.layout.form:SimpleForm>
 								</content>
 							</IconTabFilter>
-							<IconTabFilter text="Additional Info" enabled="true" id="IconAdditional" icon="sap-icon://task" iconColor="Critical" design="Horizontal" key="Key2">
+							<IconTabFilter text="Additional Info" enabled="true" id="IconAdditional" icon="sap-icon://task" iconColor="Critical" design="Horizontal"
+								key="Key2">
 								<content>
-									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" id="AdditionalFrm" editable="true" layout="ResponsiveGridLayout" columnsL="1">
+									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" id="AdditionalFrm" editable="true"
+										layout="ResponsiveGridLayout" columnsL="1">
 										<sap.ui.layout.form:content>
 											<core:Title text="Employment Information" icon="sap-icon://eam-work-order"/>
 											<Label text="Employment status"/>
@@ -137,7 +141,8 @@
 										</items>
 									</HBox>
 									<VBox height="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
-										<core:HTML content="&lt;video onclick=&quot;snapshot(this);&quot; width=400 height=400 id=&quot;video&quot; controls autoplay&gt;&lt;/video&gt;"/>
+										<core:HTML
+											content="&lt;video onclick=&quot;snapshot(this);&quot; width=400 height=400 id=&quot;video&quot; controls autoplay&gt;&lt;/video&gt;"/>
 									</VBox>
 									<VBox visible="false" height="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
 										<Image width="140px" height="140px" id="photo"/>
@@ -196,11 +201,12 @@
 									</HBox>
 								</content>
 							</IconTabFilter>
-							<IconTabFilter id="ProgramIcon" text="Program enrolment" icon="sap-icon://course-program" iconColor="Positive" key="key6" design="Horizontal">
+							<IconTabFilter id="ProgramIcon" text="Programme enrolment" icon="sap-icon://course-program" iconColor="Positive" key="key6"
+								design="Horizontal">
 								<content>
 									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout">
 										<sap.ui.layout.form:content>
-											<core:Title text="Assign program" icon="sap-icon://study-leave"/>
+											<core:Title text="Assign programme" icon="sap-icon://study-leave"/>
 											<Label text="Select progarm description"/>
 											<ComboBox width="50%" id="cmbProgram" items="{path: '/'}">
 												<items>
@@ -221,14 +227,29 @@
 									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout">
 										<sap.ui.layout.form:content>
 											<core:Title text="Add attachements" icon="sap-icon://add-coursebook"/>
-											<Label text="Proof of banking details"/>
-											<u:FileUploader xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:u="sap.ui.unified" change="onBankAttachmentChange" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete" id="__uploader1"/>
-											<Label text="Proof of Address" width="100%"/>
-											<u:FileUploader xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:u="sap.ui.unified" change="onBankAttachmentChange" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete" id="__uploader3"/>
-											<Label text="Medical Certificate" width="100%"/>
-											<u:FileUploader xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:u="sap.ui.unified" change="onBankAttachmentChange" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete" id="__uploader4"/>
 											<Label text="ID Photo" width="100%"/>
-											<u:FileUploader xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:u="sap.ui.unified" change="onBankAttachmentChange" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete" id="__uploader5"/>
+											<u:FileUploader  change="onBankAttachmentChange"
+												name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
+											<Label text="Proof of Address" width="100%"/>
+											<u:FileUploader xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+												xmlns:l="sap.ui.layout" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:u="sap.ui.unified" change="onBankAttachmentChange"
+												name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
+											<Label text="Proof of Highest Qualification"/>
+											<u:FileUploader xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+												xmlns:l="sap.ui.layout" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:u="sap.ui.unified" change="onBankAttachmentChange"
+												name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
+											<Label text="SETA Learning agreement"/>
+											<u:FileUploader xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+												xmlns:l="sap.ui.layout" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:u="sap.ui.unified" change="onBankAttachmentChange"
+												name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
+											<Label text="Medical Certificate" width="100%"/>
+											<u:FileUploader xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+												xmlns:l="sap.ui.layout" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:u="sap.ui.unified" change="onBankAttachmentChange"
+												name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
+											<Label text="Proof of banking details"/>
+											<u:FileUploader xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+												xmlns:l="sap.ui.layout" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:u="sap.ui.unified" change="onBankAttachmentChange"
+												name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
 											<Label width="100%"/>
 											<HBox width="100%" alignContent="End" alignItems="End" justifyContent="End">
 												<items>
@@ -240,7 +261,6 @@
 								</content>
 							</IconTabFilter>
 							<IconTabFilter id="SummIcon" text="Summary" icon="sap-icon://list" key="key8" design="Horizontal">
-								
 								<content>
 									<sap.ui.layout.form:Form xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true">
 										<sap.ui.layout.form:formContainers>
@@ -315,7 +335,7 @@
 															<Text id="txtProgram"/>
 														</sap.ui.layout.form:fields>
 														<sap.ui.layout.form:label>
-															<Label text="Program" width="100%"/>
+															<Label text="Programme" width="100%"/>
 														</sap.ui.layout.form:label>
 													</sap.ui.layout.form:FormElement>
 												</sap.ui.layout.form:formElements>
@@ -405,7 +425,6 @@
 											</f:FormContainer>
 											<sap.ui.layout.form:FormContainer>
 												<sap.ui.layout.form:formElements>
-
 													<sap.ui.layout.form:FormElement>
 														<sap.ui.layout.form:fields>
 															<Image id="userIMG" width="250px" height="250px"/>
@@ -422,7 +441,9 @@
 										</sap.ui.layout.form:layout>
 									</sap.ui.layout.form:Form>
 									<VBox height="100%" id="mapBox" visible="{viewModel>/delivery}" alignContent="Center" alignItems="Center" justifyContent="Center">
-										<core:HTML class="signatureB" content="&lt;canvas id=&quot;cnv&quot; style=&quot;width: 500px; height: 100px; border-style: double;&quot;&gt;&lt;/canvas&gt;" id="map_canvas_intent"/>
+										<core:HTML class="signatureB"
+											content="&lt;canvas id=&quot;cnv&quot; style=&quot;width: 500px; height: 100px; border-style: double;&quot;&gt;&lt;/canvas&gt;"
+											id="map_canvas_intent"/>
 									</VBox>
 									<FlexBox width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
 										<items>
@@ -434,19 +455,20 @@
 								</content>
 							</IconTabFilter>
 							<IconTabFilter text="Generate Contract" icon="sap-icon://signature" design="Horizontal" iconColor="Negative">
-							    <content>
-							        <f:SimpleForm editable="true" layout="ResponsiveGridLayout">
-							            <f:content>
-							                <core:Title text="Generate Learner Contract" icon="sap-icon://write-new-document"/>
-							                <Label text="Select Contract Type"/>
-							                <ComboBox change="onGenerateContract">
-							                    <items>
-							                        <core:ListItem text="AgriSeta" key="AgriSeta"/>
-							                        <core:ListItem text="MerSeta" key="MerSeta"/>
-							                        <core:ListItem text="Ceta" key="Ceta"/></items>
-							                </ComboBox></f:content>
-							        </f:SimpleForm>
-							    </content>
+								<content>
+									<f:SimpleForm editable="true" layout="ResponsiveGridLayout">
+										<f:content>
+											<core:Title text="Generate Learner Contract" icon="sap-icon://write-new-document"/>
+											<Label text="Select Contract Type"/>
+											<ComboBox change="onGenerateContract">
+												<items>
+													<core:ListItem text="AgriSeta" key="AgriSeta"/>
+													<core:ListItem text="MerSeta" key="MerSeta"/>
+													<core:ListItem text="Ceta" key="Ceta"/></items>
+											</ComboBox>
+										</f:content>
+									</f:SimpleForm>
+								</content>
 							</IconTabFilter>
 						</items>
 					</IconTabBar>

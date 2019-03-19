@@ -1,5 +1,4 @@
-<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
-	controllerName="programmeMotse.controller.CaptureResults">
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="programmeMotse.controller.CaptureResults">
 	<App>
 		<pages>
 			<Page backgroundDesign="Solid" showNavButton="true" navButtonPress="onNavBack">
@@ -13,18 +12,20 @@
 									<core:ListItem text="{Name} {Surname} ({IDNumber})" key="item1"/>
 								</items>
 							</ComboBox>
-							<Label text ="Program" />
-							<Text id="txtProgram" /> 
+							<Label text="Programme"/>
+							<Text id="txtProgram"/> 
 							<Label text="Competence" width="100%"/>
 							<ComboBox id="cmbComptence" width="70%">
 								<items>
-									<core:ListItem text="Competent" key="item1"/>
-									<core:ListItem text="Not competent" key="item2"/>
-									<core:ListItem text="Partially competent" key="item3"/>
+									<core:ListItem text="Competent" />
+									<core:ListItem text="Not yet competent" />
 								</items>
 							</ComboBox>
+							<Label text="Unit Standard" width="100%"/>
+							<Input width="70%" id="inpUnitStandard"/>
 							<Label text="Learner Mark (%)" width="100%"/>
 							<Input id="inpMark" width="70%"/>
+							
 						</sap.ui.layout.form:content>
 					</sap.ui.layout.form:SimpleForm>
 				</content>

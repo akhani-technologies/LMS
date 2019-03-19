@@ -126,12 +126,12 @@
 									</sap.ui.layout.form:SimpleForm>
 								</content>
 							</IconTabFilter>
-							<IconTabFilter id="ProgramIcon" text="Program enrolment" icon="sap-icon://course-program" iconColor="Positive" key="key6" design="Horizontal">
+							<IconTabFilter id="ProgramIcon" text="Programme enrolment" icon="sap-icon://course-program" iconColor="Positive" key="key6" design="Horizontal">
 								<content>
 									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout">
 										<sap.ui.layout.form:content>
-											<core:Title text="Assign program" icon="sap-icon://study-leave"/>
-											<Label text="Select progarm description"/>
+											<core:Title text="Assign Programme" icon="sap-icon://study-leave"/>
+											<Label text="Select programme description"/>
 											<Input visible="{viewModel>/View}" enabled="{viewModel>/Edit}" value="{/Program}" width="70%"/>
 											<ComboBox visible="{viewModel>/Edit}" width="50%" id="cmbProgram" items="{path: '/'}">
 												<items>

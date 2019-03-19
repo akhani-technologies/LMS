@@ -45,15 +45,13 @@ sap.ui.define([
 						press: function() {
 							that.handlePopoverPress(oEvent);
 						}
-					}),
-					new sap.m.Input({
-						width: "auto"
 					})
 					// new sap.ui.unified.FileUploader("sId?")
 				]
 			});
 			oTable.addItem(columnListItemNewLine);
 		},
+		
 		onAttachmentChange: function(oEvent) {
 			var oParameters = oEvent.getParameters();
 			//create file reader and file reader event handler
@@ -65,7 +63,7 @@ sap.ui.define([
 			};
 
 			//	var txt = oParameters.files[0] var my_file_as_base64 = getBase64(file)
-			window.IDfileName = oParameters.files[0].name
+			window.IDfileName = oParameters.files[0].name;
 			window.IDfileType = oParameters.files[0].type;
 
 			oFileReader.readAsDataURL(oParameters.files[0]);
@@ -87,7 +85,7 @@ sap.ui.define([
 			this.event.setType("Accept");
 			this._oPopover.close();
 		},
-		
+
 		onNavBack: function() {
 			var sPreviousHash = History.getInstance().getPreviousHash();
 
@@ -100,7 +98,7 @@ sap.ui.define([
 				this.getRouter().navTo("master", {}, bReplace);
 			}
 		},
-		
+
 		onSaveDetails: function(oEvent) {
 			var oData = {};
 			oData.TrainingID = parseInt(("" + Math.random()).substring(2, 5));

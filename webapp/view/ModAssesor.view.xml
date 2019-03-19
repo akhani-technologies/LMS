@@ -40,31 +40,16 @@
 									</sap.ui.layout.form:SimpleForm>
 								</content>
 							</IconTabFilter>
-							<IconTabFilter text="Finger print" icon="sap-icon://mri-scan" iconColor="Positive">
-								<MessageStrip text="Please take a finger print of your right index finger" showIcon="true" showCloseButton="true"/>
-								<FlexBox width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
-									<items>
-										<Button class="sapUiLargeMarginEnd" text="Start" width="auto" icon="sap-icon://restart" type="Emphasized" press="onStartFingerPrint"/>
-										<Button class="sapUiLargeMarginEnd" text="Clear" width="auto" icon="sap-icon://cancel" type="Reject"/>
-										<Button class="sapUiLargeMarginEnd" text="Save" width="auto" icon="sap-icon://save" type="Accept" press="onSaveFingerPrint"/>
-									</items>
-								</FlexBox>
-								<FlexBox width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
-									<items>
-										<Image class="signatureB sapUiLargeMarginEnd" src="images/index.png" width="340px" height="340px" id="finger1"/>
-									</items>
-								</FlexBox>
-							</IconTabFilter>
 						</items>
 					</IconTabBar>
 					<!--	</content>-->
 					<!--</IconTabFilter>-->
 				</content>
 				<footer>
-					<Toolbar width="100%" id="__toolbar1">
+					<Toolbar width="100%">
 						<content>
 							<Button text="Cancel" width="auto" press="onNavBack" icon="sap-icon://cancel" type="Reject"/>
-							<ToolbarSpacer id="__spacer0"/>
+							<ToolbarSpacer/>
 							<Button text="Submit" press="onSaveDetails" width="auto" icon="sap-icon://save" type="Accept"/>
 						</content>
 					</Toolbar>

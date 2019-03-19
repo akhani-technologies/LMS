@@ -1,86 +1,142 @@
-<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="programmeMotse.controller.TrainingVenue" displayBlock="true">
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:u="sap.ui.unified" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="programmeMotse.controller.TrainingVenue" displayBlock="true">
 	<App>
 		<pages>
 			<Page backgroundDesign="Solid" showNavButton="true" navButtonPress="onNavBack">
 				<content>
-				<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout">
-				    <sap.ui.layout.form:content>
-				        <core:Title text="Training Venue Details" icon="sap-icon://building" emphasized="true"/>
-				        <Label text="Type of Venue"/>
-				        <ComboBox width="60%" id="comboType">
-				            <items>
-				                <core:ListItem text="Theory training venue"/>
-				                <core:ListItem text="Practical training venue"/>
-				                <core:ListItem text="Workplace training venue"/></items>
-				        </ComboBox>
-				        <Label text="Name of Venue"/>
-				        <Input width="60%" id="inpVenueName"/>
-				        <Label text="Street Address" width="100%"/>
-				        <Input width="60%" id="inpStreetAddress"/>
-				        <Label text="City" width="100%"/>
-				        <Input width="60%" id="inpCity"/>
-				        <Label text="Postal Code" width="100%"/>
-				        <Input width="60%" id="inpPostal"/></sap.ui.layout.form:content>
-				</sap.ui.layout.form:SimpleForm>
-				<!--<Table id="tblProg">-->
-				<!--    <columns>-->
-				<!--        <Column id="__column0">-->
-				<!--            <header>-->
-				<!--                <Label text="Funder"/>-->
-				<!--            </header>-->
-				<!--        </Column>-->
-				<!--        <Column id="__column1">-->
-				<!--            <header>-->
-				<!--                <Label text="Programme"/>-->
-				<!--            </header>-->
-				<!--        </Column>-->
-				<!--        <Column id="__column2">-->
-				<!--            <header>-->
-				<!--                <Label text="Number of learners"/>-->
-				<!--            </header>-->
-				<!--        </Column>-->
-				<!--        <Column id="__column3">-->
-				<!--            <header>-->
-				<!--                <Text text="Amount"/>-->
-				<!--            </header>-->
-				<!--        </Column>-->
-				<!--        <Column id="__column4">-->
-				<!--            <header>-->
-				<!--                <Text text="Start Date"/>-->
-				<!--            </header>-->
-				<!--        </Column>-->
-				<!--        <Column id="__column5">-->
-				<!--            <header>-->
-				<!--                <Text text="End date"/>-->
-				<!--            </header>-->
-				<!--        </Column></columns>-->
-				<!--    <headerToolbar>-->
-				<!--        <Toolbar width="100%" id="__toolbar2">-->
-				<!--            <content>-->
-				<!--                <core:Icon src="sap-icon://course-program" size="2em"/>-->
-				<!--                <Title text="Programmes" width="100%"/>-->
-				<!--                <ToolbarSpacer id="__spacer1"/>-->
-				<!--                <Button width="auto" icon="sap-icon://add" type="Emphasized" press="onAddItems"/>-->
-				<!--            </content>-->
-				<!--        </Toolbar>-->
-				<!--    </headerToolbar></Table>-->
-				<!--<FlexBox width="100%" alignContent="End" alignItems="Center" justifyContent="End">-->
-				<!--    <items>-->
-				<!--        <Title text="Total" width="100%" class="sapUiSmallMarginEnd" level="H2" titleStyle="H1"/>-->
-				<!--        <Input width="50%"/>-->
-				<!--        <Input width="50%"/>-->
-				<!--    </items>-->
-				<!--</FlexBox>-->
+					<!--<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout">-->
+					<!--    <sap.ui.layout.form:content>-->
+					<!--        <core:Title text="Training Venue Details" icon="sap-icon://building" emphasized="true"/>-->
+					<!--        <Label text="Type of Venue"/>-->
+					<!--        <ComboBox width="60%" id="comboType">-->
+					<!--            <items>-->
+					<!--                <core:ListItem text="Theory training venue"/>-->
+					<!--                <core:ListItem text="Practical training venue"/>-->
+					<!--                <core:ListItem text="Workplace training venue"/></items>-->
+					<!--        </ComboBox>-->
+					<!--        <Label text="Name of Venue"/>-->
+					<!--        <Input width="60%" id="inpVenueName"/>-->
+					<!--        <Label text="Street Address" width="100%"/>-->
+					<!--        <Input width="60%" id="inpStreetAddress"/>-->
+					<!--        <Label text="City" width="100%"/>-->
+					<!--        <Input width="60%" id="inpCity"/>-->
+					<!--        <Label text="Postal Code" width="100%"/>-->
+					<!--        <Input width="60%" id="inpPostal"/></sap.ui.layout.form:content>-->
+					<!--</sap.ui.layout.form:SimpleForm>-->
+					<HBox width="100%" justifyContent="Center" renderType="Bare" alignContent="Center" alignItems="Center" fitContainer="true">
+						<items>
+							<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" class="sapUiLargeMarginEnd" width="40%" editable="true" layout="ResponsiveGridLayout">
+								<sap.ui.layout.form:content>
+									<core:Title text="Venue Information" icon="sap-icon://building"/>
+									<Label text="Venue Name"/>
+									<Input width="100%" id="inpVenueName"/>
+									<Label text="Type of Venue"/>
+									<ComboBox width="100%" id="comboType">
+										<items>
+											<core:ListItem text="Theory training venue"/>
+											<core:ListItem text="Practical training venue"/>
+											<core:ListItem text="Workplace training venue"/></items>
+									</ComboBox>
+									<Label text="Venue Owner" id="d"/>
+									<Input width="100%" id="inpVenueO"/>
+									<Label text="Email Address" width="100%"/>
+									<Input width="100%" id="inpEmail"/>
+									<Label text="Contact Number" width="100%"/>
+									<Input width="100%" id="inpNumber"/>
+									<Label text="Address 1" width="100%"/>
+									<Input width="100%" id="inpAddr1"/>
+									<Label text="Address2" width="100%"/>
+									<Input width="100%" id="inpAddr2"/>
+									<Label text="City" width="100%"/>
+									<Input width="100%" id="inpCity"/>
+									<Label text="Province" width="100%"/>
+									<ComboBox xmlns="sap.m" width="100%" id="slctProv" required="true" change="_validateRequiredInputFields">
+										<items>
+											<core:ListItem text="Eastern Cape" key="EC"/>
+											<core:ListItem text="Free State" key="FS"/>
+											<core:ListItem text="Gauteng" key="GP"/>
+											<core:ListItem text="KwaZulu-Natal" key="KZN"/>
+											<core:ListItem text="Limpopo" key="LP"/>
+											<core:ListItem text="Mpumalanga" key="MP"/>
+											<core:ListItem text="Northern Cape" key="NC"/>
+											<core:ListItem text="North West" key="NW"/>
+											<core:ListItem text="Western Cape" key="WC"/>
+										</items>
+									</ComboBox>
+								</sap.ui.layout.form:content>
+							</sap.ui.layout.form:SimpleForm>
+							<VBox width="60%" direction="Column" alignContent="Center" alignItems="Center" justifyContent="Center">
+								<items>
+									<VBox alignContent="End" alignItems="End" justifyContent="End">
+										<items>
+											<Table noDataText="Press the (+) to add items " id="oTableApproval" mode="Delete" delete="handleDelete">
+												<columns>
+													<Column>
+														<header>
+															<Label text="Approval Body"/>
+														</header>
+													</Column>
+													<Column id="__column1">
+														<header>
+															<Label text="SAQA ID"/>
+														</header>
+													</Column>
+													<Column id="__column2">
+														<header>
+															<Label text="SETA"/>
+														</header>
+													</Column>
+													<Column id="__column3">
+														<header>
+															<Text text="Expiry Date"/>
+														</header>
+													</Column>
+													<Column id="__column4">
+														<header>
+															<Text text="Approval Attachment"/>
+														</header>
+													</Column>
+												</columns>
+												<headerToolbar>
+													<Toolbar width="100%" id="__toolbar2">
+														<content>
+															<Title text="Venue Approval Details" width="100%"/>
+															<ToolbarSpacer id="__spacer1"/>
+															<Button width="auto" icon="sap-icon://add" type="Emphasized" press="onAddItems"/>
+														</content>
+													</Toolbar>
+												</headerToolbar>
+											</Table>
+										</items>
+									</VBox>
+									<VBox alignContent="End" alignItems="End" justifyContent="End">
+										<items>
+											<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" id="__form1">
+												<sap.ui.layout.form:content>
+													<core:Title text="Venue Assessment Details"/>
+													<Label text="Assessed by "/>
+													<Input width="100%" id="__input3"/>
+													<Label text="Assessment Date"/>
+													<Input width="100%" id="__input5"/>
+													<Label text="Assessment Report" width="100%"/>
+													<u:FileUploader id="fileUploader" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
+												</sap.ui.layout.form:content>
+											</sap.ui.layout.form:SimpleForm>
+										</items>
+									</VBox>
+								</items>
+							</VBox>
+						</items>
+					</HBox>
 				</content>
-			<footer>
-			    <Toolbar width="100%" id="__toolbar1">
-			        <content>
-			            <Button text="Cancel" width="100px" icon="sap-icon://cancel" type="Reject"/>
-			            <ToolbarSpacer/>
-			            <Button text="Save" width="100px" icon="sap-icon://save" type="Accept" press="onSaveDetails"/>
-			        </content>
-			    </Toolbar>
-			</footer>
+				<footer>
+					<Toolbar width="100%" id="__toolbar1">
+						<content>
+							<Button text="Cancel" width="100px" icon="sap-icon://cancel" type="Reject"/>
+							<ToolbarSpacer/>
+							<Button text="Save" width="100px" icon="sap-icon://save" type="Accept" press="onSaveDetails"/>
+						</content>
+					</Toolbar>
+				</footer>
 			</Page>
 		</pages>
 	</App>

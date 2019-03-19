@@ -16,7 +16,7 @@ sap.ui.define([
 		},
 
 		onNavBack: function() {
-			this.getRouter().navTo("MenuPage");
+			this.oRouter.navTo("MenuPage");
 		},
 
 		onLearnerInfoPress: function(oEvent) {
