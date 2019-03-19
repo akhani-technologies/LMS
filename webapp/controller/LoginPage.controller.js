@@ -27,7 +27,7 @@ sap.ui.define([
 				url: 'http://10.142.0.3:8080/api/fingerprint/enrol-verify/{8002064019183}',
 				async: false,
 				contentType: 'application/json',
-				dataType: 'json',
+				dataType: 'jsonp',
 				accept: "*/*",
 				data: JSON.stringify({
 					action: "ENROL",
