@@ -15,13 +15,19 @@
 											<Label text="Project"/>
 											<Input id="inpPrePorject" width="80%"/>
 											<Label text="Project Approval" textAlign="Begin" width="100%"/>
-											<Slider id="rate1" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
+											<VBox>
+												<Slider id="rate1" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
 											<Label text="Sign Funding Agreement" textAlign="Begin" width="100%"/>
-											<Slider id="rate2" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
+											<VBox>
+												<Slider id="rate2" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
 											<Label text="Establish Project Steering Committee" wrapping="true" width="100%"/>
 											<Slider id="rate3" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
 												<ResponsiveScale tickmarksBetweenLabels="10"/>
@@ -64,6 +70,10 @@
 											</Slider>
 											<Label text="Arrange workplaces " width="100%"/>
 											<Slider id="rate13" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<ResponsiveScale tickmarksBetweenLabels="10"/>
+											</Slider>
+											<Label text="Opening of dedicated bank account" width="100%"/>
+											<Slider id="rate14" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
 												<ResponsiveScale tickmarksBetweenLabels="10"/>
 											</Slider>
 										</sap.ui.layout.form:content>

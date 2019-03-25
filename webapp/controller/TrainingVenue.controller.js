@@ -88,6 +88,19 @@ sap.ui.define([
 			oFileReader.readAsDataURL(oParameters.files[0]);
 		},
 
+		onAssessmentAttachmentChange: function(oEvent) {
+			var oParameters = oEvent.getParameters();
+			//create file reader and file reader event handler
+			var oFileReader = new FileReader();
+
+			oFileReader.onload = function() {
+				var base64String = oFileReader.result;
+				window.AssessContent = base64String.split(',')[1];
+			};
+
+			oFileReader.readAsDataURL(oParameters.files[0]);
+		},
+
 		handleDelete: function(oEvent) {
 			var oTable = oEvent.getSource(),
 				oItem = oEvent.getParameter("listItem");
@@ -96,6 +109,7 @@ sap.ui.define([
 
 		onSaveDetails: function(oEvent) {
 			var oData = {};
+			var odata = {};
 			oData.VenueID = parseInt(("" + Math.random()).substring(2, 5));
 			oData.VenueType = this.byId("comboType").getSelectedItem().getText();
 			oData.VenueName = this.byId("inpVenueName").getValue();
@@ -113,6 +127,26 @@ sap.ui.define([
 				cache: false,
 				url: 'PHP/createVenue.php',
 				data: oData,
+				//successfully logged on 
+				success: function(data, response, xhr) {
+					// this.handleSuccessMessageBoxPress();
+				}.bind(this),
+				error: function(e, status, xhr) {
+
+				}
+			});
+
+			odata.VenueID = oData.VenueID;
+			odata.AssessedBy = this.byId("inpBy").getValue();
+			odata.Date = this.byId("DateP").getValue();
+			odata.Report = window.AssessContent;
+
+			$.ajax({
+				type: "POST",
+				async: false,
+				cache: false,
+				url: 'PHP/CreateVenueAssess.php',
+				data: odata,
 				//successfully logged on 
 				success: function(data, response, xhr) {
 					// this.handleSuccessMessageBoxPress();

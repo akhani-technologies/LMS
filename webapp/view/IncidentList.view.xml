@@ -1,32 +1,31 @@
-<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
-	controllerName="programmeMotse.controller.IncidentList">
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="programmeMotse.controller.IncidentList">
 	<App>
 		<pages>
 			<Page backgroundDesign="Solid" showNavButton="true" navButtonPress="onNavBack">
 				<content>
 					<Table items="{path: '/'}" noDataText="No Incidents logged" id="tblIncidents">
 						<items>
-							<ColumnListItem >
+							<ColumnListItem type="Navigation">
 								<cells>
 									<Text text="{IncidentID}"/>
-									<Text text="{IncidentType}"/>
-									<Text text="{IncidentFor}"/>
-									<Text text="{IncidentDescription}"/>
+									<Text text="{Type}"/>
+									<Text text="{TypeInfo}"/>
+									<Text text="{Description}"/>
 								</cells>
 							</ColumnListItem>
 						</items>
 						<columns>
-							<Column >
+							<Column>
 								<header>
 									<Label text="IncidentID"/>
 								</header>
 							</Column>
-							<Column >
+							<Column>
 								<header>
 									<Label text="Incident Type"/>
 								</header>
 							</Column>
-							<Column >
+							<Column>
 								<header>
 									<Label text="Incident For"/>
 								</header>

@@ -13,6 +13,7 @@ sap.ui.define([
 			if (!this.sdk) {
 				this.sdk = new Fingerprint.WebApi();
 			}
+			this.Attachments = [];
 
 		},
 
@@ -40,7 +41,7 @@ sap.ui.define([
 		},
 
 		onStartFingerPrint: function() {
-			this.sdk.startAcquisition(Fingerprint.SampleFormat.Compressed).then(function() {
+			this.sdk.startAcquisition(Fingerprint.SampleFormat.PngImage).then(function() {
 				this.onSampleAcquired();
 			}.bind(this), function(error) {
 				console.log(error.message);
@@ -60,9 +61,9 @@ sap.ui.define([
 			var fingerprint = this.byId("finger1");
 			this.sdk.onSamplesAcquired = function(s) {
 				var samples = JSON.parse(s.samples);
-				fingerprint.setSrc("data:image/png;base64," + Fingerprint.b64UrlTo64(samples[0]));
+				// fingerprint.setSrc("data:image/png;base64," + Fingerprint.b64UrlTo64(samples[0]));
 				this.fingerprint = Fingerprint.b64UrlTo64(samples[0]);
-				console.log("PNG Format  " + this.fingerprint);
+				console.log("WSQ Format  " + this.fingerprint);
 
 			}.bind(this);
 		},
@@ -139,10 +140,10 @@ sap.ui.define([
 			oData.Race = this.byId("slctRace").getSelectedItem().getText();
 			oData.UIF = this.byId("slctUIF").getSelectedItem().getText();
 			oData.Image = this.image;
-			oData.BankName = this.byId("inpBankName").getValue();
+			oData.BankName = this.byId("cmbBankName").getSelectedItem().getText();
 			oData.AccountNumber = this.byId("inpAccNum").getValue();
 			oData.BranchNumber = this.byId("branch").getValue();
-			oData.AccountType = this.byId("AccType").getValue();
+			oData.AccountType = this.byId("cmbAccType").getSelectedItem().getText();
 			oData.Program = this.byId("cmbProgram").getSelectedItem().getText();
 			oData.Signature = this.signatureImage;
 
@@ -157,7 +158,8 @@ sap.ui.define([
 				//successfully logged on 
 				success: function(data, response, xhr) {
 					sap.ui.core.BusyIndicator.hide();
-					oThat.handleSuccessMessageBoxPress();
+					this.handleSuccessMessageBoxPress();
+					this.onSaveAttachments(oData.LearnerID);
 				}.bind(this),
 				error: function(e, status, xhr) {
 
@@ -166,6 +168,31 @@ sap.ui.define([
 			// oLearnerModel.setData(oData);
 			// sap.ui.getCore().setModel(oLearnerModel, "oLearnerModel");
 			// this.handleSuccessMessageBoxPress();
+		},
+
+		onSaveAttachments: function(LearnerID) {
+			for (var i = 0; i < this.Attachments.length; i++) {
+				$.ajax({
+					type: "POST",
+					async: false,
+					cache: false,
+					url: 'PHP/createAttachments.php',
+					data: {
+						DocID: this.Attachments[i].DocID,
+						LearnerID: LearnerID,
+						Type: this.Attachments[i].Type,
+						Content: this.Attachments[i].Content,
+						DocType: this.Attachments[i].DocType
+					},
+					//successfully logged on 
+					success: function(data, response, xhr) {
+
+					}.bind(this),
+					error: function(e, status, xhr) {
+
+					}
+				});
+			}
 		},
 
 		handleSuccessMessageBoxPress: function(oEvent) {
@@ -358,39 +385,23 @@ sap.ui.define([
 			this.onSummaryPageFill();
 		},
 
-		onBankAttachmentChange: function(oEvent) {
+		onAttachmentChange: function(oEvent) {
 			var oParameters = oEvent.getParameters();
+			var id = oEvent.getSource().getId();
+			var aSplit = id.split("--");
+			var oData = {};
+			oData.DocID = parseInt(("" + Math.random()).substring(2, 5));
+			oData.Type = aSplit[2];
+			oData.DocType = oParameters.files[0].type;
+
 			//create file reader and file reader event handler
 			var oFileReader = new FileReader();
 
 			oFileReader.onload = function() {
 				var base64String = oFileReader.result;
-				window.BankContent = base64String.split(',')[1];
-			};
-			oFileReader.readAsDataURL(oParameters.files[0]);
-		},
-
-		onIDAttachmentChange: function(oEvent) {
-			var oParameters = oEvent.getParameters();
-			//create file reader and file reader event handler
-			var oFileReader = new FileReader();
-
-			oFileReader.onload = function() {
-				var base64String = oFileReader.result;
-				window.IDContent = base64String.split(',')[1];
-			};
-			oFileReader.readAsDataURL(oParameters.files[0]);
-		},
-
-		onQualAttachmentChange: function(oEvent) {
-			var oParameters = oEvent.getParameters();
-			//create file reader and file reader event handler
-			var oFileReader = new FileReader();
-
-			oFileReader.onload = function() {
-				var base64String = oFileReader.result;
-				window.QualContent = base64String.split(',')[1];
-			};
+				oData.Content = base64String.split(',')[1];
+				this.Attachments.push(oData);
+			}.bind(this);
 			oFileReader.readAsDataURL(oParameters.files[0]);
 		},
 

@@ -22,7 +22,7 @@
 							<Label text="Registration Number" width="100%"/>
 							<Input width="70%" id="inpRegNum"/>
 							<Label text="CSD Report" width="100%"/>
-							<u:FileUploader xmlns:u="sap.ui.unified" change="onBankAttachmentChange" name="myFileUpload" uploadUrl="upload/"
+							<u:FileUploader xmlns:u="sap.ui.unified" change="onChangeAttachment" name="myFileUpload" uploadUrl="upload/"
 								tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
 						</sap.ui.layout.form:content>
 					</sap.ui.layout.form:SimpleForm>
@@ -30,13 +30,29 @@
 						<sap.ui.layout.form:content>
 							<core:Title text="Add banking details" icon="sap-icon://add-activity"/>
 							<Label text="Bank Name" width="100%"/>
-							<Input width="70%" id="inpBankName"/>
+							<ComboBox width="70%" id="cmbBankName" required="true">
+								<items>
+									<core:ListItem text="Absa"/>
+									<core:ListItem text="African Bank"/>
+									<core:ListItem text="Bidvest Bank"/>
+									<core:ListItem text="Capitec Bank"/>
+									<core:ListItem text="Discovery"/>
+									<core:ListItem text="First National Bank"/>
+									<core:ListItem text="Nedbank"/>
+									<core:ListItem text="Standard Bank"/>
+								</items>
+							</ComboBox>
 							<Label text="Account number" width="100%"/>
 							<Input width="70%" id="inpAccNum"/>
 							<Label text="Branch number" width="100%"/>
 							<Input width="70%" id="branch"/>
 							<Label text="Account Type" width="100%"/>
-							<Input width="70%" id="AccType"/>
+							<ComboBox width="70%" id="cmbAccType" required="true">
+								<items>
+									<core:ListItem text="Savings Account"/>
+									<core:ListItem text="Cheque Account"/>
+								</items>
+							</ComboBox>
 							<Label text="Proof of Bank Account" width="100%"/>
 							<u:FileUploader xmlns:u="sap.ui.unified" change="onBankAttachmentChange" name="myFileUpload" uploadUrl="upload/"
 								tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>

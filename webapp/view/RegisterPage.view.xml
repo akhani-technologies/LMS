@@ -10,16 +10,25 @@
 									<sap.ui.layout.form:SimpleForm xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" id="__form0">
 										<sap.ui.layout.form:content>
 											<core:Title xmlns:core="sap.ui.core" text="User details" icon="sap-icon://add-contact" emphasized="true"/>
-											<Label text="Name"/>
-											<Input width="50%" id="inpName"/>
-											<Label text="Surname"/>
-											<Input width="50%" id="inpSurname"/>
-											<Label text="Date of birth" width="100%"/>
-											<DatePicker width="50%" id="inpDOB"/>
-											<Label text="Enter password" width="100%"/>
-											<Input width="50%" id="inpPassword" type="Password"/>
-											<Label text="Repeat password" width="100%"/>
-											<Input width="50%" id="__input5" type="Password"/>
+											<Label text="User Type" required="true"/>
+											<ComboBox id="cmbType" width="50%" required="true">
+												<core:Item text="Project Manager"/>
+												<core:Item text="Project Administrator"/>
+												<core:Item text="Facilitator"/>
+												<core:Item text="Training Service Provider Representative"/>
+												<core:Item text="Funder Representative"/>
+												<core:Item text="Client Representative"/>
+											</ComboBox>
+											<Label text="Name" required="true"/>
+											<Input width="50%" id="inpName" required="true"/>
+											<Label text="Surname" required="true"/>
+											<Input width="50%" id="inpSurname" required="true"/>
+											<Label text="Date of birth" width="100%" required="true"/>
+											<DatePicker width="50%" id="inpDOB" required="true"/>
+											<Label text="Enter password" width="100%" required="true"/>
+											<Input width="50%" id="inpPassword" type="Password" required="true"/>
+											<Label text="Repeat password" width="100%" required="true"/>
+											<Input width="50%" id="__input5" type="Password" liveChange="onConfirmPassword" required="true"/>
 										</sap.ui.layout.form:content>
 									</sap.ui.layout.form:SimpleForm>
 								</content>
@@ -38,8 +47,8 @@
 															<Label required="true" text="Address line1" width="100%"/>
 														</f:label>
 														<f:fields>
-															<Input id="strNum" width="100px" placeholder="Street No."/>
-															<Input id="strName" width="300px" placeholder="StreetName">
+															<Input id="strNum" width="100px" placeholder="Street No." required="true"/>
+															<Input id="strName" width="300px" placeholder="StreetName" required="true">
 																<layoutData>
 																	<l:GridData span="L9"/>
 																</layoutData>
@@ -59,7 +68,7 @@
 															<Label required="true" text="Suburb" width="100%"/>
 														</f:label>
 														<f:fields>
-															<Input id="suburbId" valueStateText="Enter Suburb" width="400px"/>
+															<Input id="suburbId" valueStateText="Enter Suburb" width="400px" required="true"/>
 														</f:fields>
 													</f:FormElement>
 													<f:FormElement>
@@ -75,14 +84,19 @@
 															<Label required="true" text="Region" width="100%"/>
 														</f:label>
 														<f:fields>
-															<Select id="slctProv" width="400px">
+															<ComboBox xmlns="sap.m" width="400px" id="slctProv" required="true" change="_validateRequiredInputFields">
 																<items>
-																	<core:ListItem key="Gauteng" text="Gauteng"/>
+																	<core:ListItem text="Eastern Cape" key="EC"/>
+																	<core:ListItem text="Free State" key="FS"/>
+																	<core:ListItem text="Gauteng" key="GP"/>
+																	<core:ListItem text="KwaZulu-Natal" key="KZN"/>
+																	<core:ListItem text="Limpopo" key="LP"/>
+																	<core:ListItem text="Mpumalanga" key="MP"/>
+																	<core:ListItem text="Northern Cape" key="NC"/>
+																	<core:ListItem text="North West" key="NW"/>
+																	<core:ListItem text="Western Cape" key="WC"/>
 																</items>
-																<layoutData>
-																	<f:GridElementData hCells="3"/>
-																</layoutData>
-															</Select>
+															</ComboBox>
 														</f:fields>
 													</f:FormElement>
 												</f:formElements>
@@ -99,10 +113,10 @@
 									<f:SimpleForm editable="true" layout="ResponsiveGridLayout">
 										<f:content>
 											<core:Title text="Contact details" emphasized="true" icon="sap-icon://customer-and-contacts"/>
-											<Label text="Contact number"/>
-											<Input width="50%" id="contactNumber"/>
-											<Label text="Email Address"/>
-											<Input width="50%" id="email"/></f:content>
+											<Label text="Contact number" required="true"/>
+											<Input width="50%" id="contactNumber" required="true"/>
+											<Label text="Email Address" required="true"/>
+											<Input width="50%" id="email" required="true"/></f:content>
 									</f:SimpleForm>
 								</content>
 							</IconTabFilter>
@@ -114,7 +128,7 @@
 						<content>
 							<Button text="Cancel" width="auto" icon="sap-icon://cancel" type="Reject" press="onCancel"/>
 							<ToolbarSpacer id="__spacer0"/>
-							<Button text="Save details" width="auto" icon="sap-icon://save" type="Reject" press="onRegister"/>
+							<Button text="Register" width="auto" icon="sap-icon://add-contact" type="Reject" press="onRegister"/>
 						</content>
 					</Toolbar>
 				</footer>

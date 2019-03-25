@@ -14,6 +14,8 @@ sap.ui.define([
 		 */
 		onInit: function() {
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			this.onGetServiceProviders();
+
 		},
 
 		onNavBack: function() {
@@ -29,6 +31,23 @@ sap.ui.define([
 			}
 		},
 
+		onGetServiceProviders: function() {
+			this.serviceModel = new sap.ui.model.json.JSONModel();
+			var Select = this.byId("cmbProvider");
+			$.ajax({
+				url: 'PHP/getServiceProviders.php',
+				async: false,
+				success: function(data) {
+					var oData = data.result;
+					this.serviceModel.setData(oData);
+					Select.setModel(this.serviceModel);
+				}.bind(this),
+				error: function(err, e, xhr) {
+
+				}
+			});
+		},
+
 		onSaveDetails: function(oEvent) {
 			var oData = {};
 			oData.PersonID = parseInt(("" + Math.random()).substring(2, 5));
@@ -40,6 +59,7 @@ sap.ui.define([
 			oData.ProofOfReg = window.Content;
 			oData.IDNumber = this.byId("inpID").getValue();
 			oData.Surname = this.byId("inpSurname").getValue();
+			oData.ServiceProvider = this.byId("cmbProvider").getSelectedItem().getText();
 
 			$.ajax({
 				type: "POST",

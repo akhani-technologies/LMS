@@ -21,13 +21,14 @@ $PostalCode = mysqli_real_escape_string($conn, $_POST['PostalCode']);
 $Province = mysqli_real_escape_string($conn, $_POST['Province']);
 $Number = mysqli_real_escape_string($conn, $_POST['Number']);
 $Email = mysqli_real_escape_string($conn, $_POST['Email']);
+$UserType = mysqli_real_escape_string($conn, $_POST['UserType']);
 
-$sql = " INSERT INTO user(UserID, Name, Surname, DOB, Password, Email, Number, AddressLine1, AddressLine2, Suburb, PostalCode, Region)
-VALUES ('$UserID' ,'$Name','$Surname','$DOB','$Password','$Email','$Number','$AddressLine1','$AddressLine2','$Suburb','$PostalCode','$Province')";
+$sql = " INSERT INTO user(UserID, Name, Surname, DOB, Password, Email, Number, AddressLine1, AddressLine2, Suburb, PostalCode, Region, UserType)
+VALUES ('$UserID' ,'$Name','$Surname','$DOB','$Password','$Email','$Number','$AddressLine1','$AddressLine2','$Suburb','$PostalCode','$Province', '$UserType')";
 
 
 if ($conn->query($sql) === TRUE) {
-    echo "Page saved!";
+    echo "Registered Successfully!";
     $sql = "";
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;

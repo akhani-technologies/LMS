@@ -16,8 +16,24 @@ sap.ui.define([
 		},
 
 		_onObjectMatched: function() {
+			this.onGetVenue();
+		},
 
-			// this.onGetFacilitators();
+		onGetVenue: function() {
+			this.venueModel = new sap.ui.model.json.JSONModel();
+			var Select = this.byId("cmbVenue");
+			$.ajax({
+				url: 'PHP/getVenue.php',
+				async: false,
+				success: function(data) {
+					var oData = data.result;
+					this.venueModel.setData(oData);
+					Select.setModel(this.venueModel);
+				}.bind(this),
+				error: function(err, e, xhr) {
+
+				}
+			});
 		},
 
 		onNavBack: function() {

@@ -1,16 +1,12 @@
-<core:FragmentDefinition
-	xmlns="sap.m"
-	xmlns:core="sap.ui.core">
-	<ViewSettingsDialog
-		confirm="handleFilterIncidentConfirm">
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<ViewSettingsDialog confirm="handleFilterIncidentConfirm">
 		<filterItems>
-			<ViewSettingsFilterItem
-				text="Incident Type"
-				key="IncidentType"
-				multiSelect="false">
+			<ViewSettingsFilterItem text="Type" key="Type" multiSelect="false">
 				<items>
-					<ViewSettingsItem text="Venue" key="IncidentType___EQ___Venue" />
-					<ViewSettingsItem text="Learner" key="IncidentType___EQ___Learner" />
+					<ViewSettingsItem text="Training Center" key="Type+EQ+Training Center"/>
+					<ViewSettingsItem text="Learner" key="Type+EQ+Learner"/>
+					<ViewSettingsItem text="Facilitator" key="Type+EQ+Facilitator"/>
+					<ViewSettingsItem text="Other" key="Type+EQ+Other"/>
 				</items>
 			</ViewSettingsFilterItem>
 		</filterItems>

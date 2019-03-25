@@ -80,7 +80,7 @@ sap.ui.define([
 				aFilters = [];
 
 			mParams.filterItems.forEach(function(oItem) {
-				var aSplit = oItem.getKey().split("___"),
+				var aSplit = oItem.getKey().split("+"),
 					sPath = aSplit[0],
 					sOperator = aSplit[1],
 					sValue1 = aSplit[2],
@@ -92,9 +92,9 @@ sap.ui.define([
 			// apply filter settings
 			oBinding.filter(aFilters);
 
-			// update filter bar
-			this.byId("vsdFilterBar").setVisible(aFilters.length > 0);
-			this.byId("vsdFilterLabel").setText(mParams.filterString);
+			// // update filter bar
+			// this.byId("vsdFilterBar").setVisible(aFilters.length > 0);
+			// this.byId("vsdFilterLabel").setText(mParams.filterString);
 		}
 
 	});

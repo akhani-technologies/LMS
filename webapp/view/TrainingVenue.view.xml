@@ -90,17 +90,17 @@
 															<Text text="Expiry Date"/>
 														</header>
 													</Column>
-													<Column id="__column4">
+													<Column >
 														<header>
 															<Text text="Approval Attachment"/>
 														</header>
 													</Column>
 												</columns>
 												<headerToolbar>
-													<Toolbar width="100%" id="__toolbar2">
+													<Toolbar width="100%" >
 														<content>
 															<Title text="Venue Approval Details" width="100%"/>
-															<ToolbarSpacer id="__spacer1"/>
+															<ToolbarSpacer />
 															<Button width="auto" icon="sap-icon://add" type="Emphasized" press="onAddItems"/>
 														</content>
 													</Toolbar>
@@ -114,11 +114,12 @@
 												<sap.ui.layout.form:content>
 													<core:Title text="Venue Assessment Details"/>
 													<Label text="Assessed by "/>
-													<Input width="100%" id="__input3"/>
+													<Input width="100%" id="inpBy"/>
 													<Label text="Assessment Date"/>
-													<Input width="100%" id="__input5"/>
+													<DatePicker id="DateP" change="handleChange" class="sapUiSmallMarginBottom"/>
+													<!--<Input width="100%" id="__input5"/>-->
 													<Label text="Assessment Report" width="100%"/>
-													<u:FileUploader id="fileUploader" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
+													<u:FileUploader id="fileUploader" name="myFileUpload" change="onAssessmentAttachmentChange" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
 												</sap.ui.layout.form:content>
 											</sap.ui.layout.form:SimpleForm>
 										</items>

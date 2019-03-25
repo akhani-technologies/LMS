@@ -20,7 +20,7 @@ $Surname = mysqli_real_escape_string($conn, $_POST['Surname']);
 
 
 $sql = "INSERT INTO facilitator(FacilitatorID, Name, OfficeNumber, MobileNumber, Email, ProofOfReg,IDNumber, Surname) 
-VALUES ('$FacilitatorID','$Name','$OfficeNumber', '$MobileNumber', '$Email','$ProofOfReg', '$IDNumber',$Surname)";
+VALUES ('$FacilitatorID','$Name','$OfficeNumber', '$MobileNumber', '$Email','$ProofOfReg', '$IDNumber','$Surname')";
 
 if ($conn->query($sql) === TRUE) {
     echo "Page saved!";

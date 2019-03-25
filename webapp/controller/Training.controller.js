@@ -9,6 +9,7 @@ sap.ui.define([
 
 		onInit: function() {
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			this.AttachArray = [];
 		},
 
 		handleBankpress: function(oEvent) {
@@ -51,7 +52,7 @@ sap.ui.define([
 			});
 			oTable.addItem(columnListItemNewLine);
 		},
-		
+
 		onAttachmentChange: function(oEvent) {
 			var oParameters = oEvent.getParameters();
 			//create file reader and file reader event handler
@@ -81,6 +82,7 @@ sap.ui.define([
 
 		handleAttachment: function() {
 			this.event.setText(window.IDfileName);
+			this.AttachArray.push(window.IDfileName);
 			this.event.setEnabled(false);
 			this.event.setType("Accept");
 			this._oPopover.close();
@@ -107,11 +109,13 @@ sap.ui.define([
 			oData.OfficeNumber = this.byId("inpOffice").getValue();
 			oData.MobileNumber = this.byId("inpMobile").getValue();
 			oData.Email = this.byId("inpEmail").getValue();
-			oData.BankName = this.byId("inpBankName").getValue();
+			oData.BankName = this.byId("cmbBankName").getSelectedItem().getText();
 			oData.AccountNumber = this.byId("inpAccNum").getValue();
-			oData.AccountType = this.byId("AccType").getValue();
+			oData.AccountType = this.byId("cmbAccType").getSelectedItem().getText();
 			oData.BankProof = window.bankStatementContent;
-			oData.ContactPerson = this.byId("inpContactPerson").getValue();
+			oData.TrainingProviderName = this.byId("inpContactPerson").getValue();
+			oData.RegistrationNumber = this.byId("inpRegNum").getValue();
+			oData.CSDReport = window.CSDContent;
 
 			$.ajax({
 				type: "POST",
@@ -127,6 +131,34 @@ sap.ui.define([
 
 				}
 			});
+
+			var oTable = this.byId("tblTrain");
+			var oItems = oTable.getItems();
+			for (var i = 0; i < oItems.length; i++) {
+				$.ajax({
+					type: "POST",
+					async: false,
+					cache: false,
+					url: 'PHP/createAccreditation.php',
+					data: {
+						AccreditationID: parseInt(("" + Math.random()).substring(2, 5)),
+						TrainingID: oData.TrainingID,
+						AccreditationNumber: oItems[i].mAggregations.cells[0].getProperty("value"),
+						ETQA: oItems[i].mAggregations.cells[1].getProperty("value"),
+						ExpiryDate: oItems[i].mAggregations.cells[2].getProperty("value"),
+						AccreditationAttach: this.AttachArray[i],
+						LearningProgram: oItems[i].mAggregations.cells[3].getProperty("value")
+					},
+					//successfully logged on 
+					success: function(data, response, xhr) {
+						oTable.removeAllItems();
+						// this.handleSuccessMessageBoxPress();
+					}.bind(this),
+					error: function(e, status, xhr) {
+
+					}
+				});
+			}
 		},
 
 		handleSuccessMessageBoxPress: function(oEvent) {
@@ -163,6 +195,18 @@ sap.ui.define([
 			window.bankStatementfileId = oParameters.id;
 			window.bankStatementfileName = oParameters.files[0].name;
 			window.bankStatementfileType = oParameters.files[0].type;
+			bFileReader.readAsDataURL(oParameters.files[0]);
+		},
+
+		onChangeAttachment: function(oEvent) {
+			var oParameters = oEvent.getParameters();
+			//create file reader and file reader event handler
+			var bFileReader = new FileReader();
+
+			bFileReader.onload = function() {
+				var base64String = bFileReader.result;
+				window.CSDContent = base64String.split(',')[1];
+			};
 			bFileReader.readAsDataURL(oParameters.files[0]);
 		}
 	});

@@ -31,6 +31,7 @@ sap.ui.define([
 			oData.Province = this.byId("slctProv").getSelectedItem().getText();
 			oData.Number = this.byId("contactNumber").getValue();
 			oData.Email = this.byId("email").getValue().toLowerCase();
+			oData.UserType = this.byId("cmbType").getSelectedItem().getText();
 
 			$.ajax({
 				type: "POST",
@@ -52,6 +53,19 @@ sap.ui.define([
 
 		onCancel: function() {
 			this.oRouter.navTo("LoginScreen");
+		},
+
+		onConfirmPassword: function(oEvent) {
+			var confirm = oEvent.getSource();
+			var password = this.byId("inpPassword").getValue();
+			if (confirm.getValue() !== password) {
+				confirm.setValueStateText("Passwords do not Match");
+				confirm.setValueState("Error");
+				// this._oViewModel.setProperty("/enableCreate", false);
+			} else {
+				confirm.setValueState("Success");
+				// this._oViewModel.setProperty("/enableCreate", true);
+			}
 		},
 
 		handleSuccessMessageBoxPress: function(oEvent) {

@@ -1,5 +1,5 @@
-<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
-	controllerName="programmeMotse.controller.IncidentReport">
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:u="sap.ui.unified" xmlns="sap.m"
+	xmlns:html="http://www.w3.org/1999/xhtml" controllerName="programmeMotse.controller.IncidentReport">
 	<App>
 		<pages>
 			<Page backgroundDesign="Solid" showNavButton="true" navButtonPress="onNavBack">
@@ -7,11 +7,13 @@
 					<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout">
 						<sap.ui.layout.form:content>
 							<core:Title text="Incident Report" emphasized="true" icon="sap-icon://incident"/>
-							<Label text="Incident For"/>
+							<Label text="Type"/>
 							<ComboBox id="cmbType" change="onSelectFor" width="70%">
 								<items>
-									<core:ListItem text="Learner" key="item1" id="__item0"/>
-									<core:ListItem text="Venue" key="item2" id="__item1"/>
+									<core:ListItem text="Learner" key="item1"/>
+									<core:ListItem text="Training Center" key="item2"/>
+									<core:ListItem text="Facilitator" key="item3"/>
+									<core:ListItem text="Other" key="item4"/>
 								</items>
 							</ComboBox>
 							<Label id="lblLearner" visible="false" text="Select Learner" width="100%"/>
@@ -20,14 +22,27 @@
 									<core:ListItem text="{Name} {Surname} ({IDNumber})" key="item1"/>
 								</items>
 							</ComboBox>
-							<Label visible="false" id="lblvenue" text="Select Venue" width="100%"/>
+							<Label visible="false" id="lblvenue" text="Select Training Center" width="100%"/>
 							<ComboBox visible="false" items="{path: '/'}" width="70%" id="cmbVenue">
 								<items>
-									<core:ListItem text="{VenueName} ({VenueType})"/>
+									<core:ListItem text="{VenueName} {VenueOwner} ({VenueType})"/>
 								</items>
 							</ComboBox>
-							<Label text="Incident" width="100%"/>
+							<Label visible="false" id="lblfacilitator" text="Select Facilitator" width="100%"/>
+							<ComboBox visible="false" items="{path: '/'}" width="70%" id="cmbFacilitor">
+								<items>
+									<core:ListItem text="{Name} {Surname} ({IDNumber})"/>
+								</items>
+							</ComboBox>
+							<Label visible="false" id="lblOther" text="Please specify" width="100%"/>
+							<Input visible="false" width="70%" id="inpOther"/>
+							<Label text="Incident Description" width="100%"/>
 							<TextArea id="txtDescr" width="70%"/>
+							<Label text="Incident Details" width="100%"/>
+							<TextArea id="txtDetails" width="70%"/>
+							<Label text="Incident Attachment"/>
+							<u:FileUploader id="attach" change="onAttachmentChange" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server"
+								uploadComplete="handleUploadComplete"/>
 						</sap.ui.layout.form:content>
 					</sap.ui.layout.form:SimpleForm>
 				</content>

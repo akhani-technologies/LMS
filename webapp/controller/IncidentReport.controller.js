@@ -24,8 +24,11 @@ sap.ui.define([
 			this.byId("cmbVenue").setSelectedItem(null);
 			this.byId("cmbLearner").setSelectedItem(null);
 			this.byId("txtDescr").setValue(null);
+			this.byId("txtDetails").setValue(null);
+			this.byId("attach").setValue(null);
 			this.onGetLearner();
 			this.onGetVenue();
+			this.onGetFacilitator();
 		},
 
 		onGetLearner: function() {
@@ -40,6 +43,23 @@ sap.ui.define([
 					oSelect.setModel(this.learnerModel);
 				}.bind(this),
 				error: function(err) {
+
+				}
+			});
+		},
+
+		onGetFacilitator: function() {
+			this.facilitatorModel = new sap.ui.model.json.JSONModel();
+			var Select = this.byId("cmbFacilitor");
+			$.ajax({
+				url: 'PHP/getFacilitators.php',
+				async: false,
+				success: function(data) {
+					var oData = data.result;
+					this.facilitatorModel.setData(oData);
+					Select.setModel(this.facilitatorModel);
+				}.bind(this),
+				error: function(err, e, xhr) {
 
 				}
 			});
@@ -69,25 +89,56 @@ sap.ui.define([
 				this.byId("cmbLearner").setVisible(true);
 				this.byId("lblvenue").setVisible(false);
 				this.byId("cmbVenue").setVisible(false);
-
-			} else {
+				this.byId("lblfacilitator").setVisible(false);
+				this.byId("cmbFacilitor").setVisible(false);
+				this.byId("lblOther").setVisible(false);
+				this.byId("inpOther").setVisible(false);
+			} else if (oItem === "Facilitator") {
+				this.byId("lblLearner").setVisible(false);
+				this.byId("cmbLearner").setVisible(false);
+				this.byId("lblvenue").setVisible(false);
+				this.byId("cmbVenue").setVisible(false);
+				this.byId("lblfacilitator").setVisible(true);
+				this.byId("cmbFacilitor").setVisible(true);
+				this.byId("lblOther").setVisible(false);
+				this.byId("inpOther").setVisible(false);
+			} else if (oItem === "Training Center") {
 				this.byId("lblLearner").setVisible(false);
 				this.byId("cmbLearner").setVisible(false);
 				this.byId("lblvenue").setVisible(true);
 				this.byId("cmbVenue").setVisible(true);
+				this.byId("lblfacilitator").setVisible(false);
+				this.byId("cmbFacilitor").setVisible(false);
+				this.byId("lblOther").setVisible(false);
+				this.byId("inpOther").setVisible(false);
+			} else {
+				this.byId("lblLearner").setVisible(false);
+				this.byId("cmbLearner").setVisible(false);
+				this.byId("lblvenue").setVisible(false);
+				this.byId("cmbVenue").setVisible(false);
+				this.byId("lblfacilitator").setVisible(false);
+				this.byId("cmbFacilitor").setVisible(false);
+				this.byId("lblOther").setVisible(true);
+				this.byId("inpOther").setVisible(true);
 			}
 		},
 
 		onSaveIncident: function() {
 			var oData = {};
 			oData.IncidentID = parseInt(("" + Math.random()).substring(2, 5));
-			oData.IncidentType = this.byId("cmbType").getSelectedItem().getText();
-			if (oData.IncidentType === "Venue") {
-				oData.IncidentFor = this.byId("cmbVenue").getSelectedItem().getText();
+			oData.Type = this.byId("cmbType").getSelectedItem().getText();
+			if (oData.Type === "Learner") {
+				oData.TypeInfo = this.byId("cmbLearner").getSelectedItem().getText();
+			} else if (oData.Type === "Facilitator") {
+				oData.TypeInfo = this.byId("cmbFacilitor").getSelectedItem().getText();
+			} else if (oData.Type === "Other") {
+				oData.TypeInfo = this.byId("inpOther").getValue();
 			} else {
-				oData.IncidentFor = this.byId("cmbLearner").getSelectedItem().getText();
+				oData.TypeInfo = this.byId("cmbVenue").getSelectedItem().getText();
 			}
-			oData.IncidentDescription = this.byId("txtDescr").getValue();
+			oData.Description = this.byId("txtDescr").getValue();
+			oData.Details = this.byId("txtDetails").getValue();
+			oData.Attachment = window.Content;
 
 			$.ajax({
 				type: "POST",
@@ -103,6 +154,18 @@ sap.ui.define([
 
 				}
 			});
+		},
+
+		onAttachmentChange: function(oEvent) {
+			var oParameters = oEvent.getParameters();
+			//create file reader and file reader event handler
+			var oFileReader = new FileReader();
+
+			oFileReader.onload = function() {
+				var base64String = oFileReader.result;
+				window.Content = base64String.split(',')[1];
+			};
+			oFileReader.readAsDataURL(oParameters.files[0]);
 		},
 
 		handleSuccessMessageBoxPress: function(oEvent) {

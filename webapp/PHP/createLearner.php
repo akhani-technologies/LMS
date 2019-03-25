@@ -40,7 +40,7 @@ $sql = "INSERT INTO learner(LearnerID, Name, Surname, IDNumber, IDType, Gender, 
 Province, HighestQualification, EmploymentStatus, LearnerType, Disability, Race, UIF, Image, BankName, AccountNumber, 
 BranchNumber, AccountType, Program, Signature) VALUES ('$LearnerID','$Name','$Surname','$IDNumber','$IDType','$Gender','$Age','$ContactNumber',
 '$EmailAddress','$AddressLine1','$AddressLine2','$City','$Province','$HighestQualification','$EmploymentStatus','$LearnerType','$Disability','$Race','$UIF','$Image',
-'$BankName','$AccountNumber','$BranchNumber','$AccountType','$Program', $Signature)";
+'$BankName','$AccountNumber','$BranchNumber','$AccountType','$Program', '$Signature')";
 
 if ($conn->query($sql) === TRUE) {
     echo "Page saved!";
