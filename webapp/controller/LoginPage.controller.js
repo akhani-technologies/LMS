@@ -46,6 +46,7 @@ sap.ui.define([
 			// 		alert("error " + e);
 			// 	}
 			// });
+
 			// const Http = new XMLHttpRequest();
 			// const url = 'https://jsonplaceholder.typicode.com/posts';
 			// Http.open("GET", url);
@@ -92,6 +93,7 @@ sap.ui.define([
 			// 			if (data.result[i].Email === email && data.result[i].Password === password) {
 			// correct = true;
 			this.oRouter.navTo("MenuPage");
+			
 			// 			}
 			// 		}
 			// 		if (!correct) {
@@ -102,6 +104,28 @@ sap.ui.define([
 			// 		console.log(err);
 			// 	}
 			// });
+		},
+
+		UserAction: function() {
+			var data = {
+				action: "ENROL",
+				fingerPrintData: "string",
+				idNumber: "8002064019183"
+			};
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					//alert(this.responseText);
+					console.log(this.responseText);
+				}
+			};
+			xhttp.open("POST", "http://192.168.1.56:8080/api/fingerprint/enrol-verify", true);
+			xhttp.setRequestHeader("Content-type", "application/json");
+			xhttp.setRequestHeader("accept", "*/*");
+			// xhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
+			// xhttp.setRequestHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+			// xhttp.setRequestHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE");
+			xhttp.send(data);
 		},
 
 		onAgri: function() {

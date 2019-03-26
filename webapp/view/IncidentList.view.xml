@@ -5,7 +5,7 @@
 				<content>
 					<Table items="{path: '/'}" noDataText="No Incidents logged" id="tblIncidents">
 						<items>
-							<ColumnListItem type="Navigation">
+							<ColumnListItem type="Navigation" press="onPress">
 								<cells>
 									<Text text="{IncidentID}"/>
 									<Text text="{Type}"/>

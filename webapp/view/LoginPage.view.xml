@@ -45,12 +45,12 @@
 					</sap.ui.layout.form:Form>
 					<FlexBox height="auto" alignItems="Center" justifyContent="Center">
 						<items>
-							<Button xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" text="Login" type="Reject" class="sapUiSmallMarginEnd" width="150px" press="onLogin" action:wiring="\{'press':\{'navigation':\{'routeName':'Menu'\}\}\}"/>
+							<Button  text="Login" type="Reject" class="sapUiSmallMarginEnd" width="150px" press="onLogin" />
 						</items>
 					</FlexBox>
 					<FlexBox height="auto" alignItems="Center" justifyContent="Center">
 						<items>
-							<Button xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" text="Register" type="Reject" class="sapUiSmallMarginEnd" width="150px" press="onRegister" action:wiring="\{'press':\{'navigation':\{'routeName':'Register'\}\}\}"/>
+							<Button  text="Register" type="Reject" class="sapUiSmallMarginEnd" width="150px" press="onRegister"/>
 						</items>
 					</FlexBox>
 					<FlexBox height="auto" alignItems="Center" justifyContent="Center" alignContent="Center">

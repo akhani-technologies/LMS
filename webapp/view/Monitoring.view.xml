@@ -1,22 +1,50 @@
-<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="programmeMotse.controller.Monitoring">
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+	controllerName="programmeMotse.controller.Monitoring">
 	<App>
 		<pages>
 			<Page backgroundDesign="Solid" showNavButton="true" navButtonPress="onNavBack">
 				<content>
-				    <IconTabBar>
-				        <items>
-				            <IconTabFilter text="Inspection Survey" showAll="true" icon="sap-icon://inspection">
-				                <content>
-				                    <List noDataText="No data" >
-				                        <items>
-				                            <StandardListItem title="List Item 1" id="__item0"/>
-				                            <StandardListItem title="List Item 2" id="__item1"/>
-				                            <StandardListItem title="List Item 3" id="__item2"/></items>
-				                    </List>
-				                </content>
-				            </IconTabFilter>
-				            <IconTabFilter text="Schedule visits" iconColor="Critical" showAll="true"/></items>
-				    </IconTabBar>
+					<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" id="__form1">
+						<sap.ui.layout.form:content>
+							<core:Title text="1. Inception Report" icon="sap-icon://trip-report"/>
+							<Label text="Report Type"/>
+							<ComboBox selectedItem="Element sap.ui.core.ListItem#__item0" value="List Item 1" selectedKey="item1" selectedItemId="__item0" id="__box0"
+								width="70%">
+								<items>
+									<core:ListItem text="List Item 1" key="item1" id="__item0"/>
+									<core:ListItem text="List Item 2" key="item2" id="__item1"/>
+									<core:ListItem text="List Item 3" key="item3" id="__item2"/></items>
+							</ComboBox>
+						</sap.ui.layout.form:content>
+					</sap.ui.layout.form:SimpleForm>
+					<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout">
+						<sap.ui.layout.form:content>
+							<core:Title text="2. Progress against implementation plan"/>
+							<Label text="2.1 Contractual Arrangements"/>
+							<Input width="70%"/>
+							<Label wrapping="true" text="2.2 Establishment of Project Steering Committee"/>
+							<Input width="70%" id="__input2"/>
+							<Label wrapping="true" text="2.3 Service Provider Appointments" width="100%"/>
+							<Input width="70%" id="__input1"/>
+							<Label wrapping="true" text="2.4 Learner Recruitment, Selection and Induction" width="100%"/>
+							<Input width="70%" id="__input3"/>
+							<Label wrapping="true" text="2.5 Arrange and Assess Training Centres" width="100%"/>
+							<Input width="70%" id="__input4"/>
+							<Label wrapping="true" text="2.6 Conduct Training Provider Induction" width="100%"/>
+							<Input width="70%" id="__input5"/>
+							<Label wrapping="true" text="2.7 Upload Learners onto the NLRD" width="100%"/>
+							<Input width="70%" class="sapUiLargeMarginBottom"/>
+							<Label text="3. Invoicing and Payment" width="100%"/>
+							<Input width="70%" class="sapUiLargeMarginBottom"/>
+							<Label text="4. Implementation Challenges" width="100%"/>
+							<Input width="70%" class="sapUiLargeMarginBottom"/>
+							<Label text="5. Implementation Successes" width="100%"/>
+							<Input width="70%" class="sapUiLargeMarginBottom"/>
+							<Label text="6. Recommendations" width="100%"/>
+							<Input width="70%" class="sapUiLargeMarginBottom"/>
+							<Label text="7. Closing Remarks" width="100%"/>
+							<Input width="70%" id="__input11"/></sap.ui.layout.form:content>
+					</sap.ui.layout.form:SimpleForm>
 				</content>
 			</Page>
 		</pages>

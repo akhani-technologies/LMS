@@ -31,6 +31,7 @@ sap.ui.define([
 					var oData = data.result;
 					incidentsModel.setData(oData);
 					oTable.setModel(incidentsModel);
+					sap.ui.getCore().setModel(incidentsModel, "incidentsModel");
 				},
 				error: function(err, e, xhr) {
 
@@ -53,17 +54,12 @@ sap.ui.define([
 				jQuery.sap.log.error("onPrint needs a valid target container [view|data:targetId=\"SID\"]");
 			}
 		},
+		
 		onNavBack: function() {
-			var sPreviousHash = History.getInstance().getPreviousHash();
-			if (sPreviousHash !== undefined) {
-				// The history contains a previous entry
-				history.go(-1);
-			} else {
-				// Otherwise we go backwards with a forward history
-				var bReplace = true;
-				this.getRouter().navTo("master", {}, bReplace);
-			}
+			this.getRouter().navTo("Reporting");
+
 		},
+		
 		handleFilterButtonPressed: function(oEvent) {
 			// var oDialog = this._mViewSettingsDialogs[sDialogFragmentName];
 			// if (!this._oPopover) {
@@ -72,7 +68,14 @@ sap.ui.define([
 			this._oPopover.open();
 			// }
 		},
-		
+
+		onPress: function(oEvent) {
+			var oItem = oEvent.getSource();
+			this.oRouter.navTo("IncidentDetails", {
+				incidentPath: oItem.getBindingContext().getPath().substr(1)
+			});
+		},
+
 		handleFilterIncidentConfirm: function(oEvent) {
 			var oTable = this.byId("tblIncidents"),
 				mParams = oEvent.getParameters(),

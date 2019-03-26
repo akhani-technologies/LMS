@@ -29,53 +29,89 @@
 												<DatePicker width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
 											</VBox>
 											<Label text="Establish Project Steering Committee" wrapping="true" width="100%"/>
-											<Slider id="rate3" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
+											<VBox>
+												<Slider id="rate3" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
 											<Label text="Submit Project Plan" width="100%"/>
-											<Slider id="rate4" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
+											<VBox>
+												<Slider id="rate4" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
 											<Label text="Recruit, Select and Contract Learners" wrapping="true" width="100%"/>
-											<Slider id="rate5" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
+											<VBox>
+												<Slider id="rate5" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
 											<Label text="Perform verification of learner beneficiary types" wrapping="true" width="100%"/>
-											<Slider id="rate6" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
+											<VBox>
+												<Slider id="rate6" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
 											<Label text="Appoint Training Service Providers" wrapping="true" width="100%"/>
-											<Slider id="rate7" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
+											<VBox>
+												<Slider id="rate7" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
 											<Label text="Perform learner uploads" width="100%"/>
-											<Slider id="rate8" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
+											<VBox>
+												<Slider id="rate8" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
 											<Label text="Conduct learner induction" width="100%"/>
-											<Slider id="rate9" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
+											<VBox>
+												<Slider id="rate9" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
 											<Label text="Procure PPE and Toolboxes" width="100%"/>
-											<Slider id="rate10" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
+											<VBox>
+												<Slider id="rate10" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
 											<Label text="Arrange Theoretical Training Venues" wrapping="true" width="100%"/>
-											<Slider id="rate11" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
+											<VBox>
+												<Slider id="rate11" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
 											<Label text="Arrange Practical Training Venues" wrapping="true" width="100%"/>
-											<Slider id="rate12" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
+											<VBox>
+												<Slider id="rate12" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
 											<Label text="Arrange workplaces " width="100%"/>
-											<Slider id="rate13" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
-											<Label text="Opening of dedicated bank account" width="100%"/>
-											<Slider id="rate14" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
+											<VBox>
+												<Slider id="rate13" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
+											<Label wrapping="true" text="Opening of dedicated bank account" width="100%"/>
+											<VBox>
+												<Slider id="rate14" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
 										</sap.ui.layout.form:content>
 									</sap.ui.layout.form:SimpleForm>
 									<FlexBox class="sapUiLargeMarginTop" width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
@@ -94,84 +130,141 @@
 											<core:Title text="Implementation Phase"/>
 											<Label text="Project"/>
 											<Input id="inpImpPorject" width="80%"/>
-											<Label text="Theoretical Training" textAlign="Begin" width="100%"/>
-											<Slider id="TT" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
-											<Label text="Assessment Reports" textAlign="Begin" width="100%"/>
-											<Slider id="AR" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
-											<Label text="Submission of attendance registers" width="100%"/>
-											<Slider id="SOAR" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
-											<Label text="Pay stipends" width="100%"/>
-											<Slider id="PS" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
-											<Label text="M And E visits" width="100%"/>
-											<Slider id="MAEV" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
+											<Label id="lblTT" text="Theoretical Training" textAlign="Begin" width="100%"/>
+											<VBox>
+												<Slider id="TT" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker id="TTdate" width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
+											<Label id="lblAR" text="Assessment Reports" textAlign="Begin" width="100%"/>
+											<VBox>
+												<Slider id="AR" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker width="30%" id="ARdate" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
+											<Label id="lblSOAR" text="Submission of attendance registers" width="100%"/>
+											<VBox>
+												<Slider id="SOAR" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker id="SOARdate" width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
+											<Label id="lblPS" text="Pay stipends" width="100%"/>
+											<VBox>
+												<Slider id="PS" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker id="PSdate" width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
+											<Label id="MAEV"  text="M And E visits" width="100%"/>
+											<VBox>
+												<Slider id="MAEV" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
 											<core:Title text="Second Progress Report"/>
 											<Label text="Proof that learners were furnished with PPE And Toolboxes" wrapping="true" width="100%"/>
-											<Slider id="PTLWFWPAT" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
+											<VBox>
+												<Slider id="PTLWFWPAT" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
 											<Label text="Practical Training" width="100%"/>
-											<Slider id="PrT" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
+											<VBox>
+												<Slider id="PrT" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
 											<Label text="Assessment Reports" width="100%"/>
-											<Slider id="ASR" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
+											<VBox>
+												<Slider id="ASR" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
 											<Label text="Submission of attendance registers" wrapping="true" width="100%"/>
-											<Slider id="SOAR2" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
+											<VBox>
+												<Slider id="SOAR2" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
 											<Label text="Pay stipends" width="100%"/>
-											<Slider id="PS2" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
+											<VBox>
+												<Slider id="PS2" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
 											<Label text="M And E visits" width="100%"/>
-											<Slider id="MAEV2" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
+											<VBox>
+												<Slider id="MAEV2" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
 											<Label text="Moderator Reports" width="100%"/>
-											<Slider id="MR" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
+											<VBox>
+												<Slider id="MR" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
 											<Label text="Interventions for not-yet-competent learners" wrapping="true" width="100%"/>
-											<Slider id="IFNYCL" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
+											<VBox>
+												<Slider id="IFNYCL" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
 											<core:Title text="Third Progress Report"/>
 											<Label text="Preparation of workplaces" width="100%"/>
-											<Slider id="POW" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
+											<VBox>
+												<Slider id="POW" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
 											<Label text="Workplace Training " width="100%"/>
-											<Slider id="WT" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
+											<VBox>
+												<Slider id="WT" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
 											<Label text="Submission of logbooks" width="100%"/>
-											<Slider id="SOL" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
+											<VBox>
+												<Slider id="SOL" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
 											<Label text="Submission of progress reports" width="100%"/>
-											<Slider id="SOPR" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
+											<VBox>
+												<Slider id="SOPR" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
 											<Label text="Pay stipends" width="100%"/>
-											<Slider id="PS3" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
+											<VBox>
+												<Slider id="PS3" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
 											<Label text="M And E visits" width="100%"/>
-											<Slider id="MAEV3" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
+											<VBox>
+												<Slider id="MAEV3" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
 										</sap.ui.layout.form:content>
 									</sap.ui.layout.form:SimpleForm>
 									<FlexBox class="sapUiLargeMarginTop" width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
@@ -190,25 +283,40 @@
 											<Label text="Project"/>
 											<Input id="inpPostPorject" width="80%"/>
 											<Label text="ETQA verification visits" textAlign="Begin" width="100%"/>
-											<Slider id="ETQAVV" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
+											<VBox>
+												<Slider id="ETQAVV" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
 											<Label text="Sign Funding Agreement" textAlign="Begin" width="100%"/>
-											<Slider id="SFA" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
+											<VBox>
+												<Slider id="SFA" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
 											<Label text="Statement of Results" width="100%"/>
-											<Slider id="SOF" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
+											<VBox>
+												<Slider id="SOF" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
 											<Label text="Learner certification" width="100%"/>
-											<Slider id="LC" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
+											<VBox>
+												<Slider id="LC" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
 											<Label text="Close-out Report" width="100%"/>
-											<Slider id="COR" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
-												<ResponsiveScale tickmarksBetweenLabels="10"/>
-											</Slider>
+											<VBox>
+												<Slider id="COR" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+													<ResponsiveScale tickmarksBetweenLabels="10"/>
+												</Slider>
+												<DatePicker width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+											</VBox>
 										</sap.ui.layout.form:content>
 									</sap.ui.layout.form:SimpleForm>
 									<FlexBox class="sapUiLargeMarginTop" width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">

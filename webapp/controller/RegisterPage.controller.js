@@ -64,6 +64,7 @@ sap.ui.define([
 				// this._oViewModel.setProperty("/enableCreate", false);
 			} else {
 				confirm.setValueState("Success");
+				this.onValidateGeneral();
 				// this._oViewModel.setProperty("/enableCreate", true);
 			}
 		},
@@ -78,6 +79,161 @@ sap.ui.define([
 					}.bind(this)
 				}
 			);
+		},
+
+		onValidateGeneral: function() {
+			var aInputControls = this._getSimpleFormFields(this.byId("formGeneral"));
+			var oInputControl;
+			// var oIconBar = this.byId("iconRegister");
+			var sValue;
+			var valid = false;
+			for (var m = 0; m < aInputControls.length; m++) {
+				oInputControl = aInputControls[m].control;
+				var _roadCtrlType = oInputControl.getMetadata().getName();
+
+				if (aInputControls[m].required) {
+					if (_roadCtrlType === "sap.m.ComboBox") {
+						sValue = oInputControl.getSelectedItem();
+					} else {
+						sValue = oInputControl.getValue();
+					}
+					if (!sValue) {
+						valid = false;
+						return;
+					} else {
+						valid = true;
+					}
+				}
+			}
+			if (valid) {
+				this.byId("iconAddress").setEnabled(true);
+				// oIconBar.setSelectedKey("address");
+			} else {
+				this.byId("iconAddress").setEnabled(false);
+				// oIconBar.setSelectedKey("general");
+			}
+		},
+
+		onValidateContact: function() {
+			var aInputControls = this._getSimpleFormFields(this.byId("formContact"));
+			var oInputControl;
+			// var oIconBar = this.byId("iconRegister");
+			var sValue;
+			var valid = false;
+			for (var m = 0; m < aInputControls.length; m++) {
+				oInputControl = aInputControls[m].control;
+				var _roadCtrlType = oInputControl.getMetadata().getName();
+
+				if (aInputControls[m].required) {
+					if (_roadCtrlType === "sap.m.ComboBox") {
+						sValue = oInputControl.getSelectedItem();
+					} else {
+						sValue = oInputControl.getValue();
+					}
+					if (!sValue) {
+						valid = false;
+						return;
+					} else {
+						valid = true;
+					}
+				}
+			}
+			if (valid) {
+				this.byId("btnRegister").setEnabled(true);
+				// oIconBar.setSelectedKey("address");
+			} else {
+				this.byId("btnRegister").setEnabled(false);
+				// oIconBar.setSelectedKey("general");
+			}
+		},
+
+		onValidateAddress: function() {
+			var aInputControls = this._getFormInputFields(this.byId("formAddr"));
+			var oInputControl;
+			// var oIconBar = this.byId("iconRegister");
+			var sValue;
+			var valid = false;
+			for (var m = 0; m < aInputControls.length; m++) {
+				oInputControl = aInputControls[m].control;
+				var _roadCtrlType = oInputControl.getMetadata().getName();
+
+				if (aInputControls[m].required) {
+					if (_roadCtrlType === "sap.m.ComboBox") {
+						sValue = oInputControl.getSelectedItem();
+					} else {
+						sValue = oInputControl.getValue();
+					}
+					if (!sValue) {
+						valid = false;
+
+						return;
+					} else {
+						valid = true;
+
+					}
+				}
+			}
+			if (valid) {
+				this.byId("iconContact").setEnabled(true);
+				// oIconBar.setSelectedKey("contact");
+			} else {
+				this.byId("iconContact").setEnabled(false);
+				// oIconBar.setSelectedKey("general");
+			}
+		},
+
+		_getSimpleFormFields: function(oSimpleForm) {
+			var aControls = [];
+			var aFormContent = oSimpleForm.getContent();
+			var sControlType;
+			for (var i = 0; i < aFormContent.length; i++) {
+				sControlType = aFormContent[i].getMetadata().getName();
+				if (sControlType === "sap.m.Input" || sControlType === "sap.m.MaskInput" || sControlType === "sap.m.ComboBox" || sControlType ===
+					"sap.m.DatePicker") {
+					aControls.push({
+						control: aFormContent[i],
+						required: aFormContent[i - 1].getRequired && aFormContent[i - 1].getRequired()
+					});
+				}
+			}
+			return aControls;
+		},
+
+		_getFormInputFields: function(oForm) {
+			var aControls = [];
+			var aFormContainerElementFields = [];
+			var aFormContainers = oForm.getFormContainers();
+			var bool;
+
+			for (var i = 0; i < aFormContainers.length; i++) {
+				var aFormElements = aFormContainers[i].getFormElements();
+				bool = aFormContainers[i].getVisible();
+				if (bool) {
+					for (var j = 0; j < aFormElements.length; j++) {
+						var oFormElement = aFormElements[j];
+						var aFormFields = oFormElement.getFields();
+						var oFormLabel = oFormElement.getLabel();
+						for (var n = 0; n < aFormFields.length; n++) {
+							aFormContainerElementFields.push({
+								control: aFormFields[n],
+								label: oFormLabel
+							});
+						}
+					}
+				}
+			}
+
+			for (i = 0; i < aFormContainerElementFields.length; i++) {
+				var sControlType = aFormContainerElementFields[i].control.getMetadata().getName();
+				if (sControlType === "sap.m.Input" || sControlType === "sap.m.MaskInput" || sControlType === "sap.m.ComboBox" || sControlType ===
+					"sap.m.DatePicker") {
+					aControls.push({
+						control: aFormContainerElementFields[i].control,
+						required: aFormContainerElementFields[i].label.getRequired()
+					});
+				}
+			}
+			return aControls;
 		}
 
 	});

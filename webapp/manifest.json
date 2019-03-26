@@ -180,6 +180,10 @@
 				"pattern": "Tools/{learnerPath}",
 				"name": "Tools",
 				"target": "Tools"
+			}, {
+				"pattern": "IncidentDetails/{incidentPath}",
+				"name": "IncidentDetails",
+				"target": "IncidentDetails"
 			}],
 			"targets": {
 				"LoginPage": {
@@ -285,6 +289,10 @@
 				"Tools": {
 					"viewId": "Tools",
 					"viewName": "Tools"
+				},
+				"IncidentDetails": {
+					"viewId": "IncidentDetails",
+					"viewName": "IncidentDetails"
 				}
 			}
 		},

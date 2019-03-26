@@ -61,9 +61,9 @@ sap.ui.define([
 			var fingerprint = this.byId("finger1");
 			this.sdk.onSamplesAcquired = function(s) {
 				var samples = JSON.parse(s.samples);
-				// fingerprint.setSrc("data:image/png;base64," + Fingerprint.b64UrlTo64(samples[0]));
-				this.fingerprint = Fingerprint.b64UrlTo64(samples[0]);
-				console.log("WSQ Format  " + this.fingerprint);
+				fingerprint.setSrc("data:image/png;base64," + Fingerprint.b64UrlTo64(samples[0]));
+				this.fingerprint = "data:image/png;base64," + Fingerprint.b64UrlTo64(samples[0]);
+				//console.log("WSQ Format  " + this.fingerprint);
 
 			}.bind(this);
 		},
@@ -71,26 +71,88 @@ sap.ui.define([
 		// onSampleAcquired2:function
 
 		onSaveFingerPrint: function() {
+			var learnerID = this.byId("")
+				//alert("WSQ data Sent.");
+			var urlvariable;
 
-			$.ajax({
-				type: "POST",
-				url: 'http://10.142.0.3:8080/api/fingerprint/enrol-verify/{8002064019183}',
-				async: false,
-				contentType: 'application/json',
-				dataType: 'jsonp',
-				accept: "*/*",
-				data: JSON.stringify({
-					action: "ENROL",
-					fingerPrintData: this.fingerprint,
-					idNumber: "8002064019183"
-				}),
-				success: function(data, s, xhr) {
-					alert("success " + s);
-				}.bind(this),
-				error: function(err, e, xhr) {
-					alert("error " + e);
-				}
+			urlvariable = "text";
+
+			var ItemJSON;
+
+			ItemJSON = {
+				"action": "ENROL",
+				"fingerPrintData": this.fingerprint,
+				"idNumber": "098766523674"
+			};
+
+			var URL = "http://10.142.0.3:8080/api/fingerprint/enrol-verify/098766523674"; //Your URL
+
+			var xmlhttp = new XMLHttpRequest();
+			//xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
+			xmlhttp.open("POST", URL, false);
+			xmlhttp.setRequestHeader("Content-Type", "application/json");
+			xmlhttp.setRequestHeader("accept", "*/*");
+			//xmlhttp.setRequestHeader('Authorization', 'Basic ' + window.btoa('apiusername:apiuserpassword')); 
+			//xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
+			xmlhttp.send(JSON.stringify(ItemJSON));
+			alert("Test response " + xmlhttp.responseText);
+			this.downloadURI(this.fingerprint, "098766523674_01.png", "image/png");
+			document.getElementById("div").innerHTML = xmlhttp.statusText + ":" + xmlhttp.status + "<BR><textarea rows='100' cols='100'>" +
+				xmlhttp.responseText + "</textarea>";
+		},
+
+		downloadURI: function(uri, name, dataURIType) {
+			if (this.IeVersionInfo() > 0) {
+				//alert("This is IE " + IeVersionInfo());
+				var blob = this.dataURItoBlob(uri, dataURIType);
+				window.navigator.msSaveOrOpenBlob(blob, name);
+
+			} else {
+				//alert("This is not IE.");
+
+				var save = document.createElement('a');
+				save.href = uri;
+				save.download = name;
+				var event = document.createEvent("MouseEvents");
+				event.initMouseEvent(
+					"click", true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null
+				);
+				save.dispatchEvent(event);
+			}
+		},
+
+		dataURItoBlob: function(dataURI, dataURIType) {
+			var binary = atob(dataURI.split(',')[1]);
+			var array = [];
+			for (var i = 0; i < binary.length; i++) {
+				array.push(binary.charCodeAt(i));
+			}
+			return new Blob([new Uint8Array(array)], {
+				type: dataURIType
 			});
+		},
+
+		IeVersionInfo: function() {
+			var sAgent = window.navigator.userAgent;
+			var IEVersion = sAgent.indexOf("MSIE");
+
+			// If IE, return version number.
+			if (IEVersion > 0) {
+				return parseInt(sAgent.substring(IEVersion + 5, sAgent.indexOf(".", IEVersion)));
+			}
+
+			// If IE 11 then look for Updated user agent string.
+			else if (!navigator.userAgent.match(/Trident\/7\./)) {
+				return 11;
+			}
+
+			// Quick and dirty test for Microsoft Edge
+			else if (document.documentMode || /Edge/.test(navigator.userAgent)) {
+				return 12;
+			} else {
+				return 0; //If not IE return 0
+			}
+
 		},
 
 		onSelect: function(oEvent) {
