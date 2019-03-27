@@ -90,7 +90,7 @@ sap.ui.define([
 				"idNumber": learnerID
 			};
 
-			var URL = "http://10.142.0.3:8080/api/fingerprint/enrol-verify/" + learnerID; //Your URL
+			var URL = "http://10.142.0.3:8080/api/fingerprint/enrol-verify"; //Your URL
 
 			var xmlhttp = new XMLHttpRequest();
 			//xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
