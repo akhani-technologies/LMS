@@ -92,6 +92,8 @@ sap.ui.define([
 			xmlhttp.open("POST", URL, false);
 			xmlhttp.setRequestHeader("Content-Type", "application/json");
 			xmlhttp.setRequestHeader("accept", "*/*");
+			xmlhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
+			
 			//xmlhttp.setRequestHeader('Authorization', 'Basic ' + window.btoa('apiusername:apiuserpassword')); 
 			//xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
 			xmlhttp.send(JSON.stringify(ItemJSON));

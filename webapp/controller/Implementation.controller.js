@@ -77,53 +77,137 @@ sap.ui.define([
 		},
 
 		onCreateImplementation: function() {
-			var implData = [
-				{Project: this.byId("inpImpPorject").getValue(), Description: this.byId("lblTT").getText(), Date: this.byId("TTdate").getValue(), Rate: this.byId("TT").getValue()},
-				{Project: this.byId("inpImpPorject").getValue(), Description: this.byId("lblAR").getText(), Date: this.byId("ARdate").getValue(), Rate: this.byId("AR").getValue()},
-				{Project: this.byId("inpImpPorject").getValue(), Description: this.byId("lblSOAR").getText(), Date: this.byId("SOARdate").getValue(), Rate: this.byId("SOAR").getValue()},
-				{Project: this.byId("inpImpPorject").getValue(), Description: this.byId("lblPS").getText(), Date: this.byId("PSdate").getValue(), Rate: this.byId("PS").getValue()},
-				{Project: this.byId("inpImpPorject").getValue(), Description: this.byId("lblAR").getText(), Date: this.byId("ARdate").getValue(), Rate: this.byId("MAEV").getValue()},
-				{Project: this.byId("inpImpPorject").getValue(), Description: this.byId("lblAR").getText(), Date: this.byId("ARdate").getValue(), Rate: this.byId("PTLWFWPAT").getValue()},
-				{Project: this.byId("inpImpPorject").getValue(), Description: this.byId("lblAR").getText(), Date: this.byId("ARdate").getValue(), Rate: this.byId("PrT").getValue()},
-				{Project: this.byId("inpImpPorject").getValue(), Description: this.byId("lblAR").getText(), Date: this.byId("ARdate").getValue(), Rate: this.byId("ASR").getValue()},
-				{Project: this.byId("inpImpPorject").getValue(), Description: this.byId("lblAR").getText(), Date: this.byId("ARdate").getValue(), Rate: this.byId("SOAR2").getValue()},
-				{Project: this.byId("inpImpPorject").getValue(), Description: this.byId("lblAR").getText(), Date: this.byId("ARdate").getValue(), Rate: this.byId("PS2").getValue()},
-				{Project: this.byId("inpImpPorject").getValue(), Description: this.byId("lblAR").getText(), Date: this.byId("ARdate").getValue(), Rate: this.byId("MAEV2").getValue()},
-				{Project: this.byId("inpImpPorject").getValue(), Description: this.byId("lblAR").getText(), Date: this.byId("ARdate").getValue(), Rate: this.byId("MR").getValue()},
-				{Project: this.byId("inpImpPorject").getValue(), Description: this.byId("lblAR").getText(), Date: this.byId("ARdate").getValue(), Rate: this.byId("IFNYCL").getValue()},
-				{Project: this.byId("inpImpPorject").getValue(), Description: this.byId("lblAR").getText(), Date: this.byId("ARdate").getValue(), Rate: this.byId("POW").getValue()},
-				{Project: this.byId("inpImpPorject").getValue(), Description: this.byId("lblAR").getText(), Date: this.byId("ARdate").getValue(), Rate: this.byId("WT").getValue()},
-				{Project: this.byId("inpImpPorject").getValue(), Description: this.byId("lblAR").getText(), Date: this.byId("ARdate").getValue(), Rate: this.byId("SOL").getValue()},
-				{Project: this.byId("inpImpPorject").getValue(), Description: this.byId("lblAR").getText(), Date: this.byId("ARdate").getValue(), Rate: this.byId("SOPR").getValue()},
-				{Project: this.byId("inpImpPorject").getValue(), Description: this.byId("lblAR").getText(), Date: this.byId("ARdate").getValue(), Rate: this.byId("PS3").getValue()},
-				{Project: this.byId("inpImpPorject").getValue(), Description: this.byId("lblAR").getText(), Date: this.byId("ARdate").getValue(), Rate: this.byId("MAEV3").getValue()},
-				{Project: this.byId("inpImpPorject").getValue(), Description: this.byId("lblAR").getText(), Date: this.byId("ARdate").getValue(), Rate: this.byId("inpImpPorject").getValue()}
-				
-				];
-			
+			var implData = [{
+				Project: this.byId("inpImpPorject").getValue(),
+				Description: this.byId("lblTT").getText(),
+				Date: this.byId("TTdate").getValue(),
+				Rate: this.byId("TT").getValue()
+			}, {
+				Project: this.byId("inpImpPorject").getValue(),
+				Description: this.byId("lblAR").getText(),
+				Date: this.byId("ARdate").getValue(),
+				Rate: this.byId("AR").getValue()
+			}, {
+				Project: this.byId("inpImpPorject").getValue(),
+				Description: this.byId("lblSOAR").getText(),
+				Date: this.byId("SOARdate").getValue(),
+				Rate: this.byId("SOAR").getValue()
+			}, {
+				Project: this.byId("inpImpPorject").getValue(),
+				Description: this.byId("lblPS").getText(),
+				Date: this.byId("PSdate").getValue(),
+				Rate: this.byId("PS").getValue()
+			}, {
+				Project: this.byId("inpImpPorject").getValue(),
+				Description: this.byId("lblMAEV").getText(),
+				Date: this.byId("MAEVdate").getValue(),
+				Rate: this.byId("MAEV").getValue()
+			}, {
+				Project: this.byId("inpImpPorject").getValue(),
+				Description: this.byId("lblPTLWFWPAT").getText(),
+				Date: this.byId("PTLWFWPATdate").getValue(),
+				Rate: this.byId("PTLWFWPAT").getValue()
+			}, {
+				Project: this.byId("inpImpPorject").getValue(),
+				Description: this.byId("lblPrT").getText(),
+				Date: this.byId("PrTdate").getValue(),
+				Rate: this.byId("PrT").getValue()
+			}, {
+				Project: this.byId("inpImpPorject").getValue(),
+				Description: this.byId("lblASR").getText(),
+				Date: this.byId("ASRdate").getValue(),
+				Rate: this.byId("ASR").getValue()
+			}, {
+				Project: this.byId("inpImpPorject").getValue(),
+				Description: this.byId("lblSOAR2").getText(),
+				Date: this.byId("SOAR2date").getValue(),
+				Rate: this.byId("SOAR2").getValue()
+			}, {
+				Project: this.byId("inpImpPorject").getValue(),
+				Description: this.byId("lblPS2").getText(),
+				Date: this.byId("PS2date").getValue(),
+				Rate: this.byId("PS2").getValue()
+			}, {
+				Project: this.byId("inpImpPorject").getValue(),
+				Description: this.byId("lblMAEV2").getText(),
+				Date: this.byId("MAEV2date").getValue(),
+				Rate: this.byId("MAEV2").getValue()
+			}, {
+				Project: this.byId("inpImpPorject").getValue(),
+				Description: this.byId("lblMR").getText(),
+				Date: this.byId("MRdate").getValue(),
+				Rate: this.byId("MR").getValue()
+			}, {
+				Project: this.byId("inpImpPorject").getValue(),
+				Description: this.byId("lblIFNYCL").getText(),
+				Date: this.byId("IFNYCLdate").getValue(),
+				Rate: this.byId("IFNYCL").getValue()
+			}, {
+				Project: this.byId("inpImpPorject").getValue(),
+				Description: this.byId("lblPOW").getText(),
+				Date: this.byId("POWdate").getValue(),
+				Rate: this.byId("POW").getValue()
+			}, {
+				Project: this.byId("inpImpPorject").getValue(),
+				Description: this.byId("lblWT").getText(),
+				Date: this.byId("WTdate").getValue(),
+				Rate: this.byId("WT").getValue()
+			}, {
+				Project: this.byId("inpImpPorject").getValue(),
+				Description: this.byId("lblSOL").getText(),
+				Date: this.byId("SOLdate").getValue(),
+				Rate: this.byId("SOL").getValue()
+			}, {
+				Project: this.byId("inpImpPorject").getValue(),
+				Description: this.byId("lblSOPR").getText(),
+				Date: this.byId("SOPRdate").getValue(),
+				Rate: this.byId("SOPR").getValue()
+			}, {
+				Project: this.byId("inpImpPorject").getValue(),
+				Description: this.byId("lblPS3").getText(),
+				Date: this.byId("PS3date").getValue(),
+				Rate: this.byId("PS3").getValue()
+			}, {
+				Project: this.byId("inpImpPorject").getValue(),
+				Description: this.byId("lblMAEV3").getText(),
+				Date: this.byId("MAEV3date").getValue(),
+				Rate: this.byId("MAEV3").getValue()
+			}];
 
-			// $.ajax({
-			// 	type: "POST",
-			// 	async: false,
-			// 	cache: false,
-			// 	url: 'PHP/CreateImplementation.php',
-			// 	data: oData,
-			// 	//successfully logged on 
-			// 	success: function(data, response, xhr) {
-			// 		var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
-			// 		MessageBox.success(
-			// 			"Implementation rates successfully saved", {
-			// 				styleClass: bCompact ? "sapUiSizeCompact" : "",
-			// 				onClose: function(sAction) {
-			// 					this.oRouter.navTo("MenuPage");
-			// 				}.bind(this)
-			// 			}
-			// 		);
-			// 	}.bind(this),
-			// 	error: function(e, status, xhr) {
+			for (var i = 0; i < implData.length; i++) {
+				$.ajax({
+					type: "POST",
+					async: false,
+					cache: false,
+					url: 'PHP/CreateImplementation.php',
+					data: {
+						Project: implData[i].Project,
+						Description: implData[i].Description,
+						Date: implData[i].Date,
+						Rate: implData[i].Rate
+					},
+					//successfully logged on 
+					success: function(data, response, xhr) {
 
-			// 	}
-			// });
+						if (i === implData.length) {
+							var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
+							MessageBox.success(
+								"Implementation rates successfully saved", {
+									styleClass: bCompact ? "sapUiSizeCompact" : "",
+									onClose: function(sAction) {
+										this.oRouter.navTo("MenuPage");
+									}.bind(this)
+								}
+							);
+						}
+
+					}.bind(this),
+					error: function(e, status, xhr) {
+
+					}
+				});
+			}
+
 		},
 
 		createPostImp: function() {
