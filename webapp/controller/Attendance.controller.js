@@ -35,19 +35,24 @@ sap.ui.define([
 			};
 			this.onGetFacilitators();
 			this.onGetLearner();
+
+			this.byId("type").setSelectedItem(null);
+			this.byId("conType").setSelectedItem(null);
+			this.byId("cmbClock").setSelectedItem(null);
+			this.byId("txtNotes").setValue(null);
 		},
 
 		onGetFacilitators: function() {
 			var oSelect = this.byId("cmbFacilitator");
-			var facilitatorModel = new sap.ui.model.json.JSONModel();
+			this.facilitatorModel = new sap.ui.model.json.JSONModel();
 			$.ajax({
 				url: 'PHP/getFacilitators.php',
 				async: false,
 				success: function(data) {
 					var oData = data.result;
-					facilitatorModel.setData(oData);
-					oSelect.setModel(facilitatorModel);
-				},
+					this.facilitatorModel.setData(oData);
+					oSelect.setModel(this.facilitatorModel);
+				}.bind(this),
 				error: function(err, e, xhr) {
 
 				}
@@ -102,19 +107,52 @@ sap.ui.define([
 
 		onSaveDetails: function(oEvent) {
 			var oData = {};
-			oData.AttendanceID = mysqli_real_escape_string($conn, $_POST['AttendanceID']);
-			oData.UserType = mysqli_real_escape_string($conn, $_POST['UserType']);
-			oData.ConfirmationType = mysqli_real_escape_string($conn, $_POST['ConfirmationType']);
-			oData.IDNumber = mysqli_real_escape_string($conn, $_POST['IDNumber']);
-			oData.TimeIn = mysqli_real_escape_string($conn, $_POST['TimeIn']);
-			oData.TimeOut = mysqli_real_escape_string($conn, $_POST['TimeOut']);
-			oData.Date = mysqli_real_escape_string($conn, $_POST['Date']);
-			oData.Notes = mysqli_real_escape_string($conn, $_POST['Notes']);
-			oData.Status = mysqli_real_escape_string($conn, $_POST['Status']);
-			oData.Name = mysqli_real_escape_string($conn, $_POST['Name']);
-			oData.Surname = mysqli_real_escape_string($conn, $_POST['Surname']);
+			oData.AttendanceID = parseInt(("" + Math.random()).substring(2, 5));
+			oData.UserType = this.byId("type").getSelectedItem().getText();
+			oData.ConfirmationType = this.byId("conType").getSelectedItem().getText();
+			oData.Clock = this.byId("cmbClock").getSelectedItem().getText();
+			oData.Notes = this.byId("txtNotes").getValue();
+			oData.Status = "Verified";
+			var dt = new Date();
+			oData.Stamp = dt.toString();
+			if (oData.UserType === "Learner") {
+				oData.IDNumber = this.LearnerID;
+				oData.Name = this.LearnerName;
+			} else {
+				oData.IDNumber = this.FacilitatorID;
+				oData.Name = this.FacilitatorName;
+			}
 
-			this.handleSuccessMessageBoxPress();
+			$.ajax({
+				type: "POST",
+				async: false,
+				cache: false,
+				url: 'PHP/createAttendance.php',
+				data: oData,
+				//successfully logged on 
+				success: function(data, response, xhr) {
+					this.handleSuccessMessageBoxPress();
+				}.bind(this),
+				error: function(e, status, xhr) {
+
+				}
+			});
+
+			// this.handleSuccessMessageBoxPress();
+		},
+
+		onSelectLeaner: function(oEvent) {
+			var sPath = oEvent.getSource().getSelectedItem().getBindingContext().getPath();
+			var properties = this.LearnerModel.getProperty(sPath);
+			this.LearnerID = properties.IDNumber;
+			this.LearnerName = properties.Name + " " + properties.Surname;
+		},
+
+		onSelectFacilitator: function(oEvent) {
+			var sPath = oEvent.getSource().getSelectedItem().getBindingContext().getPath();
+			var properties = this.facilitatorModell.getProperty(sPath);
+			this.FacilitatorID = properties.IDNumber;
+			this.FacilitatorName = properties.Name + " " + properties.Surname;
 		},
 
 		onTypeSelect: function(oEvent) {

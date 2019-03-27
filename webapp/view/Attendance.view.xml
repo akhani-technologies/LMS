@@ -8,14 +8,14 @@
 						<sap.ui.layout.form:content>
 							<core:Title text="Attendance" emphasized="true" icon="sap-icon://task"/>
 							<Label text="User Type"/>
-							<ComboBox width="60%" change="onTypeSelect">
+							<ComboBox id="type" width="60%" change="onTypeSelect">
 								<items>
 									<core:ListItem text="Learner"/>
 									<core:ListItem text="Facilitator"/>
 								</items>
 							</ComboBox>
 							<Label visible="false" id="lblLearner" text="Learner"/>
-							<ComboBox visible="false" items="{path: '/'}" id="cmbLearner" width="60%">
+							<ComboBox change="onSelectLeaner" visible="false" items="{path: '/'}" id="cmbLearner" width="60%">
 								<items>
 									<core:ListItem text="{Name} {Surname}({IDNumber})"/>
 								</items>
@@ -27,7 +27,7 @@
 							<!--	</items>-->
 							<!--</ComboBox>-->
 							<Label visible="false" id="lblFacilitator" text="Facilitator"/>
-							<ComboBox visible="false" items="{path: '/'}" id="cmbFacilitator" width="60%">
+							<ComboBox change="onSelectFacilitator" visible="false" items="{path: '/'}" id="cmbFacilitator" width="60%">
 								<items>
 									<core:ListItem text="{Name}"/>
 								</items>
@@ -40,12 +40,14 @@
 									<core:ListItem text="Leaving"/></items>
 							</ComboBox>
 							<Label text="Clock In/Out"/>
-							<ComboBox width="60%">
+							<ComboBox id="cmbClock" width="60%">
 								<items>
 									<core:ListItem text="Clock In"/>
 									<core:ListItem text="Clock Out"/>
 								</items>
 							</ComboBox>
+							<Label text="notes" />
+							<TextArea width="60%" id="txtNotes" placeholder="Enter notes here" growing="true" growingMaxLines="7"/>
 							<Label text="FingerPrint"/>
 							<FlexBox width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
 								<items>

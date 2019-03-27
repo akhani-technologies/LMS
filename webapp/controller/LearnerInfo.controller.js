@@ -10,6 +10,11 @@ sap.ui.define([
 		onInit: function() {
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			this.oRouter.getRoute("LearnerInfo").attachPatternMatched(this._onObjectMatched, this);
+			var event = document.createEvent("MouseEvents");
+            event.initMouseEvent(
+                    "click", true, false, window, 0, 0, 0, 0, 0
+                    , false, false, false, false, 0, null
+            );
 			if (!this.sdk) {
 				this.sdk = new Fingerprint.WebApi();
 			}
@@ -71,21 +76,21 @@ sap.ui.define([
 		// onSampleAcquired2:function
 
 		onSaveFingerPrint: function() {
-			var learnerID = this.byId("")
-				//alert("WSQ data Sent.");
-			var urlvariable;
+			var learnerID = this.byId("inpID").getValue();
+			//alert("WSQ data Sent.");
+			// var urlvariable;
 
-			urlvariable = "text";
+			// urlvariable = "text";
 
 			var ItemJSON;
 
 			ItemJSON = {
 				"action": "ENROL",
 				"fingerPrintData": this.fingerprint,
-				"idNumber": "098766523674"
+				"idNumber": learnerID
 			};
 
-			var URL = "http://10.142.0.3:8080/api/fingerprint/enrol-verify/098766523674"; //Your URL
+			var URL = "http://10.142.0.3:8080/api/fingerprint/enrol-verify/" + learnerID; //Your URL
 
 			var xmlhttp = new XMLHttpRequest();
 			//xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
@@ -93,12 +98,12 @@ sap.ui.define([
 			xmlhttp.setRequestHeader("Content-Type", "application/json");
 			xmlhttp.setRequestHeader("accept", "*/*");
 			xmlhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
-			
+
 			//xmlhttp.setRequestHeader('Authorization', 'Basic ' + window.btoa('apiusername:apiuserpassword')); 
 			//xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
 			xmlhttp.send(JSON.stringify(ItemJSON));
 			alert("Test response " + xmlhttp.responseText);
-			this.downloadURI(this.fingerprint, "098766523674_01.png", "image/png");
+			this.downloadURI(this.fingerprint, learnerID + "_01.png", "image/png");
 			document.getElementById("div").innerHTML = xmlhttp.statusText + ":" + xmlhttp.status + "<BR><textarea rows='100' cols='100'>" +
 				xmlhttp.responseText + "</textarea>";
 		},

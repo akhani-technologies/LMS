@@ -1,7 +1,7 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
-	"sap/ui/core/routing/History"
-], function(Controller, History) {
+	'sap/ui/model/Filter'
+], function(Controller, Filter) {
 	"use strict";
 
 	return Controller.extend("programmeMotse.controller.AttendanceReport", {
@@ -12,21 +12,89 @@ sap.ui.define([
 		 * @memberOf programmeMotse.view.AttendanceReport
 		 */
 		onInit: function() {
+			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			this.oRouter.getRoute("AttendanceReport").attachPatternMatched(this._onObjectMatched, this);
+		},
 
+		_onObjectMatched: function(oEvent) {
+			this.onGetAttendance();
 		},
 
 		onNavBack: function() {
-			var sPreviousHash = History.getInstance().getPreviousHash();
+			this.getRouter().navTo("Reporting");
 
-			if (sPreviousHash !== undefined) {
-				// The history contains a previous entry
-				history.go(-1);
-			} else {
-				// Otherwise we go backwards with a forward history
-				var bReplace = true;
-				this.getRouter().navTo("master", {}, bReplace);
-			}
 		},
+
+		onPress: function(oEvent) {
+			var oItem = oEvent.getSource();
+			this.oRouter.navTo("AttendanceDetails", {
+				attendancePath: oItem.getBindingContext().getPath().substr(1)
+			});
+		},
+
+		onGetAttendance: function() {
+			this.AttendModel = new sap.ui.model.json.JSONModel();
+			var oTable = this.byId("tblAttendance");
+			$.ajax({
+				url: 'PHP/getAttendance.php',
+				async: false,
+				success: function(data) {
+					var oData = data.result;
+					this.AttendModel.setData(oData);
+					oTable.setModel(this.AttendModel);
+					sap.ui.getCore().setModel(this.AttendModel, "AttendModel");
+				}.bind(this),
+				error: function(err, e, xhr) {
+
+				}
+			});
+
+		},
+
+		handleFilterButtonPressed: function(oEvent) {
+			// var oDialog = this._mViewSettingsDialogs[sDialogFragmentName];
+			// if (!this._oPopover) {
+			this._oPopover = sap.ui.xmlfragment("programmeMotse.view.Fragments.AttendanceFilter", this);
+			this.getView().addDependent(this._oPopover);
+			this._oPopover.open();
+			// }
+		},
+
+		handleFilterAttendConfirm: function(oEvent) {
+			var oTable = this.byId("tblAttendance"),
+				mParams = oEvent.getParameters(),
+				oBinding = oTable.getBinding("items"),
+				aFilters = [];
+
+			mParams.filterItems.forEach(function(oItem) {
+				var aSplit = oItem.getKey().split("+"),
+					sPath = aSplit[0],
+					sOperator = aSplit[1],
+					sValue1 = aSplit[2],
+					sValue2 = aSplit[3],
+					oFilter = new Filter(sPath, sOperator, sValue1, sValue2);
+				aFilters.push(oFilter);
+			});
+
+			// apply filter settings
+			oBinding.filter(aFilters);
+		},
+
+		onPrint: function() {
+			var oTarget = this.byId("tblAttendance");
+
+			if (oTarget) {
+				var $domTarget = oTarget.$()[0],
+					sTargetContent = $domTarget.innerHTML,
+					sOriginalContent = document.body.innerHTML;
+
+				document.body.innerHTML = sTargetContent;
+				window.print();
+				document.body.innerHTML = sOriginalContent;
+			} else {
+				jQuery.sap.log.error("onPrint needs a valid target container [view|data:targetId=\"SID\"]");
+			}
+		}
 
 		/**
 		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered

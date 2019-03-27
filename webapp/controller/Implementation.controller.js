@@ -189,7 +189,7 @@ sap.ui.define([
 					//successfully logged on 
 					success: function(data, response, xhr) {
 
-						if (i === implData.length) {
+						if (i === 18) {
 							var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
 							MessageBox.success(
 								"Implementation rates successfully saved", {

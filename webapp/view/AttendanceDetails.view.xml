@@ -1,0 +1,30 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="programmeMotse.controller.AttendanceDetails">
+	<App>
+		<pages>
+			<Page showNavButton="true">
+				<content>
+			 <ObjectHeader title="{Name}" number="{AttendanceID}" intro="{Stamp}" introActive="true" titleActive="true"/><sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" id="__form0">
+				        <sap.ui.layout.form:content>
+				            <core:Title text="Attendance Info" icon="sap-icon://account"/>
+				            <Label text="User Type"/>
+				            <Input width="70%" value="{UserType}" enabled="false"/>
+				            <Label text="Confirmation Type" width="100%"/>
+				            <Input width="70%" value="{ConfirmationType}" enabled="false"/>
+				            <Label text="ID Number" width="100%"/>
+				            <Input width="70%" value="{Clock}" editable="false" enabled="false"/>
+				            <Label text="Notes" width="100%"/>
+				            <TextArea value="{Notes}" enabled="false" width="70%"/></sap.ui.layout.form:content>
+				    </sap.ui.layout.form:SimpleForm>
+				</content>
+			<footer>
+			    <Toolbar width="100%">
+			        <content>
+			            <ToolbarSpacer/>
+			            <Button text="Print" press="onPrint" width="100px" icon="sap-icon://print"/>
+			        </content>
+			    </Toolbar>
+			</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
