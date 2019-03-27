@@ -20,7 +20,7 @@ if ($conn->connect_error) {
  
  while($row = mysqli_fetch_array($res)){
  array_push($result, 
- array('postID'=>$row[0],'PostRate1'=>$row[1],'PostRate2'=>$row[2],'PostRate3'=>$row[3],'PostRate4'=>$row[4],'PostRate5'=>$row[5],'PostProject'=>$row[6]));
+ array('Project'=>$row[0],'Description'=>$row[1],'Date'=>$row[2],'Rate'=>$row[3]));
  }
  
  header('Content-Type: application/json');

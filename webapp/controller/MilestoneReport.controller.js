@@ -37,7 +37,7 @@ sap.ui.define([
 		},
 
 		onGetImplementation: function() {
-			var oSelect = this.byId("ImpCmb");
+			var oSelect = this.byId("tblImp");
 			this.ImpModel = new sap.ui.model.json.JSONModel();
 			$.ajax({
 				url: 'PHP/getImplementation.php',
@@ -53,7 +53,7 @@ sap.ui.define([
 			});
 		},
 		onGetPreImplementation: function() {
-			var oSelect = this.byId("preCmb");
+			var oSelect = this.byId("tblPre");
 			this.PreModel = new sap.ui.model.json.JSONModel();
 			$.ajax({
 				url: 'PHP/getPreImplement.php',
@@ -69,7 +69,7 @@ sap.ui.define([
 			});
 		},
 		onGetPostImplementation: function() {
-			var oSelect = this.byId("PostCmb");
+			var oSelect = this.byId("tblPost");
 			this.PostModel = new sap.ui.model.json.JSONModel();
 			$.ajax({
 				url: 'PHP/getPostImplement.php',
@@ -94,9 +94,10 @@ sap.ui.define([
 		},
 
 		onSelectPre: function(oEvent) {
+			var oTable = this.byId("tblPre");
 			var sPath = oEvent.getSource().getSelectedItem().getBindingContext().getPath();
-			this.getView().setModel(this.PreModel);
-			this.getView().bindElement({
+			oTable.setModel(this.PreModel);
+			oTable.bindElement({
 				path: sPath
 			});
 		},

@@ -211,79 +211,173 @@ sap.ui.define([
 		},
 
 		createPostImp: function() {
-			var odata = {};
-			odata.postID = parseInt(("" + Math.random()).substring(2, 5));
-			odata.ETQA = this.byId("ETQAVV").getValue();
-			odata.SignFunding = this.byId("SFA").getValue();
-			odata.Statement = this.byId("SOF").getValue();
-			odata.LearnerCertification = this.byId("LC").getValue();
-			odata.CloseoutReport = this.byId("COR").getValue();
-			odata.Project = this.byId("inpPostPorject").getValue();
 
-			$.ajax({
-				type: "POST",
-				async: false,
-				cache: false,
-				url: 'PHP/CreatePostImplementation.php',
-				data: odata,
-				//successfully logged on 
-				success: function(data, response, xhr) {
-					var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
-					MessageBox.success(
-						"Post-Implementation rates successfully saved", {
-							styleClass: bCompact ? "sapUiSizeCompact" : "",
-							onClose: function(sAction) {
-								this.oRouter.navTo("MenuPage");
-							}.bind(this)
+			var implData = [{
+				Project: this.byId("inpPostPorject").getValue(),
+				Description: this.byId("lblETQAVV").getText(),
+				Date: this.byId("ETQAVVdate").getValue(),
+				Rate: this.byId("ETQAVV").getValue()
+			}, {
+				Project: this.byId("inpPostPorject").getValue(),
+				Description: this.byId("lblSFA").getText(),
+				Date: this.byId("SFAdate").getValue(),
+				Rate: this.byId("SFA").getValue()
+			}, {
+				Project: this.byId("inpPostPorject").getValue(),
+				Description: this.byId("lblSOF").getText(),
+				Date: this.byId("SOFdate").getValue(),
+				Rate: this.byId("SOF").getValue()
+			}, {
+				Project: this.byId("inpPostPorject").getValue(),
+				Description: this.byId("lblLC").getText(),
+				Date: this.byId("LCdate").getValue(),
+				Rate: this.byId("LC").getValue()
+			}, {
+				Project: this.byId("inpPostPorject").getValue(),
+				Description: this.byId("lblCOR").getText(),
+				Date: this.byId("CORdate").getValue(),
+				Rate: this.byId("COR").getValue()
+			}];
+
+			for (var i = 0; i < implData.length; i++) {
+				$.ajax({
+					type: "POST",
+					async: false,
+					cache: false,
+					url: 'PHP/CreatePostImplementation.php',
+					data: {
+						Project: implData[i].Project,
+						Description: implData[i].Description,
+						Date: implData[i].Date,
+						Rate: implData[i].Rate
+					},
+					//successfully logged on 
+					success: function(data, response, xhr) {
+
+						if (i === 18) {
+							var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
+							MessageBox.success(
+								"Post-Implementation rates successfully saved", {
+									styleClass: bCompact ? "sapUiSizeCompact" : "",
+									onClose: function(sAction) {
+										this.oRouter.navTo("MenuPage");
+									}.bind(this)
+								}
+							);
+
 						}
-					);
-				}.bind(this),
-				error: function(e, status, xhr) {
+					}.bind(this),
+					error: function(e, status, xhr) {
 
-				}
-			});
+					}
+				});
+			}
+
 		},
 
 		createPreImp: function() {
-			var odata = {};
-			odata.PreID = parseInt(("" + Math.random()).substring(2, 5));
-			odata.ProjectApproval = this.byId("rate1").getValue();
-			odata.SignFunding = this.byId("rate2").getValue();
-			odata.ProjectSteering = this.byId("rate3").getValue();
-			odata.ProjectPlan = this.byId("rate4").getValue();
-			odata.ContractLearners = this.byId("rate5").getValue();
-			odata.Verification = this.byId("rate6").getValue();
-			odata.ServiceProviders = this.byId("rate7").getValue();
-			odata.LearnerUploads = this.byId("rate8").getValue();
-			odata.LearnerInduction = this.byId("rate9").getValue();
-			odata.ProcedurePPE = this.byId("rate10").getValue();
-			odata.ArrangeTTVenue = this.byId("rate11").getValue();
-			odata.ArrangePTVenue = this.byId("rate12").getValue();
-			odata.ArrangeWorkplaces = this.byId("rate13").getValue();
-			odata.Project = this.byId("inpPrePorject").getValue();
 
-			$.ajax({
-				type: "POST",
-				async: false,
-				cache: false,
-				url: 'PHP/CreatePreImplementation.php',
-				data: odata,
-				//successfully logged on 
-				success: function(data, response, xhr) {
-					var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
-					MessageBox.success(
-						"Pre-Implementation rates successfully saved", {
-							styleClass: bCompact ? "sapUiSizeCompact" : "",
-							onClose: function(sAction) {
-								this.oRouter.navTo("MenuPage");
-							}.bind(this)
+
+			var implData = [{
+				Project: this.byId("inpPrePorject").getValue(),
+				Description: this.byId("lblrate1").getText(),
+				Date: this.byId("rate1date").getValue(),
+				Rate: this.byId("rate1").getValue()
+			}, {
+				Project: this.byId("inpPrePorject").getValue(),
+				Description: this.byId("lblrate2").getText(),
+				Date: this.byId("rate2date").getValue(),
+				Rate: this.byId("rate2").getValue()
+			}, {
+				Project: this.byId("inpPrePorject").getValue(),
+				Description: this.byId("lblrate3").getText(),
+				Date: this.byId("rate3date").getValue(),
+				Rate: this.byId("rate3").getValue()
+			}, {
+				Project: this.byId("inpPrePorject").getValue(),
+				Description: this.byId("lblrate4").getText(),
+				Date: this.byId("rate4date").getValue(),
+				Rate: this.byId("rate4").getValue()
+			}, {
+				Project: this.byId("inpPrePorject").getValue(),
+				Description: this.byId("lblrate5").getText(),
+				Date: this.byId("rate5date").getValue(),
+				Rate: this.byId("rate5").getValue()
+			}, {
+				Project: this.byId("inpPrePorject").getValue(),
+				Description: this.byId("lblrate6").getText(),
+				Date: this.byId("rate6date").getValue(),
+				Rate: this.byId("rate6").getValue()
+			}, {
+				Project: this.byId("inpPrePorject").getValue(),
+				Description: this.byId("lblrate7").getText(),
+				Date: this.byId("rate7date").getValue(),
+				Rate: this.byId("rate7").getValue()
+			}, {
+				Project: this.byId("inpPrePorject").getValue(),
+				Description: this.byId("lblrate8").getText(),
+				Date: this.byId("rate8date").getValue(),
+				Rate: this.byId("rate8").getValue()
+			}, {
+				Project: this.byId("inpPrePorject").getValue(),
+				Description: this.byId("lblrate9").getText(),
+				Date: this.byId("rate9date").getValue(),
+				Rate: this.byId("rate9").getValue()
+			}, {
+				Project: this.byId("inpPrePorject").getValue(),
+				Description: this.byId("lblrate10").getText(),
+				Date: this.byId("rate10date").getValue(),
+				Rate: this.byId("rate10").getValue()
+			}, {
+				Project: this.byId("inpPrePorject").getValue(),
+				Description: this.byId("lblrate11").getText(),
+				Date: this.byId("rate11date").getValue(),
+				Rate: this.byId("rate11").getValue()
+			}, {
+				Project: this.byId("inpPrePorject").getValue(),
+				Description: this.byId("lblrate12").getText(),
+				Date: this.byId("rate12date").getValue(),
+				Rate: this.byId("rate12").getValue()
+			}, {
+				Project: this.byId("inpPrePorject").getValue(),
+				Description: this.byId("lblrate13").getText(),
+				Date: this.byId("rate13date").getValue(),
+				Rate: this.byId("rate13").getValue()
+			}];
+
+			for (var i = 0; i < implData.length; i++) {
+				$.ajax({
+					type: "POST",
+					async: false,
+					cache: false,
+					url: 'PHP/CreatePreImplementation.php',
+					data: {
+						Project: implData[i].Project,
+						Description: implData[i].Description,
+						Date: implData[i].Date,
+						Rate: implData[i].Rate
+					},
+					//successfully logged on 
+					success: function(data, response, xhr) {
+						if (i === 12) {
+							var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
+							MessageBox.success(
+								"Pre-Implementation rates successfully saved", {
+									styleClass: bCompact ? "sapUiSizeCompact" : "",
+									onClose: function(sAction) {
+										this.oRouter.navTo("MenuPage");
+									}.bind(this)
+								}
+							);
 						}
-					);
-				}.bind(this),
-				error: function(e, status, xhr) {
 
-				}
-			});
+					}.bind(this),
+					error: function(e, status, xhr) {
+
+					}
+				});
+			}
+
 		}
 
 	});

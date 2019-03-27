@@ -11,7 +11,7 @@
 				            <Label text="Confirmation Type" width="100%"/>
 				            <Input width="70%" value="{ConfirmationType}" enabled="false"/>
 				            <Label text="ID Number" width="100%"/>
-				            <Input width="70%" value="{Clock}" editable="false" enabled="false"/>
+				            <Input width="70%" value="{IDNumber}" editable="false" enabled="false"/>
 				            <Label text="Notes" width="100%"/>
 				            <TextArea value="{Notes}" enabled="false" width="70%"/></sap.ui.layout.form:content>
 				    </sap.ui.layout.form:SimpleForm>

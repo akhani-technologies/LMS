@@ -9,17 +9,14 @@ if ($conn->connect_error) {     // Check connection
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$postID = mysqli_real_escape_string($conn, $_POST['postID']); 
-$ETQA = mysqli_real_escape_string($conn, $_POST['ETQA']);
-$SignFunding = mysqli_real_escape_string($conn, $_POST['SignFunding']);
-$Statement = mysqli_real_escape_string($conn, $_POST['Statement']); 
-$LearnerCertification = mysqli_real_escape_string($conn, $_POST['LearnerCertification']); 
-$CloseoutReport = mysqli_real_escape_string($conn, $_POST['CloseoutReport']); 
 $Project = mysqli_real_escape_string($conn, $_POST['Project']); 
+$Description = mysqli_real_escape_string($conn, $_POST['Description']);
+$Date = mysqli_real_escape_string($conn, $_POST['Date']);
+$Rate = mysqli_real_escape_string($conn, $_POST['Rate']); 
 
-$sql = "INSERT INTO postimplementation(postID, ETQA, SignFunding, Statement, LearnerCertification, CloseoutReport, Project) 
-VALUES ('$postID','$ETQA', '$SignFunding', '$Statement','$LearnerCertification','$CloseoutReport', '$Project') ON DUPLICATE KEY UPDATE 
-ETQA='$ETQA',SignFunding='$SignFunding',Statement='$Statement',LearnerCertification='$LearnerCertification',CloseoutReport='$CloseoutReport'";
+
+$sql = "INSERT INTO postimplementation(Project, Description, Date, Rate) 
+VALUES ('$Project','$Description', '$Date', '$Rate') ";
 
 if ($conn->query($sql) === TRUE) {
     echo "Page saved!";

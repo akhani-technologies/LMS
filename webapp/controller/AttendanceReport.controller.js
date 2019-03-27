@@ -21,7 +21,7 @@ sap.ui.define([
 		},
 
 		onNavBack: function() {
-			this.getRouter().navTo("Reporting");
+			this.oRouter.navTo("Reporting");
 
 		},
 
@@ -95,6 +95,7 @@ sap.ui.define([
 				jQuery.sap.log.error("onPrint needs a valid target container [view|data:targetId=\"SID\"]");
 			}
 		}
+
 
 		/**
 		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered

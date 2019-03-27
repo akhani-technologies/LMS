@@ -11,10 +11,9 @@ sap.ui.define([
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			this.oRouter.getRoute("LearnerInfo").attachPatternMatched(this._onObjectMatched, this);
 			var event = document.createEvent("MouseEvents");
-            event.initMouseEvent(
-                    "click", true, false, window, 0, 0, 0, 0, 0
-                    , false, false, false, false, 0, null
-            );
+			event.initMouseEvent(
+				"click", true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null
+			);
 			if (!this.sdk) {
 				this.sdk = new Fingerprint.WebApi();
 			}
@@ -90,7 +89,7 @@ sap.ui.define([
 				"idNumber": learnerID
 			};
 
-			var URL = "http://10.142.0.3:8080/api/fingerprint/enrol-verify"; //Your URL
+			var URL = "http://35.229.36.224:8080/api/fingerprint/enrol-verify"; //Your URL
 
 			var xmlhttp = new XMLHttpRequest();
 			//xmlhttp.onreadystatechange = callbackFunction(xmlhttp);

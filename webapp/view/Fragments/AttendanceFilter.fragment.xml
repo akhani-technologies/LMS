@@ -3,15 +3,15 @@
 		<filterItems>
 			<ViewSettingsFilterItem text="Type of user" key="UserType" multiSelect="false">
 				<items>
-					<ViewSettingsItem text="Less than 1000" key="UserType+EQ+Learner"/>
-					<ViewSettingsItem text="Less than 1000" key="UserType+EQ+Facilitator"/>
+					<ViewSettingsItem text="Learner" key="UserType+EQ+Learner"/>
+					<ViewSettingsItem text="Facilitator" key="UserType+EQ+Facilitator"/>
 				</items>
 			</ViewSettingsFilterItem>
 			<ViewSettingsFilterItem text="Confirmation Type" key="ConfirmationType" multiSelect="false">
 				<items>
-					<ViewSettingsItem text="Less Than 100" key="ConfirmationType+EQ+Attendance"/>
-					<ViewSettingsItem text="Less Than 100" key="ConfirmationType+EQ+Special request"/>
-					<ViewSettingsItem text="Less Than 100" key="ConfirmationType+EQ+Leaving"/>
+					<ViewSettingsItem text="Attendance" key="ConfirmationType+EQ+Attendance"/>
+					<ViewSettingsItem text="Special request" key="ConfirmationType+EQ+Special request"/>
+					<ViewSettingsItem text="Leaving" key="ConfirmationType+EQ+Leaving"/>
 				</items>
 			</ViewSettingsFilterItem>
 		</filterItems>

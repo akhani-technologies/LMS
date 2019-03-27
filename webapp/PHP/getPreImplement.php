@@ -22,10 +22,8 @@ if ($conn->connect_error) {
  
  while($row = mysqli_fetch_array($res)){
  array_push($result, 
- array('PreID'=>$row[0],'PreRate1'=>$row[1],'PreRate2'=>$row[2],'PreRate3'=>$row[3],'PreRate4'=>$row[4],'PreRate5'=>$row[5],'PreRate6'=>$row[6],'PreRate7'=>$row[7],
- 'PreRate8'=>$row[8],'PreRate9'=>$row[9],'PreRate10'=>$row[10],'PreRate11'=>$row[11],'PreRate12'=>$row[12],'PreRate13'=>$row[13],'PreProject'=>$row[14]));
+ array('Project'=>$row[0],'Description'=>$row[1],'Date'=>$row[2],'Rate'=>$row[3]));
  }
- 
  header('Content-Type: application/json');
  echo json_encode(array('result'=>$result));
 ?>
