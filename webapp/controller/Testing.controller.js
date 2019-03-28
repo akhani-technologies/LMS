@@ -56,7 +56,7 @@ sap.ui.define([
 			if (this.IeVersionInfo() > 0) {
 				//alert("This is IE " + IeVersionInfo());
 				this.blob = this.dataURItoBlob(uri, dataURIType);
-			
+
 				// window.navigator.msSaveOrOpenBlob(blob, name);
 
 			} else {
@@ -104,12 +104,12 @@ sap.ui.define([
 			} else {
 				return 0; //If not IE return 0
 			}
-
 		},
-		
-		onSendFile:function(){
+
+		onSendFile: function() {
 			var oData = {};
-			oData.Image = this.blob;
+			var myFile = this.blobToFile(this.blob, "9001018980085.png");
+			oData.Image = myFile;
 			$.ajax({
 				type: "POST",
 				async: false,
@@ -124,7 +124,13 @@ sap.ui.define([
 
 				}
 			});
-			
+		},
+
+		blobToFile: function(theBlob, fileName) {
+			//A Blob() is almost a File() - it's just missing the two properties below which we will add
+			theBlob.lastModifiedDate = new Date();
+			theBlob.name = fileName;
+			return theBlob;
 		}
 
 		/**
