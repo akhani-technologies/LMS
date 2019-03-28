@@ -1,9 +1,10 @@
 <?php
+header('Access-Control-Allow-Origin: *');
 $ftp_server="http://34.73.21.183:8080";
 $ftp_user_name="akhani";
 $ftp_user_pass="@kh@n!";
 $file = "C:\\Users\NeoLe\Downloads\9001018980085.png"; 
-$remote_file = "http://34.73.21.183:8080/C:\\images\fingerprint\9001018980085.png";
+$remote_file = "C:\\images\fingerprint\9001018980085.png";
 
 // set up basic connection
 $conn_id = ftp_connect($ftp_server) or die("Could not connect to $ftp_server");;
