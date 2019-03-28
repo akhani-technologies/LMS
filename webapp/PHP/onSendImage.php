@@ -21,6 +21,5 @@ if (ftp_put($conn_id, $remote_file, $file, FTP_ASCII)) {
     }
 // close the connection
 ftp_close($conn_id);
- header('Content-Type: application/json');
- echo json_encode(array('result'=>$result));
+
 ?>
