@@ -12,7 +12,7 @@ $remote_file = "C:\\images\fingerprint\9001018980085.png";
 // $conn_id = ftp_connect($ftp_server) or die("Could not connect to $ftp_server");;
 
 // login with username and password
-$login_result = ftp_login($conn_id, $ftp_user_name, $ftp_user_pass);
+$login_result = ftp_login($ftp_conn, $ftp_user_name, $ftp_user_pass);
 
 // upload a file
 if (ftp_put($conn_id, $remote_file, $file, FTP_ASCII)) {
