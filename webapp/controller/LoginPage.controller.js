@@ -93,7 +93,7 @@ sap.ui.define([
 			// 			if (data.result[i].Email === email && data.result[i].Password === password) {
 			// correct = true;
 			this.oRouter.navTo("MenuPage");
-			
+
 			// 			}
 			// 		}
 			// 		if (!correct) {
@@ -104,6 +104,10 @@ sap.ui.define([
 			// 		console.log(err);
 			// 	}
 			// });
+		},
+
+		onTest: function() {
+			this.oRouter.navTo("Testing");
 		},
 
 		UserAction: function() {

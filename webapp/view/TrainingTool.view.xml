@@ -40,14 +40,6 @@
 						</headerToolbar>
 					</Table>
 				</content>
-			<footer>
-			    <Toolbar width="100%" id="__toolbar2">
-			        <content>
-			            <ToolbarSpacer id="__spacer0"/>
-			            <Button text="Save " width="100px" icon="sap-icon://save" type="Reject" press="onSaveLearnerTools"/>
-			        </content>
-			    </Toolbar>
-			</footer>
 			</Page>
 		</pages>
 	</App>

@@ -1,0 +1,25 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="programmeMotse.controller.Testing"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page title="Title">
+				<content>
+					<MessageStrip text="Please take a finger print of your right index finger" showIcon="true" showCloseButton="true"/>
+					<FlexBox width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
+						<items>
+							<Button class="sapUiLargeMarginEnd" text="Start" width="auto" icon="sap-icon://restart" type="Emphasized" press="onStartFingerPrint"/>
+							<Button class="sapUiLargeMarginEnd" text="Clear" width="auto" icon="sap-icon://cancel" type="Reject"/>
+							<Button class="sapUiLargeMarginEnd" text="Save" width="auto" icon="sap-icon://save" type="Accept" press="onSaveFingerPrint"/>
+							<Button class="sapUiLargeMarginEnd" text="Send" width="auto" type="Accept" press="onSendFile"/>
+						</items>
+					</FlexBox>
+					<FlexBox width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
+						<items>
+							<Image class="signatureB sapUiLargeMarginEnd" src="images/index.png" width="340px" height="340px" id="finger1"/>
+						</items>
+					</FlexBox>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

@@ -3,138 +3,99 @@
 		<pages>
 			<Page backgroundDesign="Solid" showNavButton="true" navButtonPress="onNavBack">
 				<content>
-					<!--<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout">-->
-					<!--    <sap.ui.layout.form:content>-->
-					<!--        <core:Title text="Training Venue Details" icon="sap-icon://building" emphasized="true"/>-->
-					<!--        <Label text="Type of Venue"/>-->
-					<!--        <ComboBox width="60%" id="comboType">-->
-					<!--            <items>-->
-					<!--                <core:ListItem text="Theory training venue"/>-->
-					<!--                <core:ListItem text="Practical training venue"/>-->
-					<!--                <core:ListItem text="Workplace training venue"/></items>-->
-					<!--        </ComboBox>-->
-					<!--        <Label text="Name of Venue"/>-->
-					<!--        <Input width="60%" id="inpVenueName"/>-->
-					<!--        <Label text="Street Address" width="100%"/>-->
-					<!--        <Input width="60%" id="inpStreetAddress"/>-->
-					<!--        <Label text="City" width="100%"/>-->
-					<!--        <Input width="60%" id="inpCity"/>-->
-					<!--        <Label text="Postal Code" width="100%"/>-->
-					<!--        <Input width="60%" id="inpPostal"/></sap.ui.layout.form:content>-->
-					<!--</sap.ui.layout.form:SimpleForm>-->
-					<HBox width="100%" justifyContent="Center" renderType="Bare" alignContent="Center" alignItems="Center" fitContainer="true">
-						<items>
-							<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" class="sapUiLargeMarginEnd" width="40%" editable="true" layout="ResponsiveGridLayout">
-								<sap.ui.layout.form:content>
-									<core:Title text="Venue Information" icon="sap-icon://building"/>
-									<Label text="Venue Name"/>
-									<Input width="100%" id="inpVenueName"/>
-									<Label text="Type of Venue"/>
-									<ComboBox width="100%" id="comboType">
-										<items>
-											<core:ListItem text="Theory training venue"/>
-											<core:ListItem text="Practical training venue"/>
-											<core:ListItem text="Workplace training venue"/></items>
-									</ComboBox>
-									<Label text="Venue Owner" id="d"/>
-									<Input width="100%" id="inpVenueO"/>
-									<Label text="Email Address" width="100%"/>
-									<Input width="100%" id="inpEmail"/>
-									<Label text="Contact Number" width="100%"/>
-									<Input width="100%" id="inpNumber"/>
-									<Label text="Address 1" width="100%"/>
-									<Input width="100%" id="inpAddr1"/>
-									<Label text="Address2" width="100%"/>
-									<Input width="100%" id="inpAddr2"/>
-									<Label text="City" width="100%"/>
-									<Input width="100%" id="inpCity"/>
-									<Label text="Province" width="100%"/>
-									<ComboBox xmlns="sap.m" width="100%" id="slctProv" required="true" change="_validateRequiredInputFields">
-										<items>
-											<core:ListItem text="Eastern Cape" key="EC"/>
-											<core:ListItem text="Free State" key="FS"/>
-											<core:ListItem text="Gauteng" key="GP"/>
-											<core:ListItem text="KwaZulu-Natal" key="KZN"/>
-											<core:ListItem text="Limpopo" key="LP"/>
-											<core:ListItem text="Mpumalanga" key="MP"/>
-											<core:ListItem text="Northern Cape" key="NC"/>
-											<core:ListItem text="North West" key="NW"/>
-											<core:ListItem text="Western Cape" key="WC"/>
-										</items>
-									</ComboBox>
-								</sap.ui.layout.form:content>
-							</sap.ui.layout.form:SimpleForm>
-							<VBox width="60%" direction="Column" alignContent="Center" alignItems="Center" justifyContent="Center">
+					<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" id="formVenue" class="sapUiLargeMarginEnd" width="100%" editable="true" layout="ResponsiveGridLayout" columnsL="1">
+						<sap.ui.layout.form:content>
+							<core:Title text="Venue Information" icon="sap-icon://building"/>
+							<Label text="Venue Name"/>
+							<Input width="70%" id="inpVenueName" required="true" liveChange="onValidateGeneral"/>
+							<Label text="Type of Venue"/>
+							<ComboBox width="70%" id="comboType" required="true" change="onValidateGeneral">
 								<items>
-									<VBox alignContent="End" alignItems="End" justifyContent="End">
-										<items>
-											<Table noDataText="Press the (+) to add items " id="oTableApproval" mode="Delete" delete="handleDelete">
-												<columns>
-													<Column>
-														<header>
-															<Label text="Approval Body"/>
-														</header>
-													</Column>
-													<Column id="__column1">
-														<header>
-															<Label text="SAQA ID"/>
-														</header>
-													</Column>
-													<Column id="__column2">
-														<header>
-															<Label text="SETA"/>
-														</header>
-													</Column>
-													<Column id="__column3">
-														<header>
-															<Text text="Expiry Date"/>
-														</header>
-													</Column>
-													<Column >
-														<header>
-															<Text text="Approval Attachment"/>
-														</header>
-													</Column>
-												</columns>
-												<headerToolbar>
-													<Toolbar width="100%" >
-														<content>
-															<Title text="Venue Approval Details" width="100%"/>
-															<ToolbarSpacer />
-															<Button width="auto" icon="sap-icon://add" type="Emphasized" press="onAddItems"/>
-														</content>
-													</Toolbar>
-												</headerToolbar>
-											</Table>
-										</items>
-									</VBox>
-									<VBox alignContent="End" alignItems="End" justifyContent="End">
-										<items>
-											<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" id="__form1">
-												<sap.ui.layout.form:content>
-													<core:Title text="Venue Assessment Details"/>
-													<Label text="Assessed by "/>
-													<Input width="100%" id="inpBy"/>
-													<Label text="Assessment Date"/>
-													<DatePicker id="DateP" change="handleChange" class="sapUiSmallMarginBottom"/>
-													<!--<Input width="100%" id="__input5"/>-->
-													<Label text="Assessment Report" width="100%"/>
-													<u:FileUploader id="fileUploader" name="myFileUpload" change="onAssessmentAttachmentChange" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
-												</sap.ui.layout.form:content>
-											</sap.ui.layout.form:SimpleForm>
-										</items>
-									</VBox>
+									<core:ListItem text="Theory training venue"/>
+									<core:ListItem text="Practical training venue"/>
+									<core:ListItem text="Workplace training venue"/></items>
+							</ComboBox>
+							<Label text="Venue Owner" id="d"/>
+							<Input width="70%" id="inpVenueO" required="true" liveChange="onValidateGeneral"/>
+							<Label text="Email Address" width="100%"/>
+							<Input width="70%" id="inpEmail" required="true" liveChange="onValidateGeneral"/>
+							<Label text="Contact Number" width="100%"/>
+							<Input width="70%" id="inpNumber" required="true" liveChange="onValidateGeneral"/>
+							<Label text="Address 1" width="100%"/>
+							<Input width="70%" id="inpAddr1" required="true" liveChange="onValidateGeneral"/>
+							<Label text="Address2" width="100%"/>
+							<Input width="70%" id="inpAddr2" required="true" liveChange="onValidateGeneral"/>
+							<Label text="City" width="100%"/>
+							<Input width="70%" id="inpCity" required="true" liveChange="onValidateGeneral"/>
+							<Label text="Province" width="100%"/>
+							<ComboBox xmlns="sap.m" width="70%" id="slctProv" required="true" change="onValidateGeneral">
+								<items>
+									<core:ListItem text="Eastern Cape" key="EC"/>
+									<core:ListItem text="Free State" key="FS"/>
+									<core:ListItem text="Gauteng" key="GP"/>
+									<core:ListItem text="KwaZulu-Natal" key="KZN"/>
+									<core:ListItem text="Limpopo" key="LP"/>
+									<core:ListItem text="Mpumalanga" key="MP"/>
+									<core:ListItem text="Northern Cape" key="NC"/>
+									<core:ListItem text="North West" key="NW"/>
+									<core:ListItem text="Western Cape" key="WC"/>
 								</items>
-							</VBox>
-						</items>
-					</HBox>
+							</ComboBox>
+							<core:Title text="Venue Assessment Details"/>
+							<Label text="Assessed by "/>
+							<Input width="70%" id="inpBy" required="true" liveChange="onValidateGeneral"/>
+							<Label text="Assessment Date"/>
+							<DatePicker id="DateP" change="onValidateGeneral" class="sapUiSmallMarginBottom" width="70%" required="true"/>
+							<!--<Input width="100%" id="__input5"/>-->
+							<Label required="true" text="Assessment Report" width="100%"/>
+							<u:FileUploader required="true" id="fileUploader" name="myFileUpload" change="onAssessmentAttachmentChange" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
+						</sap.ui.layout.form:content>
+					</sap.ui.layout.form:SimpleForm>
+					<Table noDataText="Press the (+) to add items " id="oTableApproval" mode="Delete" delete="handleDelete">
+						<columns>
+							<Column>
+								<header>
+									<Label text="Approval Body"/>
+								</header>
+							</Column>
+							<Column>
+								<header>
+									<Label text="SAQA ID"/>
+								</header>
+							</Column>
+							<Column>
+								<header>
+									<Label text="SETA"/>
+								</header>
+							</Column>
+							<Column>
+								<header>
+									<Text text="Expiry Date"/>
+								</header>
+							</Column>
+							<Column>
+								<header>
+									<Text text="Approval Attachment"/>
+								</header>
+							</Column>
+						</columns>
+						<headerToolbar>
+							<Toolbar width="100%">
+								<content>
+									<Title text="Venue Approval Details" width="100%"/>
+									<ToolbarSpacer/>
+									<Button width="auto" icon="sap-icon://add" type="Emphasized" press="onAddItems"/>
+								</content>
+							</Toolbar>
+						</headerToolbar>
+					</Table>
 				</content>
 				<footer>
-					<Toolbar width="100%" id="__toolbar1">
+					<Toolbar width="100%">
 						<content>
-							<Button text="Cancel" width="100px" icon="sap-icon://cancel" type="Reject"/>
+							<Button press="onNavBack" text="Cancel" width="100px" icon="sap-icon://cancel" type="Reject"/>
 							<ToolbarSpacer/>
-							<Button text="Save" width="100px" icon="sap-icon://save" type="Accept" press="onSaveDetails"/>
+							<Button enabled="false" id="btnVenue" text="Save" width="100px" icon="sap-icon://save" type="Accept" press="onSaveDetails"/>
 						</content>
 					</Toolbar>
 				</footer>

@@ -7,16 +7,16 @@
 					<ObjectHeader title="Implementation Plan" numberUnit="eur" introActive="true" titleActive="true" icon="sap-icon://workflow-tasks"/>
 					<IconTabBar>
 						<items>
-							<IconTabFilter class="iconFlt" text="Pre-Implementation Phase " icon="sap-icon://checklist-item" iconColor="Critical" design="Horizontal">
+							<IconTabFilter class="iconFlt" text="Pre-Implementation Phase " icon="sap-icon://checklist-item" iconColor="Critical" design="Vertical">
 								<content>
-									<sap.ui.layout.form:SimpleForm width="100%" editable="true" layout="ResponsiveGridLayout" xmlns:sap.ui.layout.form="sap.ui.layout.form">
+									<sap.ui.layout.form:SimpleForm id="formPre" width="100%" editable="true" layout="ResponsiveGridLayout" xmlns:sap.ui.layout.form="sap.ui.layout.form">
 										<sap.ui.layout.form:content>
 											<core:Title text="Pre-Implementation Phase "/>
 											<Label text="Project"/>
 											<Input id="inpPrePorject" width="80%"/>
-											<Label id="lblrate1" text="Project Approval" textAlign="Begin" width="100%"/>
+											<Label required="true" id="lblrate1" text="Project Approval" textAlign="Begin" width="100%"/>
 											<VBox>
-												<Slider id="rate1" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<Slider required="true" change="onValidatePre" id="rate1" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
 													<ResponsiveScale tickmarksBetweenLabels="10"/>
 												</Slider>
 												<DatePicker id="rate1date"  width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
@@ -122,7 +122,7 @@
 									</FlexBox>
 								</content>
 							</IconTabFilter>
-							<IconTabFilter class="iconFlt" text="Implementation Phase " icon="sap-icon://checklist-item-2" iconColor="Positive" design="Horizontal">
+							<IconTabFilter class="iconFlt" text="Implementation Phase " icon="sap-icon://checklist-item-2" iconColor="Positive" design="Vertical">
 								<content>
 									<sap.ui.layout.form:SimpleForm columnsL="1" width="100%" editable="true" layout="ResponsiveGridLayout"
 										xmlns:sap.ui.layout.form="sap.ui.layout.form">
@@ -275,7 +275,7 @@
 									</FlexBox>
 								</content>
 							</IconTabFilter>
-							<IconTabFilter class="iconFlt" text="Post-Implementation Phase" icon="sap-icon://checklist-2" design="Horizontal" iconColor="Negative">
+							<IconTabFilter class="iconFlt" text="Post-Implementation Phase" icon="sap-icon://checklist-2" design="Vertical" iconColor="Negative">
 								<content>
 									<sap.ui.layout.form:SimpleForm width="100%" editable="true" layout="ResponsiveGridLayout" xmlns:sap.ui.layout.form="sap.ui.layout.form">
 										<sap.ui.layout.form:content>

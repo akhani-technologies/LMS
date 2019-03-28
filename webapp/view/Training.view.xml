@@ -4,33 +4,30 @@
 		<pages>
 			<Page title="Training information" backgroundDesign="Solid" showNavButton="true" navButtonPress="onNavBack">
 				<content>
-					<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" id="__form0">
+					<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" id="formTraining"
+						columnsL="1">
 						<sap.ui.layout.form:content>
 							<core:Title text="Training service provider information" icon="sap-icon://add-coursebook"/>
-							<Label text="Accreditation Number"/>
-							<Input width="70%" id="inpAccreNum"/>
-							<Label text="Training Provider Name"/>
-							<Input width="70%" id="inpContactPerson"/>
-							<Label text="Position" width="100%"/>
-							<Input width="70%" id="inpPosition"/>
-							<Label text="Office Number" width="100%"/>
-							<Input width="70%" id="inpOffice"/>
-							<Label text="Mobile Number" width="100%"/>
-							<Input width="70%" id="inpMobile"/>
-							<Label text="Email Address" width="100%"/>
-							<Input width="70%" id="inpEmail"/>
-							<Label text="Registration Number" width="100%"/>
-							<Input width="70%" id="inpRegNum"/>
-							<Label text="CSD Report" width="100%"/>
-							<u:FileUploader xmlns:u="sap.ui.unified" change="onChangeAttachment" name="myFileUpload" uploadUrl="upload/"
+							<Label text="Accreditation Number" required="true"/>
+							<Input width="70%" id="inpAccreNum" submit="onValidateGeneral" liveChange="onValidateGeneral" required="true"/>
+							<Label text="Training Provider Name" required="true"/>
+							<Input width="70%" id="inpContactPerson" submit="" liveChange="onValidateGeneral" required="true"/>
+							<Label text="Position" width="100%" required="true"/>
+							<Input width="70%" id="inpPosition" liveChange="onValidateGeneral" required="true"/>
+							<Label text="Office Number" width="100%" required="true"/>
+							<Input width="70%" id="inpOffice" liveChange="onValidateGeneral" required="true"/>
+							<Label text="Mobile Number" width="100%" required="true"/>
+							<Input width="70%" id="inpMobile" liveChange="onValidateGeneral" required="true"/>
+							<Label text="Email Address" width="100%" required="true"/>
+							<Input width="70%" id="inpEmail" liveChange="onValidateGeneral" required="true"/>
+							<Label text="Registration Number" width="100%" required="true"/>
+							<Input width="70%" id="inpRegNum" liveChange="onValidateGeneral" required="true"/>
+							<Label text="CSD Report" width="100%" required="true"/>
+							<u:FileUploader xmlns:u="sap.ui.unified" required="true" change="onChangeAttachment" name="myFileUpload" uploadUrl="upload/"
 								tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
-						</sap.ui.layout.form:content>
-					</sap.ui.layout.form:SimpleForm>
-					<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout">
-						<sap.ui.layout.form:content>
 							<core:Title text="Add banking details" icon="sap-icon://add-activity"/>
-							<Label text="Bank Name" width="100%"/>
-							<ComboBox width="70%" id="cmbBankName" required="true">
+							<Label text="Bank Name" width="100%" required="true"/>
+							<ComboBox width="70%" id="cmbBankName" required="true" change="onValidateGeneral">
 								<items>
 									<core:ListItem text="Absa"/>
 									<core:ListItem text="African Bank"/>
@@ -43,34 +40,34 @@
 								</items>
 							</ComboBox>
 							<Label text="Account number" width="100%"/>
-							<Input width="70%" id="inpAccNum"/>
+							<Input width="70%" id="inpAccNum" change="onValidateGeneral" required="true"/>
 							<Label text="Branch number" width="100%"/>
-							<Input width="70%" id="branch"/>
+							<Input width="70%" id="branch" liveChange="onValidateGeneral" required="true"/>
 							<Label text="Account Type" width="100%"/>
-							<ComboBox width="70%" id="cmbAccType" required="true">
+							<ComboBox width="70%" id="cmbAccType" required="true" change="onValidateGeneral">
 								<items>
 									<core:ListItem text="Savings Account"/>
 									<core:ListItem text="Cheque Account"/>
 								</items>
 							</ComboBox>
-							<Label text="Proof of Bank Account" width="100%"/>
-							<u:FileUploader xmlns:u="sap.ui.unified" change="onBankAttachmentChange" name="myFileUpload" uploadUrl="upload/"
+							<Label text="Proof of Bank Account" width="100%" required="true"/>
+							<u:FileUploader xmlns:u="sap.ui.unified" required="true" change="onBankAttachmentChange" name="myFileUpload" uploadUrl="upload/"
 								tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
 						</sap.ui.layout.form:content>
 					</sap.ui.layout.form:SimpleForm>
 					<Table noDataText="Click on the &quot;+&quot; button to add items" id="tblTrain">
 						<columns>
-							<Column >
+							<Column>
 								<header>
 									<Label text="Accreditation Number"/>
 								</header>
 							</Column>
-							<Column >
+							<Column>
 								<header>
 									<Label text="Learning Programme"/>
 								</header>
 							</Column>
-							<Column >
+							<Column>
 								<header>
 									<Label text="ETQA"/>
 								</header>
@@ -97,14 +94,13 @@
 							</Toolbar>
 						</headerToolbar>
 					</Table>
-					<FlexBox width="100%" alignContent="Center" alignItems="Center" justifyContent="Center"></FlexBox>
+					<FlexBox width="100%" alignContent="Center" alignItems="Center" justifyContent="Center"/>
 				</content>
 				<footer>
 					<Toolbar width="100%">
 						<content>
 							<ToolbarSpacer xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" id="__spacer1"/>
-							<Button xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" text="Save details"
-								width="auto" type="Accept" icon="sap-icon://save" press="onSaveDetails"/>
+							<Button enabled="false" text="Save details" width="auto" type="Accept" icon="sap-icon://save" press="onSaveDetails" id="btnTraining"/>
 						</content>
 					</Toolbar>
 				</footer>

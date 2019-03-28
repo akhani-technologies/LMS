@@ -1,5 +1,4 @@
-<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
-	controllerName="programmeMotse.controller.Attendance" displayBlock="true">
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="programmeMotse.controller.Attendance" displayBlock="true">
 	<App>
 		<pages>
 			<Page title="Attendance" backgroundDesign="Solid" showNavButton="true" navButtonPress="onNavBack">
@@ -8,7 +7,7 @@
 						<sap.ui.layout.form:content>
 							<core:Title text="Attendance" emphasized="true" icon="sap-icon://task"/>
 							<Label text="User Type"/>
-							<ComboBox id="type" width="60%" change="onTypeSelect">
+							<ComboBox id="type" width="60%" change="onTypeSelect" required="true">
 								<items>
 									<core:ListItem text="Learner"/>
 									<core:ListItem text="Facilitator"/>
@@ -33,30 +32,30 @@
 								</items>
 							</ComboBox>
 							<Label text="Confirmation Type"/>
-							<ComboBox width="60%" id="conType">
+							<ComboBox width="60%" id="conType" required="true">
 								<items>
 									<core:ListItem text="Attendance"/>
 									<core:ListItem text="Special request"/>
 									<core:ListItem text="Leaving"/></items>
 							</ComboBox>
 							<Label text="Clock In/Out"/>
-							<ComboBox id="cmbClock" width="60%">
+							<ComboBox id="cmbClock" width="60%" required="true">
 								<items>
 									<core:ListItem text="Clock In"/>
 									<core:ListItem text="Clock Out"/>
 								</items>
 							</ComboBox>
-							<Label text="notes" />
+							<Label text="notes"/>
 							<TextArea width="60%" id="txtNotes" placeholder="Enter notes here" growing="true" growingMaxLines="7"/>
 							<Label text="FingerPrint"/>
 							<FlexBox width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
 								<items>
-									<Button class="sapUiLargeMarginEnd" text="Start" width="auto" icon="sap-icon://restart" type="Emphasized" press="onStartFingerPrint"/>
-									<Button class="sapUiLargeMarginEnd" text="Save" width="auto" icon="sap-icon://save" type="Accept" press="onSaveFingerPrint"/>
+									<Button class="sapUiLargeMarginEnd" text="Start Capturing" width="auto" icon="sap-icon://restart" type="Emphasized" press="onStartFingerPrint"/>
+									<Button class="sapUiLargeMarginEnd" text="Save Fingerprint" width="auto" icon="sap-icon://save" type="Accept" press="onSaveFingerPrint"/>
 								</items>
 							</FlexBox>
 							<Label/>
-							<FlexBox width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
+							<FlexBox width="100%" alignContent="Inherit" alignItems="Inherit" justifyContent="Center">
 								<items>
 									<Image class="signatureB sapUiLargeMarginEnd" src="images/index.png" width="340px" height="340px" id="finger1"/>
 								</items>

@@ -10,10 +10,6 @@ sap.ui.define([
 		onInit: function() {
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			this.oRouter.getRoute("LearnerInfo").attachPatternMatched(this._onObjectMatched, this);
-			var event = document.createEvent("MouseEvents");
-			event.initMouseEvent(
-				"click", true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null
-			);
 			if (!this.sdk) {
 				this.sdk = new Fingerprint.WebApi();
 			}
@@ -75,36 +71,32 @@ sap.ui.define([
 		// onSampleAcquired2:function
 
 		onSaveFingerPrint: function() {
-			var learnerID = this.byId("inpID").getValue();
-			//alert("WSQ data Sent.");
-			// var urlvariable;
+			this.byId("btnPrints").setEnabled(true);
+			// var learnerID = this.byId("inpID").getValue();
+			// var ItemJSON;
 
-			// urlvariable = "text";
+			// ItemJSON = {
+			// 	"action": "ENROL",
+			// 	"fingerPrintData": this.fingerprint,
+			// 	"idNumber": learnerID
+			// };
 
-			var ItemJSON;
+			// var URL = "http://35.229.36.224:8080/api/fingerprint/enrol-verify"; //Your URL
 
-			ItemJSON = {
-				"action": "ENROL",
-				"fingerPrintData": this.fingerprint,
-				"idNumber": learnerID
-			};
+			// var xmlhttp = new XMLHttpRequest();
+			// //xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
+			// xmlhttp.open("POST", URL, false);
+			// xmlhttp.setRequestHeader("Content-Type", "application/json");
+			// xmlhttp.setRequestHeader("accept", "*/*");
+			// xmlhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
 
-			var URL = "http://35.229.36.224:8080/api/fingerprint/enrol-verify"; //Your URL
-
-			var xmlhttp = new XMLHttpRequest();
-			//xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
-			xmlhttp.open("POST", URL, false);
-			xmlhttp.setRequestHeader("Content-Type", "application/json");
-			xmlhttp.setRequestHeader("accept", "*/*");
-			xmlhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
-
-			//xmlhttp.setRequestHeader('Authorization', 'Basic ' + window.btoa('apiusername:apiuserpassword')); 
-			//xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
-			xmlhttp.send(JSON.stringify(ItemJSON));
-			alert("Test response " + xmlhttp.responseText);
-			this.downloadURI(this.fingerprint, learnerID + "_01.png", "image/png");
-			document.getElementById("div").innerHTML = xmlhttp.statusText + ":" + xmlhttp.status + "<BR><textarea rows='100' cols='100'>" +
-				xmlhttp.responseText + "</textarea>";
+			// //xmlhttp.setRequestHeader('Authorization', 'Basic ' + window.btoa('apiusername:apiuserpassword')); 
+			// //xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
+			// xmlhttp.send(JSON.stringify(ItemJSON));
+			// alert("Test response " + xmlhttp.responseText);
+			this.downloadURI(this.fingerprint, "9001018980085.png", "image/png");
+			// document.getElementById("div").innerHTML = xmlhttp.statusText + ":" + xmlhttp.status + "<BR><textarea rows='100' cols='100'>" +
+			// 	xmlhttp.responseText + "</textarea>";
 		},
 
 		downloadURI: function(uri, name, dataURIType) {
@@ -302,21 +294,15 @@ sap.ui.define([
 			this.byId("IconAdditional").setEnabled(true);
 			var oIconTabBar = this.getView().byId("oIconTB");
 			oIconTabBar.setSelectedKey("Key2");
+			$("body").scrollTop(0);
 		},
 
-		// onValidateAdditional:function(){
-		// 	var oNextButton = this.byId("btnNextAdd");
-		// 	var oLearnerType = this.byId("slctLType");
-		// 	var oDisability = this.byId("slctDisability");
-		// 	var oRace = this.byId("slctRace");
-		// 	var oUIF = this.byId("slctUIF");
-
-		// 	if(oLearnerType === null || oDisability === null || oRace === null || oUIF === null){
-		// 		oNextButton.setEnabled(false);
-		// 	}else{
-		// 		oNextButton.setEnabled(true);
-		// 	}
-		// },
+		onAddNextPress: function() {
+			this.byId("PhotoIcon").setEnabled(true);
+			var oIconTabBar = this.getView().byId("oIconTB");
+			oIconTabBar.setSelectedKey("Key3");
+			$("body").scrollTop(0);
+		},
 
 		onValidateAdditional: function() {
 			var aInputControls = this._getSimpleFormFields(this.byId("AdditionalFrm"));
@@ -338,6 +324,56 @@ sap.ui.define([
 						return;
 					} else {
 						this.byId("btnNextAdd").setEnabled(true);
+					}
+				}
+			}
+		},
+
+		onValidateBank: function() {
+			var aInputControls = this._getSimpleFormFields(this.byId("formBank"));
+			var oInputControl;
+			var sValue;
+			for (var m = 0; m < aInputControls.length; m++) {
+				oInputControl = aInputControls[m].control;
+				var _roadCtrlType = oInputControl.getMetadata().getName();
+
+				if (aInputControls[m].required) {
+					if (_roadCtrlType === "sap.m.Input") {
+						sValue = oInputControl.getValue();
+					} else {
+						sValue = oInputControl.getSelectedItem();
+					}
+
+					if (!sValue) {
+						this.byId("btnBank").setEnabled(false);
+						return;
+					} else {
+						this.byId("btnBank").setEnabled(true);
+					}
+				}
+			}
+		},
+
+		onValidateProgram: function() {
+			var aInputControls = this._getSimpleFormFields(this.byId("formProgram"));
+			var oInputControl;
+			var sValue;
+			for (var m = 0; m < aInputControls.length; m++) {
+				oInputControl = aInputControls[m].control;
+				var _roadCtrlType = oInputControl.getMetadata().getName();
+
+				if (aInputControls[m].required) {
+					if (_roadCtrlType === "sap.m.Input") {
+						sValue = oInputControl.getValue();
+					} else {
+						sValue = oInputControl.getSelectedItem();
+					}
+
+					if (!sValue) {
+						this.byId("btnProgram").setEnabled(false);
+						return;
+					} else {
+						this.byId("btnProgram").setEnabled(true);
 					}
 				}
 			}
@@ -373,18 +409,21 @@ sap.ui.define([
 		},
 
 		onCameraNext: function(oEvent) {
+			var oIconTabBar = this.getView().byId("oIconTB");
 			this.byId("PrintsIcon").setEnabled(true);
-			this.byId("IconBar").setSelectedKey("key3");
+			oIconTabBar.setSelectedKey("Key4");
 		},
 
 		onNextPrint: function(oEvent) {
+			var oIconTabBar = this.getView().byId("oIconTB");
 			this.byId("IconBank").setEnabled(true);
-			this.byId("IconBar").setSelectedKey("key4");
+			oIconTabBar.setSelectedKey("Key5");
 		},
 
 		onNextBank: function(oEvent) {
+			var oIconTabBar = this.getView().byId("oIconTB");
 			this.byId("ProgramIcon").setEnabled(true);
-			this.byId("IconBar").setSelectedKey("key5");
+			oIconTabBar.setSelectedKey("Key6");
 		},
 
 		onPrint: function(oEvent) {
@@ -398,7 +437,7 @@ sap.ui.define([
 				window.print();
 				document.body.innerHTML = sOriginalContent;
 			} else {
-				jQuery.sap.log.error("onPrint needs a valid target container [view|data:targetId=\"SID\"]");
+				jQuery.sap.log.error("onPrint needs a id target container [view|data:targetId=\"SID\"]");
 			}
 		},
 
@@ -447,10 +486,18 @@ sap.ui.define([
 
 		},
 
-		onNextProg: function(oEvent) {
+		onNextProg: function() {
+			var oIconTabBar = this.getView().byId("oIconTB");
+			this.byId("attach").setEnabled(true);
+			oIconTabBar.setSelectedKey("Key7");
+			// this.onSummaryPageFill();
+		},
+
+		onNextAttach: function() {
+			var oIconTabBar = this.getView().byId("oIconTB");
 			this.byId("SummIcon").setEnabled(true);
-			this.byId("IconBar").setSelectedKey("key6");
-			this.onSummaryPageFill();
+			oIconTabBar.setSelectedKey("Key8");
+			// this.onSummaryPageFill();
 		},
 
 		onAttachmentChange: function(oEvent) {

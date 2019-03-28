@@ -70,6 +70,55 @@ sap.ui.define([
 			oFileReader.readAsDataURL(oParameters.files[0]);
 		},
 
+		onValidateGeneral: function() {
+			var aInputControls = this._getSimpleFormFields(this.byId("formTraining"));
+			var oInputControl;
+			// var oIconBar = this.byId("iconRegister");
+			var sValue;
+			var valid = false;
+			for (var m = 0; m < aInputControls.length; m++) {
+				oInputControl = aInputControls[m].control;
+				var _roadCtrlType = oInputControl.getMetadata().getName();
+
+				if (aInputControls[m].required) {
+					if (_roadCtrlType === "sap.m.ComboBox") {
+						sValue = oInputControl.getSelectedItem();
+					} else {
+						sValue = oInputControl.getValue();
+					}
+					if (!sValue) {
+						valid = false;
+						return;
+					} else {
+						valid = true;
+					}
+				}
+			}
+			if (valid) {
+				this.byId("btnTraining").setEnabled(true);
+				// oIconBar.setSelectedKey("address");
+			} else {
+				this.byId("btnTraining").setEnabled(false);
+				// oIconBar.setSelectedKey("general");
+			}
+		},
+
+		_getSimpleFormFields: function(oSimpleForm) {
+			var aControls = [];
+			var aFormContent = oSimpleForm.getContent();
+			var sControlType;
+			for (var i = 0; i < aFormContent.length; i++) {
+				sControlType = aFormContent[i].getMetadata().getName();
+				if (sControlType === "sap.m.Input" || sControlType === "sap.ui.unified.FileUploader") {
+					aControls.push({
+						control: aFormContent[i],
+						required: aFormContent[i - 1].getRequired && aFormContent[i - 1].getRequired()
+					});
+				}
+			}
+			return aControls;
+		},
+
 		handlePopoverPress: function(oEvent) {
 			// create popover
 			this.event = oEvent.getSource();
@@ -196,6 +245,7 @@ sap.ui.define([
 			window.bankStatementfileName = oParameters.files[0].name;
 			window.bankStatementfileType = oParameters.files[0].type;
 			bFileReader.readAsDataURL(oParameters.files[0]);
+			this.onValidateGeneral();
 		},
 
 		onChangeAttachment: function(oEvent) {
@@ -208,6 +258,7 @@ sap.ui.define([
 				window.CSDContent = base64String.split(',')[1];
 			};
 			bFileReader.readAsDataURL(oParameters.files[0]);
+			this.onValidateGeneral();
 		}
 	});
 });

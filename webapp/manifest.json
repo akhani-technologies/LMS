@@ -188,6 +188,10 @@
 					"pattern": "AttendanceDetails/{attendancePath}",
 					"name": "AttendanceDetails",
 					"target": "AttendanceDetails"
+				}, {
+					"pattern": "Testing",
+					"name": "Testing",
+					"target": "Testing"
 				}
 
 			],
@@ -303,6 +307,10 @@
 				"AttendanceDetails": {
 					"viewId": "AttendanceDetails",
 					"viewName": "AttendanceDetails"
+				},
+				"Testing": {
+					"viewId": "Testing",
+					"viewName": "Testing"
 				}
 			}
 		},

@@ -275,8 +275,57 @@ sap.ui.define([
 
 		},
 
-		createPreImp: function() {
+		onValidatePre: function() {
+			var aInputControls = this._getSimpleFormFields(this.byId("formPre"));
+			var oInputControl;
+			// var oIconBar = this.byId("iconRegister");
+			var sValue;
+			var valid = false;
+			for (var m = 0; m < aInputControls.length; m++) {
+				oInputControl = aInputControls[m].control;
+				// var _roadCtrlType = oInputControl.getMetadata().getName();
 
+				if (aInputControls[m].required) {
+					sValue = oInputControl.getValue();
+					// if (_roadCtrlType === "sap.m.Slider") {
+					// 	sValue = oInputControl.getSelectedItem();
+					// } else {
+
+					// }
+					if (!sValue) {
+						valid = false;
+						return;
+					} else {
+						valid = true;
+					}
+				}
+			}
+			if (valid) {
+				this.byId("iconAddress").setEnabled(true);
+				// oIconBar.setSelectedKey("address");
+			} else {
+				this.byId("iconAddress").setEnabled(false);
+				// oIconBar.setSelectedKey("general");
+			}
+		},
+
+		_getSimpleFormFields: function(oSimpleForm) {
+			var aControls = [];
+			var aFormContent = oSimpleForm.getContent();
+			var sControlType;
+			for (var i = 0; i < aFormContent.length; i++) {
+				sControlType = aFormContent[i].getMetadata().getName();
+				if (sControlType === "sap.m.Slider" || sControlType === "sap.m.DatePicker") {
+					aControls.push({
+						control: aFormContent[i],
+						required: aFormContent[i - 1].getRequired && aFormContent[i - 1].getRequired()
+					});
+				}
+			}
+			return aControls;
+		},
+
+		createPreImp: function() {
 
 			var implData = [{
 				Project: this.byId("inpPrePorject").getValue(),

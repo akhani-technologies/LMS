@@ -49,6 +49,11 @@ sap.ui.define([
 			this._oViewModel.setProperty("/Edit", true);
 			this._oViewModel.setProperty("/View", false);
 		},
+		
+		onCancel:function(){
+			this._oViewModel.setProperty("/Edit", false);
+			this._oViewModel.setProperty("/View", true);
+		},
 
 		onSaveDetails: function(oEvent) {
 			var oData = {};

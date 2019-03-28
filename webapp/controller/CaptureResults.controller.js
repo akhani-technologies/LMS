@@ -92,6 +92,56 @@ sap.ui.define([
 			var oProperties = this.learnerModel.getProperty(sPath);
 			this.LearnerId = oProperties.LearnerID;
 			this.byId("txtProgram").setText(oProperties.Program);
+			this.onValidateGeneral();
+		},
+
+		onValidateGeneral: function() {
+			var aInputControls = this._getSimpleFormFields(this.byId("formCapture"));
+			var oInputControl;
+			// var oIconBar = this.byId("iconRegister");
+			var sValue;
+			var valid = false;
+			for (var m = 0; m < aInputControls.length; m++) {
+				oInputControl = aInputControls[m].control;
+				var _roadCtrlType = oInputControl.getMetadata().getName();
+
+				if (aInputControls[m].required) {
+					if (_roadCtrlType === "sap.m.ComboBox") {
+						sValue = oInputControl.getSelectedItem();
+					} else {
+						sValue = oInputControl.getValue();
+					}
+					if (!sValue) {
+						valid = false;
+						return;
+					} else {
+						valid = true;
+					}
+				}
+			}
+			if (valid) {
+				this.byId("btnCapture").setEnabled(true);
+				// oIconBar.setSelectedKey("address");
+			} else {
+				this.byId("btnCapture").setEnabled(false);
+				// oIconBar.setSelectedKey("general");
+			}
+		},
+
+		_getSimpleFormFields: function(oSimpleForm) {
+			var aControls = [];
+			var aFormContent = oSimpleForm.getContent();
+			var sControlType;
+			for (var i = 0; i < aFormContent.length; i++) {
+				sControlType = aFormContent[i].getMetadata().getName();
+				if (sControlType === "sap.m.ComboBox") {
+					aControls.push({
+						control: aFormContent[i],
+						required: aFormContent[i - 1].getRequired && aFormContent[i - 1].getRequired()
+					});
+				}
+			}
+			return aControls;
 		}
 
 	});

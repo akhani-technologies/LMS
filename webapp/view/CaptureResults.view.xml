@@ -3,22 +3,22 @@
 		<pages>
 			<Page backgroundDesign="Solid" showNavButton="true" navButtonPress="onNavBack">
 				<content>
-					<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" id="__form0">
+					<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" id="formCapture">
 						<sap.ui.layout.form:content>
 							<core:Title text="Capture Learner Results" icon="sap-icon://add-activity-2"/>
-							<Label text="Select learner"/>
-							<ComboBox items="{path: '/'}" width="70%" id="slctLearner" change="onSelectLearner">
+							<Label required="true"  text="Select learner"/>
+							<ComboBox items="{path: '/'}" width="70%" id="slctLearner" change="onSelectLearner" required="true">
 								<items>
 									<core:ListItem text="{Name} {Surname} ({IDNumber})" key="item1"/>
 								</items>
 							</ComboBox>
 							<Label text="Programme"/>
 							<Text id="txtProgram"/> 
-							<Label text="Competence" width="100%"/>
-							<ComboBox id="cmbComptence" width="70%">
+							<Label required="true"  text="Competence" width="100%"/>
+							<ComboBox id="cmbComptence" width="70%" required="true" change="onValidateGeneral">
 								<items>
-									<core:ListItem text="Competent" />
-									<core:ListItem text="Not yet competent" />
+									<core:ListItem text="Competent"/>
+									<core:ListItem text="Not yet competent"/>
 								</items>
 							</ComboBox>
 							<Label text="Unit Standard" width="100%"/>
@@ -30,11 +30,11 @@
 					</sap.ui.layout.form:SimpleForm>
 				</content>
 				<footer>
-					<Toolbar width="100%" id="__toolbar1">
+					<Toolbar width="100%" >
 						<content>
 							<Button text="cancel" press="onNavBack" width="100px" icon="sap-icon://cancel" type="Reject"/>
 							<ToolbarSpacer/>
-							<Button text="Submit" width="100px" type="Accept" icon="sap-icon://accept" press="onSaveDetails"/>
+							<Button text="Submit" width="100px" type="Accept" icon="sap-icon://accept" press="onSaveDetails" id="btnCapture" enabled="false"/>
 						</content>
 					</Toolbar>
 				</footer>

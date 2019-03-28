@@ -76,7 +76,7 @@
 									</sap.ui.layout.form:SimpleForm>
 								</content>
 							</IconTabFilter>
-							<IconTabFilter text="Additional Info" enabled="true" id="IconAdditional" icon="sap-icon://task" iconColor="Critical" design="Horizontal"
+							<IconTabFilter text="Additional Info" enabled="false" id="IconAdditional" icon="sap-icon://task" iconColor="Critical" design="Horizontal"
 								key="Key2">
 								<content>
 									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" id="AdditionalFrm" editable="true"
@@ -124,14 +124,14 @@
 											<Label width="100%"/>
 											<HBox width="100%" alignContent="End" alignItems="End" justifyContent="End">
 												<items>
-													<Button id="btnNextAdd" enabled="false" text="Next" width="100px" icon="sap-icon://feeder-arrow" type="Reject"/>
+													<Button id="btnNextAdd" enabled="false" press="onAddNextPress" text="Next" width="100px" icon="sap-icon://feeder-arrow" type="Reject"/>
 												</items>
 											</HBox>
 										</sap.ui.layout.form:content>
 									</sap.ui.layout.form:SimpleForm>
 								</content>
 							</IconTabFilter>
-							<IconTabFilter id="PhotoIcon" text="Add image" iconColor="Neutral" icon="sap-icon://add-photo" key="key3" design="Horizontal">
+							<IconTabFilter enabled="false" id="PhotoIcon" text="Add image" iconColor="Neutral" icon="sap-icon://add-photo" key="Key3" design="Horizontal">
 								<content>
 									<HBox width="auto" alignContent="Center" alignItems="Center" justifyContent="Center">
 										<items>
@@ -157,7 +157,7 @@
 									</HBox>
 								</content>
 							</IconTabFilter>
-							<IconTabFilter id="PrintsIcon" text="Finger prints" icon="sap-icon://mri-scan" iconColor="Critical" key="key4" design="Horizontal">
+							<IconTabFilter enabled="false" id="PrintsIcon" text="Finger prints" icon="sap-icon://mri-scan" iconColor="Critical" key="Key4" design="Horizontal">
 								<content>
 									<MessageStrip text="Please take a finger print of your right index finger" showIcon="true" showCloseButton="true"/>
 									<FlexBox width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
@@ -174,18 +174,18 @@
 									</FlexBox>
 									<HBox width="100%" alignContent="End" alignItems="End" justifyContent="End">
 										<items>
-											<Button text="Next" press="onNextPrint" width="auto" icon="sap-icon://arrow-right" type="Reject"/>
+											<Button enabled="false" id="btnPrints" text="Next" press="onNextPrint" width="auto" icon="sap-icon://arrow-right" type="Reject"/>
 										</items>
 									</HBox>
 								</content>
 							</IconTabFilter>
-							<IconTabFilter text="Banking details" icon="sap-icon://money-bills" iconColor="Negative" key="key5" id="IconBank" design="Horizontal">
+							<IconTabFilter enabled="false" text="Banking details" icon="sap-icon://money-bills" iconColor="Negative" key="Key5" id="IconBank" design="Horizontal">
 								<content>
-									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout">
+									<sap.ui.layout.form:SimpleForm id="formBank" xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout">
 										<sap.ui.layout.form:content>
 											<core:Title text="Add banking details" icon="sap-icon://add-activity"/>
-											<Label text="Bank Name" width="100%"/>
-											<ComboBox  width="70%" id="cmbBankName" required="true" change="_validateRequiredInputFields">
+											<Label required="true" text="Bank Name" width="100%"/>
+											<ComboBox  width="70%" id="cmbBankName" required="true" change="onValidateBank">
 												<items>
 													<core:ListItem text="Absa" />
 													<core:ListItem text="African Bank"/>
@@ -197,12 +197,12 @@
 													<core:ListItem text="Standard Bank"/>
 												</items>
 											</ComboBox>
-											<Label text="Account number" width="100%"/>
-											<Input width="100%" id="inpAccNum"/>
-											<Label text="Branch number" width="100%"/>
-											<Input width="100%" id="branch"/>
-											<Label text="Account Type" width="100%"/>
-											<ComboBox  width="70%" id="cmbAccType" required="true" change="_validateRequiredInputFields">
+											<Label  required="true" text="Account number" width="100%"/>
+											<Input liveChange="onValidateBank" required="true" width="70%" id="inpAccNum"/>
+											<Label required="true" text="Branch number" width="100%"/>
+											<Input liveChange="onValidateBank" required="true" width="70%" id="branch"/>
+											<Label  required="true" text="Account Type" width="100%"/>
+											<ComboBox  width="70%" id="cmbAccType" required="true" change="onValidateBank">
 												<items>
 													<core:ListItem text="Savings Account" />
 													<core:ListItem text="Cheque Account"/>
@@ -212,19 +212,19 @@
 									</sap.ui.layout.form:SimpleForm>
 									<HBox width="100%" alignContent="End" alignItems="End" justifyContent="End">
 										<items>
-											<Button text="Next" width="auto" icon="sap-icon://arrow-right" type="Reject" press="onNextBank"/>
+											<Button enabled="false" id="btnBank" text="Next" width="auto" icon="sap-icon://arrow-right" type="Reject" press="onNextBank"/>
 										</items>
 									</HBox>
 								</content>
 							</IconTabFilter>
-							<IconTabFilter id="ProgramIcon" text="Programme enrolment" icon="sap-icon://course-program" iconColor="Positive" key="key6"
+							<IconTabFilter enabled="false" id="ProgramIcon" text="Programme enrolment" icon="sap-icon://course-program" iconColor="Positive" key="Key6"
 								design="Horizontal">
 								<content>
-									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout">
+									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" id="formProgram" editable="true" layout="ResponsiveGridLayout">
 										<sap.ui.layout.form:content>
 											<core:Title text="Assign programme" icon="sap-icon://study-leave"/>
-											<Label text="Select progarm description"/>
-											<ComboBox width="50%" id="cmbProgram" items="{path: '/'}">
+											<Label required="true" text="Select progarm description"/>
+											<ComboBox change="onValidateProgram" required="true" width="50%" id="cmbProgram" items="{path: '/'}">
 												<items>
 													<core:ListItem text="{ProgramText}" key="{ProgramText}"/>
 												</items>
@@ -233,12 +233,12 @@
 									</sap.ui.layout.form:SimpleForm>
 									<HBox width="100%" alignContent="End" alignItems="End" justifyContent="End">
 										<items>
-											<Button text="Next" width="auto" press="onNextProg" icon="sap-icon://arrow-right" type="Reject"/>
+											<Button enabled="false" id="btnProgram" text="Next" width="auto" press="onNextProg" icon="sap-icon://arrow-right" type="Reject"/>
 										</items>
 									</HBox>
 								</content>
 							</IconTabFilter>
-							<IconTabFilter text="Attachments" icon="sap-icon://attachment" iconColor="Critical" design="Horizontal" key="Key7">
+							<IconTabFilter enabled="false" id="attach" text="Attachments" icon="sap-icon://attachment" iconColor="Critical" design="Horizontal" key="Key7">
 								<content>
 									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout">
 										<sap.ui.layout.form:content>
@@ -264,14 +264,14 @@
 											<Label width="100%"/>
 											<HBox width="100%" alignContent="End" alignItems="End" justifyContent="End">
 												<items>
-													<Button text="Next" width="100px" icon="sap-icon://feeder-arrow" type="Reject"/>
+													<Button text="Next" width="100px" press="onNextAttach" icon="sap-icon://feeder-arrow" type="Reject"/>
 												</items>
 											</HBox>
 										</sap.ui.layout.form:content>
 									</sap.ui.layout.form:SimpleForm>
 								</content>
 							</IconTabFilter>
-							<IconTabFilter id="SummIcon" text="Summary" icon="sap-icon://list" key="key8" design="Horizontal">
+							<IconTabFilter enabled="false" id="SummIcon" text="Summary" icon="sap-icon://list" key="Key8" design="Horizontal">
 								<content>
 									<sap.ui.layout.form:Form xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true">
 										<sap.ui.layout.form:formContainers>
@@ -465,7 +465,7 @@
 									</FlexBox>
 								</content>
 							</IconTabFilter>
-							<IconTabFilter text="Generate Contract" icon="sap-icon://signature" design="Horizontal" iconColor="Negative">
+							<IconTabFilter enabled="false" text="Generate Contract" icon="sap-icon://signature" design="Horizontal" iconColor="Negative">
 								<content>
 									<f:SimpleForm editable="true" layout="ResponsiveGridLayout">
 										<f:content>
