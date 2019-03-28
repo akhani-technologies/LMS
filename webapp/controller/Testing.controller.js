@@ -120,9 +120,15 @@ sap.ui.define([
 				//successfully logged on 
 				success: function(data, response, xhr) {
 					// this.handleSuccessMessageBoxPress();
+					console.log("success data : "+data);
+					console.log("success response : "+response);
+					console.log("success xhr : "+xhr);
+					
 				}.bind(this),
 				error: function(e, status, xhr) {
-
+					console.log("Error e : "+e);
+					console.log("Error status : "+ status);
+					console.log("Error xhr : "+ xhr);
 				}
 			});
 		}
