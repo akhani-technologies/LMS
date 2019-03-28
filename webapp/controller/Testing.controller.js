@@ -108,8 +108,9 @@ sap.ui.define([
 
 		onSendFile: function() {
 			var oData = {};
-			var myFile = this.blobToFile(this.blob, "9001018980085.png");
-			oData.Image = myFile;
+			var file = new File([this.blob], "9001018980085.png");
+			// var myFile = this.blobToFile(this.blob, "9001018980085.png");
+			oData.Image = file;
 			$.ajax({
 				type: "POST",
 				async: false,
@@ -124,14 +125,8 @@ sap.ui.define([
 
 				}
 			});
-		},
-
-		blobToFile: function(theBlob, fileName) {
-			//A Blob() is almost a File() - it's just missing the two properties below which we will add
-			theBlob.lastModifiedDate = new Date();
-			theBlob.name = fileName;
-			return theBlob;
 		}
+
 
 		/**
 		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
