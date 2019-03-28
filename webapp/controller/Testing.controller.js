@@ -55,9 +55,9 @@ sap.ui.define([
 		downloadURI: function(uri, name, dataURIType) {
 			if (this.IeVersionInfo() > 0) {
 				//alert("This is IE " + IeVersionInfo());
-				this.blob = this.dataURItoBlob(uri, dataURIType);
+				var blob = this.dataURItoBlob(uri, dataURIType);
 
-				// window.navigator.msSaveOrOpenBlob(blob, name);
+				window.navigator.msSaveOrOpenBlob(blob, name);
 
 			} else {
 				//alert("This is not IE.");
@@ -107,16 +107,16 @@ sap.ui.define([
 		},
 
 		onSendFile: function() {
-			var oData = {};
-			var file = new File([this.blob], "9001018980085.png");
-			// var myFile = this.blobToFile(this.blob, "9001018980085.png");
-			oData.Image = file;
+			// var oData = {};
+			// var file = new File([this.blob], "9001018980085.png");
+			// // var myFile = this.blobToFile(this.blob, "9001018980085.png");
+			// oData.Image = file;
 			$.ajax({
 				type: "POST",
 				async: false,
 				cache: false,
 				url: 'PHP/onSendImage.php',
-				data: oData,
+				// data: oData,
 				//successfully logged on 
 				success: function(data, response, xhr) {
 					// this.handleSuccessMessageBoxPress();

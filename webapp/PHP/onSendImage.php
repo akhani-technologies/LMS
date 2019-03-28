@@ -2,8 +2,8 @@
 $ftp_server="http://34.73.21.183:8080";
 $ftp_user_name="akhani";
 $ftp_user_pass="@kh@n!";
-$file = mysqli_real_escape_string($conn, $_POST['Image']); 
-$remote_file = "C\images\fingerprint\filenaname";
+$file = "C:\\Users\NeoLe\Downloads\9001018980085.png"; 
+$remote_file = "C\images\fingerprint\9001018980085.png";
 
 // set up basic connection
 $conn_id = ftp_connect($ftp_server);
@@ -21,4 +21,4 @@ if (ftp_put($conn_id, $remote_file, $file, FTP_ASCII)) {
     }
 // close the connection
 ftp_close($conn_id);
-?>  
+?>
