@@ -10,7 +10,7 @@ $destpath = "C:\images\fingerprints";
 
 // set up basic connection
 $conn_id = ftp_connect($ftp_server, $ftp_port) or die("Couldn't connect to $ftp_server");
-$source_file =  $_GET['Image'];
+$source_file =  $_POST['Image'];
 echo "here 0";
 
 // login with username and password
