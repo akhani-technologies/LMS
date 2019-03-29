@@ -1,7 +1,7 @@
 <?php
 
 $ftp_server="34.73.21.183";
-$ftp_port= "21";
+// $ftp_port= "21";
 $ftp_serusername="akhani";
 $ftp_serpass="@kh@n!";
 $destpath = "C:\images\fingerprints";
