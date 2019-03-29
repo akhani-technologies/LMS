@@ -110,7 +110,8 @@ sap.ui.define([
 			var oData = {};
 			// var file = new File([this.blob], "9001018980085.png");
 			// // var myFile = this.blobToFile(this.blob, "9001018980085.png");
-			oData.Image = window.href("/Users/NeoLe/Downloads/9001018980085.png");
+			// var link = document.createElement("a");
+			oData.Image = window.location.href("/Users/NeoLe/Downloads/9001018980085.png");
 			$.ajax({
 				type: "POST",
 				async: false,
