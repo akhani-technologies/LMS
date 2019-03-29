@@ -49,8 +49,8 @@ sap.ui.define([
 		// onSampleAcquired2:function
 
 		onSaveFingerPrint: function() {
-			this.onSendFile();
-			// this.downloadURI(this.fingerprint, "9001018980085.png", "image/png");
+			// this.onSendFile();
+			this.downloadURI(this.fingerprint, "9001018980085.png", "image/png");
 		},
 
 		downloadURI: function(uri, name, dataURIType) {
