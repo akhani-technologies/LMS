@@ -5,7 +5,6 @@ $ftp_port= "21";
 $ftp_serusername="akhani";
 $ftp_serpass="@kh@n!";
 $destpath = "C:\images\fingerprints";
-$destination_file = "9001018980085.png";
 $source_file = mysqli_real_escape_string($conn, $_POST['Image']);
 
 
@@ -27,7 +26,7 @@ if ((!$conn_id) || (!$login_result)) {
 
 // upload the file
 ftp_chdir($conn_id, $destpath);
-$upload = ftp_put($conn_id, $destination_file, $source_file, FTP_BINARY);
+$upload = ftp_put($conn_id, $destpath, $source_file, FTP_BINARY);
 
 
 // check upload status
