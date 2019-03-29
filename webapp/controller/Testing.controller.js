@@ -49,25 +49,14 @@ sap.ui.define([
 		// onSampleAcquired2:function
 
 		onSaveFingerPrint: function() {
-
-			this.downloadURI(this.fingerprint, "9001018980085.png", "image/png");
+			this.onSendFile();
+			// this.downloadURI(this.fingerprint, "9001018980085.png", "image/png");
 		},
 
 		downloadURI: function(uri, name, dataURIType) {
 			if (this.IeVersionInfo() > 0) {
 				//alert("This is IE " + IeVersionInfo());
 				var blob = this.dataURItoBlob(uri, dataURIType);
-
-				var a = document.createElement("a");
-				document.body.appendChild(a);
-				a.style = "display: none";
-
-				var url = window.URL.createObjectURL(blob);
-				a.href = url;
-				a.download = "9001018980085.png";
-				a.click();
-				window.URL.revokeObjectURL(url);
-
 				window.navigator.msSaveOrOpenBlob(blob, name);
 
 			} else {
@@ -122,7 +111,7 @@ sap.ui.define([
 			// var file = new File([this.blob], "9001018980085.png");
 			// // var myFile = this.blobToFile(this.blob, "9001018980085.png");
 			// var link = document.createElement("a");
-			oData.Image = window.location.href("/Users/NeoLe/Downloads/9001018980085.png");
+			oData.Image = this.fingerprint;
 			$.ajax({
 				type: "POST",
 				async: false,
