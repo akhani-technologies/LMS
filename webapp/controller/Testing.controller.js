@@ -62,23 +62,23 @@ sap.ui.define([
 				var url = (window.URL || window.webkitURL).createObjectURL(blob);
 				console.log(url);
 
-				var filename = <?php echo $filename;?>;
-				var data = new FormData();
-				data.append('file', blob);
+				// var filename = <?php echo $filename;?>;
+				// var data = new FormData();
+				// data.append('file', blob);
 
-				$.ajax({
-					url: "lib/vocal_render.php",
-					type: 'POST',
-					data: data,
-					contentType: false,
-					processData: false,
-					success: function(data) {
-						alert("boa!");
-					},
-					error: function() {
-						alert("not so boa!");
-					}
-				});
+				// $.ajax({
+				// 	url: "lib/vocal_render.php",
+				// 	type: 'POST',
+				// 	data: data,
+				// 	contentType: false,
+				// 	processData: false,
+				// 	success: function(data) {
+				// 		alert("boa!");
+				// 	},
+				// 	error: function() {
+				// 		alert("not so boa!");
+				// 	}
+				// });
 
 			} else {
 				//alert("This is not IE.");
@@ -132,27 +132,27 @@ sap.ui.define([
 			// var file = new File([this.blob], "9001018980085.png");
 			// // var myFile = this.blobToFile(this.blob, "9001018980085.png");
 			// var link = document.createElement("a");
-			// oData.Image = this.fingerprint;
-			// $.ajax({
-			// 	type: "POST",
-			// 	async: false,
-			// 	cache: false,
-			// 	url: 'PHP/onSendImage.php',
-			// 	data: oData,
-			// 	//successfully logged on 
-			// 	success: function(data, response, xhr) {
-			// 		// this.handleSuccessMessageBoxPress();
-			// 		console.log("success data : " + data);
-			// 		console.log("success response : " + response);
-			// 		console.log("success xhr : " + xhr);
+			oData.Image = this.fingerprint;
+			$.ajax({
+				type: "POST",
+				async: false,
+				cache: false,
+				url: 'PHP/onSendImage.php',
+				data: oData,
+				//successfully logged on 
+				success: function(data, response, xhr) {
+					// this.handleSuccessMessageBoxPress();
+					console.log("success data : " + data);
+					console.log("success response : " + response);
+					console.log("success xhr : " + xhr);
 
-			// 	}.bind(this),
-			// 	error: function(e, status, xhr) {
-			// 		console.log("Error e : " + e);
-			// 		console.log("Error status : " + status);
-			// 		console.log("Error xhr : " + xhr);
-			// 	}
-			// });
+				}.bind(this),
+				error: function(e, status, xhr) {
+					console.log("Error e : " + e);
+					console.log("Error status : " + status);
+					console.log("Error xhr : " + xhr);
+				}
+			});
 		}
 
 		/**
