@@ -5,11 +5,12 @@ $ftp_port= "21";
 $ftp_serusername="akhani";
 $ftp_serpass="@kh@n!";
 $destpath = "C:\images\fingerprints";
-$source_file = mysqli_real_escape_string($conn, $_POST['Image']);
+
 
 
 // set up basic connection
 $conn_id = ftp_connect($ftp_server, $ftp_port) or die("Couldn't connect to $ftp_server");
+$source_file = mysqli_real_escape_string($conn_id, $_POST['Image']);
 echo "here 0";
 
 // login with username and password
