@@ -49,6 +49,7 @@ sap.ui.define([
 		// onSampleAcquired2:function
 
 		onSaveFingerPrint: function() {
+
 			this.downloadURI(this.fingerprint, "9001018980085.png", "image/png");
 		},
 
@@ -56,6 +57,16 @@ sap.ui.define([
 			if (this.IeVersionInfo() > 0) {
 				//alert("This is IE " + IeVersionInfo());
 				var blob = this.dataURItoBlob(uri, dataURIType);
+
+				var a = document.createElement("a");
+				document.body.appendChild(a);
+				a.style = "display: none";
+
+				var url = window.URL.createObjectURL(blob);
+				a.href = url;
+				a.download = "9001018980085.png";
+				a.click();
+				window.URL.revokeObjectURL(url);
 
 				window.navigator.msSaveOrOpenBlob(blob, name);
 
@@ -121,19 +132,18 @@ sap.ui.define([
 				//successfully logged on 
 				success: function(data, response, xhr) {
 					// this.handleSuccessMessageBoxPress();
-					console.log("success data : "+data);
-					console.log("success response : "+response);
-					console.log("success xhr : "+xhr);
-					
+					console.log("success data : " + data);
+					console.log("success response : " + response);
+					console.log("success xhr : " + xhr);
+
 				}.bind(this),
 				error: function(e, status, xhr) {
-					console.log("Error e : "+e);
-					console.log("Error status : "+ status);
-					console.log("Error xhr : "+ xhr);
+					console.log("Error e : " + e);
+					console.log("Error status : " + status);
+					console.log("Error xhr : " + xhr);
 				}
 			});
 		}
-
 
 		/**
 		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
