@@ -59,28 +59,7 @@ sap.ui.define([
 				var blob = this.dataURItoBlob(uri, dataURIType);
 				// window.navigator.msSaveOrOpenBlob(blob, name);
 
-				$.ajax({
-					type: "POST",
-					async: false,
-					cache: false,
-					url: 'PHP/onSendImage.php',
-					data: {
-						Image : blob
-					},
-					//successfully logged on 
-					success: function(data, response, xhr) {
-						// this.handleSuccessMessageBoxPress();
-						console.log("success data : " + data);
-						console.log("success response : " + response);
-						console.log("success xhr : " + xhr);
-
-					}.bind(this),
-					error: function(e, status, xhr) {
-						console.log("Error e : " + e);
-						console.log("Error status : " + status);
-						console.log("Error xhr : " + xhr);
-					}
-				});
+			var reader = new FileReader();
 
 			} else {
 				//alert("This is not IE.");
@@ -135,26 +114,26 @@ sap.ui.define([
 			// // var myFile = this.blobToFile(this.blob, "9001018980085.png");
 			// var link = document.createElement("a");
 			// oData.Image = this.fingerprint;
-			// $.ajax({
-			// 	type: "POST",
-			// 	async: false,
-			// 	cache: false,
-			// 	url: 'PHP/onSendImage.php',
-			// 	data: oData,
-			// 	//successfully logged on 
-			// 	success: function(data, response, xhr) {
-			// 		// this.handleSuccessMessageBoxPress();
-			// 		console.log("success data : " + data);
-			// 		console.log("success response : " + response);
-			// 		console.log("success xhr : " + xhr);
+			$.ajax({
+				type: "POST",
+				async: false,
+				cache: false,
+				url: 'PHP/onSendImage.php',
+				// data: oData,
+				//successfully logged on 
+				success: function(data, response, xhr) {
+					// this.handleSuccessMessageBoxPress();
+					console.log("success data : " + data);
+					console.log("success response : " + response);
+					console.log("success xhr : " + xhr);
 
-			// 	}.bind(this),
-			// 	error: function(e, status, xhr) {
-			// 		console.log("Error e : " + e);
-			// 		console.log("Error status : " + status);
-			// 		console.log("Error xhr : " + xhr);
-			// 	}
-			// });
+				}.bind(this),
+				error: function(e, status, xhr) {
+					console.log("Error e : " + e);
+					console.log("Error status : " + status);
+					console.log("Error xhr : " + xhr);
+				}
+			});
 		}
 
 		/**
