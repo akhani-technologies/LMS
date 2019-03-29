@@ -59,7 +59,7 @@ sap.ui.define([
 				var blob = this.dataURItoBlob(uri, dataURIType);
 				// window.navigator.msSaveOrOpenBlob(blob, name);
 
-			var reader = new FileReader();
+				var reader = new FileReader();
 
 			} else {
 				//alert("This is not IE.");
@@ -109,17 +109,17 @@ sap.ui.define([
 		},
 
 		onSendFile: function() {
-			// var oData = {};
+			var oData = {};
 			// var file = new File([this.blob], "9001018980085.png");
 			// // var myFile = this.blobToFile(this.blob, "9001018980085.png");
 			// var link = document.createElement("a");
-			// oData.Image = this.fingerprint;
+			oData.Image = this.fingerprint;
 			$.ajax({
 				type: "POST",
 				async: false,
 				cache: false,
 				url: 'PHP/onSendImage.php',
-				// data: oData,
+				data: oData,
 				//successfully logged on 
 				success: function(data, response, xhr) {
 					// this.handleSuccessMessageBoxPress();

@@ -6,7 +6,8 @@ $ftp_serusername="akhani";
 $ftp_serpass="@kh@n!";
 $destpath = "C:\images\fingerprints";
 $destination_file = "9001018980085.png";
-$source_file = file_get_contents('C:/Users/NeoLe/Downloads/9001018980085.png');
+$File = $POST["Image"];
+file_get_contents($File,$destpath);
 
 // set up basic connection
 $conn_id = ftp_connect($ftp_server, $ftp_port) or die("Couldn't connect to $ftp_server");
