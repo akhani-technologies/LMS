@@ -27,8 +27,8 @@ if ((!$conn_id) || (!$login_result)) {
 
 // upload the file
 ftp_chdir($conn_id, $destpath);
-// $upload = ftp_put($conn_id, $destination_file, $source_file, FTP_BINARY);
-$upload = file_put_contents( $destination_file, $source_file);
+$upload = ftp_put($conn_id, $destination_file, $source_file, FTP_BINARY);
+
 
 // check upload status
 if (!$upload) {
