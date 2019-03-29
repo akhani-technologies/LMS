@@ -6,10 +6,6 @@ $ftp_serusername="akhani";
 $ftp_serpass="@kh@n!";
 $destpath = "C:\images\fingerprints";
 
-
-
-
-
 // set up basic connection
 $conn_id = ftp_connect($ftp_server, $ftp_port) or die("Couldn't connect to $ftp_server");
 $source_file =  $_POST['Image'];
@@ -31,8 +27,9 @@ if ((!$conn_id) || (!$login_result)) {
 }
 
 // upload the file
-// ftp_chdir($conn_id, $destpath);
-$upload = ftp_put($conn_id, $destpath, $source_file, FTP_BINARY);
+// ftp_chdir($conn_id, $destpath); 
+// $upload = ftp_put($conn_id, $destpath, $source_file, FTP_BINARY);
+$upload = file_put_contents( $destpath, $source_file);
 
 
 // check upload status
