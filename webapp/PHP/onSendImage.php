@@ -6,7 +6,7 @@ $ftp_serusername="akhani";
 $ftp_serpass="@kh@n!";
 $destpath = "C:\images\fingerprints";
 $destination_file = "9001018980085.png";
-$File = $POST["Image"];
+$File = $_POST["Image"];
 file_get_contents($File,$destpath);
 
 // set up basic connection
