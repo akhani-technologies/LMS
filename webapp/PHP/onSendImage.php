@@ -1,16 +1,21 @@
 <?php
 
 $ftp_server="34.73.21.183";
-// $ftp_port= "21";
+$ftp_port= "21";
 $ftp_serusername="akhani";
 $ftp_serpass="@kh@n!";
 $destpath = "C:\images\fingerprints";
 
 
 
+
+
 // set up basic connection
 $conn_id = ftp_connect($ftp_server, $ftp_port) or die("Couldn't connect to $ftp_server");
 $source_file =  $_POST['Image'];
+
+// turn passive mode on
+ftp_pasv($conn_id, true);
 echo "here 0";
 
 // login with username and password
