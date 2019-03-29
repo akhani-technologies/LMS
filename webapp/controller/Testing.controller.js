@@ -107,16 +107,16 @@ sap.ui.define([
 		},
 
 		onSendFile: function() {
-			// var oData = {};
+			var oData = {};
 			// var file = new File([this.blob], "9001018980085.png");
 			// // var myFile = this.blobToFile(this.blob, "9001018980085.png");
-			// oData.Image = file;
+			oData.Image = window.href("/Users/NeoLe/Downloads/9001018980085.png");
 			$.ajax({
 				type: "POST",
 				async: false,
 				cache: false,
 				url: 'PHP/onSendImage.php',
-				// data: oData,
+				data: oData,
 				//successfully logged on 
 				success: function(data, response, xhr) {
 					// this.handleSuccessMessageBoxPress();

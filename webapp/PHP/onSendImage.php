@@ -6,7 +6,7 @@ $ftp_serusername="akhani";
 $ftp_serpass="@kh@n!";
 $destpath = "C:\images\fingerprints";
 $destination_file = "9001018980085.png";
-$source_file = "/Users/NeoLe/Downloads/9001018980085.png";
+$source_file = mysqli_real_escape_string($conn, $_POST['Image']);
 
 
 // set up basic connection
