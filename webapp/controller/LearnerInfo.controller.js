@@ -102,14 +102,29 @@ sap.ui.define([
 				xmlhttp.send(fingerprintStatusRequestJson);
 
 				xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
-				this.byId("btnPrints").setEnabled(true);
+				// this.byId("btnPrints").setEnabled(true);
 			}
 
 		},
 
 		callbackFunction: function(xmlhttp) {
-			// if(xmlhttp.response)
-			console.log(xmlhttp.response);
+			var response = JSON.parse(xmlhttp.response);
+			var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
+			if (response.success) {
+				MessageBox.success(
+					response.failureReason, {
+						styleClass: bCompact ? "sapUiSizeCompact" : ""
+					}
+				);
+				this.byId("btnPrints").setEnabled(true);
+			} else {
+				MessageBox.warning(
+					response.failureReason, {
+						styleClass: bCompact ? "sapUiSizeCompact" : ""
+					}
+				);
+			}
+			// console.log(response);
 		},
 
 		onSaveFingerPrint: function() {
