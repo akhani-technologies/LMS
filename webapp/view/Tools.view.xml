@@ -6,30 +6,30 @@
 				    <ObjectHeader title="{Name} {Surname}" number="{IDNumber}" introActive="true" titleActive="true"/>
 				    <Table noDataText="Click   + the add button to add tools" id="tblTools">
 				        <columns>
-				            <Column id="__column0">
+				            <Column >
 				                <header>
 				                    <Label text="Training Tool"/>
 				                </header>
 				            </Column>
-				            <Column id="__column1">
+				            <Column >
 				                <header>
 				                    <Label text="Quantity"/>
 				                </header>
 				            </Column></columns>
 				        <headerToolbar>
-				            <Toolbar width="100%" id="__toolbar1">
+				            <Toolbar width="100%" >
 				                <content>
-				                    <ToolbarSpacer id="__spacer0"/>
+				                    <ToolbarSpacer />
 				                    <Button text="Add" width="auto" icon="sap-icon://add" type="Reject" press="onAddItems"/>
 				                </content>
 				            </Toolbar>
 				        </headerToolbar></Table>
 				</content>
 			<footer>
-			    <Toolbar width="100%" id="__toolbar2">
+			    <Toolbar width="100%" >
 			        <content>
-			            <ToolbarSpacer id="__spacer1"/>
-			            <Button text="Submit" width="auto" icon="sap-icon://accept" type="Reject" press="onSubmitTools"/>
+			            <ToolbarSpacer />
+			            <Button enabled="false" id="btnSave" text="Submit" width="auto" icon="sap-icon://accept" type="Reject" press="onSubmitTools"/>
 			        </content>
 			    </Toolbar>
 			</footer>

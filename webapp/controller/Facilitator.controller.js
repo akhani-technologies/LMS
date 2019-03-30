@@ -191,6 +191,26 @@ sap.ui.define([
 
 		},
 
+		callbackFunction: function(xmlhttp) {
+			var response = JSON.parse(xmlhttp.response);
+			var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
+			if (response.success) {
+				MessageBox.success(
+					response.failureReason, {
+						styleClass: bCompact ? "sapUiSizeCompact" : ""
+					}
+				);
+				this.byId("btnSave").setEnabled(true);
+			} else {
+				MessageBox.warning(
+					response.failureReason, {
+						styleClass: bCompact ? "sapUiSizeCompact" : ""
+					}
+				);
+			}
+			// console.log(response);
+		},
+
 		onNextPress: function() {
 			this.byId("fingerIcon").setEnabled(true);
 			var oIconTabBar = this.getView().byId("FacTabBar");

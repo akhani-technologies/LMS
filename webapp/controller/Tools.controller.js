@@ -1,7 +1,7 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	'sap/m/MessageBox',
-		"sap/ui/core/routing/History"
+	"sap/ui/core/routing/History"
 ], function(Controller, MessageBox, History) {
 	"use strict";
 
@@ -63,6 +63,8 @@ sap.ui.define([
 				]
 			});
 			oTable.addItem(columnListItemNewLine);
+
+			this.onValidateTable();
 		},
 
 		onSubmitTools: function() {
@@ -91,7 +93,17 @@ sap.ui.define([
 				});
 			}
 		},
-		
+
+		onValidateTable: function() {
+			var oTable = this.byId("tblTools");
+			var oItems = oTable.getItems();
+			if (oItems.length > 0) {
+				this.byId("btnSave").setEnabled(true);
+			} else {
+				this.byId("btnSave").setEnabled(false);
+			}
+		},
+
 		handleSuccessMessageBoxPress: function(oEvent) {
 			var that = this;
 			var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;

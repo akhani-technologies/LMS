@@ -41,7 +41,7 @@
 							</IconTabFilter>
 							<IconTabFilter id="fingerIcon" enabled="false" text="Finger print" icon="sap-icon://mri-scan" iconColor="Positive" design="Horizontal" key="Key2">
 								<content>
-									<MessageStrip text="Please take a finger print of your right index finger" showIcon="true" showCloseButton="true"/>
+									<MessageStrip text="Please take a finger print of your right thumb" showIcon="true" showCloseButton="true"/>
 									<FlexBox width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
 										<items>
 											<Button class="sapUiLargeMarginEnd" text="Start" width="auto" icon="sap-icon://restart" type="Emphasized" press="onStartFingerPrint"/>
@@ -62,7 +62,7 @@
 					<Toolbar width="100%">
 						<content>
 							<ToolbarSpacer/>
-							<Button text="Submit" width="250px" type="Accept" icon="sap-icon://save" press="onSaveDetails" id="btnSave"/>
+							<Button enabled="false" text="Submit" width="250px" type="Accept" icon="sap-icon://save" press="onSaveDetails" id="btnSave"/>
 						</content>
 					</Toolbar>
 				</footer>
