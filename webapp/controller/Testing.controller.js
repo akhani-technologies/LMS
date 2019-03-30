@@ -62,7 +62,7 @@ sap.ui.define([
 			console.log(fingerprintStatusRequestJson);
 
 			// var URL = "http://35.229.36.224:8080/api/fingerprint/enrol-verify";  //Your URL
-			var URL = "34.73.21.183:8080/api/fingerprint/enrol-verify"; //For local testing
+			var URL = "http://34.73.21.183:8080/api/fingerprint/enrol-verify"; 
 			var xmlhttp = new XMLHttpRequest();
 
 			xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
