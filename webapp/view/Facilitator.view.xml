@@ -1,57 +1,51 @@
-<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
-	controllerName="programmeMotse.controller.Facilitator" displayBlock="true">
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="programmeMotse.controller.Facilitator" displayBlock="true">
 	<App>
 		<pages>
 			<Page backgroundDesign="Solid" showNavButton="true" navButtonPress="onNavBack">
 				<content>
-					<IconTabBar>
+					<IconTabBar id="FacTabBar">
 						<items>
-							<IconTabFilter text="Add Facilitator Info" icon="sap-icon://add-contact" iconColor="Critical" design="Horizontal">
+							<IconTabFilter text="Add Facilitator Info" icon="sap-icon://add-contact" iconColor="Critical" design="Horizontal" key="Key1">
 								<content>
-									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" id="__form0">
+									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" id="formFacilitator">
 										<sap.ui.layout.form:content>
 											<core:Title xmlns:core="sap.ui.core" text="Facilitator Information" emphasized="true" icon="sap-icon://employee-approvals" id="__title2"/>
-											<Label xmlns="sap.m" text="Facilitator Name"/>
-											<Input xmlns="sap.m" width="60%" id="inpFName"/>
-											<Label text="Facilitator Surname"/>
-											<Input id="inpFSurname" width="60%"/>
-											<Label xmlns="sap.m" text="ID Number"/>
-											<Input xmlns="sap.m" width="60%" id="inpID"/>
-											<Label xmlns="sap.m" text="Office Number"/>
-											<Input xmlns="sap.m" width="60%" id="inpONumber"/>
-											<Label xmlns="sap.m" text="Cell Number" width="100%"/>
-											<Input xmlns="sap.m" width="60%" id="inpMobile"/>
-											<Label xmlns="sap.m" text="Email Address" width="100%"/>
-											<Input xmlns="sap.m" width="60%" id="inpEmail"/>
-											<Label  id="lblvenue" text="Select Training Center" width="100%"/>
-											<ComboBox  items="{path: '/'}" width="60%" id="cmbVenue">
+											<Label xmlns="sap.m" text="Facilitator Name" required="true"/>
+											<Input xmlns="sap.m" width="60%" id="inpFName" required="true" liveChange="onValidate"/>
+											<Label text="Facilitator Surname" required="true"/>
+											<Input id="inpFSurname" width="60%" required="true" liveChange="onValidate"/>
+											<Label xmlns="sap.m" text="ID Number" required="true"/>
+											<Input xmlns="sap.m" width="60%" id="inpID" required="true" liveChange="onValidate"/>
+											<Label xmlns="sap.m" text="Office Number" required="true"/>
+											<Input xmlns="sap.m" width="60%" id="inpONumber" required="true" liveChange="onValidate"/>
+											<Label xmlns="sap.m" text="Cell Number" width="100%" required="true"/>
+											<Input xmlns="sap.m" width="60%" id="inpMobile" required="true" liveChange="onValidate"/>
+											<Label xmlns="sap.m" text="Email Address" width="100%" required="true"/>
+											<Input xmlns="sap.m" width="60%" id="inpEmail" required="true" liveChange="onValidate"/>
+											<Label id="lblvenue" text="Select Training Center" width="100%"/>
+											<ComboBox items="{path: '/'}" width="60%" id="cmbVenue">
 												<items>
 													<core:ListItem text="{VenueName} {VenueOwner} ({VenueType})"/>
 												</items>
 											</ComboBox>
 											<Label xmlns="sap.m" text="Proof of registration" width="100%"/>
-											<u:FileUploader xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
-												xmlns:l="sap.ui.layout" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:u="sap.ui.unified" change="onBankAttachmentChange"
-												name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"
-												id="__uploader1"/>
-											<Label width="100%"/>
+											<u:FileUploader xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:u="sap.ui.unified" change="onBankAttachmentChange" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete" id="__uploader1"/>
 										</sap.ui.layout.form:content>
 									</sap.ui.layout.form:SimpleForm>
 									<FlexBox width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
-										<items>
-											<Button text="Submit" width="250px" type="Accept" icon="sap-icon://save" press="onSaveDetails"/>
-										</items>
+									<items>
+									    <Button enabled="false" text="Next" width="auto" type="Reject" icon="sap-icon://arrow-right" id="btnNext" press="onNextPress"/>
+									</items>
 									</FlexBox>
 								</content>
 							</IconTabFilter>
-							<IconTabFilter text="Finger print" icon="sap-icon://mri-scan" iconColor="Positive" design="Horizontal">
+							<IconTabFilter id="fingerIcon" enabled="false" text="Finger print" icon="sap-icon://mri-scan" iconColor="Positive" design="Horizontal" key="Key2">
 								<content>
 									<MessageStrip text="Please take a finger print of your right index finger" showIcon="true" showCloseButton="true"/>
 									<FlexBox width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
 										<items>
 											<Button class="sapUiLargeMarginEnd" text="Start" width="auto" icon="sap-icon://restart" type="Emphasized" press="onStartFingerPrint"/>
-											<Button class="sapUiLargeMarginEnd" text="Clear" width="auto" icon="sap-icon://cancel" type="Reject"/>
-											<Button class="sapUiLargeMarginEnd" text="Save" width="auto" icon="sap-icon://save" type="Accept" press="onSaveFingerPrint"/>
+											<Button class="sapUiLargeMarginEnd" text="Save" width="auto" icon="sap-icon://save" type="Accept" press="enrolOrVerify"/>
 										</items>
 									</FlexBox>
 									<FlexBox width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
@@ -65,9 +59,10 @@
 					</IconTabBar>
 				</content>
 				<footer>
-					<Toolbar width="100%" id="__toolbar2">
+					<Toolbar width="100%">
 						<content>
-							<ToolbarSpacer id="__spacer1"/>
+							<ToolbarSpacer/>
+							<Button text="Submit" width="250px" type="Accept" icon="sap-icon://save" press="onSaveDetails" id="btnSave"/>
 						</content>
 					</Toolbar>
 				</footer>

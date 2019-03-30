@@ -145,50 +145,57 @@ sap.ui.define([
 			var fingerprint = this.byId("finger1");
 			this.sdk.onSamplesAcquired = function(s) {
 				var samples = JSON.parse(s.samples);
-				fingerprint.setSrc("data:image/png;base64," + Fingerprint.b64UrlTo64(samples[0]));
-				this.fingerprint = Fingerprint.b64UrlTo64(samples[0]);
-				console.log("finger ...   " + this.fingerprint);
+				var sampleObject = Fingerprint.b64UrlTo64(samples[0]);
+				fingerprint.setSrc("data:image/png;base64," + sampleObject);
+				this.fingerprint = sampleObject;
+				//console.log("WSQ Format  " + this.fingerprint);
 
 			}.bind(this);
 		},
 
-		onSaveLearners: function() {
-			var oTable = this.byId("tblLearners");
-			var aItems = oTable.getItems();
-			var aSelectedItems = [];
-			var Facilitator = this.byId("cmbFac").getSelectedItem().getText();
-			for (var i = 0; i < aItems.length; i++) {
-				if (aItems[i].getSelected()) {
-					aSelectedItems.push(this.learnerModel.getProperty(aItems[i].getBindingContextPath()));
-					$.ajax({
-						type: "POST",
-						async: false,
-						cache: false,
-						url: 'PHP/updateFacilitator.php',
-						data: {
-							FacilitatorName: Facilitator,
-							LearnerID: this.learnerModel.getProperty(aItems[i].getBindingContextPath()).LearnerID
-						},
-						//successfully logged on 
-						success: function(data, response, xhr) {
-							var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
-							MessageBox.success(
-								"Learner(s) have been sucessfully assignned to Facilitator: " + Facilitator, {
-									styleClass: bCompact ? "sapUiSizeCompact" : "",
-									onClose: function(sAction) {
-										this.oRouter.navTo("MenuPage");
-									}.bind(this)
-								}
-							);
-						}.bind(this),
-						error: function(e, status, xhr) {
+		enrolOrVerify: function() {
+			var IdNumber = this.byId("inpID").getValue();
+			if (!this.fingerprint) {
+				var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
+				MessageBox.warning(
+					"Please scan the learners right hand thumb before saving", {
+						styleClass: bCompact ? "sapUiSizeCompact" : ""
+					}
+				);
+			} else {
+				var fingerprintStatusRequest = {
+					"action": "ENROL", // Dynamically load the action depending on the workflow
+					"idNumber": IdNumber, // Dynamically load the ID number from the UI
+					"fingerprintIndex": 1, //for now you may hard code it to 1. This must not hard coded  if many fingers are enrolled
+					"fingerprintData": this.fingerprint
+				};
 
-						}
+				var fingerprintStatusRequestJson;
+				fingerprintStatusRequestJson = JSON.stringify(fingerprintStatusRequest);
 
-					});
-				}
+				// var URL = "http://35.229.36.224:8080/api/fingerprint/enrol-verify";  //Your URL
+				var URL = "http://34.73.21.183:8080/api/fingerprint/enrol-verify";
+				var xmlhttp = new XMLHttpRequest();
+
+				// xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
+
+				xmlhttp.open("POST", URL, false);
+				xmlhttp.setRequestHeader("Content-Type", "application/json");
+
+				// xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
+				xmlhttp.send(fingerprintStatusRequestJson);
+
+				xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
+				// this.byId("btnPrints").setEnabled(true);
 			}
 
+		},
+
+		onNextPress: function() {
+			this.byId("fingerIcon").setEnabled(true);
+			var oIconTabBar = this.getView().byId("FacTabBar");
+			oIconTabBar.setSelectedKey("Key2");
+			$("body").scrollTop(0);
 		},
 
 		onBankAttachmentChange: function(oEvent) {
@@ -206,8 +213,45 @@ sap.ui.define([
 			bFileReader.readAsDataURL(oParameters.files[0]);
 		},
 
-		onAssignLearner: function(oEvent) {
+		onValidate: function() {
+			var aInputControls = this._getSimpleFormFields(this.byId("formFacilitator"));
+			var oInputControl;
+			var sValue;
+			for (var m = 0; m < aInputControls.length; m++) {
+				oInputControl = aInputControls[m].control;
+				var _roadCtrlType = oInputControl.getMetadata().getName();
 
+				if (aInputControls[m].required) {
+					if (_roadCtrlType === "sap.m.Input") {
+						sValue = oInputControl.getValue();
+					} else {
+						sValue = oInputControl.getSelectedItem();
+					}
+
+					if (!sValue) {
+						this.byId("btnNext").setEnabled(false);
+						return;
+					} else {
+						this.byId("btnNext").setEnabled(true);
+					}
+				}
+			}
+		},
+
+		_getSimpleFormFields: function(oSimpleForm) {
+			var aControls = [];
+			var aFormContent = oSimpleForm.getContent();
+			var sControlType;
+			for (var i = 0; i < aFormContent.length; i++) {
+				sControlType = aFormContent[i].getMetadata().getName();
+				if (sControlType === "sap.m.Input" || sControlType === "sap.m.ComboBox") {
+					aControls.push({
+						control: aFormContent[i],
+						required: aFormContent[i - 1].getRequired && aFormContent[i - 1].getRequired()
+					});
+				}
+			}
+			return aControls;
 		}
 
 	});
