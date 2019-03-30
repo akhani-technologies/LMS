@@ -51,7 +51,7 @@ sap.ui.define([
 
 		enrolOrVerify: function(s) {
 			var fingerprintStatusRequest = {
-				"action": "ENROL", // Dynamically load the action depending on the workflow
+				"action": "VERIFY", // Dynamically load the action depending on the workflow
 				"idNumber": "9008317856080", // Dynamically load the ID number from the UI
 				"fingerprintIndex": 1, //for now you may hard code it to 1. This must not hard coded  if many fingers are enrolled
 				"fingerprintData": s
@@ -62,7 +62,7 @@ sap.ui.define([
 			console.log(fingerprintStatusRequestJson);
 
 			// var URL = "http://35.229.36.224:8080/api/fingerprint/enrol-verify";  //Your URL
-			var URL = "http://34.73.21.183:8080/api/fingerprint/enrol-verify"; 
+			var URL = "http://34.73.21.183:8080/api/fingerprint/enrol-verify";
 			var xmlhttp = new XMLHttpRequest();
 
 			xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
@@ -77,7 +77,7 @@ sap.ui.define([
 		},
 
 		callbackFunction: function(xmlhttp) {
-			alert(xmlhttp.responseXML);
+			console.log(xmlhttp.response);
 		},
 
 		onSaveFingerPrint: function() {
