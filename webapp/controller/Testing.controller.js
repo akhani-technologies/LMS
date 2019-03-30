@@ -77,7 +77,8 @@ sap.ui.define([
 		},
 
 		callbackFunction: function(xmlhttp) {
-			console.log(xmlhttp.response);
+			var response = JSON.parse(xmlhttp.response);
+			console.log(response);
 		},
 
 		onSaveFingerPrint: function() {

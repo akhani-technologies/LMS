@@ -107,6 +107,11 @@ sap.ui.define([
 
 		},
 
+		callbackFunction: function(xmlhttp) {
+			// if(xmlhttp.response)
+			console.log(xmlhttp.response);
+		},
+
 		onSaveFingerPrint: function() {
 
 			// var learnerID = this.byId("inpID").getValue();
