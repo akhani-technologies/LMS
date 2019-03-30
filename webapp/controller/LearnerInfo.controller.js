@@ -63,7 +63,7 @@ sap.ui.define([
 				var samples = JSON.parse(s.samples);
 				var sampleObject = Fingerprint.b64UrlTo64(samples[0]);
 				fingerprint.setSrc("data:image/png;base64," + sampleObject);
-				this.fingerprint = "data:image/png;base64," + sampleObject;
+				this.fingerprint = sampleObject;
 				//console.log("WSQ Format  " + this.fingerprint);
 
 			}.bind(this);
