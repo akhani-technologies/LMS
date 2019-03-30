@@ -15,7 +15,7 @@
 											<Label xmlns="sap.m" text="Surname" required="true"/>
 											<Input xmlns="sap.m" width="70%" id="inpSurname" required="true" liveChange="_validateRequiredInputFields"/>
 											<Label xmlns="sap.m" text="ID Number" width="100%" required="true"/>
-											<Input xmlns="sap.m" width="70%" id="inpID" required="true" liveChange="_validateRequiredInputFields"/>
+											<Input  width="70%" id="inpID" required="true" liveChange="_validateRequiredInputFields"/>
 											<Label xmlns="sap.m"/>
 											<HBox xmlns="sap.m" width="100%">
 												<Label text="Gender" width="100%"/>
@@ -154,12 +154,12 @@
 							</IconTabFilter>
 							<IconTabFilter enabled="false" id="PrintsIcon" text="Finger prints" icon="sap-icon://mri-scan" iconColor="Critical" key="Key4" design="Horizontal">
 								<content>
-									<MessageStrip text="Please take a finger print of your right index finger" showIcon="true" showCloseButton="true"/>
+									<MessageStrip text="Please take a finger print of your right thumb" showIcon="true" showCloseButton="true"/>
 									<FlexBox width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
 										<items>
 											<Button class="sapUiLargeMarginEnd" text="Start" width="auto" icon="sap-icon://restart" type="Emphasized" press="onStartFingerPrint"/>
-											<Button class="sapUiLargeMarginEnd" text="Clear" width="auto" icon="sap-icon://cancel" type="Reject"/>
-											<Button class="sapUiLargeMarginEnd" text="Save" width="auto" icon="sap-icon://save" type="Accept" press="onSaveFingerPrint"/>
+											<!--<Button class="sapUiLargeMarginEnd" text="Clear" width="auto" icon="sap-icon://cancel" type="Reject"/>-->
+											<Button class="sapUiLargeMarginEnd" text="Save" width="auto" icon="sap-icon://save" type="Accept" press="enrolOrVerify"/>
 										</items>
 									</FlexBox>
 									<FlexBox width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">

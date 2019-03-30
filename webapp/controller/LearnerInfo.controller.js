@@ -61,17 +61,54 @@ sap.ui.define([
 			var fingerprint = this.byId("finger1");
 			this.sdk.onSamplesAcquired = function(s) {
 				var samples = JSON.parse(s.samples);
-				fingerprint.setSrc("data:image/png;base64," + Fingerprint.b64UrlTo64(samples[0]));
-				this.fingerprint = "data:image/png;base64," + Fingerprint.b64UrlTo64(samples[0]);
+				var sampleObject = Fingerprint.b64UrlTo64(samples[0]);
+				fingerprint.setSrc("data:image/png;base64," + sampleObject);
+				this.fingerprint = "data:image/png;base64," + sampleObject;
 				//console.log("WSQ Format  " + this.fingerprint);
 
 			}.bind(this);
 		},
 
-		// onSampleAcquired2:function
+		enrolOrVerify: function() {
+			var IdNumber = this.byId("inpID").getValue();
+			if (!this.fingerprint) {
+				var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
+				MessageBox.warning(
+					"Please scan the learners right hand thumb before saving", {
+						styleClass: bCompact ? "sapUiSizeCompact" : ""
+					}
+				);
+			} else {
+				var fingerprintStatusRequest = {
+					"action": "ENROL", // Dynamically load the action depending on the workflow
+					"idNumber": IdNumber, // Dynamically load the ID number from the UI
+					"fingerprintIndex": 1, //for now you may hard code it to 1. This must not hard coded  if many fingers are enrolled
+					"fingerprintData": this.fingerprint
+				};
+
+				var fingerprintStatusRequestJson;
+				fingerprintStatusRequestJson = JSON.stringify(fingerprintStatusRequest);
+
+				// var URL = "http://35.229.36.224:8080/api/fingerprint/enrol-verify";  //Your URL
+				var URL = "http://34.73.21.183:8080/api/fingerprint/enrol-verify";
+				var xmlhttp = new XMLHttpRequest();
+
+				xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
+
+				xmlhttp.open("POST", URL, false);
+				xmlhttp.setRequestHeader("Content-Type", "application/json");
+
+				xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
+				xmlhttp.send(fingerprintStatusRequestJson);
+
+				xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
+				this.byId("btnPrints").setEnabled(true);
+			}
+
+		},
 
 		onSaveFingerPrint: function() {
-			this.byId("btnPrints").setEnabled(true);
+
 			// var learnerID = this.byId("inpID").getValue();
 			// var ItemJSON;
 
