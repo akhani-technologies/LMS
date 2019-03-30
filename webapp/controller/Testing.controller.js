@@ -39,18 +39,50 @@ sap.ui.define([
 			var fingerprint = this.byId("finger1");
 			this.sdk.onSamplesAcquired = function(s) {
 				var samples = JSON.parse(s.samples);
-				fingerprint.setSrc("data:image/png;base64," + Fingerprint.b64UrlTo64(samples[0]));
-				this.fingerprint = "data:image/png;base64," + Fingerprint.b64UrlTo64(samples[0]);
+				var sampleObject = Fingerprint.b64UrlTo64(samples[0]);
+				fingerprint.setSrc("data:image/png;base64," + sampleObject);
+				this.fingerprint = "data:image/png;base64," + sampleObject;
+
+				this.enrolOrVerify(sampleObject);
 				//console.log("WSQ Format  " + this.fingerprint);
 
 			}.bind(this);
 		},
 
-		// onSampleAcquired2:function
+		enrolOrVerify: function(s) {
+			var fingerprintStatusRequest = {
+				"action": "ENROL", // Dynamically load the action depending on the workflow
+				"idNumber": "9008317856080", // Dynamically load the ID number from the UI
+				"fingerprintIndex": 1, //for now you may hard code it to 1. This must not hard coded  if many fingers are enrolled
+				"fingerprintData": s
+			};
+
+			var fingerprintStatusRequestJson;
+			fingerprintStatusRequestJson = JSON.stringify(fingerprintStatusRequest);
+			console.log(fingerprintStatusRequestJson);
+
+			// var URL = "http://35.229.36.224:8080/api/fingerprint/enrol-verify";  //Your URL
+			var URL = "http://34.73.21.183:8080/api/fingerprint/enrol-verify"; //For local testing
+			var xmlhttp = new XMLHttpRequest();
+
+			xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
+
+			xmlhttp.open("POST", URL, false);
+			xmlhttp.setRequestHeader("Content-Type", "application/json");
+
+			xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
+			xmlhttp.send(fingerprintStatusRequestJson);
+
+			xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
+		},
+
+		callbackFunction: function(xmlhttp) {
+			alert(xmlhttp.responseXML);
+		},
 
 		onSaveFingerPrint: function() {
 			// this.onSendFile();
-			this.downloadURI(this.fingerprint, "9001018980085.png", "image/png");
+			// this.downloadURI(this.fingerprint, "9001018980085.png", "image/png");
 		},
 
 		downloadURI: function(uri, name, dataURIType) {

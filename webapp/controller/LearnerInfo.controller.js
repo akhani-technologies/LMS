@@ -256,14 +256,15 @@ sap.ui.define([
 		},
 
 		handleSuccessMessageBoxPress: function(oEvent) {
-			var that = this;
+			var oIconTabBar = this.getView().byId("oIconTB");
 			var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
 			MessageBox.success(
 				"Learner information successfully submitted", {
-					styleClass: bCompact ? "sapUiSizeCompact" : ""
-						// onClose: function(sAction) {
-						// 	that.oRouter.navTo("MenuPage");
-						// }
+					styleClass: bCompact ? "sapUiSizeCompact" : "",
+					onClose: function() {
+						this.byId("ContractIcon").setEnabled(true);
+						oIconTabBar.setSelectedKey("Key9");
+					}.bind(this)
 				}
 			);
 		},
@@ -468,11 +469,11 @@ sap.ui.define([
 				.byId("inpCity").getValue() + ", " + this.getView().byId("slctProv").getSelectedKey());
 			this.byId("txtQual").setText(this.getView().byId("slctQual").getSelectedItem().getText());
 
-			this.byId("txtBankName").setText(this.byId("inpBankName").getValue());
+			this.byId("txtBankName").setText(this.byId("cmbBankName").getSelectedItem().getText());
 			this.byId("txtAcc").setText(this.byId("inpAccNum").getValue());
 			this.byId("userIMG").setSrc(this.data);
 			this.byId("txtBranch").setText(this.byId("branch").getValue());
-			this.byId("txtAccType").setText(this.byId("AccType").getValue());
+			this.byId("txtAccType").setText(this.byId("cmbAccType").getSelectedItem().getText());
 			if (this.byId("radioEmploy").getSelectedIndex() === 1) {
 				this.byId("txtEmployement").setText("Unemployed");
 			} else {
@@ -497,7 +498,7 @@ sap.ui.define([
 			var oIconTabBar = this.getView().byId("oIconTB");
 			this.byId("SummIcon").setEnabled(true);
 			oIconTabBar.setSelectedKey("Key8");
-			// this.onSummaryPageFill();
+			this.onSummaryPageFill();
 		},
 
 		onAttachmentChange: function(oEvent) {
@@ -669,6 +670,7 @@ sap.ui.define([
 		onDone: function() {
 			var canvas = document.getElementById('cnv');
 			this.signatureImage = canvas.toDataURL('image/jpeg', 1.0);
+			this.byId("btnSaveDets").setEnabled(true);
 
 			// if (NumberOfTabletPoints() == 0) {
 			// 	alert("Please sign before continuing");

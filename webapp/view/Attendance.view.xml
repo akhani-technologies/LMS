@@ -3,10 +3,10 @@
 		<pages>
 			<Page title="Attendance" backgroundDesign="Solid" showNavButton="true" navButtonPress="onNavBack">
 				<content>
-					<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout">
+					<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" id="formAttendance">
 						<sap.ui.layout.form:content>
 							<core:Title text="Attendance" emphasized="true" icon="sap-icon://task"/>
-							<Label text="User Type"/>
+							<Label text="User Type" required="true"/>
 							<ComboBox id="type" width="60%" change="onTypeSelect" required="true">
 								<items>
 									<core:ListItem text="Learner"/>
@@ -31,15 +31,15 @@
 									<core:ListItem text="{Name}"/>
 								</items>
 							</ComboBox>
-							<Label text="Confirmation Type"/>
-							<ComboBox width="60%" id="conType" required="true">
+							<Label text="Confirmation Type" required="true"/>
+							<ComboBox width="60%" id="conType" required="true" change="onValidateGeneral">
 								<items>
 									<core:ListItem text="Attendance"/>
 									<core:ListItem text="Special request"/>
 									<core:ListItem text="Leaving"/></items>
 							</ComboBox>
-							<Label text="Clock In/Out"/>
-							<ComboBox id="cmbClock" width="60%" required="true">
+							<Label text="Clock In/Out" required="true"/>
+							<ComboBox id="cmbClock" width="60%" required="true" change="onValidateGeneral">
 								<items>
 									<core:ListItem text="Clock In"/>
 									<core:ListItem text="Clock Out"/>
@@ -68,7 +68,7 @@
 					<Toolbar width="100%">
 						<content>
 							<ToolbarSpacer/>
-							<Button text="Save details" width="auto" icon="sap-icon://save" type="Reject" press="onSaveDetails"/>
+							<Button text="Save details" width="auto" icon="sap-icon://save" type="Reject" press="onSaveDetails" id="btnSave" enabled="false"/>
 						</content>
 					</Toolbar>
 				</footer>

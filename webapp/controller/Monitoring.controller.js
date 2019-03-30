@@ -1,7 +1,7 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
-	"sap/ui/core/routing/History"
-], function(Controller, History) {
+	'sap/m/MessageBox'
+], function(Controller, MessageBox) {
 	"use strict";
 
 	return Controller.extend("programmeMotse.controller.Monitoring", {
@@ -12,20 +12,95 @@ sap.ui.define([
 		 * @memberOf programmeMotse.view.Monitoring
 		 */
 		onInit: function() {
-
+			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			this.oRouter.getRoute("Monitoring").attachPatternMatched(this._onObjectMatched, this);
 		},
-		onNavBack: function() {
-			var sPreviousHash = History.getInstance().getPreviousHash();
 
-			if (sPreviousHash !== undefined) {
-				// The history contains a previous entry
-				history.go(-1);
-			} else {
-				// Otherwise we go backwards with a forward history
-				var bReplace = true;
-				this.getRouter().navTo("master", {}, bReplace);
+		onSaveDetails: function() {
+			var oData = {};
+			oData.Project = this.byId("inpProject").getValue();
+			oData.ContractualA = this.byId("inpContractual").getValue();
+			oData.Establishment = this.byId("inpEstablishment").getValue();
+			oData.Service = this.byId("inpService").getValue();
+			oData.Recruitment = this.byId("inpLearner").getValue();
+			oData.Arrange = this.byId("inpArrange").getValue();
+			oData.Conduct = this.byId("inpConduct").getValue();
+			oData.Upload = this.byId("inpUpload").getValue();
+			oData.Invoicing = this.byId("inpInvoicing").getValue();
+			oData.Implementation = this.byId("inpImplementation").getValue();
+			oData.Successes = this.byId("inpSeccesses").getValue();
+			oData.Recommendations = this.byId("inpRecommendations").getValue();
+			oData.ClosingRemarks = this.byId("inpClosing").getValue();
+
+			$.ajax({
+				type: "POST",
+				async: false,
+				cache: false,
+				url: 'PHP/CreateInception.php',
+				data: oData,
+				//successfully logged on 
+				success: function(data, response, xhr) {
+					this.handleSuccessMessageBoxPress();
+				}.bind(this),
+				error: function(e, status, xhr) {
+
+				}
+			});
+		},
+
+		onValidateField: function() {
+			var aInputControls = this._getSimpleFormFields(this.byId("formInception"));
+			var oInputControl;
+			var sValue;
+			for (var m = 0; m < aInputControls.length; m++) {
+				oInputControl = aInputControls[m].control;
+
+				if (aInputControls[m].required) {
+					
+						sValue = oInputControl.getValue();
+				
+					if (!sValue) {
+						this.byId("btnSave").setEnabled(false);
+						return;
+					} else {
+						this.byId("btnSave").setEnabled(true);
+					}
+				}
 			}
 		},
+
+		_getSimpleFormFields: function(oSimpleForm) {
+			var aControls = [];
+			var aFormContent = oSimpleForm.getContent();
+			var sControlType;
+			for (var i = 0; i < aFormContent.length; i++) {
+				sControlType = aFormContent[i].getMetadata().getName();
+				if (sControlType === "sap.m.Input" || sControlType === "sap.m.TextArea" ) {
+					aControls.push({
+						control: aFormContent[i],
+						required: aFormContent[i - 1].getRequired && aFormContent[i - 1].getRequired()
+					});
+				}
+			}
+			return aControls;
+		},
+
+		onNavBack: function() {
+			this.oRouter.navTo("MenuPage");
+
+		},
+		handleSuccessMessageBoxPress: function(oEvent) {
+			var that = this;
+			var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
+			MessageBox.success(
+				"Inception report information successfully submitted", {
+					styleClass: bCompact ? "sapUiSizeCompact" : "",
+					onClose: function(sAction) {
+						that.oRouter.navTo("MenuPage");
+					}
+				}
+			);
+		}
 
 		/**
 		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered

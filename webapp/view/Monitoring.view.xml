@@ -16,43 +16,43 @@
 					<!--		</ComboBox>-->
 					<!--	</sap.ui.layout.form:content>-->
 					<!--</sap.ui.layout.form:SimpleForm>-->
-					<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" columnsL="1">
+					<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" columnsL="1" id="formInception">
 						<sap.ui.layout.form:content>
 							<core:Title text="1. Inception Report" icon="sap-icon://trip-report"/>
-							<Label text="Project "/>
-							<Input width="70%"/>							
+							<Label text="Project " required="true"/>
+							<Input width="70%" id="inpProject" required="true" liveChange="onValidateField"/>							
 							<core:Title text="2. Progress against implementation plan"/>
-							<Label text="2.1 Contractual Arrangements"/>
-							<Input width="70%"/>
-							<Label wrapping="true" text="2.2 Establishment of Project Steering Committee"/>
-							<Input width="70%"/>
-							<Label wrapping="true" text="2.3 Service Provider Appointments" width="100%"/>
-							<Input width="70%"/>
-							<Label wrapping="true" text="2.4 Learner Recruitment, Selection and Induction" width="100%"/>
-							<Input width="70%"/>
-							<Label wrapping="true" text="2.5 Arrange and Assess Training Centres" width="100%"/>
-							<Input width="70%" id="__input4"/>
-							<Label wrapping="true" text="2.6 Conduct Training Provider Induction" width="100%"/>
-							<Input width="70%" id="__input5"/>
-							<Label wrapping="true" text="2.7 Upload Learners onto the NLRD" width="100%"/>
-							<Input width="70%" class="sapUiLargeMarginBottom"/>
-							<Label text="3. Invoicing and Payment" width="100%"/>
-							<Input width="70%" class="sapUiLargeMarginBottom"/>
-							<Label text="4. Implementation Challenges" width="100%"/>
-							<Input width="70%" class="sapUiLargeMarginBottom"/>
-							<Label text="5. Implementation Successes" width="100%"/>
-							<Input width="70%" class="sapUiLargeMarginBottom"/>
-							<Label text="6. Recommendations" width="100%"/>
-							<Input width="70%" class="sapUiLargeMarginBottom"/>
-							<Label text="7. Closing Remarks" width="100%"/>
-							<TextArea id="__area0" width="70%"/></sap.ui.layout.form:content>
+							<Label text="2.1 Contractual Arrangements" required="true"/>
+							<Input width="70%" id="inpContractual" required="true" liveChange="onValidateField"/>
+							<Label wrapping="true" text="2.2 Establishment of Project Steering Committee" required="true"/>
+							<Input width="70%" id="inpEstablishment" required="true" liveChange="onValidateField"/>
+							<Label wrapping="true" text="2.3 Service Provider Appointments" width="100%" required="true"/>
+							<Input width="70%" id="inpService" required="true" liveChange="onValidateField"/>
+							<Label wrapping="true" text="2.4 Learner Recruitment, Selection and Induction" width="100%" required="true"/>
+							<Input width="70%" id="inpLearner" required="true" liveChange="onValidateField"/>
+							<Label wrapping="true" text="2.5 Arrange and Assess Training Centres" width="100%" required="true"/>
+							<Input width="70%" id="inpArrange" required="true" liveChange="onValidateField"/>
+							<Label wrapping="true" text="2.6 Conduct Training Provider Induction" width="100%" required="true"/>
+							<Input width="70%" id="inpConduct" required="true" liveChange="onValidateField"/>
+							<Label wrapping="true" text="2.7 Upload Learners onto the NLRD" width="100%" required="true"/>
+							<Input width="70%" class="sapUiLargeMarginBottom" id="inpUpload" required="true" liveChange="onValidateField"/>
+							<Label text="3. Invoicing and Payment" width="100%" required="true"/>
+							<Input width="70%" class="sapUiLargeMarginBottom" id="inpInvoicing" required="true" liveChange="onValidateField"/>
+							<Label text="4. Implementation Challenges" width="100%" required="true"/>
+							<Input width="70%" class="sapUiLargeMarginBottom" id="inpImplementation" required="true" liveChange="onValidateField"/>
+							<Label text="5. Implementation Successes" width="100%" required="true"/>
+							<Input width="70%" class="sapUiLargeMarginBottom" id="inpSeccesses" required="true" liveChange="onValidateField"/>
+							<Label text="6. Recommendations" width="100%" required="true"/>
+							<Input width="70%" class="sapUiLargeMarginBottom" id="inpRecommendations" required="true" liveChange="onValidateField"/>
+							<Label text="7. Closing Remarks" width="100%" required="true"/>
+							<TextArea id="inpClosing" width="70%" required="true" liveChange="onValidateField"/></sap.ui.layout.form:content>
 					</sap.ui.layout.form:SimpleForm>
 				</content>
 			<footer>
-			    <Toolbar width="100%" id="__toolbar1">
+			    <Toolbar width="100%" >
 			        <content>
-			            <ToolbarSpacer id="__spacer0"/>
-			            <Button text="Save details" width="auto" icon="sap-icon://save" type="Reject"/>
+			            <ToolbarSpacer />
+			            <Button press="onSaveDetails" text="Save details" width="auto" icon="sap-icon://save" type="Reject" id="btnSave" enabled="false"/>
 			        </content>
 			    </Toolbar>
 			</footer>

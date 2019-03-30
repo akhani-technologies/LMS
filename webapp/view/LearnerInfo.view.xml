@@ -1,6 +1,4 @@
-<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
-	xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:u="sap.ui.unified" controllerName="programmeMotse.controller.LearnerInfo" displayBlock="true"
-	id="IconPersonal">
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:u="sap.ui.unified" controllerName="programmeMotse.controller.LearnerInfo" displayBlock="true" id="IconPersonal">
 	<App>
 		<pages>
 			<Page title="Learner Information" backgroundDesign="Solid" showNavButton="true" navButtonPress="onNavBack">
@@ -76,11 +74,9 @@
 									</sap.ui.layout.form:SimpleForm>
 								</content>
 							</IconTabFilter>
-							<IconTabFilter text="Additional Info" enabled="false" id="IconAdditional" icon="sap-icon://task" iconColor="Critical" design="Horizontal"
-								key="Key2">
+							<IconTabFilter text="Additional Info" enabled="false" id="IconAdditional" icon="sap-icon://task" iconColor="Critical" design="Horizontal" key="Key2">
 								<content>
-									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" id="AdditionalFrm" editable="true"
-										layout="ResponsiveGridLayout" columnsL="1">
+									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" id="AdditionalFrm" editable="true" layout="ResponsiveGridLayout" columnsL="1">
 										<sap.ui.layout.form:content>
 											<core:Title text="Employment Information" icon="sap-icon://eam-work-order"/>
 											<Label text="Employment status"/>
@@ -141,8 +137,7 @@
 										</items>
 									</HBox>
 									<VBox height="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
-										<core:HTML
-											content="&lt;video onclick=&quot;snapshot(this);&quot; width=400 height=400 id=&quot;video&quot; controls autoplay&gt;&lt;/video&gt;"/>
+										<core:HTML content="&lt;video onclick=&quot;snapshot(this);&quot; width=400 height=400 id=&quot;video&quot; controls autoplay&gt;&lt;/video&gt;"/>
 									</VBox>
 									<VBox visible="false" height="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
 										<Image width="140px" height="140px" id="photo"/>
@@ -181,30 +176,30 @@
 							</IconTabFilter>
 							<IconTabFilter enabled="false" text="Banking details" icon="sap-icon://money-bills" iconColor="Negative" key="Key5" id="IconBank" design="Horizontal">
 								<content>
-									<sap.ui.layout.form:SimpleForm id="formBank" xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout">
+									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" id="formBank" editable="true" layout="ResponsiveGridLayout">
 										<sap.ui.layout.form:content>
 											<core:Title text="Add banking details" icon="sap-icon://add-activity"/>
 											<Label required="true" text="Bank Name" width="100%"/>
-											<ComboBox  width="70%" id="cmbBankName" required="true" change="onValidateBank">
+											<ComboBox width="70%" id="cmbBankName" required="true" change="onValidateBank">
 												<items>
-													<core:ListItem text="Absa" />
+													<core:ListItem text="Absa"/>
 													<core:ListItem text="African Bank"/>
-													<core:ListItem text="Bidvest Bank" />
+													<core:ListItem text="Bidvest Bank"/>
 													<core:ListItem text="Capitec Bank"/>
-													<core:ListItem text="Discovery" />
-													<core:ListItem text="First National Bank" />
+													<core:ListItem text="Discovery"/>
+													<core:ListItem text="First National Bank"/>
 													<core:ListItem text="Nedbank"/>
 													<core:ListItem text="Standard Bank"/>
 												</items>
 											</ComboBox>
-											<Label  required="true" text="Account number" width="100%"/>
+											<Label required="true" text="Account number" width="100%"/>
 											<Input liveChange="onValidateBank" required="true" width="70%" id="inpAccNum"/>
 											<Label required="true" text="Branch number" width="100%"/>
 											<Input liveChange="onValidateBank" required="true" width="70%" id="branch"/>
-											<Label  required="true" text="Account Type" width="100%"/>
-											<ComboBox  width="70%" id="cmbAccType" required="true" change="onValidateBank">
+											<Label required="true" text="Account Type" width="100%"/>
+											<ComboBox width="70%" id="cmbAccType" required="true" change="onValidateBank">
 												<items>
-													<core:ListItem text="Savings Account" />
+													<core:ListItem text="Savings Account"/>
 													<core:ListItem text="Cheque Account"/>
 												</items>
 											</ComboBox>
@@ -217,8 +212,7 @@
 									</HBox>
 								</content>
 							</IconTabFilter>
-							<IconTabFilter enabled="false" id="ProgramIcon" text="Programme enrolment" icon="sap-icon://course-program" iconColor="Positive" key="Key6"
-								design="Horizontal">
+							<IconTabFilter enabled="false" id="ProgramIcon" text="Programme enrolment" icon="sap-icon://course-program" iconColor="Positive" key="Key6" design="Horizontal">
 								<content>
 									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" id="formProgram" editable="true" layout="ResponsiveGridLayout">
 										<sap.ui.layout.form:content>
@@ -244,23 +238,17 @@
 										<sap.ui.layout.form:content>
 											<core:Title text="Add attachements" icon="sap-icon://add-coursebook"/>
 											<Label text="ID Photo" width="100%"/>
-											<u:FileUploader id="IDPhoto" change="onAttachmentChange"
-												name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
+											<u:FileUploader id="IDPhoto" change="onAttachmentChange" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
 											<Label text="Proof of Address" width="100%"/>
-											<u:FileUploader id="ProofOfAddress" change="onAttachmentChange"
-												name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
+											<u:FileUploader id="ProofOfAddress" change="onAttachmentChange" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
 											<Label text="Proof of Highest Qualification"/>
-											<u:FileUploader id="ProofOfHighestQualification" change="onAttachmentChange"
-												name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
+											<u:FileUploader id="ProofOfHighestQualification" change="onAttachmentChange" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
 											<Label text="SETA Learning agreement"/>
-											<u:FileUploader id="SETALearningAgreement" change="onAttachmentChange"
-												name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
+											<u:FileUploader id="SETALearningAgreement" change="onAttachmentChange" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
 											<Label text="Medical Certificate" width="100%"/>
-											<u:FileUploader id="MedicalCertificate" change="onAttachmentChange"
-												name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
+											<u:FileUploader id="MedicalCertificate" change="onAttachmentChange" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
 											<Label text="Proof of banking details"/>
-											<u:FileUploader id="ProofOfBankingDetails" change="onAttachmentChange"
-												name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
+											<u:FileUploader id="ProofOfBankingDetails" change="onAttachmentChange" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
 											<Label width="100%"/>
 											<HBox width="100%" alignContent="End" alignItems="End" justifyContent="End">
 												<items>
@@ -452,9 +440,7 @@
 										</sap.ui.layout.form:layout>
 									</sap.ui.layout.form:Form>
 									<VBox height="100%" id="mapBox" visible="{viewModel>/delivery}" alignContent="Center" alignItems="Center" justifyContent="Center">
-										<core:HTML class="signatureB"
-											content="&lt;canvas id=&quot;cnv&quot; style=&quot;width: 500px; height: 100px; border-style: double;&quot;&gt;&lt;/canvas&gt;"
-											id="map_canvas_intent"/>
+										<core:HTML class="signatureB" content="&lt;canvas id=&quot;cnv&quot; style=&quot;width: 500px; height: 100px; border-style: double;&quot;&gt;&lt;/canvas&gt;" id="map_canvas_intent"/>
 									</VBox>
 									<FlexBox width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
 										<items>
@@ -465,7 +451,7 @@
 									</FlexBox>
 								</content>
 							</IconTabFilter>
-							<IconTabFilter enabled="false" text="Generate Contract" icon="sap-icon://signature" design="Horizontal" iconColor="Negative">
+							<IconTabFilter key="Key9" id="ContractIcon" enabled="false" text="Generate Contract" icon="sap-icon://signature" design="Horizontal" iconColor="Negative">
 								<content>
 									<f:SimpleForm editable="true" layout="ResponsiveGridLayout">
 										<f:content>
@@ -488,7 +474,7 @@
 					<Toolbar width="100%">
 						<content>
 							<ToolbarSpacer/>
-							<Button text="Save details" width="auto" type="Reject" icon="sap-icon://save" press="onSaveDetails"/>
+							<Button text="Save details" width="auto" type="Reject" icon="sap-icon://save" press="" enabled="false" id="btnSaveDets"/>
 						</content>
 					</Toolbar>
 				</footer>
