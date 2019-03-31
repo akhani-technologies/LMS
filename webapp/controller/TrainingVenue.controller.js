@@ -9,7 +9,28 @@ sap.ui.define([
 
 		onInit: function() {
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			this.oRouter.getRoute("TrainingVenue").attachPatternMatched(this._onObjectMatched, this);
 			this.AttachArray = [];
+		},
+
+		_onObjectMatched: function() {
+			this.ResetFileds();
+		},
+
+		ResetFileds: function() {
+			this.byId("comboType").setSelectedItem(null);
+			this.byId("inpVenueName").setValue(null);
+			this.byId("inpVenueO").setValue(null);
+			this.byId("inpEmail").setValue(null);
+			this.byId("inpNumber").setValue(null);
+			this.byId("inpAddr1").setValue(null);
+			this.byId("inpAddr2").setValue(null);
+			this.byId("inpCity").setValue(null);
+			this.byId("slctProv").setSelectedItem(null);
+			this.byId("inpBy").setValue(null);
+			this.byId("DateP").setValue(null);
+			this.byId("AssessmentReport").setValue(null);
+			this.byId("oTableApproval").removeAllItems();
 		},
 
 		onAddItems: function(oEvent) {

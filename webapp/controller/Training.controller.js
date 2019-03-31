@@ -9,7 +9,29 @@ sap.ui.define([
 
 		onInit: function() {
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			this.oRouter.getRoute("Training").attachPatternMatched(this._onObjectMatched, this);
 			this.AttachArray = [];
+		},
+
+		_onObjectMatched: function() {
+			this.ResetFields();
+		},
+
+		ResetFields: function() {
+			this.byId("btnTraining").setEnabled(false);
+			this.byId("inpAccreNum").setValue(null);
+			this.byId("inpPosition").setValue(null);
+			this.byId("inpOffice").setValue(null);
+			this.byId("inpMobile").setValue(null);
+			this.byId("inpEmail").setValue(null);
+			this.byId("cmbBankName").setSelectedItem(null);
+			this.byId("inpAccNum").setValue(null);
+			this.byId("cmbAccType").setSelectedItem(null);
+			this.byId("FileBank").setValue(null);
+			this.byId("inpContactPerson").setValue(null);
+			this.byId("inpRegNum").setValue(null);
+			this.byId("fileCDS").setValue(null);
+			this.byId("tblTrain").removeAllItems();
 		},
 
 		handleBankpress: function(oEvent) {

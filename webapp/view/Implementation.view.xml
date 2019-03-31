@@ -5,9 +5,9 @@
 			<Page backgroundDesign="Solid" showNavButton="true" navButtonPress="onNavBack">
 				<content>
 					<ObjectHeader title="Implementation Plan" numberUnit="eur" introActive="true" titleActive="true" icon="sap-icon://workflow-tasks"/>
-					<IconTabBar>
+					<IconTabBar id="ImplementationBar">
 						<items>
-							<IconTabFilter class="iconFlt" text="Pre-Implementation Phase " icon="sap-icon://checklist-item" iconColor="Critical" design="Vertical">
+							<IconTabFilter key="Pre" class="iconFlt" text="Pre-Implementation Phase " icon="sap-icon://checklist-item" iconColor="Critical" design="Vertical">
 								<content>
 									<sap.ui.layout.form:SimpleForm id="formPre" width="100%" editable="true" layout="ResponsiveGridLayout" xmlns:sap.ui.layout.form="sap.ui.layout.form">
 										<sap.ui.layout.form:content>

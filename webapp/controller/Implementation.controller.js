@@ -22,6 +22,8 @@ sap.ui.define([
 		},
 
 		resetFields: function() {
+			var oIconTabBar = this.byId("ImplementationBar");
+			oIconTabBar.setSelectedKey("Pre");
 			this.byId("inpImpPorject").setValue(null);
 			this.byId("inpPostPorject").setValue(null);
 			this.byId("inpPrePorject").setValue();

@@ -23,7 +23,7 @@
 							<Label text="Registration Number" width="100%" required="true"/>
 							<Input width="70%" id="inpRegNum" liveChange="onValidateGeneral" required="true"/>
 							<Label text="CSD Report" width="100%" required="true"/>
-							<u:FileUploader xmlns:u="sap.ui.unified" required="true" change="onChangeAttachment" name="myFileUpload" uploadUrl="upload/"
+							<u:FileUploader id="fileCDS" xmlns:u="sap.ui.unified" required="true" change="onChangeAttachment" name="myFileUpload" uploadUrl="upload/"
 								tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
 							<core:Title text="Add banking details" icon="sap-icon://add-activity"/>
 							<Label text="Bank Name" width="100%" required="true"/>
@@ -51,7 +51,7 @@
 								</items>
 							</ComboBox>
 							<Label text="Proof of Bank Account" width="100%" required="true"/>
-							<u:FileUploader xmlns:u="sap.ui.unified" required="true" change="onBankAttachmentChange" name="myFileUpload" uploadUrl="upload/"
+							<u:FileUploader id="FileBank" xmlns:u="sap.ui.unified" required="true" change="onBankAttachmentChange" name="myFileUpload" uploadUrl="upload/"
 								tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
 						</sap.ui.layout.form:content>
 					</sap.ui.layout.form:SimpleForm>
