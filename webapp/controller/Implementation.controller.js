@@ -470,7 +470,7 @@ sap.ui.define([
 					},
 					//successfully logged on 
 					success: function(data, response, xhr) {
-						if (i === 12) {
+						if (i === 13) {
 							var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
 							MessageBox.success(
 								"Pre-Implementation rates successfully saved", {
