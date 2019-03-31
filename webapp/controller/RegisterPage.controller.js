@@ -17,6 +17,8 @@ sap.ui.define([
 		},
 
 		_onObjectMatched: function() {
+			var oIconBar = this.byId("iconRegister");
+			oIconBar.setSelectedKey("general");
 			this.ResetFields();
 		},
 
@@ -77,7 +79,7 @@ sap.ui.define([
 		},
 
 		onCancel: function() {
-			this.oRouter.navTo("LoginScreen");
+			this.oRouter.navTo("LoginPage");
 		},
 
 		onConfirmPassword: function(oEvent) {

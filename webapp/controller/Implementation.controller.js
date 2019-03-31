@@ -62,8 +62,8 @@ sap.ui.define([
 			this.byId("rate11").setValue(0);
 			this.byId("rate12").setValue(0);
 			this.byId("rate13").setValue(0);
-			
-			
+			this.byId("rate14").setValue(0);
+
 			this.byId("TTdate").setValue(null);
 			this.byId("ARdate").setValue(null);
 			this.byId("SOARdate").setValue(null);
@@ -101,6 +101,7 @@ sap.ui.define([
 			this.byId("rate11date").setValue(null);
 			this.byId("rate12date").setValue(null);
 			this.byId("rate13date").setValue(null);
+			this.byId("rate14date").setValue(null);
 
 		},
 
@@ -309,7 +310,7 @@ sap.ui.define([
 					//successfully logged on 
 					success: function(data, response, xhr) {
 
-						if (i === 18) {
+						if (i === 4) {
 							var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
 							MessageBox.success(
 								"Post-Implementation rates successfully saved", {
@@ -447,6 +448,12 @@ sap.ui.define([
 				Description: this.byId("lblrate13").getText(),
 				Date: this.byId("rate13date").getValue(),
 				Rate: this.byId("rate13").getValue()
+			},
+			 {
+				Project: this.byId("inpPrePorject").getValue(),
+				Description: this.byId("lblrate14").getText(),
+				Date: this.byId("rate14date").getValue(),
+				Rate: this.byId("rate14").getValue()
 			}];
 
 			for (var i = 0; i < implData.length; i++) {
