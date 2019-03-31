@@ -54,16 +54,7 @@ sap.ui.define([
 		},
 
 		onNavBack: function() {
-			var sPreviousHash = History.getInstance().getPreviousHash();
-
-			if (sPreviousHash !== undefined) {
-				// The history contains a previous entry
-				history.go(-1);
-			} else {
-				// Otherwise we go backwards with a forward history
-				var bReplace = true;
-				this.getRouter().navTo("master", {}, bReplace);
-			}
+			this.oRouter.navTo("LearnerMenu");
 		},
 
 		onUpdateTools: function() {
@@ -87,19 +78,6 @@ sap.ui.define([
 
 		onItemPress: function(oEvent) {
 			var oItem = oEvent.getSource();
-			var path = oItem.getBindingContext().getPath();
-			// if (!this.oDialog) {
-			// 	// create dialog via fragment factory
-			// 	this.oDialog = sap.ui.xmlfragment("programmeMotse.view.Fragments.Tools", this);
-			// 	this.getView().addDependent(this.oDialog);
-
-			// }
-			// sap.ui.getCore().byId("inpQty").setValue(null);
-			// sap.ui.getCore().byId("cmbTool").setSelectedItem(null);
-			// this.LearnerID = this.learnerModel.getProperty(path).LearnerID;
-			// this.oDialog.setModel(this.learnerModel);
-			// this.oDialog.bindElement(path);
-			// this.oDialog.open();
 			this.oRouter.navTo("Tools", {
 				learnerPath: oItem.getBindingContext().getPath().substr(1)
 			});

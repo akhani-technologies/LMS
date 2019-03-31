@@ -1,8 +1,9 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/ui/core/routing/History",
-	"../model/formatter"
-], function(Controller, History, formatter) {
+	"../model/formatter",
+	'sap/ui/model/Filter'
+], function(Controller, History, formatter, Filter) {
 	"use strict";
 
 	return Controller.extend("programmeMotse.controller.MilestoneReport", {
@@ -15,12 +16,16 @@ sap.ui.define([
 		onInit: function() {
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			this.oRouter.getRoute("MilestoneReport").attachPatternMatched(this._onObjectMatched, this);
+			this.FilterTable = null;
 		},
 
 		_onObjectMatched: function() {
 			this.onGetImplementation();
 			this.onGetPreImplementation();
 			this.onGetPostImplementation();
+			this.getPreProjects();
+			this.getImpProjects();
+			this.getPostProjects();
 
 		},
 
@@ -52,6 +57,7 @@ sap.ui.define([
 				}
 			});
 		},
+
 		onGetPreImplementation: function() {
 			var oSelect = this.byId("tblPre");
 			this.PreModel = new sap.ui.model.json.JSONModel();
@@ -68,6 +74,7 @@ sap.ui.define([
 				}
 			});
 		},
+
 		onGetPostImplementation: function() {
 			var oSelect = this.byId("tblPost");
 			this.PostModel = new sap.ui.model.json.JSONModel();
@@ -124,6 +131,105 @@ sap.ui.define([
 			} else {
 				jQuery.sap.log.error("onPrint needs a valid target container [view|data:targetId=\"SID\"]");
 			}
+		},
+
+		getPreProjects: function() {
+			var oTable = this.byId("tblPre");
+			var oItems = oTable.getItems();
+			var Arr = [];
+			this.PreProjectModel = new sap.ui.model.json.JSONModel();
+			for (var i = 0; i < oItems.length; i++) {
+				Arr.push({
+					Projects: oItems[i].mAggregations.cells[0].getProperty("text")
+				});
+			}
+			var ProjectArr = this.removeDuplicates(Arr, "Projects");
+			this.PreProjectModel.setData(ProjectArr);
+		},
+
+		getImpProjects: function() {
+			var oTable = this.byId("tblImp");
+			var oItems = oTable.getItems();
+			var Arr = [];
+			this.ImpProjectModel = new sap.ui.model.json.JSONModel();
+			for (var i = 0; i < oItems.length; i++) {
+				Arr.push({
+					Projects: oItems[i].mAggregations.cells[0].getProperty("text")
+				});
+			}
+			var ProjectArr = this.removeDuplicates(Arr, "Projects");
+			this.ImpProjectModel.setData(ProjectArr);
+		},
+		getPostProjects: function() {
+			var oTable = this.byId("tblPost");
+			var oItems = oTable.getItems();
+			var Arr = [];
+			this.PostProjectModel = new sap.ui.model.json.JSONModel();
+			for (var i = 0; i < oItems.length; i++) {
+				Arr.push({
+					Projects: oItems[i].mAggregations.cells[0].getProperty("text")
+				});
+			}
+			var ProjectArr = this.removeDuplicates(Arr, "Projects");
+			this.PostProjectModel.setData(ProjectArr);
+		},
+
+		removeDuplicates: function(originalArray, prop) {
+			var newArray = [];
+			var lookupObject = {};
+
+			for (var i in originalArray) {
+				lookupObject[originalArray[i][prop]] = originalArray[i];
+			}
+
+			for (i in lookupObject) {
+				newArray.push(lookupObject[i]);
+			}
+			return newArray;
+		},
+
+		handleFilterButtonPressed: function(oEvent) {
+			var sId = oEvent.getSource().getId();
+			console.log("Button ID " + sId);
+			this._oPopover = sap.ui.xmlfragment("programmeMotse.view.Fragments.FilterPlans", this);
+			this.getView().addDependent(this._oPopover);
+			if (sId === "__button5") {
+				this._oPopover.setModel(this.PreProjectModel);
+				this.FilterTable = this.byId("tblPre");
+			} else if (sId === "__button6") {
+				this._oPopover.setModel(this.ImpProjectModel);
+				this.FilterTable = this.byId("tblImp");
+			} else {
+				this._oPopover.setModel(this.PostProjectModel);
+				this.FilterTable = this.byId("tblPost");
+
+			}
+			this._oPopover.open();
+			// }
+		},
+
+		handleFilterConfirm: function(oEvent) {
+			var oTable = this.FilterTable,
+				mParams = oEvent.getParameters(),
+				oBinding = oTable.getBinding("items"),
+				aFilters = [];
+
+			mParams.filterItems.forEach(function(oItem) {
+				var aSplit = oItem.getKey().split("+"),
+					sPath = aSplit[0],
+					sOperator = aSplit[1],
+					sValue1 = aSplit[2],
+					sValue2 = aSplit[3],
+					oFilter = new Filter(sPath, sOperator, sValue1, sValue2);
+				aFilters.push(oFilter);
+			});
+
+			// apply filter settings
+			oBinding.filter(aFilters);
+
+			// // update filter bar
+			// this.byId("vsdFilterBar").setVisible(aFilters.length > 0);
+			// this.byId("vsdFilterLabel").setText(mParams.filterString);
 		}
 
 	});

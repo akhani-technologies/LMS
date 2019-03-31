@@ -1,16 +1,21 @@
-<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="programmeMotse.controller.LearnerMenu">
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+	controllerName="programmeMotse.controller.LearnerMenu">
 	<App>
 		<pages>
 			<Page backgroundDesign="Solid" showNavButton="true" navButtonPress="onNavBack">
 				<content>
 					<FlexBox class="sapUiLargeMarginTop" alignContent="Center" alignItems="Center" justifyContent="Center">
-						<StandardTile title="Create Learner" press="onLearnerInfoPress" icon="sap-icon://add-contact" activeIcon="sap-icon://customer" numberUnit="eur" infoState="Success" removable="false"/>
-							<StandardTile title="Search for learners" press="onLearnerList" icon="sap-icon://search" activeIcon="sap-icon://customer" infoState="Success" removable="false"/>
-							<StandardTile title="Capture Learner Outcomes" press="onCaptureResults" icon="sap-icon://activity-individual" activeIcon="sap-icon://customer" numberUnit="eur" infoState="Success"/>
+						<StandardTile visible="{viewModel>/onShowCreate}" title="Create Learner" press="onLearnerInfoPress" icon="sap-icon://add-contact"
+							activeIcon="sap-icon://customer" numberUnit="eur" infoState="Success" removable="false"/>
+						<StandardTile title="Search for learners" press="onLearnerList" icon="sap-icon://search" activeIcon="sap-icon://customer"
+							infoState="Success" removable="false"/>
+						<StandardTile visible="{viewModel>/onShowCreate}" title="Capture Learner Outcomes" press="onCaptureResults"
+							icon="sap-icon://activity-individual" activeIcon="sap-icon://customer" numberUnit="eur" infoState="Success"/>
+						<StandardTile visible="{viewModel>/onShowCreate}" title="Learner Training tool" activeIcon="sap-icon://customer" infoState="Success"
+							press="onTrainingTool" icon="sap-icon://key-user-settings"/>
 					</FlexBox>
 					<!--<TileContainer allowAdd="true">-->
 					<!--	<tiles>-->
-							
 					<!--			</tiles>-->
 					<!--</TileContainer>-->
 				</content>

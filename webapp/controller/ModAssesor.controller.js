@@ -48,6 +48,55 @@ sap.ui.define([
 			});
 		},
 
+		onValidate: function() {
+			var aInputControls = this._getSimpleFormFields(this.byId("ModAssessor"));
+			var oInputControl;
+			// var oIconBar = this.byId("iconRegister");
+			var sValue;
+			var valid = false;
+			for (var m = 0; m < aInputControls.length; m++) {
+				oInputControl = aInputControls[m].control;
+				var _roadCtrlType = oInputControl.getMetadata().getName();
+
+				if (aInputControls[m].required) {
+					if (_roadCtrlType === "sap.m.ComboBox") {
+						sValue = oInputControl.getSelectedItem();
+					} else {
+						sValue = oInputControl.getValue();
+					}
+					if (!sValue) {
+						valid = false;
+						return;
+					} else {
+						valid = true;
+					}
+				}
+			}
+			if (valid) {
+				this.byId("btnSave").setEnabled(true);
+				// oIconBar.setSelectedKey("address");
+			} else {
+				this.byId("btnSave").setEnabled(false);
+				// oIconBar.setSelectedKey("general");
+			}
+		},
+
+		_getSimpleFormFields: function(oSimpleForm) {
+			var aControls = [];
+			var aFormContent = oSimpleForm.getContent();
+			var sControlType;
+			for (var i = 0; i < aFormContent.length; i++) {
+				sControlType = aFormContent[i].getMetadata().getName();
+				if (sControlType === "sap.m.Input" || sControlType === "sap.ui.unified.FileUploader" || sControlType === "sap.m.ComboBox") {
+					aControls.push({
+						control: aFormContent[i],
+						required: aFormContent[i - 1].getRequired && aFormContent[i - 1].getRequired()
+					});
+				}
+			}
+			return aControls;
+		},
+
 		onSaveDetails: function(oEvent) {
 			var oData = {};
 			oData.PersonID = parseInt(("" + Math.random()).substring(2, 5));
@@ -89,10 +138,11 @@ sap.ui.define([
 			};
 
 			//	var txt = oParameters.files[0] var my_file_as_base64 = getBase64(file)
-			window.IDfileName = oParameters.files[0].name
+			window.IDfileName = oParameters.files[0].name;
 			window.IDfileType = oParameters.files[0].type;
 
 			oFileReader.readAsDataURL(oParameters.files[0]);
+			this.onValidate();
 		},
 
 		handleSuccessMessageBoxPress: function(oEvent) {

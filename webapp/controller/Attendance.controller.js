@@ -105,7 +105,7 @@ sap.ui.define([
 			}
 		},
 
-		onSaveDetails: function(oEvent) {
+		onSaveDetails: function(msg) {
 			var oData = {};
 			oData.AttendanceID = parseInt(("" + Math.random()).substring(2, 5));
 			oData.UserType = this.byId("type").getSelectedItem().getText();
@@ -131,7 +131,7 @@ sap.ui.define([
 				data: oData,
 				//successfully logged on 
 				success: function(data, response, xhr) {
-					this.handleSuccessMessageBoxPress();
+					this.handleSuccessMessageBoxPress(msg);
 				}.bind(this),
 				error: function(e, status, xhr) {
 
@@ -164,18 +164,24 @@ sap.ui.define([
 				this.byId("cmbLearner").setVisible(true);
 				this.byId("lblFacilitator").setVisible(false);
 				this.byId("lblLearner").setVisible(true);
+				this.byId("lblFacilitator").setRequired(false);
+				this.byId("lblLearner").setRequired(true);
 			} else if (type === "Facilitator") {
 				// this.byId("cmbVenue").setVisible(false);
 				this.byId("cmbFacilitator").setVisible(true);
 				this.byId("cmbLearner").setVisible(false);
 				this.byId("lblFacilitator").setVisible(true);
 				this.byId("lblLearner").setVisible(false);
+				this.byId("lblFacilitator").setRequired(true);
+				this.byId("lblLearner").setRequired(false);
 			} else {
 				// this.byId("cmbVenue").setVisible(false);
 				this.byId("cmbFacilitator").setVisible(false);
 				this.byId("cmbLearner").setVisible(false);
 				this.byId("lblFacilitator").setVisible(false);
 				this.byId("lblLearner").setVisible(false);
+				this.byId("lblFacilitator").setRequired(false);
+				this.byId("lblLearner").setRequired(false);
 			}
 			this.onValidateGeneral();
 		},
@@ -191,9 +197,9 @@ sap.ui.define([
 
 		onStopFingerPrint: function() {
 			this.sdk.stopAcquisition().then(function() {
-				console.log("Capturing stopped !!!");
+				// console.log("Capturing stopped !!!");
 			}, function(error) {
-				showMessage(error.message);
+				// showMessage(error.message);
 			});
 		},
 
@@ -201,52 +207,81 @@ sap.ui.define([
 			var fingerprint = this.byId("finger1");
 			this.sdk.onSamplesAcquired = function(s) {
 				var samples = JSON.parse(s.samples);
-				fingerprint.setSrc("data:image/png;base64," + Fingerprint.b64UrlTo64(samples[0]));
-				this.fingerprint = Fingerprint.b64UrlTo64(samples[0]);
-
-			};
+				var sampleObject = Fingerprint.b64UrlTo64(samples[0]);
+				fingerprint.setSrc("data:image/png;base64," + sampleObject);
+				this.fingerprint = sampleObject;
+				//console.log("WSQ Format  " + this.fingerprint);
+			}.bind(this);
 		},
 
-		// onSampleAcquired2:function
+		enrolOrVerify: function() {
+			var oComboType = this.byId("type").getSelectedItem().getText();
+			var sID = null;
 
-		onSaveFingerPrint: function() {
-			$.ajax({
-				type: "POST",
-				url: 'https://petstore.swagger.io/v2/pet',
-				async: false,
-				contentType: 'application/json',
-				dataType: 'json',
-				accept: "application/json",
-				data: JSON.stringify({
-					id: 1988,
-					category: {
-						id: 1,
-						name: "Neo"
-					},
-					name: "doggie",
-					photoUrls: [
-						"string"
-					],
-					tags: [{
-						id: 1,
-						name: "Lehoko"
-					}],
-					status: "available"
-				}),
-				success: function(data, s, xhr) {
-					alert("success " + s);
-				}.bind(this),
-				error: function(err, e, xhr) {
-					alert("error " + e);
+			if (!this.fingerprint) {
+				var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
+				MessageBox.warning(
+					"Please scan the learners right hand thumb before saving", {
+						styleClass: bCompact ? "sapUiSizeCompact" : ""
+					}
+				);
+			} else {
+				if (oComboType === "Learner") {
+					sID = this.LearnerID;
+				} else {
+					sID = this.FacilitatorID;
 				}
-			});
+				var fingerprintStatusRequest = {
+					"action": "VERIFY", // Dynamically load the action depending on the workflow
+					"idNumber": sID, // Dynamically load the ID number from the UI
+					"fingerprintIndex": 1, //for now you may hard code it to 1. This must not hard coded  if many fingers are enrolled
+					"fingerprintData": this.fingerprint
+				};
+
+				var fingerprintStatusRequestJson;
+				fingerprintStatusRequestJson = JSON.stringify(fingerprintStatusRequest);
+
+				var URL = "http://34.73.21.183:8080/api/fingerprint/enrol-verify";
+				var xmlhttp = new XMLHttpRequest();
+
+				xmlhttp.open("POST", URL, false);
+				xmlhttp.setRequestHeader("Content-Type", "application/json");
+
+				// xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
+				xmlhttp.send(fingerprintStatusRequestJson);
+
+				xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
+				// this.byId("btnPrints").setEnabled(true);
+			}
+
 		},
 
-		handleSuccessMessageBoxPress: function(oEvent) {
+		callbackFunction: function(xmlhttp) {
+			var response = JSON.parse(xmlhttp.response);
+			var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
+			if (response.success) {
+				this.onSaveDetails(response.failureReason);
+				// MessageBox.success(
+				// 	response.failureReason, {
+				// 		styleClass: bCompact ? "sapUiSizeCompact" : ""
+				// 	}
+				// );
+				this.byId("btnPrints").setEnabled(true);
+			} else {
+				MessageBox.warning(
+					response.failureReason, {
+						styleClass: bCompact ? "sapUiSizeCompact" : ""
+					}
+				);
+			}
+			// console.log(response);
+		},
+
+		handleSuccessMessageBoxPress: function(msg) {
 			var that = this;
 			var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
 			MessageBox.success(
-				"Attendance information successfully submitted", {
+				msg, {
 					styleClass: bCompact ? "sapUiSizeCompact" : "",
 					onClose: function(sAction) {
 						that.oRouter.navTo("MenuPage");
@@ -254,7 +289,7 @@ sap.ui.define([
 				}
 			);
 		},
-		
+
 		onValidateGeneral: function() {
 			var aInputControls = this._getSimpleFormFields(this.byId("formAttendance"));
 			var oInputControl;

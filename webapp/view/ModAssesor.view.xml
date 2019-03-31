@@ -1,5 +1,4 @@
-<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
-	controllerName="programmeMotse.controller.ModAssesor">
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="programmeMotse.controller.ModAssesor">
 	<App>
 		<pages>
 			<Page backgroundDesign="Solid" showNavButton="true" navButtonPress="onNavBack">
@@ -8,37 +7,34 @@
 						<items>
 							<IconTabFilter text="Add Info" icon="sap-icon://add-contact" iconColor="Critical">
 								<content>
-									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" id="__form0">
+									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" id="ModAssessor">
 										<sap.ui.layout.form:content>
 											<core:Title xmlns:core="sap.ui.core" text="Add Moderator/ Assessor Information" icon="sap-icon://employee" id="__title1"/>
-											<Label xmlns="sap.m" text="Type" />
-											<ComboBox xmlns="sap.m" width="70%" id="cmbMod">
+											<Label xmlns="sap.m" text="Type" required="true"/>
+											<ComboBox xmlns="sap.m" width="70%" id="cmbMod" required="true" change="onValidate">
 												<items>
 													<core:ListItem xmlns:core="sap.ui.core" text="Assessor" key="Assessor" id="__item5"/>
 													<core:ListItem xmlns:core="sap.ui.core" text="Moderator" key="Moderator" id="__item6"/>
 												</items>
 											</ComboBox>
-											<Label xmlns="sap.m" text="Name" width="100%"/>
-											<Input xmlns="sap.m" width="70%" id="inpName"/>
-											<Label xmlns="sap.m" text="Surname" width="100%"/>
-											<Input xmlns="sap.m" width="70%" id="inpSurname"/>
-											<Label text="ID Number"/>
-											<Input id="inpID" width="70%"/>
-											<Label text="Office Number" width="100%"/>
-											<Input width="70%" id="inpONumber"/>
-											<Label text="Mobile Number" width="100%"/>
-											<Input width="70%" id="inpMNumber"/>
-											<Label text="Email Address" width="100%"/>
-											<Input width="70%" id="inpEmail"/>
-											<Label text="Training Service Provider" width="100%"/>
-											<ComboBox width="70%" id="cmbProvider" items="{ path: '/'}">
+											<Label xmlns="sap.m" text="Name" width="100%" required="true"/>
+											<Input xmlns="sap.m" width="70%" id="inpName" liveChange="onValidate" required="true"/>
+											<Label xmlns="sap.m" text="Surname" width="100%" required="true"/>
+											<Input xmlns="sap.m" width="70%" id="inpSurname" required="true" liveChange="onValidate"/>
+											<Label text="ID Number" required="true"/>
+											<Input id="inpID" width="70%" liveChange="onValidate" required="true"/>
+											<Label text="Office Number" width="100%" required="true"/>
+											<Input width="70%" id="inpONumber" required="true" liveChange="onValidate"/>
+											<Label text="Mobile Number" width="100%" required="true"/>
+											<Input width="70%" id="inpMNumber" required="true" liveChange="onValidate"/>
+											<Label text="Email Address" width="100%" required="true"/>
+											<Input width="70%" id="inpEmail" required="true" liveChange="onValidate"/>
+											<Label text="Training Service Provider" width="100%" required="true"/>
+											<ComboBox width="70%" id="cmbProvider" items="{ path: '/'}" required="true" change="onValidate">
 												<core:Item text="{TrainingProviderName}"/>
 											</ComboBox>
-											<Label text="Proof of registration"/>
-											<u:FileUploader xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
-												xmlns:l="sap.ui.layout" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:u="sap.ui.unified" change="onAttachmentChange"
-												name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"
-												id="__uploader1"/>
+											<Label text="Proof of registration" required="true"/>
+											<u:FileUploader xmlns:u="sap.ui.unified" required="true" change="onAttachmentChange" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
 											<Label xmlns="sap.m" width="100%"/>
 										</sap.ui.layout.form:content>
 									</sap.ui.layout.form:SimpleForm>
@@ -54,7 +50,7 @@
 						<content>
 							<Button text="Cancel" width="auto" press="onNavBack" icon="sap-icon://cancel" type="Reject"/>
 							<ToolbarSpacer/>
-							<Button text="Submit" press="onSaveDetails" width="auto" icon="sap-icon://save" type="Accept"/>
+							<Button text="Submit" press="onSaveDetails" width="auto" icon="sap-icon://save" type="Accept" enabled="false" id="btnSave"/>
 						</content>
 					</Toolbar>
 				</footer>

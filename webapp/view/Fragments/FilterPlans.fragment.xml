@@ -1,0 +1,11 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<ViewSettingsDialog confirm="handleFilterConfirm">
+		<filterItems>
+			<ViewSettingsFilterItem items="{path: '/'}" text="Project" key="Project" multiSelect="false">
+				<items>
+					<ViewSettingsItem text="{Projects}" key="Project+EQ+{Projects}"/>
+				</items>
+			</ViewSettingsFilterItem>
+		</filterItems>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>

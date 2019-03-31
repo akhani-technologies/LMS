@@ -22,6 +22,9 @@ sap.ui.define([
 		},
 
 		resetFields: function() {
+			this.byId("inpImpPorject").setValue(null);
+			this.byId("inpPostPorject").setValue(null);
+			this.byId("inpPrePorject").setValue();
 			this.byId("TT").setValue(0);
 			this.byId("AR").setValue(0);
 			this.byId("SOAR").setValue(0);
@@ -46,6 +49,58 @@ sap.ui.define([
 			this.byId("SOF").setValue(0);
 			this.byId("LC").setValue(0);
 			this.byId("COR").setValue(0);
+			this.byId("rate1").setValue(0);
+			this.byId("rate2").setValue(0);
+			this.byId("rate3").setValue(0);
+			this.byId("rate4").setValue(0);
+			this.byId("rate5").setValue(0);
+			this.byId("rate6").setValue(0);
+			this.byId("rate7").setValue(0);
+			this.byId("rate8").setValue(0);
+			this.byId("rate9").setValue(0);
+			this.byId("rate10").setValue(0);
+			this.byId("rate11").setValue(0);
+			this.byId("rate12").setValue(0);
+			this.byId("rate13").setValue(0);
+			
+			
+			this.byId("TTdate").setValue(null);
+			this.byId("ARdate").setValue(null);
+			this.byId("SOARdate").setValue(null);
+			this.byId("PSdate").setValue(null);
+			this.byId("MAEVdate").setValue(null);
+			this.byId("PTLWFWPATdate").setValue(null);
+			this.byId("PrTdate").setValue(null);
+			this.byId("ASRdate").setValue(null);
+			this.byId("SOAR2date").setValue(null);
+			this.byId("PS2date").setValue(null);
+			this.byId("MAEV2date").setValue(null);
+			this.byId("MRdate").setValue(null);
+			this.byId("IFNYCLdate").setValue(null);
+			this.byId("POWdate").setValue(null);
+			this.byId("WTdate").setValue(null);
+			this.byId("SOLdate").setValue(null);
+			this.byId("SOPRdate").setValue(null);
+			this.byId("PS3date").setValue(null);
+			this.byId("MAEV3date").setValue(null);
+			this.byId("ETQAVVdate").setValue(null);
+			this.byId("SFAdate").setValue(null);
+			this.byId("SOFdate").setValue(null);
+			this.byId("LCdate").setValue(null);
+			this.byId("CORdate").setValue(null);
+			this.byId("rate1date").setValue(null);
+			this.byId("rate2date").setValue(null);
+			this.byId("rate3date").setValue(null);
+			this.byId("rate4date").setValue(null);
+			this.byId("rate5date").setValue(null);
+			this.byId("rate6date").setValue(null);
+			this.byId("rate7date").setValue(null);
+			this.byId("rate8date").setValue(null);
+			this.byId("rate9date").setValue(null);
+			this.byId("rate10date").setValue(null);
+			this.byId("rate11date").setValue(null);
+			this.byId("rate12date").setValue(null);
+			this.byId("rate13date").setValue(null);
 
 		},
 

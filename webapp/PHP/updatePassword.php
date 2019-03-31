@@ -3,8 +3,8 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
 $servername = "localhost";
 $username = "root";
-$password = "";
-$dbname = "learnerforms";
+$password = "akhaniSBS";
+$dbname = "lms";
 
 $conn = new mysqli($servername, $username, $password, $dbname); // Create connection
 if ($conn->connect_error) {     // Check connection

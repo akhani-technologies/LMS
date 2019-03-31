@@ -102,7 +102,6 @@ sap.ui.define([
 				xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
 				// this.byId("btnPrints").setEnabled(true);
 			}
-
 		},
 
 		callbackFunction: function(xmlhttp) {

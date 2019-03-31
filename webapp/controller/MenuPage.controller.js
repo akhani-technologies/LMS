@@ -9,6 +9,22 @@ sap.ui.define([
 
 		onInit: function() {
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			this.oRouter.getRoute("MenuPage").attachPatternMatched(this._onObjectMatched, this);
+			this._oViewModel = new sap.ui.model.json.JSONModel({
+				onShowCreate: false
+			});
+			this.getView().setModel(this._oViewModel, "viewModel");
+		},
+
+		_onObjectMatched: function() {
+			var oTypeModel = sap.ui.getCore().getModel("userType");
+			var userType = oTypeModel.getData();
+			if (userType === "Project Manager" || userType === "Project Administrator") {
+				this._oViewModel.setProperty("/onShowCreate", true);
+			} else {
+				this._oViewModel.setProperty("/onShowCreate", false);
+			}
+
 		},
 
 		onLearnerInfoPress: function(oEvent) {
@@ -17,7 +33,6 @@ sap.ui.define([
 			// this.oRouter.navTo("LearnerInfo");
 
 		},
-
 
 		onIncidentReport: function(oEvent) {
 			this.oRouter.navTo("IncidentReport");
@@ -45,10 +60,6 @@ sap.ui.define([
 
 		onImplementationPress: function(oEvent) {
 			this.oRouter.navTo("Implementation");
-		},
-
-		onTrainingTool: function() {
-			this.oRouter.navTo("TrainingTool");
 		},
 
 		onModAssesor: function() {

@@ -17,93 +17,41 @@ sap.ui.define([
 		},
 
 		onLogin: function() {
-			// var script =
-			// 	'<APPLET CODE="JavaApplication2.class"  WIDTH=350 HEIGHT=100 ></APPLET >';
-			// document.write(script);
 
-			// SimpleMessageApplet.setMessage("Hello");
-			// $.ajax({
-			// 	type: "POST",
-			// 	url: 'https://petstore.swagger.io/v2/user',
-			// 	async: false,
-			// 	contentType: 'application/json',
-			// 	dataType: 'jsonp',
-			// 	accept: "*/*",
-			// 	data: JSON.stringify({
-			// 			id: 1993,
-			// 		username: "Neo",
-			// 		firstName: "string",
-			// 		lastName: "string",
-			// 		email: "string",
-			// 		password: "string",
-			// 		phone: "string",
-			// 		userStatus: 0
-			// 	}),
-			// 	success: function(data, s, xhr) {
-			// 		alert("success " + s);
-			// 	}.bind(this),
-			// 	error: function(err, e, xhr) {
-			// 		alert("error " + e);
-			// 	}
-			// });
+			var userType = new sap.ui.model.json.JSONModel();
+			var email = this.byId("usernameInput").getValue().toLowerCase();
+			var password = this.byId("passwordInput").getValue();
+			if (email === "" || password === "") {
+				var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
+				MessageBox.warning(
+					"Please specify both email and password to login", {
+						styleClass: bCompact ? "sapUiSizeCompact" : ""
+					}
+				);
+			} else {
+				var correct = false;
+				$.ajax({
+					url: 'PHP/users.php',
+					async: false,
+					success: function(data) {
+						for (var i = 0; i < data.result.length; i++) {
+							if (data.result[i].Email === email && data.result[i].Password === password) {
+								correct = true;
+								this.oRouter.navTo("MenuPage");
+								userType.setData(data.result[i].UserType);
+								sap.ui.getCore().setModel(userType, "userType");
+							}
+						}
+						if (!correct) {
+							this.handleError2MessageBoxPress();
+						}
+					}.bind(this),
+					error: function(err) {
+						console.log(err);
+					}
+				});
+			}
 
-			// const Http = new XMLHttpRequest();
-			// const url = 'https://jsonplaceholder.typicode.com/posts';
-			// Http.open("GET", url);
-			// Http.send();
-			// Http.onreadystatechange = (e) => {
-			// 	console.log(Http.responseText)
-			// }
-			// $.ajax({
-			// 	type: 'POST',
-			// 	url: 'https://petstore.swagger.io/v2/user',
-			// 	crossDomain: true,
-			// 	contentType: 'application/json',
-			// 	dataType: 'jsonp',
-			// 	accept: "*/*",
-			// 	data: JSON.stringify({
-			// 		id: 1993,
-			// 		username: "Neo",
-			// 		firstName: "string",
-			// 		lastName: "string",
-			// 		email: "string",
-			// 		password: "string",
-			// 		phone: "string",
-			// 		userStatus: 0
-			// 	}),
-
-			// 	success: function(data, s, xhr) {
-			// 		alert("success " + s);
-			// 	}.bind(this),
-			// 	error: function(err, e, xhr) {
-			// 		alert("error " + e);
-			// 	}
-			// })
-
-			//	var json = new sap.ui.model.json.JSONModel();
-			// var email = this.byId("usernameInput").getValue().toLowerCase();
-			// var password = this.byId("passwordInput").getValue();
-			// var that = this;
-			// var correct = false;
-			// $.ajax({
-			// 	url: 'PHP/users.php',
-			// 	async: false,
-			// 	success: function(data) {
-			// 		for (var i = 0; i < data.result.length; i++) {
-			// 			if (data.result[i].Email === email && data.result[i].Password === password) {
-			// correct = true;
-			this.oRouter.navTo("MenuPage");
-
-			// 			}
-			// 		}
-			// 		if (!correct) {
-			// 			that.handleError2MessageBoxPress();
-			// 		}
-			// 	},
-			// 	error: function(err) {
-			// 		console.log(err);
-			// 	}
-			// });
 		},
 
 		onTest: function() {

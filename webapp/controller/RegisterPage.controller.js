@@ -13,6 +13,27 @@ sap.ui.define([
 		 */
 		onInit: function() {
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			this.oRouter.getRoute("RegisterPage").attachPatternMatched(this._onObjectMatched, this);
+		},
+
+		_onObjectMatched: function() {
+			this.ResetFields();
+		},
+
+		ResetFields: function() {
+			this.byId("inpName").setValue(null);
+			this.byId("inpSurname").setValue(null);
+			this.byId("inpDOB").setValue(null);
+			this.byId("inpPassword").setValue(null);
+			this.byId("strNum").setValue(null);
+			this.byId("strName").setValue(null);
+			this.byId("addr2").setValue(null);
+			this.byId("suburbId").setValue(null);
+			this.byId("code").setValue(null);
+			this.byId("slctProv").setSelectedItem(null);
+			this.byId("contactNumber").setValue(null);
+			this.byId("email").setValue(null);
+			this.byId("cmbType").setSelectedItem(null);
 		},
 
 		onRegister: function(oEvent) {

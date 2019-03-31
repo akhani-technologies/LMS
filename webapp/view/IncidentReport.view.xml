@@ -1,14 +1,13 @@
-<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:u="sap.ui.unified" xmlns="sap.m"
-	xmlns:html="http://www.w3.org/1999/xhtml" controllerName="programmeMotse.controller.IncidentReport">
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:u="sap.ui.unified" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="programmeMotse.controller.IncidentReport">
 	<App>
 		<pages>
 			<Page backgroundDesign="Solid" showNavButton="true" navButtonPress="onNavBack">
 				<content>
-					<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout">
+					<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" id="formIncident">
 						<sap.ui.layout.form:content>
 							<core:Title text="Incident Report" emphasized="true" icon="sap-icon://incident"/>
-							<Label text="Type"/>
-							<ComboBox id="cmbType" change="onSelectFor" width="70%">
+							<Label text="Type" required="true"/>
+							<ComboBox id="cmbType" change="onSelectFor" width="70%" required="true">
 								<items>
 									<core:ListItem text="Learner" key="item1"/>
 									<core:ListItem text="Training Center" key="item2"/>
@@ -36,13 +35,12 @@
 							</ComboBox>
 							<Label visible="false" id="lblOther" text="Please specify" width="100%"/>
 							<Input visible="false" width="70%" id="inpOther"/>
-							<Label text="Incident Description" width="100%"/>
+							<Label text="Incident Description" width="100%" required="true"/>
 							<TextArea id="txtDescr" width="70%"/>
-							<Label text="Incident Details" width="100%"/>
+							<Label text="Incident Details" width="100%" required="true"/>
 							<TextArea id="txtDetails" width="70%"/>
-							<Label text="Incident Attachment"/>
-							<u:FileUploader id="attach" change="onAttachmentChange" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server"
-								uploadComplete="handleUploadComplete"/>
+							<Label text="Incident Attachment" required="true"/>
+							<u:FileUploader id="attach" change="onAttachmentChange" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
 						</sap.ui.layout.form:content>
 					</sap.ui.layout.form:SimpleForm>
 				</content>
@@ -51,7 +49,7 @@
 						<content>
 							<Button press="onNavBack" text="Cancel" width="100px" icon="sap-icon://cancel" type="Reject"/>
 							<ToolbarSpacer id="__spacer0"/>
-							<Button press="onSaveIncident" text="Sumbit" width="auto" type="Accept" icon="sap-icon://save"/>
+							<Button press="onSaveIncident" text="Sumbit" width="auto" type="Accept" icon="sap-icon://save" enabled="false" id="btnSave"/>
 						</content>
 					</Toolbar>
 				</footer>

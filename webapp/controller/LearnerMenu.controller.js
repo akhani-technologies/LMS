@@ -13,6 +13,20 @@ sap.ui.define([
 		 */
 		onInit: function() {
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			this.oRouter.getRoute("LearnerMenu").attachPatternMatched(this._onObjectMatched, this);
+			this._oViewModel = new sap.ui.model.json.JSONModel({
+				onShowCreate: false
+			});
+			this.getView().setModel(this._oViewModel, "viewModel");
+		},
+		_onObjectMatched: function() {
+			var oTypeModel = sap.ui.getCore().getModel("userType");
+			var userType = oTypeModel.getData();
+			if (userType === "Project Manager" || userType === "Project Administrator") {
+				this._oViewModel.setProperty("/onShowCreate", true);
+			} else {
+				this._oViewModel.setProperty("/onShowCreate", false);
+			}
 		},
 
 		onNavBack: function() {
@@ -29,6 +43,9 @@ sap.ui.define([
 
 		onCaptureResults: function(oEvent) {
 			this.oRouter.navTo("CaptureResults");
+		},
+		onTrainingTool: function() {
+			this.oRouter.navTo("TrainingTool");
 		}
 
 		/**

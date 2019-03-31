@@ -1,9 +1,11 @@
-<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="programmeMotse.controller.Attendance" displayBlock="true">
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="programmeMotse.controller.Attendance" displayBlock="true">
 	<App>
 		<pages>
 			<Page title="Attendance" backgroundDesign="Solid" showNavButton="true" navButtonPress="onNavBack">
 				<content>
-					<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" id="formAttendance">
+					<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout"
+						id="formAttendance">
 						<sap.ui.layout.form:content>
 							<core:Title text="Attendance" emphasized="true" icon="sap-icon://task"/>
 							<Label text="User Type" required="true"/>
@@ -50,8 +52,9 @@
 							<Label text="FingerPrint"/>
 							<FlexBox width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
 								<items>
-									<Button class="sapUiLargeMarginEnd" text="Start Capturing" width="auto" icon="sap-icon://restart" type="Emphasized" press="onStartFingerPrint"/>
-									<Button class="sapUiLargeMarginEnd" text="Save Fingerprint" width="auto" icon="sap-icon://save" type="Accept" press="onSaveFingerPrint"/>
+									<Button class="sapUiLargeMarginEnd" text="Start Capturing" width="auto" icon="sap-icon://restart" type="Emphasized"
+										press="onStartFingerPrint"/>
+									<Button class="sapUiLargeMarginEnd" text="Save Fingerprint" width="auto" icon="sap-icon://save" type="Accept" press="enrolOrVerify"/>
 								</items>
 							</FlexBox>
 							<Label/>
