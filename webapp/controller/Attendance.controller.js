@@ -40,6 +40,7 @@ sap.ui.define([
 			this.byId("conType").setSelectedItem(null);
 			this.byId("cmbClock").setSelectedItem(null);
 			this.byId("txtNotes").setValue(null);
+			this.byId("finger1").setSrc(null);
 		},
 
 		onGetFacilitators: function() {
@@ -131,7 +132,7 @@ sap.ui.define([
 				data: oData,
 				//successfully logged on 
 				success: function(data, response, xhr) {
-					this.handleSuccessMessageBoxPress(msg);
+					this.handleSuccessMessageBoxPress();
 				}.bind(this),
 				error: function(e, status, xhr) {
 
@@ -261,15 +262,10 @@ sap.ui.define([
 			var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
 			if (response.success) {
 				this.onSaveDetails(response.failureReason);
-				// MessageBox.success(
-				// 	response.failureReason, {
-				// 		styleClass: bCompact ? "sapUiSizeCompact" : ""
-				// 	}
-				// );
 				this.byId("btnPrints").setEnabled(true);
 			} else {
 				MessageBox.warning(
-					response.failureReason, {
+					"Please make sure you you have selected the correct information and used the correct finger to verify", {
 						styleClass: bCompact ? "sapUiSizeCompact" : ""
 					}
 				);
@@ -278,10 +274,11 @@ sap.ui.define([
 		},
 
 		handleSuccessMessageBoxPress: function(msg) {
+			var oComboType = this.byId("type").getSelectedItem().getText();
 			var that = this;
 			var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
 			MessageBox.success(
-				msg, {
+				oComboType + " Successfully Verfied", {
 					styleClass: bCompact ? "sapUiSizeCompact" : "",
 					onClose: function(sAction) {
 						that.oRouter.navTo("MenuPage");
