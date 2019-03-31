@@ -34,6 +34,7 @@ sap.ui.define([
 			this.byId("contactNumber").setValue(null);
 			this.byId("email").setValue(null);
 			this.byId("cmbType").setSelectedItem(null);
+			this.byId("__input5").setValue(null);
 		},
 
 		onRegister: function(oEvent) {
@@ -96,7 +97,7 @@ sap.ui.define([
 				"Profile successfully created", {
 					styleClass: bCompact ? "sapUiSizeCompact" : "",
 					onClose: function(sAction) {
-						this.oRouter.navTo("LoginScreen");
+						this.oRouter.navTo("LoginPage");
 					}.bind(this)
 				}
 			);
