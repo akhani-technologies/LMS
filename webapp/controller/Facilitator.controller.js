@@ -257,10 +257,11 @@ sap.ui.define([
 				var _roadCtrlType = oInputControl.getMetadata().getName();
 
 				if (aInputControls[m].required) {
-					if (_roadCtrlType === "sap.m.Input") {
-						sValue = oInputControl.getValue();
-					} else {
+					if (_roadCtrlType === "sap.m.ComboBox") {
 						sValue = oInputControl.getSelectedItem();
+
+					} else {
+						sValue = oInputControl.getValue();
 					}
 
 					if (!sValue) {
