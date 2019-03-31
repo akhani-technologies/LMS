@@ -40,7 +40,7 @@ sap.ui.define([
 			this.byId("conType").setSelectedItem(null);
 			this.byId("cmbClock").setSelectedItem(null);
 			this.byId("txtNotes").setValue(null);
-			// this.byId("finger1").setSrc(null);
+			this.byId("finger1").setSrc("images/index.png");
 		},
 
 		onGetFacilitators: function() {
