@@ -56,7 +56,6 @@
 					<FlexBox height="auto" alignItems="Center" justifyContent="Center" alignContent="Center">
 						<items>
 							<Button text="Forgot Password" width="160px" press="onForgotPassword" type="Transparent"/>
-							<Button text="Test" press="onTest" />
 						</items>
 					</FlexBox>
 				</content>
