@@ -37,6 +37,32 @@ sap.ui.define([
 				);
 			};
 			this.onGetPrograms();
+		},
+
+		onResetField: function() {
+			this.byId("inpName").setValue(null);
+			this.byId("inpSurname").setValue(null);
+			this.byId("inpID").setValue(null);
+			this.byId("inpAge").setValue(null);
+			this.byId("inpNumber").setValue(null);
+			this.byId("inpEmail").setValue(null);
+			this.byId("inpLine1").setValue(null);
+			this.byId("inpLine2").setValue(null);
+			this.byId("inpCity").setValue(null);
+			this.byId("slctProv").setSelectedItem(null);
+			this.byId("slctQual").setSelectedItem(null);
+			this.byId("slctLType").setSelectedItem(null);
+			this.byId("slctDisability").setSelectedItem(null);
+			this.byId("slctRace").setSelectedItem(null);
+			this.byId("slctUIF").setSelectedItem(null);
+			this.clearphoto();
+			this.byId("cmbBankName").setSelectedItem(null);
+			this.byId("inpAccNum").setValue(null);
+			this.byId("branch").setValue(null);
+			this.byId("cmbAccType").setSelectedItem(null);
+			this.byId("cmbProgram").setSelectedItem(null);
+			this.byId("finger1").setSrc(null);
+			this.byId("userIMG").setSrc(null);
 
 		},
 
@@ -92,7 +118,6 @@ sap.ui.define([
 				var URL = "http://34.73.21.183:8080/api/fingerprint/enrol-verify";
 				var xmlhttp = new XMLHttpRequest();
 
-
 				xmlhttp.open("POST", URL, false);
 				xmlhttp.setRequestHeader("Content-Type", "application/json");
 
@@ -122,35 +147,6 @@ sap.ui.define([
 				);
 			}
 			// console.log(response);
-		},
-
-		onSaveFingerPrint: function() {
-
-			// var learnerID = this.byId("inpID").getValue();
-			// var ItemJSON;
-
-			// ItemJSON = {
-			// 	"action": "ENROL",
-			// 	"fingerPrintData": this.fingerprint,
-			// 	"idNumber": learnerID
-			// };
-
-			// var URL = "http://35.229.36.224:8080/api/fingerprint/enrol-verify"; //Your URL
-
-			// var xmlhttp = new XMLHttpRequest();
-			// //xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
-			// xmlhttp.open("POST", URL, false);
-			// xmlhttp.setRequestHeader("Content-Type", "application/json");
-			// xmlhttp.setRequestHeader("accept", "*/*");
-			// xmlhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
-
-			// //xmlhttp.setRequestHeader('Authorization', 'Basic ' + window.btoa('apiusername:apiuserpassword')); 
-			// //xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
-			// xmlhttp.send(JSON.stringify(ItemJSON));
-			// alert("Test response " + xmlhttp.responseText);
-			this.downloadURI(this.fingerprint, "9001018980085.png", "image/png");
-			// document.getElementById("div").innerHTML = xmlhttp.statusText + ":" + xmlhttp.status + "<BR><textarea rows='100' cols='100'>" +
-			// 	xmlhttp.responseText + "</textarea>";
 		},
 
 		downloadURI: function(uri, name, dataURIType) {
@@ -274,6 +270,7 @@ sap.ui.define([
 					sap.ui.core.BusyIndicator.hide();
 					this.handleSuccessMessageBoxPress();
 					this.onSaveAttachments(oData.LearnerID);
+					this.onClear();
 				}.bind(this),
 				error: function(e, status, xhr) {
 

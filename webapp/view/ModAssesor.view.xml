@@ -5,7 +5,7 @@
 				<content>
 					<IconTabBar>
 						<items>
-							<IconTabFilter text="Add Info" icon="sap-icon://add-contact" iconColor="Critical">
+							<IconTabFilter text="Add Information" icon="sap-icon://add-contact" iconColor="Critical">
 								<content>
 									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" id="ModAssessor">
 										<sap.ui.layout.form:content>
@@ -34,7 +34,7 @@
 												<core:Item text="{TrainingProviderName}"/>
 											</ComboBox>
 											<Label text="Proof of registration" required="true"/>
-											<u:FileUploader xmlns:u="sap.ui.unified" required="true" change="onAttachmentChange" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
+											<u:FileUploader id="Uploader" xmlns:u="sap.ui.unified" required="true" change="onAttachmentChange" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
 											<Label xmlns="sap.m" width="100%"/>
 										</sap.ui.layout.form:content>
 									</sap.ui.layout.form:SimpleForm>

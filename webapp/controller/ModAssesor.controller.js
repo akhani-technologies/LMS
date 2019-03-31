@@ -14,8 +14,25 @@ sap.ui.define([
 		 */
 		onInit: function() {
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			this.oRouter.getRoute("ModAssesor").attachPatternMatched(this._onObjectMatched, this);
 			this.onGetServiceProviders();
 
+		},
+		_onObjectMatched: function() {
+			this.ResetFields();
+		},
+
+		ResetFields: function() {
+			this.byId("cmbMod").setSelectedItem(null);
+			this.byId("inpName").setValue(null);
+			this.byId("inpONumber").setValue(null);
+			this.byId("inpMNumber").setValue(null);
+			this.byId("inpEmail").setValue(null);
+			this.byId("Uploader").setValue(null);
+			this.byId("inpID").setValue(null);
+			this.byId("inpSurname").setValue(null);
+			this.byId("cmbProvider").setSelectedItem(null);
+			this.byId("btnSave").setEnabled(false);
 		},
 
 		onNavBack: function() {

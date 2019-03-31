@@ -118,6 +118,7 @@ sap.ui.define([
 		},
 
 		onPrint: function(oEvent) {
+			
 			var oTarget = this.getView();
 
 			if (oTarget) {
@@ -193,10 +194,10 @@ sap.ui.define([
 			console.log("Button ID " + sId);
 			this._oPopover = sap.ui.xmlfragment("programmeMotse.view.Fragments.FilterPlans", this);
 			this.getView().addDependent(this._oPopover);
-			if (sId === "__button5") {
+			if (sId === "__button17") {
 				this._oPopover.setModel(this.PreProjectModel);
 				this.FilterTable = this.byId("tblPre");
-			} else if (sId === "__button6") {
+			} else if (sId === "__button18") {
 				this._oPopover.setModel(this.ImpProjectModel);
 				this.FilterTable = this.byId("tblImp");
 			} else {

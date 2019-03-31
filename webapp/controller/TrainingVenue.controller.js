@@ -31,6 +31,7 @@ sap.ui.define([
 			this.byId("DateP").setValue(null);
 			this.byId("fileUploader").setValue(null);
 			this.byId("oTableApproval").removeAllItems();
+			this.byId("btnVenue").setEnabled(false);
 		},
 
 		onAddItems: function(oEvent) {
@@ -192,7 +193,7 @@ sap.ui.define([
 					//successfully logged on 
 					success: function(data, response, xhr) {
 						oTable.removeAllItems();
-						// this.handleSuccessMessageBoxPress();
+						this.handleSuccessMessageBoxPress();
 					}.bind(this),
 					error: function(e, status, xhr) {
 

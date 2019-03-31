@@ -17,10 +17,11 @@ $Email = mysqli_real_escape_string($conn, $_POST['Email']);
 $ProofOfReg = mysqli_real_escape_string($conn, $_POST['ProofOfReg']); 
 $IDNumber = mysqli_real_escape_string($conn, $_POST['IDNumber']); 
 $Surname = mysqli_real_escape_string($conn, $_POST['Surname']); 
+$TrainingCenter = mysqli_real_escape_string($conn, $_POST['TrainingCenter']); 
 
 
-$sql = "INSERT INTO facilitator(FacilitatorID, Name, OfficeNumber, MobileNumber, Email, ProofOfReg,IDNumber, Surname) 
-VALUES ('$FacilitatorID','$Name','$OfficeNumber', '$MobileNumber', '$Email','$ProofOfReg', '$IDNumber','$Surname')";
+$sql = "INSERT INTO facilitator(FacilitatorID, Name, OfficeNumber, MobileNumber, Email, ProofOfReg,IDNumber, Surname, TrainingCenter) 
+VALUES ('$FacilitatorID','$Name','$OfficeNumber', '$MobileNumber', '$Email','$ProofOfReg', '$IDNumber','$Surname','$TrainingCenter')";
 
 if ($conn->query($sql) === TRUE) {
     echo "Page saved!";

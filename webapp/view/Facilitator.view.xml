@@ -1,4 +1,5 @@
-<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="programmeMotse.controller.Facilitator" displayBlock="true">
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="programmeMotse.controller.Facilitator" displayBlock="true">
 	<App>
 		<pages>
 			<Page backgroundDesign="Solid" showNavButton="true" navButtonPress="onNavBack">
@@ -7,7 +8,8 @@
 						<items>
 							<IconTabFilter text="Add Facilitator Info" icon="sap-icon://add-contact" iconColor="Critical" design="Horizontal" key="Key1">
 								<content>
-									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" id="formFacilitator">
+									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout"
+										id="formFacilitator">
 										<sap.ui.layout.form:content>
 											<core:Title xmlns:core="sap.ui.core" text="Facilitator Information" emphasized="true" icon="sap-icon://employee-approvals" id="__title2"/>
 											<Label xmlns="sap.m" text="Facilitator Name" required="true"/>
@@ -22,24 +24,26 @@
 											<Input xmlns="sap.m" width="60%" id="inpMobile" required="true" liveChange="onValidate"/>
 											<Label xmlns="sap.m" text="Email Address" width="100%" required="true"/>
 											<Input xmlns="sap.m" width="60%" id="inpEmail" required="true" liveChange="onValidate"/>
-											<Label id="lblvenue" text="Select Training Center" width="100%"/>
-											<ComboBox items="{path: '/'}" width="60%" id="cmbVenue">
+											<Label id="lblvenue" required="true" text="Select Training Center" width="100%"/>
+											<ComboBox required="true" items="{path: '/'}" width="60%" id="cmbVenue">
 												<items>
 													<core:ListItem text="{VenueName} {VenueOwner} ({VenueType})"/>
 												</items>
 											</ComboBox>
-											<Label xmlns="sap.m" text="Proof of registration" width="100%"/>
-											<u:FileUploader xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:u="sap.ui.unified" change="onBankAttachmentChange" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete" id="__uploader1"/>
+											<Label required="true" text="Proof of registration" width="100%"/>
+											<u:FileUploader required="true" xmlns:u="sap.ui.unified" change="onBankAttachmentChange" name="myFileUpload" uploadUrl="upload/"
+												tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete" id="file"/>
 										</sap.ui.layout.form:content>
 									</sap.ui.layout.form:SimpleForm>
 									<FlexBox width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
-									<items>
-									    <Button enabled="false" text="Next" width="auto" type="Reject" icon="sap-icon://arrow-right" id="btnNext" press="onNextPress"/>
-									</items>
+										<items>
+											<Button enabled="false" text="Next" width="auto" type="Reject" icon="sap-icon://arrow-right" id="btnNext" press="onNextPress"/>
+										</items>
 									</FlexBox>
 								</content>
 							</IconTabFilter>
-							<IconTabFilter id="fingerIcon" enabled="false" text="Finger print" icon="sap-icon://mri-scan" iconColor="Positive" design="Horizontal" key="Key2">
+							<IconTabFilter id="fingerIcon" enabled="false" text="Finger print" icon="sap-icon://mri-scan" iconColor="Positive" design="Horizontal"
+								key="Key2">
 								<content>
 									<MessageStrip text="Please take a finger print of your right thumb" showIcon="true" showCloseButton="true"/>
 									<FlexBox width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">

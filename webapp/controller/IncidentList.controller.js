@@ -54,12 +54,12 @@ sap.ui.define([
 				jQuery.sap.log.error("onPrint needs a valid target container [view|data:targetId=\"SID\"]");
 			}
 		},
-		
+
 		onNavBack: function() {
-			this.getRouter().navTo("Reporting");
+			this.oRouter.navTo("Reporting");
 
 		},
-		
+
 		handleFilterButtonPressed: function(oEvent) {
 			// var oDialog = this._mViewSettingsDialogs[sDialogFragmentName];
 			// if (!this._oPopover) {

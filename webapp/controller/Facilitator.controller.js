@@ -17,6 +17,19 @@ sap.ui.define([
 
 		_onObjectMatched: function() {
 			this.onGetVenue();
+			this.ResetFields();
+
+		},
+
+		ResetFields: function() {
+			this.byId("inpFName").setValue(null);
+			this.byId("inpONumber").setValue(null);
+			this.byId("inpMobile").setValue(null);
+			this.byId("inpEmail").setValue(null);
+			this.byId("file").setValue(null);
+			this.byId("inpID").setValue(null);
+			this.byId("inpFSurname").setValue(null);
+			this.byId("cmbVenue").setSelectedItem(null);
 		},
 
 		onGetVenue: function() {
@@ -60,7 +73,7 @@ sap.ui.define([
 			};
 
 			//	var txt = oParameters.files[0] var my_file_as_base64 = getBase64(file)
-			window.IDfileName = oParameters.files[0].name
+			window.IDfileName = oParameters.files[0].name;
 			window.IDfileType = oParameters.files[0].type;
 
 			oFileReader.readAsDataURL(oParameters.files[0]);
@@ -93,6 +106,7 @@ sap.ui.define([
 			oData.ProofOfReg = window.bankStatementContent;
 			oData.IDNumber = this.byId("inpID").getValue();
 			oData.Surname = this.byId("inpFSurname").getValue();
+			oData.TrainingCenter = this.byId("cmbVenue").getSelectedItem().getText();
 
 			$.ajax({
 				type: "POST",
@@ -264,7 +278,7 @@ sap.ui.define([
 			var sControlType;
 			for (var i = 0; i < aFormContent.length; i++) {
 				sControlType = aFormContent[i].getMetadata().getName();
-				if (sControlType === "sap.m.Input" || sControlType === "sap.m.ComboBox") {
+				if (sControlType === "sap.m.Input" || sControlType === "sap.m.ComboBox" || sControlType === "sap.ui.unified.FileUploader") {
 					aControls.push({
 						control: aFormContent[i],
 						required: aFormContent[i - 1].getRequired && aFormContent[i - 1].getRequired()
