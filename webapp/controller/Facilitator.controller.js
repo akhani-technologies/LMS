@@ -77,6 +77,7 @@ sap.ui.define([
 			window.IDfileType = oParameters.files[0].type;
 
 			oFileReader.readAsDataURL(oParameters.files[0]);
+			this.onValidate();
 		},
 
 		handlePopoverPress: function(oEvent) {
