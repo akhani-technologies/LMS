@@ -222,7 +222,7 @@ sap.ui.define([
 			if (!this.fingerprint) {
 				var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
 				MessageBox.warning(
-					"Please scan the learners right hand thumb before saving", {
+					"Please scan the finger before saving", {
 						styleClass: bCompact ? "sapUiSizeCompact" : ""
 					}
 				);
