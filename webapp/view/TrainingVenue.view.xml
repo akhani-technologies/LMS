@@ -48,7 +48,7 @@
 							<DatePicker id="DateP" change="onValidateGeneral" class="sapUiSmallMarginBottom" width="70%" required="true"/>
 							<!--<Input width="100%" id="__input5"/>-->
 							<Label required="true" text="Assessment Report" width="100%"/>
-							<u:FileUploader id="AssessmentReport" required="true" id="fileUploader" name="myFileUpload" change="onAssessmentAttachmentChange" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
+							<u:FileUploader required="true" id="fileUploader" name="myFileUpload" change="onAssessmentAttachmentChange" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
 						</sap.ui.layout.form:content>
 					</sap.ui.layout.form:SimpleForm>
 					<Table noDataText="Press the (+) to add items " id="oTableApproval" mode="Delete" delete="handleDelete">

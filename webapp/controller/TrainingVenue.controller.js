@@ -29,7 +29,7 @@ sap.ui.define([
 			this.byId("slctProv").setSelectedItem(null);
 			this.byId("inpBy").setValue(null);
 			this.byId("DateP").setValue(null);
-			this.byId("AssessmentReport").setValue(null);
+			this.byId("fileUploader").setValue(null);
 			this.byId("oTableApproval").removeAllItems();
 		},
 
