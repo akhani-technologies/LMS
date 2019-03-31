@@ -21,6 +21,9 @@ sap.ui.define([
 		},
 
 		ResetFields: function() {
+			this.byId("iconAddress").setEnabled(false);
+			this.byId("btnRegister").setEnabled(false);
+			this.byId("iconContact").setEnabled(false);
 			this.byId("inpName").setValue(null);
 			this.byId("inpSurname").setValue(null);
 			this.byId("inpDOB").setValue(null);
