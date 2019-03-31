@@ -97,9 +97,9 @@
 											<Label text="Type of Disability" width="100%" required="true"/>
 											<ComboBox width="70%" id="slctDisability" change="onValidateAdditional" required="true">
 												<items>
-													<core:ListItem text="Physical impairment" key="Physical impairment"/>
-													<core:ListItem text="vision Impairment." key="vision Impairment."/>
-													<core:ListItem text="hearing Impairment." key="hearing Impairment."/>
+													<core:ListItem text="Physical Impairment" key="Physical impairment"/>
+													<core:ListItem text="Vision Impairment." key="vision Impairment."/>
+													<core:ListItem text="Hearing Impairment." key="hearing Impairment."/>
 													<core:ListItem text="N/A"/></items>
 											</ComboBox>
 											<core:Title text="Ethnicity" icon="sap-icon://family-care"/>
@@ -474,7 +474,7 @@
 					<Toolbar width="100%">
 						<content>
 							<ToolbarSpacer/>
-							<Button text="Save details" width="auto" type="Reject" icon="sap-icon://save" press="" enabled="false" id="btnSaveDets"/>
+							<Button text="Save details" width="auto" type="Reject" icon="sap-icon://save" press="onSaveDetails" enabled="false" id="btnSaveDets"/>
 						</content>
 					</Toolbar>
 				</footer>
