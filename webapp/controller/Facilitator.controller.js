@@ -246,6 +246,7 @@ sap.ui.define([
 			window.bankStatementfileName = oParameters.files[0].name;
 			window.bankStatementfileType = oParameters.files[0].type;
 			bFileReader.readAsDataURL(oParameters.files[0]);
+			this.onValidate();
 		},
 
 		onValidate: function() {

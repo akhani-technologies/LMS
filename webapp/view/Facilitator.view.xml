@@ -25,7 +25,7 @@
 											<Label xmlns="sap.m" text="Email Address" width="100%" required="true"/>
 											<Input xmlns="sap.m" width="60%" id="inpEmail" required="true" liveChange="onValidate"/>
 											<Label id="lblvenue" required="true" text="Select Training Center" width="100%"/>
-											<ComboBox required="true" items="{path: '/'}" width="60%" id="cmbVenue">
+											<ComboBox change="onValidate" required="true" items="{path: '/'}" width="60%" id="cmbVenue">
 												<items>
 													<core:ListItem text="{VenueName} {VenueOwner} ({VenueType})"/>
 												</items>
