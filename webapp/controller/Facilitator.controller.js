@@ -189,7 +189,7 @@ sap.ui.define([
 				fingerprintStatusRequestJson = JSON.stringify(fingerprintStatusRequest);
 
 				// var URL = "http://35.229.36.224:8080/api/fingerprint/enrol-verify";  //Your URL
-				var URL = "http://34.73.21.183:8080/api/fingerprint/enrol-verify";
+				var URL = "http://102.133.161.46:8080/api/fingerprint/enrol-verify";
 				var xmlhttp = new XMLHttpRequest();
 
 				// xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
