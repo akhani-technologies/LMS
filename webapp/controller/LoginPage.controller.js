@@ -14,6 +14,11 @@ sap.ui.define([
 
 		onInit: function() {
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			this.oRouter.getRoute("LoginPage").attachPatternMatched(this._onObjectMatched, this);
+		},
+
+		_onObjectMatched: function() {
+
 		},
 
 		onLogin: function() {

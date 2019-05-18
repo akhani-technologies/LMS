@@ -209,7 +209,23 @@ sap.ui.define([
 			}
 		},
 
-		_getSimpleFormFields: function(oSimpleForm) {
+		checkPwd: function(oEvent) {
+			var str = oEvent.getSource().getValue();
+			if (str.length < 6) {
+				return ("too_short");
+			} else if (str.length > 50) {
+				return ("too_long");
+			} else if (str.search(/\d/) == -1) {
+				return ("no_num");
+			} else if (str.search(/[a-zA-Z]/) == -1) {
+				return ("no_letter");
+			} else if (str.search(/[^a-zA-Z0-9\!\@\#\$\%\^\&\*\(\)\_\+]/) != -1) {
+				return ("bad_char");
+			}
+			return ("ok");
+		},
+
+			_getSimpleFormFields: function(oSimpleForm) {
 			var aControls = [];
 			var aFormContent = oSimpleForm.getContent();
 			var sControlType;

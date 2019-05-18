@@ -78,6 +78,10 @@
 			},
 			"routes": [{
 					"pattern": "",
+					"name": "WelcomePage",
+					"target": "WelcomePage"
+				}, {
+					"pattern": "LoginPage",
 					"name": "LoginPage",
 					"target": "LoginPage"
 				}, {
@@ -192,10 +196,18 @@
 					"pattern": "Testing",
 					"name": "Testing",
 					"target": "Testing"
+				}, {
+					"pattern": "ConfirmationPage",
+					"name": "ConfirmationPage",
+					"target": "ConfirmationPage"
 				}
 
 			],
 			"targets": {
+				"WelcomePage": {
+					"viewID": "LoginPage",
+					"viewName": "LoginPage"
+				},
 				"LoginPage": {
 					"viewID": "LoginPage",
 					"viewName": "LoginPage"
@@ -311,6 +323,10 @@
 				"Testing": {
 					"viewId": "Testing",
 					"viewName": "Testing"
+				},
+				"ConfirmationPage": {
+					"viewId": "ConfirmationPage",
+					"viewName": "ConfirmationPage"
 				}
 			}
 		},
