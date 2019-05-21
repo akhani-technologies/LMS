@@ -13,7 +13,7 @@
 	    </sap.ui.layout.form:SimpleForm>
 	</content>
 	<endButton>
-	    <Button text="Submit" width="100px" icon="sap-icon://save" type="Emphasized"/>
+	    <Button text="Submit" press="onSaveProject" width="100px" icon="sap-icon://save" type="Emphasized"/>
 	</endButton>
 	</Dialog>
 </core:FragmentDefinition>
