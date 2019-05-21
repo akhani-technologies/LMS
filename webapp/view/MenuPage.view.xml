@@ -2,7 +2,7 @@
 	controllerName="programmeMotse.controller.MenuPage" displayBlock="true">
 	<App>
 		<pages>
-			<Page backgroundDesign="Transparent">
+			<Page backgroundDesign="Transparent" title="Main Menu">
 				<content>
 					<FlexBox class="sapUiLargeMarginTop" alignContent="Center" alignItems="Center" justifyContent="Center">
 						<StandardTile class="border tile" title="Implementaion Plan" icon="images/implementation.png" type="Monitor"
