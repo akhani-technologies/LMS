@@ -16,9 +16,6 @@ $Time = mysqli_real_escape_string($conn, $_POST['Time']);
 $Change = mysqli_real_escape_string($conn, $_POST['Change']);
 
 
-// $sql = "INSERT INTO entrylogs(logID, Username, Date, Time, Change) 
-// VALUES ('$logID','$Username', '$Date', '$Time','$Change')";
-
 $sql = "INSERT INTO entrylogs(logID, Username, EntryDate, EntryTime, EntryChange ) 
 VALUES ('$logID','$Username', '$Date', '$Time', '$Change')";
 

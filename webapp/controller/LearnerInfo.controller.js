@@ -17,7 +17,7 @@ sap.ui.define([
 			this._oViewModel = new sap.ui.model.json.JSONModel({
 				onEmployment: true
 			});
-			this.setModel(this._oViewModel, "viewModel");
+			this.getView().setModel(this._oViewModel, "viewModel");
 
 		},
 
@@ -219,6 +219,7 @@ sap.ui.define([
 		onNavBack: function() {
 			this.oRouter.navTo("LearnerMenu");
 		},
+		
 		onSelectEmployment: function(oEvent) {
 			var idx = oEvent.getSource().getSelectedIndex();
 			if (idx === -1 || idx === 0) {
