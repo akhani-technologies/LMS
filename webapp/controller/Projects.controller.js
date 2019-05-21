@@ -23,7 +23,8 @@ sap.ui.define([
 			sap.ui.getCore().byId("inpProjectName").setValue(null);
 			sap.ui.getCore().byId("inpStartDate").setValue(null);
 			sap.ui.getCore().byId("inpEndDate").setValue(null);
-			this._oPopover.openBy(oEvent.getSource());
+			this._oPopover.open();
+			// this._oPopover.openBy(oEvent.getSource());
 		},
 
 		onSaveProject: function() {
