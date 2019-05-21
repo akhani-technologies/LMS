@@ -62,7 +62,7 @@ sap.ui.define([
 				success: function(data, response, xhr) {
 					oTable.addItem(columnListItemNewLine);
 					this._oPopover.close();
-					this.AddEntryLog();
+					this.AddEntryLog("Created a project");
 					// oThat.oRouter.navTo("Menu");
 				}.bind(this),
 				error: function(e, status, xhr) {
@@ -83,7 +83,7 @@ sap.ui.define([
 			if (mm < 10) {
 				mm = '0' + mm;
 			}
-			var ScanDate = yyyy + mm + dd;
+			var ScanDate = yyyy + "/" + mm + "/" + dd;
 			return ScanDate;
 		},
 
