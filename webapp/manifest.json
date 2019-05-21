@@ -208,6 +208,11 @@
 					"pattern": "Attachments",
 					"name": "Attachments",
 					"target": "Attachments"
+				},
+				 {
+					"pattern": "Projects",
+					"name": "Projects",
+					"target": "Projects"
 				}
 
 			],
@@ -343,6 +348,10 @@
 				"Attachments": {
 					"viewId": "Attachments",
 					"viewName": "Attachments"
+				},
+				"Projects":{
+					"viewId": "Projects",
+					"viewName": "Projects"
 				}
 			}
 		},
