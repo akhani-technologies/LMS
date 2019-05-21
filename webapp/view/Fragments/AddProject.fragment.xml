@@ -1,0 +1,19 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified">
+	<Dialog title="Seta Contract">
+	<content>
+	    <sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout">
+	        <sap.ui.layout.form:content>
+	            <Label text="Project Name" required="true"/>
+	            <Input width="100%" id="inpProjectName"/>
+	            <Label text="Project start date" width="100%" required="true"/>
+	            <DatePicker width="100%" id="inpStartDate"/>
+	            <Label text="Project end date" width="100%" required="true"/>
+	            <DatePicker width="100%" id="inpEndDate"/>
+	            </sap.ui.layout.form:content>
+	    </sap.ui.layout.form:SimpleForm>
+	</content>
+	<endButton>
+	    <Button text="Submit" width="100px" icon="sap-icon://save" type="Emphasized"/>
+	</endButton>
+	</Dialog>
+</core:FragmentDefinition>

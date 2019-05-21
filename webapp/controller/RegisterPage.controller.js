@@ -39,7 +39,7 @@ sap.ui.define([
 			this.byId("contactNumber").setValue(null);
 			this.byId("email").setValue(null);
 			this.byId("cmbType").setSelectedItem(null);
-			this.byId("__input5").setValue(null);
+			this.byId("inpConfirm").setValue(null);
 		},
 
 		onRegister: function(oEvent) {
@@ -210,22 +210,53 @@ sap.ui.define([
 		},
 
 		checkPwd: function(oEvent) {
+			var oControl = oEvent.getSource();
 			var str = oEvent.getSource().getValue();
+			var reg = /[!@#$%^&*(),._?":{}|<>]/;
+
 			if (str.length < 6) {
-				return ("too_short");
-			} else if (str.length > 50) {
-				return ("too_long");
+				oControl.setValueState("Error");
+				oControl.setValueStateText("Password should have a minimum of 6 characters");
+				this.byId("iconAddress").setEnabled(false);
+				// return ("too_short");
+			} else
+			if (str.length > 50) {
+				oControl.setValueState("Error");
+				oControl.setValueStateText("Password too long");
+				this.byId("iconAddress").setEnabled(false);
+				// return ("too_long");
 			} else if (str.search(/\d/) == -1) {
-				return ("no_num");
-			} else if (str.search(/[a-zA-Z]/) == -1) {
-				return ("no_letter");
-			} else if (str.search(/[^a-zA-Z0-9\!\@\#\$\%\^\&\*\(\)\_\+]/) != -1) {
-				return ("bad_char");
+				oControl.setValueState("Error");
+				oControl.setValueStateText("Password should have at least 1 number");
+				this.byId("iconAddress").setEnabled(false);
+				// return ("no_num");
+			} else if (str.search(/[A-Z]/) == -1) {
+				oControl.setValueState("Error");
+				oControl.setValueStateText("Password should have at least 1 Capital Letter");
+				this.byId("iconAddress").setEnabled(false);
+				// return ("no_letter");
+			} else if (!reg.test(str)) {
+				oControl.setValueState("Error");
+				oControl.setValueStateText("Password should have at least 1 Special character");
+			} else {
+				if (this.byId("inpConfirm").getValue() !== "") {
+					if (this.byId("inpConfirm").getValue() !== str) {
+						this.byId("inpConfirm").setValueState("Error");
+						this.byId("inpConfirm").setValueStateText("Passwords do not match");
+					} else {
+						this.byId("inpConfirm").setValueState("Success");
+						this.byId("inpConfirm").setValueStateText("Passwords match");
+					}
+				}
+				oControl.setValueState("Success");
+				oControl.setValueStateText("Strong password");
+				this.onValidateGeneral();
 			}
+
 			return ("ok");
 		},
 
-			_getSimpleFormFields: function(oSimpleForm) {
+		_getSimpleFormFields: function(oSimpleForm) {
 			var aControls = [];
 			var aFormContent = oSimpleForm.getContent();
 			var sControlType;

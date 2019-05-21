@@ -49,8 +49,8 @@ sap.ui.define([
 			this._oViewModel.setProperty("/Edit", true);
 			this._oViewModel.setProperty("/View", false);
 		},
-		
-		onCancel:function(){
+
+		onCancel: function() {
 			this._oViewModel.setProperty("/Edit", false);
 			this._oViewModel.setProperty("/View", true);
 		},
@@ -58,7 +58,7 @@ sap.ui.define([
 		onSaveDetails: function(oEvent) {
 			var oData = {};
 			oData.LearnerID = this.LearnerID;
-			
+
 			oData.Name = this.byId("inpName").getValue();
 			oData.Surname = this.byId("inpSurname").getValue();
 			oData.ContactNumber = this.byId("inpNumber").getValue();
@@ -111,6 +111,16 @@ sap.ui.define([
 				oData.Program = this.byId("cmbProgram").getSelectedItem().getText();
 			}
 
+			oData.EmployerName = this.byId("inpEmpName").getValue();
+			oData.EmployerContact = this.byId("inpEmpCont").getValue();
+			oData.EmploymentStart = this.byId("EmpDPStart").getValue();
+			oData.EmployementEnd = this.byId("EmpDPEnd").getValue();
+			if (this.byId("slctStatus").getSelectedItem() === null) {
+				oData.Status = this.oProperties.Status;
+			} else {
+				oData.Status = this.byId("slctStatus").getSelectedItem().getText();
+			}
+
 			$.ajax({
 				type: "POST",
 				async: false,
@@ -119,6 +129,7 @@ sap.ui.define([
 				data: oData,
 				//successfully logged on 
 				success: function(data, response, xhr) {
+					this.AddEntryLog("Updated learner details");
 					var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
 					MessageBox.success(
 						"Details successfully updated", {
@@ -130,11 +141,58 @@ sap.ui.define([
 					);
 				}.bind(this),
 				error: function(e, status, xhr) {
-					
+
+				}
+			});
+		},
+
+		_getLogDate: function() {
+			var today = new Date();
+			var dd = today.getDate();
+			var mm = today.getMonth() + 1; //January is 0!
+			var yyyy = today.getFullYear();
+			if (dd < 10) {
+				dd = '0' + dd;
+			}
+			if (mm < 10) {
+				mm = '0' + mm;
+			}
+			var ScanDate = yyyy + mm + dd;
+			return ScanDate;
+		},
+
+		_getLogTime: function() {
+			var ScanTime = new Date().toLocaleTimeString('en-GB');
+			ScanTime = ScanTime.replace(/:/g, "");
+			return ScanTime;
+		},
+
+		AddEntryLog: function(change) {
+			var oUserModel = sap.ui.getCore().getModel("loggedUser");
+			var user = oUserModel.getData();
+			var oData = {};
+			oData.logID = parseInt(("" + Math.random()).substring(2, 5));
+			oData.Username = user.Name + " " + user.Surname;
+			oData.Date = this._getLogDate();
+			oData.Time = this._getLogTime();
+			oData.Change = change;
+
+			$.ajax({
+				type: "POST",
+				async: false,
+				cache: false,
+				url: 'PHP/EntryLog.php',
+				data: oData,
+				//successfully logged on 
+				success: function(data, response, xhr) {
+					console.log(data);
+				}.bind(this),
+				error: function(e, status, xhr) {
+
 				}
 			});
 
-		}
+		},
 	});
 
 });

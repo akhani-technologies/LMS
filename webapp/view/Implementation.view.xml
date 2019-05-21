@@ -7,19 +7,25 @@
 					<ObjectHeader title="Implementation Plan" numberUnit="eur" introActive="true" titleActive="true" icon="sap-icon://workflow-tasks"/>
 					<IconTabBar id="ImplementationBar">
 						<items>
-							<IconTabFilter key="Pre" class="iconFlt" text="Pre-Implementation Phase " icon="sap-icon://checklist-item" iconColor="Critical" design="Vertical">
+							<IconTabFilter key="Pre" class="iconFlt" text="Pre-Implementation Phase " icon="sap-icon://checklist-item" iconColor="Critical"
+								design="Vertical">
 								<content>
-									<sap.ui.layout.form:SimpleForm id="formPre" width="100%" editable="true" layout="ResponsiveGridLayout" xmlns:sap.ui.layout.form="sap.ui.layout.form">
+									<sap.ui.layout.form:SimpleForm id="formPre" width="100%" editable="true" layout="ResponsiveGridLayout"
+										xmlns:sap.ui.layout.form="sap.ui.layout.form">
 										<sap.ui.layout.form:content>
 											<core:Title text="Pre-Implementation Phase "/>
 											<Label text="Project"/>
 											<Input id="inpPrePorject" width="80%"/>
+											<ComboBox id="PreCombo" items="{/}" width="80%">
+												<Item key="{ProjectID}" text="{ProjectName}" xmlns="sap.ui.core"/>
+											</ComboBox>
 											<Label required="true" id="lblrate1" text="Project Approval" textAlign="Begin" width="100%"/>
 											<VBox>
-												<Slider required="true" change="onValidatePre" id="rate1" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
+												<Slider required="true" change="onValidatePre" id="rate1" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true"
+													width="80%">
 													<ResponsiveScale tickmarksBetweenLabels="10"/>
 												</Slider>
-												<DatePicker id="rate1date"  width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+												<DatePicker id="rate1date" width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
 											</VBox>
 											<Label id="lblrate2" text="Sign Funding Agreement" textAlign="Begin" width="100%"/>
 											<VBox>
@@ -130,6 +136,9 @@
 											<core:Title text="Implementation Phase"/>
 											<Label text="Project"/>
 											<Input id="inpImpPorject" width="80%"/>
+											<ComboBox id="ImpCombo" items="{/}" width="80%">
+												<Item key="{ProjectID}" text="{ProjectName}" xmlns="sap.ui.core"/>
+											</ComboBox>
 											<Label id="lblTT" text="Theoretical Training" textAlign="Begin" width="100%"/>
 											<VBox>
 												<Slider id="TT" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
@@ -158,7 +167,7 @@
 												</Slider>
 												<DatePicker id="PSdate" width="30%" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
 											</VBox>
-											<Label id="lblMAEV"  text="M And E visits" width="100%"/>
+											<Label id="lblMAEV" text="M And E visits" width="100%"/>
 											<VBox>
 												<Slider id="MAEV" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">
 													<ResponsiveScale tickmarksBetweenLabels="10"/>
@@ -282,6 +291,9 @@
 											<core:Title text="Post-Implementation Phase "/>
 											<Label text="Project"/>
 											<Input id="inpPostPorject" width="80%"/>
+											<ComboBox id="PostCombo" items="{/}" width="80%">
+												<Item key="{ProjectID}" text="{ProjectName}" xmlns="sap.ui.core"/>
+											</ComboBox>
 											<Label id="lblETQAVV" text="ETQA verification visits" textAlign="Begin" width="100%"/>
 											<VBox>
 												<Slider id="ETQAVV" class="sapUiMediumMarginBottom" min="10" max="100" enableTickmarks="true" width="80%">

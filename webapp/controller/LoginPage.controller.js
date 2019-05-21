@@ -24,6 +24,7 @@ sap.ui.define([
 		onLogin: function() {
 
 			var userType = new sap.ui.model.json.JSONModel();
+			var loggedUser = new sap.ui.model.json.JSONModel();
 			var email = this.byId("usernameInput").getValue().toLowerCase();
 			var password = this.byId("passwordInput").getValue();
 			if (email === "" || password === "") {
@@ -43,6 +44,8 @@ sap.ui.define([
 							if (data.result[i].Email === email && data.result[i].Password === password) {
 								correct = true;
 								this.oRouter.navTo("MenuPage");
+								loggedUser.setData(data.result[i]);
+								sap.ui.getCore().setModel(loggedUser, "loggedUser");
 								userType.setData(data.result[i].UserType);
 								sap.ui.getCore().setModel(userType, "userType");
 							}

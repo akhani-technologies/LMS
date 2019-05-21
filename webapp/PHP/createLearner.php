@@ -35,12 +35,17 @@ $BranchNumber = mysqli_real_escape_string($conn, $_POST['BranchNumber']);
 $AccountType = mysqli_real_escape_string($conn, $_POST['AccountType']); 
 $Program = mysqli_real_escape_string($conn, $_POST['Program']); 
 $Signature = mysqli_real_escape_string($conn, $_POST['Signature']); 
+$EmployerName = mysqli_real_escape_string($conn, $_POST['EmployerName']);
+$EmployerContact = mysqli_real_escape_string($conn, $_POST['EmployerContact']);
+$EmploymentStart = mysqli_real_escape_string($conn, $_POST['EmploymentStart']);
+$EmployementEnd = mysqli_real_escape_string($conn, $_POST['EmployementEnd']);
+$Status = mysqli_real_escape_string($conn, $_POST['Status']);
 
 $sql = "INSERT INTO learner(LearnerID, Name, Surname, IDNumber, IDType, Gender, Age, ContactNumber, EmailAddress, AddressLine1, AddressLine2, City,
 Province, HighestQualification, EmploymentStatus, LearnerType, Disability, Race, UIF, Image, BankName, AccountNumber, 
-BranchNumber, AccountType, Program, Signature) VALUES ('$LearnerID','$Name','$Surname','$IDNumber','$IDType','$Gender','$Age','$ContactNumber',
+BranchNumber, AccountType, Program, Signature,EmployerName,EmployerContact, EmploymentStart,EmployementEnd, Status ) VALUES ('$LearnerID','$Name','$Surname','$IDNumber','$IDType','$Gender','$Age','$ContactNumber',
 '$EmailAddress','$AddressLine1','$AddressLine2','$City','$Province','$HighestQualification','$EmploymentStatus','$LearnerType','$Disability','$Race','$UIF','$Image',
-'$BankName','$AccountNumber','$BranchNumber','$AccountType','$Program', '$Signature')";
+'$BankName','$AccountNumber','$BranchNumber','$AccountType','$Program', '$Signature', '$EmployerName', '$EmployerContact', '$EmploymentStart', '$EmployementEnd', '$Status')";
 
 if ($conn->query($sql) === TRUE) {
     echo "Page saved!";

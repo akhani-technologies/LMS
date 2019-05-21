@@ -51,6 +51,15 @@
 												</items>
 											</ComboBox>
 											<Label xmlns="sap.m" text="Highest Qualification" width="100%"/>
+											<Label text="Enrollment Status"/>
+											<Input enabled="{viewModel>/View}" value="{/Status}" width="70%" id="inpLine2"/>
+											<ComboBox visible="{viewModel>/Edit}" width="70%" id="slctStatus">
+												<items>
+													<core:ListItem xmlns:core="sap.ui.core" text="enrolled"/>
+													<core:ListItem xmlns:core="sap.ui.core" text="dropped out"/>
+													<core:ListItem xmlns:core="sap.ui.core" text="de-registered"/>
+												</items>
+											</ComboBox>
 											<Text visible="{viewModel>/View}" text="{/HighestQualification}"/>
 											<ComboBox visible="{viewModel>/Edit}" width="70%" id="slctQual">
 												<items>
@@ -79,6 +88,14 @@
 													<RadioButton selected="true" groupName="__group1" text="Employed"/>
 													<RadioButton groupName="__group1" text="Unemployed"/></buttons>
 											</RadioButtonGroup>
+											<Label text="Employer Name"/>
+											<Input enabled="{viewModel>/Edit}" value="{/EmployerName}" width="70%" id="inpEmpName"/>
+											<Label text="Employer Contact"/>
+											<Input enabled="{viewModel>/Edit}" value="{/EmployerContact}" width="70%" id="inpEmpCont"/>
+											<Label text="Employment Start Date"/>
+											<DatePicker enabled="{viewModel>/Edit}" value="{/EmploymentStart}" visible="{viewModel>/onEmployment}" width="70%" id="EmpDPStart" valueFormat="yyyy-MM-dd" displayFormat="long"/>
+											<Label  text="Employment End Date"/>
+											<DatePicker enabled="{viewModel>/Edit}" value="{/EmploymentEnd}" width="70%" id="EmpDPEnd" valueFormat="yyyy-MM-dd" displayFormat="long"/>
 											<core:Title text="Learner Type" icon="sap-icon://group"/>
 											<Label text="Select Learner type "/>
 											<Input visible="{viewModel>/View}" enabled="{viewModel>/Edit}" value="{/LearnerType}"/>

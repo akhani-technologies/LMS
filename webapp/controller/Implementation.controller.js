@@ -18,6 +18,7 @@ sap.ui.define([
 		},
 
 		_onObjectMatched: function(oEvent) {
+			this.onGetProjects();
 			this.resetFields();
 		},
 
@@ -246,8 +247,8 @@ sap.ui.define([
 					},
 					//successfully logged on 
 					success: function(data, response, xhr) {
-
 						if (i === 18) {
+							this.this.AddEntryLog("Created a Pre-Implementation Plan");
 							var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
 							MessageBox.success(
 								"Implementation rates successfully saved", {
@@ -313,6 +314,7 @@ sap.ui.define([
 					success: function(data, response, xhr) {
 
 						if (i === 4) {
+							this.AddEntryLog("Created a Post-Implementation Plan");
 							var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
 							MessageBox.success(
 								"Post-Implementation rates successfully saved", {
@@ -450,8 +452,7 @@ sap.ui.define([
 				Description: this.byId("lblrate13").getText(),
 				Date: this.byId("rate13date").getValue(),
 				Rate: this.byId("rate13").getValue()
-			},
-			 {
+			}, {
 				Project: this.byId("inpPrePorject").getValue(),
 				Description: this.byId("lblrate14").getText(),
 				Date: this.byId("rate14date").getValue(),
@@ -473,6 +474,7 @@ sap.ui.define([
 					//successfully logged on 
 					success: function(data, response, xhr) {
 						if (i === 13) {
+							this.AddEntryLog("Created a Pre-Implementation Plan");
 							var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
 							MessageBox.success(
 								"Pre-Implementation rates successfully saved", {
@@ -491,6 +493,74 @@ sap.ui.define([
 				});
 			}
 
+		},
+		_getLogDate: function() {
+			var today = new Date();
+			var dd = today.getDate();
+			var mm = today.getMonth() + 1; //January is 0!
+			var yyyy = today.getFullYear();
+			if (dd < 10) {
+				dd = '0' + dd;
+			}
+			if (mm < 10) {
+				mm = '0' + mm;
+			}
+			var ScanDate = yyyy + mm + dd;
+			return ScanDate;
+		},
+
+		_getLogTime: function() {
+			var ScanTime = new Date().toLocaleTimeString('en-GB');
+			ScanTime = ScanTime.replace(/:/g, "");
+			return ScanTime;
+		},
+
+		AddEntryLog: function(change) {
+			var oUserModel = sap.ui.getCore().getModel("loggedUser");
+			var user = oUserModel.getData();
+			var oData = {};
+			oData.logID = parseInt(("" + Math.random()).substring(2, 5));
+			oData.Username = user.Name + " " + user.Surname;
+			oData.Date = this._getLogDate();
+			oData.Time = this._getLogTime();
+			oData.Change = change;
+
+			$.ajax({
+				type: "POST",
+				async: false,
+				cache: false,
+				url: 'PHP/EntryLog.php',
+				data: oData,
+				//successfully logged on 
+				success: function(data, response, xhr) {
+					console.log(data);
+				}.bind(this),
+				error: function(e, status, xhr) {
+
+				}
+			});
+
+		},
+		onGetProjects: function() {
+			var ProjectsModel = new sap.ui.model.json.JSONModel();
+			var PreCombo = this.byId("PreCombo");
+			var ImpCombo = this.byId("ImpCombo");
+			var PostCombo = this.byId("PostCombo");
+
+			$.ajax({
+				url: 'PHP/getProjects.php',
+				async: false,
+				success: function(data) {
+					var oData = data.result;
+					ProjectsModel.setData(oData);
+					PreCombo.setModel(ProjectsModel);
+					ImpCombo.setModel(ProjectsModel);
+					PostCombo.setModel(ProjectsModel);
+				}.bind(this),
+				error: function(err, e, xhr) {
+
+				}
+			});
 		}
 
 	});

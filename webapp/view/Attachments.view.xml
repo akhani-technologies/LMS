@@ -1,0 +1,48 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	xmlns:html="http://www.w3.org/1999/xhtml" controllerName="programmeMotse.controller.Attachments">
+	<App>
+		<pages>
+			<Page>
+				<content>
+					<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout">
+						<sap.ui.layout.form:content>
+							<core:Title text="Add attachments" icon="sap-icon://attachment"/>
+							<Label text="Type"/>
+							<ComboBox id="cmbType" change="onSelectFor" width="70%" required="true">
+								<items>
+									<core:ListItem text="Learner" key="item1"/>
+									<core:ListItem text="Training Center" key="item2"/>
+									<core:ListItem text="Facilitator" key="item3"/>
+								</items>
+							</ComboBox>
+							<Label id="lblLearner" visible="false" text="Select Learner" width="100%"/>
+							<ComboBox items="{path: '/'}" id="cmbLearner" width="70%" visible="false">
+								<items>
+									<core:ListItem text="{Name} {Surname} ({IDNumber})" key="item1"/>
+								</items>
+							</ComboBox>
+							<Label visible="false" id="lblvenue" text="Select Training Center" width="100%"/>
+							<ComboBox visible="false" items="{path: '/'}" width="70%" id="cmbVenue">
+								<items>
+									<core:ListItem text="{VenueName} {VenueOwner} ({VenueType})"/>
+								</items>
+							</ComboBox>
+							<Label visible="false" id="lblfacilitator" text="Select Facilitator" width="100%"/>
+							<ComboBox visible="false" items="{path: '/'}" width="70%" id="cmbFacilitor">
+								<items>
+									<core:ListItem text="{Name} {Surname} ({IDNumber})"/>
+								</items>
+							</ComboBox>
+							<Label text="Learner Contract"/>
+							<u:FileUploader id="fileUploader" width="70%" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server"
+								uploadComplete="handleUploadComplete"/>
+							<Label text="Other documents" />
+							<u:FileUploader id="fileUploaderOther" width="70%" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server"
+								uploadComplete="handleUploadComplete"/>
+						</sap.ui.layout.form:content>
+					</sap.ui.layout.form:SimpleForm>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

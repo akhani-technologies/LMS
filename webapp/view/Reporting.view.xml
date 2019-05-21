@@ -7,8 +7,8 @@
 						<StandardTile title="Progress Against Milestone" icon="sap-icon://bar-chart" press="onMilestone" numberUnit="eur" infoState="Success" removable="false"/>
 							<StandardTile title="Incident Report" icon="sap-icon://incident" press="onIncidentReport" infoState="Success" removable="false"/>
 							<StandardTile title="Attendance" icon="sap-icon://list" activeIcon="sap-icon://customer" press="onAttendanceList" infoState="Success" removable="false"/>
+							<StandardTile title="Audit Trail" icon="sap-icon://check-availability" activeIcon="sap-icon://customer" press="onAuditTrail" infoState="Success" removable="false"/>
 					</FlexBox>
-
 				</content>
 			</Page>
 		</pages>

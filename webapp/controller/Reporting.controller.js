@@ -32,8 +32,12 @@ sap.ui.define([
 		},
 
 		onNavBack: function() {
-				this.oRouter.navTo("MenuPage");
-			
+			this.oRouter.navTo("MenuPage");
+
+		},
+
+		onAuditTrail: function() {
+			this.oRouter.navTo("AuditTrail");
 		}
 
 	});

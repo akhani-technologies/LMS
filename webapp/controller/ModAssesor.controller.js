@@ -135,6 +135,7 @@ sap.ui.define([
 				data: oData,
 				//successfully logged on 
 				success: function(data, response, xhr) {
+					this.AddEntryLog("Created an Assessor/Moderator");
 					this.handleSuccessMessageBoxPress();
 				}.bind(this),
 				error: function(e, status, xhr) {
@@ -142,6 +143,53 @@ sap.ui.define([
 				}
 			});
 			// this.handleSuccessMessageBoxPress();
+		},
+		_getLogDate: function() {
+			var today = new Date();
+			var dd = today.getDate();
+			var mm = today.getMonth() + 1; //January is 0!
+			var yyyy = today.getFullYear();
+			if (dd < 10) {
+				dd = '0' + dd;
+			}
+			if (mm < 10) {
+				mm = '0' + mm;
+			}
+			var ScanDate = yyyy + mm + dd;
+			return ScanDate;
+		},
+
+		_getLogTime: function() {
+			var ScanTime = new Date().toLocaleTimeString('en-GB');
+			ScanTime = ScanTime.replace(/:/g, "");
+			return ScanTime;
+		},
+
+		AddEntryLog: function(change) {
+			var oUserModel = sap.ui.getCore().getModel("loggedUser");
+			var user = oUserModel.getData();
+			var oData = {};
+			oData.logID = parseInt(("" + Math.random()).substring(2, 5));
+			oData.Username = user.Name + " " + user.Surname;
+			oData.Date = this._getLogDate();
+			oData.Time = this._getLogTime();
+			oData.Change = change;
+
+			$.ajax({
+				type: "POST",
+				async: false,
+				cache: false,
+				url: 'PHP/EntryLog.php',
+				data: oData,
+				//successfully logged on 
+				success: function(data, response, xhr) {
+					console.log(data);
+				}.bind(this),
+				error: function(e, status, xhr) {
+
+				}
+			});
+
 		},
 
 		onAttachmentChange: function(oEvent) {

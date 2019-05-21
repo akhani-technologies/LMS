@@ -14,6 +14,10 @@ sap.ui.define([
 				this.sdk = new Fingerprint.WebApi();
 			}
 			this.Attachments = [];
+			this._oViewModel = new sap.ui.model.json.JSONModel({
+				onEmployment: true
+			});
+			this.setModel(this._oViewModel, "viewModel");
 
 		},
 
@@ -215,7 +219,15 @@ sap.ui.define([
 		onNavBack: function() {
 			this.oRouter.navTo("LearnerMenu");
 		},
+		onSelectEmployment: function(oEvent) {
+			var idx = oEvent.getSource().getSelectedIndex();
+			if (idx === -1 || idx === 0) {
+				this._oViewModel.setProperty("/onEmployment", true);
+			} else {
+				this._oViewModel.setProperty("/onEmployment", false);
+			}
 
+		},
 		onSaveDetails: function(oEvent) {
 			var oThat = this;
 			var oData = {};
@@ -256,6 +268,11 @@ sap.ui.define([
 			oData.AccountType = this.byId("cmbAccType").getSelectedItem().getText();
 			oData.Program = this.byId("cmbProgram").getSelectedItem().getText();
 			oData.Signature = this.signatureImage;
+			oData.EmployerName = this.byId("inpEmpName").getValue();
+			oData.EmployerContact = this.byId("inpEmpCont").getValue();
+			oData.EmploymentStart = this.byId("EmpDPStart").getValue();
+			oData.EmployementEnd = this.byId("EmpDPEnd").getValue();
+			oData.Status = "enrolled";
 
 			sLearnerModel.setData(oData);
 			sap.ui.getCore().setModel(sLearnerModel, "sLearnerModel");
@@ -267,6 +284,7 @@ sap.ui.define([
 				data: oData,
 				//successfully logged on 
 				success: function(data, response, xhr) {
+					this.AddEntryLog("Created a learner");
 					sap.ui.core.BusyIndicator.hide();
 					this.handleSuccessMessageBoxPress();
 					this.onSaveAttachments(oData.LearnerID);
@@ -279,6 +297,53 @@ sap.ui.define([
 			// oLearnerModel.setData(oData);
 			// sap.ui.getCore().setModel(oLearnerModel, "oLearnerModel");
 			// this.handleSuccessMessageBoxPress();
+		},
+		_getLogDate: function() {
+			var today = new Date();
+			var dd = today.getDate();
+			var mm = today.getMonth() + 1; //January is 0!
+			var yyyy = today.getFullYear();
+			if (dd < 10) {
+				dd = '0' + dd;
+			}
+			if (mm < 10) {
+				mm = '0' + mm;
+			}
+			var ScanDate = yyyy + mm + dd;
+			return ScanDate;
+		},
+
+		_getLogTime: function() {
+			var ScanTime = new Date().toLocaleTimeString('en-GB');
+			ScanTime = ScanTime.replace(/:/g, "");
+			return ScanTime;
+		},
+
+		AddEntryLog: function(change) {
+			var oUserModel = sap.ui.getCore().getModel("loggedUser");
+			var user = oUserModel.getData();
+			var oData = {};
+			oData.logID = parseInt(("" + Math.random()).substring(2, 5));
+			oData.Username = user.Name + " " + user.Surname;
+			oData.Date = this._getLogDate();
+			oData.Time = this._getLogTime();
+			oData.Change = change;
+
+			$.ajax({
+				type: "POST",
+				async: false,
+				cache: false,
+				url: 'PHP/EntryLog.php',
+				data: oData,
+				//successfully logged on 
+				success: function(data, response, xhr) {
+					console.log(data);
+				}.bind(this),
+				error: function(e, status, xhr) {
+
+				}
+			});
+
 		},
 
 		onSaveAttachments: function(LearnerID) {

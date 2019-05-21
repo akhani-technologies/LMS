@@ -69,6 +69,10 @@ sap.ui.define([
 		onMonitor: function() {
 			this.oRouter.navTo("Monitoring");
 		},
+		
+		onAddAttachments:function(){
+			this.oRouter.navTo("Attachments");
+		},
 		handleConfirmationMessageBoxPress: function(oEvent) {
 			var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
 			MessageBox.warning(

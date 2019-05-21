@@ -200,13 +200,21 @@
 					"pattern": "ConfirmationPage",
 					"name": "ConfirmationPage",
 					"target": "ConfirmationPage"
+				}, {
+					"pattern": "AuditTrail",
+					"name": "AuditTrail",
+					"target": "AuditTrail"
+				}, {
+					"pattern": "Attachments",
+					"name": "Attachments",
+					"target": "Attachments"
 				}
 
 			],
 			"targets": {
 				"WelcomePage": {
-					"viewID": "LoginPage",
-					"viewName": "LoginPage"
+					"viewID": "WelcomePage",
+					"viewName": "WelcomePage"
 				},
 				"LoginPage": {
 					"viewID": "LoginPage",
@@ -327,6 +335,14 @@
 				"ConfirmationPage": {
 					"viewId": "ConfirmationPage",
 					"viewName": "ConfirmationPage"
+				},
+				"AuditTrail": {
+					"viewId": "AuditTrail",
+					"viewName": "AuditTrail"
+				},
+				"Attachments": {
+					"viewId": "Attachments",
+					"viewName": "Attachments"
 				}
 			}
 		},
