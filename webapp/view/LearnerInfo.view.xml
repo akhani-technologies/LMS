@@ -89,14 +89,14 @@
 													<RadioButton selected="true" groupName="__group1" text="Employed"/>
 													<RadioButton groupName="__group1" text="Unemployed"/></buttons>
 											</RadioButtonGroup>
-											<Label visible="{viewModel>/onEmployment}" text="Employer Name"/>
-											<Input visible="{viewModel>/onEmployment}" width="70%" id="inpEmpName"/>
-											<Label visible="{viewModel>/onEmployment}" text="Employer Contact"/>
-											<Input visible="{viewModel>/onEmployment}" width="70%" id="inpEmpCont"/>
-											<Label visible="{viewModel>/onEmployment}" text="Employment Start Date"/>
-											<DatePicker visible="{viewModel>/onEmployment}" width="70%" id="EmpDPStart" valueFormat="yyyy-MM-dd" displayFormat="long"/>
-											<Label visible="{viewModel>/onEmployment}" text="Employment End Date"/>
-											<DatePicker visible="{viewModel>/onEmployment}" width="70%" id="EmpDPEnd" valueFormat="yyyy-MM-dd" displayFormat="long"/>
+											<Label required="{viewModel>/onEmployment}" visible="{viewModel>/onEmployment}" text="Employer Name"/>
+											<Input required="{viewModel>/onEmployment}" visible="{viewModel>/onEmployment}" width="70%" id="inpEmpName"/>
+											<Label required="{viewModel>/onEmployment}" visible="{viewModel>/onEmployment}" text="Employer Contact"/>
+											<Input required="{viewModel>/onEmployment}" visible="{viewModel>/onEmployment}" width="70%" id="inpEmpCont"/>
+											<Label required="{viewModel>/onEmployment}" visible="{viewModel>/onEmployment}" text="Employment Start Date"/>
+											<DatePicker required="{viewModel>/onEmployment}" visible="{viewModel>/onEmployment}" width="70%" id="EmpDPStart" valueFormat="yyyy-MM-dd" displayFormat="long"/>
+											<Label required="{viewModel>/onEmployment}" visible="{viewModel>/onEmployment}" text="Employment End Date"/>
+											<DatePicker required="{viewModel>/onEmployment}" visible="{viewModel>/onEmployment}" width="70%" id="EmpDPEnd" valueFormat="yyyy-MM-dd" displayFormat="long"/>
 											<core:Title text="Learner Type" icon="sap-icon://group"/>
 											<Label text="Select Learner type " required="true"/>
 											<ComboBox width="70%" id="slctLType" change="onValidateAdditional" required="true">
@@ -501,7 +501,7 @@
 					<Toolbar width="100%">
 						<content>
 							<ToolbarSpacer/>
-							<Button text="Save details" width="auto" type="Reject" icon="sap-icon://save" press="onSaveDetails" enabled="false" id="btnSaveDets"/>
+							<Button text="Save details" width="auto" type="Reject" icon="sap-icon://save" press="onSaveDetails" enabled="true" id="btnSaveDets"/>
 						</content>
 					</Toolbar>
 				</footer>

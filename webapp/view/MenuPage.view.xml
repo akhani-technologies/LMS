@@ -30,7 +30,7 @@
 					</FlexBox>
 					<FlexBox width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
 						<StandardTile class="border tile" title="Add Attachments" icon="images/attach.png" infoState="Warning" removable="false"
-							press="onReportingPress" type="Monitor"/>
+							press="onAddAttachments" type="Monitor"/>
 						<StandardTile class="border tile" title="Add Project" icon="images/project.png" infoState="Warning" removable="false"
 							press="onAddProject" type="Monitor"/>
 					</FlexBox>

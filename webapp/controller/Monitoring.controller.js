@@ -18,38 +18,50 @@ sap.ui.define([
 
 		onSaveDetails: function() {
 			var oData = {};
-			oData.Project = this.byId("inpProject").getValue();
-			oData.ContractualA = this.byId("inpContractual").getValue();
-			oData.Establishment = this.byId("inpEstablishment").getValue();
-			oData.Service = this.byId("inpService").getValue();
-			oData.Recruitment = this.byId("inpLearner").getValue();
-			oData.Arrange = this.byId("inpArrange").getValue();
-			oData.Conduct = this.byId("inpConduct").getValue();
-			oData.Upload = this.byId("inpUpload").getValue();
-			oData.Invoicing = this.byId("inpInvoicing").getValue();
-			oData.Implementation = this.byId("inpImplementation").getValue();
-			oData.Successes = this.byId("inpSeccesses").getValue();
-			oData.Recommendations = this.byId("inpRecommendations").getValue();
-			oData.ClosingRemarks = this.byId("inpClosing").getValue();
+			if (this.byId("inpProject").getSelectedItem() === undefined) {
+				this.handleWarningMessageBoxPress();
+			} else {
+				oData.Project = this.byId("inpProject").getSelectedItem().getText();
+				oData.ContractualA = this.byId("inpContractual").getValue();
+				oData.Establishment = this.byId("inpEstablishment").getValue();
+				oData.Service = this.byId("inpService").getValue();
+				oData.Recruitment = this.byId("inpLearner").getValue();
+				oData.Arrange = this.byId("inpArrange").getValue();
+				oData.Conduct = this.byId("inpConduct").getValue();
+				oData.Upload = this.byId("inpUpload").getValue();
+				oData.Invoicing = this.byId("inpInvoicing").getValue();
+				oData.Implementation = this.byId("inpImplementation").getValue();
+				oData.Successes = this.byId("inpSeccesses").getValue();
+				oData.Recommendations = this.byId("inpRecommendations").getValue();
+				oData.ClosingRemarks = this.byId("inpClosing").getValue();
+				$.ajax({
+					type: "POST",
+					async: false,
+					cache: false,
+					url: 'PHP/CreateInception.php',
+					data: oData,
+					//successfully logged on 
+					success: function(data, response, xhr) {
+						this.AddEntryLog("Created an inception report");
+						this.handleSuccessMessageBoxPress();
+					}.bind(this),
+					error: function(e, status, xhr) {
 
-			$.ajax({
-				type: "POST",
-				async: false,
-				cache: false,
-				url: 'PHP/CreateInception.php',
-				data: oData,
-				//successfully logged on 
-				success: function(data, response, xhr) {
-					this.AddEntryLog("Created an inception report");
-					this.handleSuccessMessageBoxPress();
-				}.bind(this),
-				error: function(e, status, xhr) {
+					}
+				});
+			}
 
-				}
-			});
 		},
-		
-				_getLogDate: function() {
+		handleWarningMessageBoxPress: function(oEvent) {
+			var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
+			MessageBox.warning(
+				"Please select a project from the dropdown list or add one under the project tile.", {
+					styleClass: bCompact ? "sapUiSizeCompact" : ""
+				}
+			);
+		},
+
+		_getLogDate: function() {
 			var today = new Date();
 			var dd = today.getDate();
 			var mm = today.getMonth() + 1; //January is 0!
@@ -105,9 +117,9 @@ sap.ui.define([
 				oInputControl = aInputControls[m].control;
 
 				if (aInputControls[m].required) {
-					
-						sValue = oInputControl.getValue();
-				
+
+					sValue = oInputControl.getValue();
+
 					if (!sValue) {
 						this.byId("btnSave").setEnabled(false);
 						return;
@@ -124,7 +136,7 @@ sap.ui.define([
 			var sControlType;
 			for (var i = 0; i < aFormContent.length; i++) {
 				sControlType = aFormContent[i].getMetadata().getName();
-				if (sControlType === "sap.m.Input" || sControlType === "sap.m.TextArea" ) {
+				if (sControlType === "sap.m.Input" || sControlType === "sap.m.TextArea") {
 					aControls.push({
 						control: aFormContent[i],
 						required: aFormContent[i - 1].getRequired && aFormContent[i - 1].getRequired()

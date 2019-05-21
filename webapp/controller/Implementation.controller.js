@@ -136,7 +136,7 @@ sap.ui.define([
 		},
 
 		onCreateImplementation: function() {
-			if (this.byId("ImpCombo").getSelectedItem() === undefined) {
+			if (this.byId("ImpCombo").getSelectedItem() !== undefined) {
 				var implData = [{
 					Project: this.byId("ImpCombo").getSelectedItem().getText(),
 					Description: this.byId("lblTT").getText(),
@@ -274,7 +274,7 @@ sap.ui.define([
 		},
 
 		createPostImp: function() {
-			if (this.byId("PostCombo").getSelectedItem() === undefined) {
+			if (this.byId("PostCombo").getSelectedItem() !== undefined) {
 				var implData = [{
 					Project: this.byId("PostCombo").getSelectedItem().getText(),
 					Description: this.byId("lblETQAVV").getText(),
