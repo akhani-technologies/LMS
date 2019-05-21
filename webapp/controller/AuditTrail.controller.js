@@ -16,22 +16,26 @@ sap.ui.define([
 		},
 
 		_onObjectMatched: function() {
-				var AuditModel = new sap.ui.model.json.JSONModel();
-				var oTable = this.byId("auditTable");
-				$.ajax({
-					url: 'PHP/getLoggedEntries.php',
-					async: false,
-					success: function(data) {
-						var oData = data.result;
-						AuditModel.setData(oData);
-						oTable.setModel(AuditModel);
-						sap.ui.getCore().setModel(AuditModel, "learnerModel");
-					},
-					error: function(err) {
+			var AuditModel = new sap.ui.model.json.JSONModel();
+			var oTable = this.byId("auditTable");
+			$.ajax({
+				url: 'PHP/getLoggedEntries.php',
+				async: false,
+				success: function(data) {
+					var oData = data.result;
+					AuditModel.setData(oData);
+					oTable.setModel(AuditModel);
+					sap.ui.getCore().setModel(AuditModel, "learnerModel");
+				},
+				error: function(err) {
 
-					}
-				});
-			}
+				}
+			});
+		},
+
+		onNavBack: function() {
+				this.oRouter.navTo("Reporting");
+		}
 			/**
 			 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
 			 * (NOT before the first rendering! onInit() is used for that one!).

@@ -61,6 +61,7 @@ sap.ui.define([
 				success: function(data, response, xhr) {
 					oTable.addItem(columnListItemNewLine);
 					this._oPopover.close();
+					this.AddEntryLog();
 					// oThat.oRouter.navTo("Menu");
 				}.bind(this),
 				error: function(e, status, xhr) {

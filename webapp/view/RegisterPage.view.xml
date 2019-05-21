@@ -108,13 +108,13 @@
 									</sap.ui.layout.form:Form>
 								</content>
 							</IconTabFilter>
-							<IconTabFilter enabled="false" key="contact" id="iconContact" text="Contact details" icon="sap-icon://contacts" iconColor="Critical">
+							<IconTabFilter enabled="true" key="contact" id="iconContact" text="Contact details" icon="sap-icon://contacts" iconColor="Critical">
 								<content>
 									<f:SimpleForm id="formContact" editable="true" layout="ResponsiveGridLayout">
 										<f:content>
 											<core:Title text="Contact details" emphasized="true" icon="sap-icon://customer-and-contacts"/>
 											<Label text="Contact number" required="true"/>
-											<Input width="50%" id="contactNumber" required="true" liveChange="onValidateContact"/>
+											<Input width="50%" id="contactNumber" required="true" liveChange="onValidateContact" type="Number"/>
 											<Label text="Email Address" required="true"/>
 											<Input width="50%" id="email" required="true" liveChange="onValidateContact"/></f:content>
 									</f:SimpleForm>

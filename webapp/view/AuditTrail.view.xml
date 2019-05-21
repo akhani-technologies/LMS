@@ -2,7 +2,7 @@
 	controllerName="programmeMotse.controller.AuditTrail">
 	<App>
 		<pages>
-			<Page title="Title">
+			<Page backgroundDesign="Solid" showNavButton="true" navButtonPress="onNavBack">
 				<content>
 					<ObjectHeader title="Audit Trail" introActive="true" titleActive="true" icon="sap-icon://check-availability"/>
 					<Table items="{path: '/'}" noDataText="No Items available" id="auditTable">
