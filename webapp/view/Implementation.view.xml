@@ -15,7 +15,7 @@
 										<sap.ui.layout.form:content>
 											<core:Title text="Pre-Implementation Phase "/>
 											<Label text="Project"/>
-											<Input id="inpPrePorject" width="80%"/>
+											<!--<Input id="inpPrePorject" width="80%"/>-->
 											<ComboBox id="PreCombo" items="{/}" width="80%">
 												<Item key="{ProjectID}" text="{ProjectName}" xmlns="sap.ui.core"/>
 											</ComboBox>
@@ -135,7 +135,7 @@
 										<sap.ui.layout.form:content>
 											<core:Title text="Implementation Phase"/>
 											<Label text="Project"/>
-											<Input id="inpImpPorject" width="80%"/>
+											<!--<Input id="inpImpPorject" width="80%"/>-->
 											<ComboBox id="ImpCombo" items="{/}" width="80%">
 												<Item key="{ProjectID}" text="{ProjectName}" xmlns="sap.ui.core"/>
 											</ComboBox>
@@ -290,7 +290,7 @@
 										<sap.ui.layout.form:content>
 											<core:Title text="Post-Implementation Phase "/>
 											<Label text="Project"/>
-											<Input id="inpPostPorject" width="80%"/>
+											<!--<Input id="inpPostPorject" width="80%"/>-->
 											<ComboBox id="PostCombo" items="{/}" width="80%">
 												<Item key="{ProjectID}" text="{ProjectName}" xmlns="sap.ui.core"/>
 											</ComboBox>

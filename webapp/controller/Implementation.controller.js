@@ -136,201 +136,208 @@ sap.ui.define([
 		},
 
 		onCreateImplementation: function() {
-			var implData = [{
-				Project: this.byId("inpImpPorject").getValue(),
-				Description: this.byId("lblTT").getText(),
-				Date: this.byId("TTdate").getValue(),
-				Rate: this.byId("TT").getValue()
-			}, {
-				Project: this.byId("inpImpPorject").getValue(),
-				Description: this.byId("lblAR").getText(),
-				Date: this.byId("ARdate").getValue(),
-				Rate: this.byId("AR").getValue()
-			}, {
-				Project: this.byId("inpImpPorject").getValue(),
-				Description: this.byId("lblSOAR").getText(),
-				Date: this.byId("SOARdate").getValue(),
-				Rate: this.byId("SOAR").getValue()
-			}, {
-				Project: this.byId("inpImpPorject").getValue(),
-				Description: this.byId("lblPS").getText(),
-				Date: this.byId("PSdate").getValue(),
-				Rate: this.byId("PS").getValue()
-			}, {
-				Project: this.byId("inpImpPorject").getValue(),
-				Description: this.byId("lblMAEV").getText(),
-				Date: this.byId("MAEVdate").getValue(),
-				Rate: this.byId("MAEV").getValue()
-			}, {
-				Project: this.byId("inpImpPorject").getValue(),
-				Description: this.byId("lblPTLWFWPAT").getText(),
-				Date: this.byId("PTLWFWPATdate").getValue(),
-				Rate: this.byId("PTLWFWPAT").getValue()
-			}, {
-				Project: this.byId("inpImpPorject").getValue(),
-				Description: this.byId("lblPrT").getText(),
-				Date: this.byId("PrTdate").getValue(),
-				Rate: this.byId("PrT").getValue()
-			}, {
-				Project: this.byId("inpImpPorject").getValue(),
-				Description: this.byId("lblASR").getText(),
-				Date: this.byId("ASRdate").getValue(),
-				Rate: this.byId("ASR").getValue()
-			}, {
-				Project: this.byId("inpImpPorject").getValue(),
-				Description: this.byId("lblSOAR2").getText(),
-				Date: this.byId("SOAR2date").getValue(),
-				Rate: this.byId("SOAR2").getValue()
-			}, {
-				Project: this.byId("inpImpPorject").getValue(),
-				Description: this.byId("lblPS2").getText(),
-				Date: this.byId("PS2date").getValue(),
-				Rate: this.byId("PS2").getValue()
-			}, {
-				Project: this.byId("inpImpPorject").getValue(),
-				Description: this.byId("lblMAEV2").getText(),
-				Date: this.byId("MAEV2date").getValue(),
-				Rate: this.byId("MAEV2").getValue()
-			}, {
-				Project: this.byId("inpImpPorject").getValue(),
-				Description: this.byId("lblMR").getText(),
-				Date: this.byId("MRdate").getValue(),
-				Rate: this.byId("MR").getValue()
-			}, {
-				Project: this.byId("inpImpPorject").getValue(),
-				Description: this.byId("lblIFNYCL").getText(),
-				Date: this.byId("IFNYCLdate").getValue(),
-				Rate: this.byId("IFNYCL").getValue()
-			}, {
-				Project: this.byId("inpImpPorject").getValue(),
-				Description: this.byId("lblPOW").getText(),
-				Date: this.byId("POWdate").getValue(),
-				Rate: this.byId("POW").getValue()
-			}, {
-				Project: this.byId("inpImpPorject").getValue(),
-				Description: this.byId("lblWT").getText(),
-				Date: this.byId("WTdate").getValue(),
-				Rate: this.byId("WT").getValue()
-			}, {
-				Project: this.byId("inpImpPorject").getValue(),
-				Description: this.byId("lblSOL").getText(),
-				Date: this.byId("SOLdate").getValue(),
-				Rate: this.byId("SOL").getValue()
-			}, {
-				Project: this.byId("inpImpPorject").getValue(),
-				Description: this.byId("lblSOPR").getText(),
-				Date: this.byId("SOPRdate").getValue(),
-				Rate: this.byId("SOPR").getValue()
-			}, {
-				Project: this.byId("inpImpPorject").getValue(),
-				Description: this.byId("lblPS3").getText(),
-				Date: this.byId("PS3date").getValue(),
-				Rate: this.byId("PS3").getValue()
-			}, {
-				Project: this.byId("inpImpPorject").getValue(),
-				Description: this.byId("lblMAEV3").getText(),
-				Date: this.byId("MAEV3date").getValue(),
-				Rate: this.byId("MAEV3").getValue()
-			}];
+			if (this.byId("ImpCombo").getSelectedItem() === undefined) {
+				var implData = [{
+					Project: this.byId("ImpCombo").getSelectedItem().getText(),
+					Description: this.byId("lblTT").getText(),
+					Date: this.byId("TTdate").getValue(),
+					Rate: this.byId("TT").getValue()
+				}, {
+					Project: this.byId("ImpCombo").getSelectedItem().getText(),
+					Description: this.byId("lblAR").getText(),
+					Date: this.byId("ARdate").getValue(),
+					Rate: this.byId("AR").getValue()
+				}, {
+					Project: this.byId("ImpCombo").getSelectedItem().getText(),
+					Description: this.byId("lblSOAR").getText(),
+					Date: this.byId("SOARdate").getValue(),
+					Rate: this.byId("SOAR").getValue()
+				}, {
+					Project: this.byId("ImpCombo").getSelectedItem().getText(),
+					Description: this.byId("lblPS").getText(),
+					Date: this.byId("PSdate").getValue(),
+					Rate: this.byId("PS").getValue()
+				}, {
+					Project: this.byId("ImpCombo").getSelectedItem().getText(),
+					Description: this.byId("lblMAEV").getText(),
+					Date: this.byId("MAEVdate").getValue(),
+					Rate: this.byId("MAEV").getValue()
+				}, {
+					Project: this.byId("ImpCombo").getSelectedItem().getText(),
+					Description: this.byId("lblPTLWFWPAT").getText(),
+					Date: this.byId("PTLWFWPATdate").getValue(),
+					Rate: this.byId("PTLWFWPAT").getValue()
+				}, {
+					Project: this.byId("ImpCombo").getSelectedItem().getText(),
+					Description: this.byId("lblPrT").getText(),
+					Date: this.byId("PrTdate").getValue(),
+					Rate: this.byId("PrT").getValue()
+				}, {
+					Project: this.byId("ImpCombo").getSelectedItem().getText(),
+					Description: this.byId("lblASR").getText(),
+					Date: this.byId("ASRdate").getValue(),
+					Rate: this.byId("ASR").getValue()
+				}, {
+					Project: this.byId("ImpCombo").getSelectedItem().getText(),
+					Description: this.byId("lblSOAR2").getText(),
+					Date: this.byId("SOAR2date").getValue(),
+					Rate: this.byId("SOAR2").getValue()
+				}, {
+					Project: this.byId("ImpCombo").getSelectedItem().getText(),
+					Description: this.byId("lblPS2").getText(),
+					Date: this.byId("PS2date").getValue(),
+					Rate: this.byId("PS2").getValue()
+				}, {
+					Project: this.byId("ImpCombo").getSelectedItem().getText(),
+					Description: this.byId("lblMAEV2").getText(),
+					Date: this.byId("MAEV2date").getValue(),
+					Rate: this.byId("MAEV2").getValue()
+				}, {
+					Project: this.byId("ImpCombo").getSelectedItem().getText(),
+					Description: this.byId("lblMR").getText(),
+					Date: this.byId("MRdate").getValue(),
+					Rate: this.byId("MR").getValue()
+				}, {
+					Project: this.byId("ImpCombo").getSelectedItem().getText(),
+					Description: this.byId("lblIFNYCL").getText(),
+					Date: this.byId("IFNYCLdate").getValue(),
+					Rate: this.byId("IFNYCL").getValue()
+				}, {
+					Project: this.byId("ImpCombo").getSelectedItem().getText(),
+					Description: this.byId("lblPOW").getText(),
+					Date: this.byId("POWdate").getValue(),
+					Rate: this.byId("POW").getValue()
+				}, {
+					Project: this.byId("ImpCombo").getSelectedItem().getText(),
+					Description: this.byId("lblWT").getText(),
+					Date: this.byId("WTdate").getValue(),
+					Rate: this.byId("WT").getValue()
+				}, {
+					Project: this.byId("ImpCombo").getSelectedItem().getText(),
+					Description: this.byId("lblSOL").getText(),
+					Date: this.byId("SOLdate").getValue(),
+					Rate: this.byId("SOL").getValue()
+				}, {
+					Project: this.byId("ImpCombo").getSelectedItem().getText(),
+					Description: this.byId("lblSOPR").getText(),
+					Date: this.byId("SOPRdate").getValue(),
+					Rate: this.byId("SOPR").getValue()
+				}, {
+					Project: this.byId("ImpCombo").getSelectedItem().getText(),
+					Description: this.byId("lblPS3").getText(),
+					Date: this.byId("PS3date").getValue(),
+					Rate: this.byId("PS3").getValue()
+				}, {
+					Project: this.byId("ImpCombo").getSelectedItem().getText(),
+					Description: this.byId("lblMAEV3").getText(),
+					Date: this.byId("MAEV3date").getValue(),
+					Rate: this.byId("MAEV3").getValue()
+				}];
 
-			for (var i = 0; i < implData.length; i++) {
-				$.ajax({
-					type: "POST",
-					async: false,
-					cache: false,
-					url: 'PHP/CreateImplementation.php',
-					data: {
-						Project: implData[i].Project,
-						Description: implData[i].Description,
-						Date: implData[i].Date,
-						Rate: implData[i].Rate
-					},
-					//successfully logged on 
-					success: function(data, response, xhr) {
-						if (i === 18) {
-							this.this.AddEntryLog("Created a Pre-Implementation Plan");
-							var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
-							MessageBox.success(
-								"Implementation rates successfully saved", {
-									styleClass: bCompact ? "sapUiSizeCompact" : "",
-									onClose: function(sAction) {
-										this.oRouter.navTo("MenuPage");
-									}.bind(this)
-								}
-							);
+				for (var i = 0; i < implData.length; i++) {
+					$.ajax({
+						type: "POST",
+						async: false,
+						cache: false,
+						url: 'PHP/CreateImplementation.php',
+						data: {
+							Project: implData[i].Project,
+							Description: implData[i].Description,
+							Date: implData[i].Date,
+							Rate: implData[i].Rate
+						},
+						//successfully logged on 
+						success: function(data, response, xhr) {
+							if (i === 18) {
+								this.this.AddEntryLog("Created a Pre-Implementation Plan");
+								var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
+								MessageBox.success(
+									"Implementation rates successfully saved", {
+										styleClass: bCompact ? "sapUiSizeCompact" : "",
+										onClose: function(sAction) {
+											this.oRouter.navTo("MenuPage");
+										}.bind(this)
+									}
+								);
+							}
+
+						}.bind(this),
+						error: function(e, status, xhr) {
+
 						}
-
-					}.bind(this),
-					error: function(e, status, xhr) {
-
-					}
-				});
+					});
+				}
+			} else {
+				this.handleWarningMessageBoxPress();
 			}
 
 		},
 
 		createPostImp: function() {
+			if (this.byId("PostCombo").getSelectedItem() === undefined) {
+				var implData = [{
+					Project: this.byId("PostCombo").getSelectedItem().getText(),
+					Description: this.byId("lblETQAVV").getText(),
+					Date: this.byId("ETQAVVdate").getValue(),
+					Rate: this.byId("ETQAVV").getValue()
+				}, {
+					Project: this.byId("PostCombo").getSelectedItem().getText(),
+					Description: this.byId("lblSFA").getText(),
+					Date: this.byId("SFAdate").getValue(),
+					Rate: this.byId("SFA").getValue()
+				}, {
+					Project: this.byId("PostCombo").getSelectedItem().getText(),
+					Description: this.byId("lblSOF").getText(),
+					Date: this.byId("SOFdate").getValue(),
+					Rate: this.byId("SOF").getValue()
+				}, {
+					Project: this.byId("PostCombo").getSelectedItem().getText(),
+					Description: this.byId("lblLC").getText(),
+					Date: this.byId("LCdate").getValue(),
+					Rate: this.byId("LC").getValue()
+				}, {
+					Project: this.byId("PostCombo").getSelectedItem().getText(),
+					Description: this.byId("lblCOR").getText(),
+					Date: this.byId("CORdate").getValue(),
+					Rate: this.byId("COR").getValue()
+				}];
 
-			var implData = [{
-				Project: this.byId("inpPostPorject").getValue(),
-				Description: this.byId("lblETQAVV").getText(),
-				Date: this.byId("ETQAVVdate").getValue(),
-				Rate: this.byId("ETQAVV").getValue()
-			}, {
-				Project: this.byId("inpPostPorject").getValue(),
-				Description: this.byId("lblSFA").getText(),
-				Date: this.byId("SFAdate").getValue(),
-				Rate: this.byId("SFA").getValue()
-			}, {
-				Project: this.byId("inpPostPorject").getValue(),
-				Description: this.byId("lblSOF").getText(),
-				Date: this.byId("SOFdate").getValue(),
-				Rate: this.byId("SOF").getValue()
-			}, {
-				Project: this.byId("inpPostPorject").getValue(),
-				Description: this.byId("lblLC").getText(),
-				Date: this.byId("LCdate").getValue(),
-				Rate: this.byId("LC").getValue()
-			}, {
-				Project: this.byId("inpPostPorject").getValue(),
-				Description: this.byId("lblCOR").getText(),
-				Date: this.byId("CORdate").getValue(),
-				Rate: this.byId("COR").getValue()
-			}];
+				for (var i = 0; i < implData.length; i++) {
+					$.ajax({
+						type: "POST",
+						async: false,
+						cache: false,
+						url: 'PHP/CreatePostImplementation.php',
+						data: {
+							Project: implData[i].Project,
+							Description: implData[i].Description,
+							Date: implData[i].Date,
+							Rate: implData[i].Rate
+						},
+						//successfully logged on 
+						success: function(data, response, xhr) {
 
-			for (var i = 0; i < implData.length; i++) {
-				$.ajax({
-					type: "POST",
-					async: false,
-					cache: false,
-					url: 'PHP/CreatePostImplementation.php',
-					data: {
-						Project: implData[i].Project,
-						Description: implData[i].Description,
-						Date: implData[i].Date,
-						Rate: implData[i].Rate
-					},
-					//successfully logged on 
-					success: function(data, response, xhr) {
+							if (i === 4) {
+								this.AddEntryLog("Created a Post-Implementation Plan");
+								var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
+								MessageBox.success(
+									"Post-Implementation rates successfully saved", {
+										styleClass: bCompact ? "sapUiSizeCompact" : "",
+										onClose: function(sAction) {
+											this.oRouter.navTo("MenuPage");
+										}.bind(this)
+									}
+								);
 
-						if (i === 4) {
-							this.AddEntryLog("Created a Post-Implementation Plan");
-							var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
-							MessageBox.success(
-								"Post-Implementation rates successfully saved", {
-									styleClass: bCompact ? "sapUiSizeCompact" : "",
-									onClose: function(sAction) {
-										this.oRouter.navTo("MenuPage");
-									}.bind(this)
-								}
-							);
+							}
+						}.bind(this),
+						error: function(e, status, xhr) {
 
 						}
-					}.bind(this),
-					error: function(e, status, xhr) {
-
-					}
-				});
+					});
+				}
+			} else {
+				this.handleWarningMessageBoxPress();
 			}
 
 		},
@@ -386,113 +393,125 @@ sap.ui.define([
 		},
 
 		createPreImp: function() {
+			if (this.byId("PreCombo").getSelectedItem() !== undefined) {
+				var implData = [{
+					Project: this.byId("PreCombo").getSelectedItem().getText(),
+					Description: this.byId("lblrate1").getText(),
+					Date: this.byId("rate1date").getValue(),
+					Rate: this.byId("rate1").getValue()
+				}, {
+					Project: this.byId("PreCombo").getSelectedItem().getText(),
+					Description: this.byId("lblrate2").getText(),
+					Date: this.byId("rate2date").getValue(),
+					Rate: this.byId("rate2").getValue()
+				}, {
+					Project: this.byId("PreCombo").getSelectedItem().getText(),
+					Description: this.byId("lblrate3").getText(),
+					Date: this.byId("rate3date").getValue(),
+					Rate: this.byId("rate3").getValue()
+				}, {
+					Project: this.byId("PreCombo").getSelectedItem().getText(),
+					Description: this.byId("lblrate4").getText(),
+					Date: this.byId("rate4date").getValue(),
+					Rate: this.byId("rate4").getValue()
+				}, {
+					Project: this.byId("PreCombo").getSelectedItem().getText(),
+					Description: this.byId("lblrate5").getText(),
+					Date: this.byId("rate5date").getValue(),
+					Rate: this.byId("rate5").getValue()
+				}, {
+					Project: this.byId("PreCombo").getSelectedItem().getText(),
+					Description: this.byId("lblrate6").getText(),
+					Date: this.byId("rate6date").getValue(),
+					Rate: this.byId("rate6").getValue()
+				}, {
+					Project: this.byId("PreCombo").getSelectedItem().getText(),
+					Description: this.byId("lblrate7").getText(),
+					Date: this.byId("rate7date").getValue(),
+					Rate: this.byId("rate7").getValue()
+				}, {
+					Project: this.byId("PreCombo").getSelectedItem().getText(),
+					Description: this.byId("lblrate8").getText(),
+					Date: this.byId("rate8date").getValue(),
+					Rate: this.byId("rate8").getValue()
+				}, {
+					Project: this.byId("PreCombo").getSelectedItem().getText(),
+					Description: this.byId("lblrate9").getText(),
+					Date: this.byId("rate9date").getValue(),
+					Rate: this.byId("rate9").getValue()
+				}, {
+					Project: this.byId("PreCombo").getSelectedItem().getText(),
+					Description: this.byId("lblrate10").getText(),
+					Date: this.byId("rate10date").getValue(),
+					Rate: this.byId("rate10").getValue()
+				}, {
+					Project: this.byId("PreCombo").getSelectedItem().getText(),
+					Description: this.byId("lblrate11").getText(),
+					Date: this.byId("rate11date").getValue(),
+					Rate: this.byId("rate11").getValue()
+				}, {
+					Project: this.byId("PreCombo").getSelectedItem().getText(),
+					Description: this.byId("lblrate12").getText(),
+					Date: this.byId("rate12date").getValue(),
+					Rate: this.byId("rate12").getValue()
+				}, {
+					Project: this.byId("PreCombo").getSelectedItem().getText(),
+					Description: this.byId("lblrate13").getText(),
+					Date: this.byId("rate13date").getValue(),
+					Rate: this.byId("rate13").getValue()
+				}, {
+					Project: this.byId("PreCombo").getSelectedItem().getText(),
+					Description: this.byId("lblrate14").getText(),
+					Date: this.byId("rate14date").getValue(),
+					Rate: this.byId("rate14").getValue()
+				}];
 
-			var implData = [{
-				Project: this.byId("inpPrePorject").getValue(),
-				Description: this.byId("lblrate1").getText(),
-				Date: this.byId("rate1date").getValue(),
-				Rate: this.byId("rate1").getValue()
-			}, {
-				Project: this.byId("inpPrePorject").getValue(),
-				Description: this.byId("lblrate2").getText(),
-				Date: this.byId("rate2date").getValue(),
-				Rate: this.byId("rate2").getValue()
-			}, {
-				Project: this.byId("inpPrePorject").getValue(),
-				Description: this.byId("lblrate3").getText(),
-				Date: this.byId("rate3date").getValue(),
-				Rate: this.byId("rate3").getValue()
-			}, {
-				Project: this.byId("inpPrePorject").getValue(),
-				Description: this.byId("lblrate4").getText(),
-				Date: this.byId("rate4date").getValue(),
-				Rate: this.byId("rate4").getValue()
-			}, {
-				Project: this.byId("inpPrePorject").getValue(),
-				Description: this.byId("lblrate5").getText(),
-				Date: this.byId("rate5date").getValue(),
-				Rate: this.byId("rate5").getValue()
-			}, {
-				Project: this.byId("inpPrePorject").getValue(),
-				Description: this.byId("lblrate6").getText(),
-				Date: this.byId("rate6date").getValue(),
-				Rate: this.byId("rate6").getValue()
-			}, {
-				Project: this.byId("inpPrePorject").getValue(),
-				Description: this.byId("lblrate7").getText(),
-				Date: this.byId("rate7date").getValue(),
-				Rate: this.byId("rate7").getValue()
-			}, {
-				Project: this.byId("inpPrePorject").getValue(),
-				Description: this.byId("lblrate8").getText(),
-				Date: this.byId("rate8date").getValue(),
-				Rate: this.byId("rate8").getValue()
-			}, {
-				Project: this.byId("inpPrePorject").getValue(),
-				Description: this.byId("lblrate9").getText(),
-				Date: this.byId("rate9date").getValue(),
-				Rate: this.byId("rate9").getValue()
-			}, {
-				Project: this.byId("inpPrePorject").getValue(),
-				Description: this.byId("lblrate10").getText(),
-				Date: this.byId("rate10date").getValue(),
-				Rate: this.byId("rate10").getValue()
-			}, {
-				Project: this.byId("inpPrePorject").getValue(),
-				Description: this.byId("lblrate11").getText(),
-				Date: this.byId("rate11date").getValue(),
-				Rate: this.byId("rate11").getValue()
-			}, {
-				Project: this.byId("inpPrePorject").getValue(),
-				Description: this.byId("lblrate12").getText(),
-				Date: this.byId("rate12date").getValue(),
-				Rate: this.byId("rate12").getValue()
-			}, {
-				Project: this.byId("inpPrePorject").getValue(),
-				Description: this.byId("lblrate13").getText(),
-				Date: this.byId("rate13date").getValue(),
-				Rate: this.byId("rate13").getValue()
-			}, {
-				Project: this.byId("inpPrePorject").getValue(),
-				Description: this.byId("lblrate14").getText(),
-				Date: this.byId("rate14date").getValue(),
-				Rate: this.byId("rate14").getValue()
-			}];
+				for (var i = 0; i < implData.length; i++) {
+					$.ajax({
+						type: "POST",
+						async: false,
+						cache: false,
+						url: 'PHP/CreatePreImplementation.php',
+						data: {
+							Project: implData[i].Project,
+							Description: implData[i].Description,
+							Date: implData[i].Date,
+							Rate: implData[i].Rate
+						},
+						//successfully logged on 
+						success: function(data, response, xhr) {
+							if (i === 13) {
+								this.AddEntryLog("Created a Pre-Implementation Plan");
+								var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
+								MessageBox.success(
+									"Pre-Implementation rates successfully saved", {
+										styleClass: bCompact ? "sapUiSizeCompact" : "",
+										onClose: function(sAction) {
+											this.oRouter.navTo("MenuPage");
+										}.bind(this)
+									}
+								);
+							}
 
-			for (var i = 0; i < implData.length; i++) {
-				$.ajax({
-					type: "POST",
-					async: false,
-					cache: false,
-					url: 'PHP/CreatePreImplementation.php',
-					data: {
-						Project: implData[i].Project,
-						Description: implData[i].Description,
-						Date: implData[i].Date,
-						Rate: implData[i].Rate
-					},
-					//successfully logged on 
-					success: function(data, response, xhr) {
-						if (i === 13) {
-							this.AddEntryLog("Created a Pre-Implementation Plan");
-							var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
-							MessageBox.success(
-								"Pre-Implementation rates successfully saved", {
-									styleClass: bCompact ? "sapUiSizeCompact" : "",
-									onClose: function(sAction) {
-										this.oRouter.navTo("MenuPage");
-									}.bind(this)
-								}
-							);
+						}.bind(this),
+						error: function(e, status, xhr) {
+
 						}
-
-					}.bind(this),
-					error: function(e, status, xhr) {
-
-					}
-				});
+					});
+				}
+			} else {
+				this.handleWarningMessageBoxPress();
 			}
 
+		},
+
+		handleWarningMessageBoxPress: function(oEvent) {
+			var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
+			MessageBox.warning(
+				"Please select a project from the dropdown list or add one under the project tile.", {
+					styleClass: bCompact ? "sapUiSizeCompact" : ""
+				}
+			);
 		},
 		_getLogDate: function() {
 			var today = new Date();
