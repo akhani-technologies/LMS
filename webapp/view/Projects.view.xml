@@ -27,7 +27,7 @@
 							<Toolbar width="100%">
 								<content>
 									<ToolbarSpacer/>
-									<Button width="auto" icon="sap-icon://add" type="Emphasized"/>
+									<Button width="auto" press="onAddProject" icon="sap-icon://add" type="Emphasized"/>
 								</content>
 							</Toolbar>
 						</headerToolbar>
