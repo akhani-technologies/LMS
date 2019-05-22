@@ -92,8 +92,14 @@ sap.ui.define([
 				confirm.setValueState("Error");
 				// this._oViewModel.setProperty("/enableCreate", false);
 			} else {
-				confirm.setValueState("Success");
-				this.onValidateGeneral();
+				if (this.confirm) {
+					confirm.setValueState("Success");
+					this.onValidateGeneral();
+				}else{
+					confirm.setValueState("Error");
+					confirm.setValueStateText("Please refer to the above password rule");
+				}
+
 				// this._oViewModel.setProperty("/enableCreate", true);
 			}
 		},
@@ -215,36 +221,79 @@ sap.ui.define([
 			var oControl = oEvent.getSource();
 			var str = oEvent.getSource().getValue();
 			var reg = /[!@#$%^&*(),._?":{}|<>]/;
-
+			this.confirm = false;
 			if (str.length < 6) {
 				oControl.setValueState("Error");
 				oControl.setValueStateText("Password should have a minimum of 6 characters");
 				this.byId("iconAddress").setEnabled(false);
+				this.confirm = false;
+				if (this.byId("inpConfirm").getValue() !== "") {
+					if (this.byId("inpConfirm").getValue() !== str) {
+						this.byId("inpConfirm").setValueState("Error");
+						this.byId("inpConfirm").setValueStateText("Passwords do not match");
+						this.byId("iconAddress").setEnabled(false);
+					}
+				}
 				// return ("too_short");
 			} else
 			if (str.length > 50) {
 				oControl.setValueState("Error");
 				oControl.setValueStateText("Password too long");
 				this.byId("iconAddress").setEnabled(false);
+				this.confirm = false;
+				if (this.byId("inpConfirm").getValue() !== "") {
+					if (this.byId("inpConfirm").getValue() !== str) {
+						this.byId("inpConfirm").setValueState("Error");
+						this.byId("inpConfirm").setValueStateText("Passwords do not match");
+						this.byId("iconAddress").setEnabled(false);
+					}
+				}
 				// return ("too_long");
 			} else if (str.search(/\d/) == -1) {
 				oControl.setValueState("Error");
 				oControl.setValueStateText("Password should have at least 1 number");
 				this.byId("iconAddress").setEnabled(false);
+				this.confirm = false;
+				if (this.byId("inpConfirm").getValue() !== "") {
+					if (this.byId("inpConfirm").getValue() !== str) {
+						this.byId("inpConfirm").setValueState("Error");
+						this.byId("inpConfirm").setValueStateText("Passwords do not match");
+						this.byId("iconAddress").setEnabled(false);
+					}
+				}
 				// return ("no_num");
 			} else if (str.search(/[A-Z]/) == -1) {
 				oControl.setValueState("Error");
 				oControl.setValueStateText("Password should have at least 1 Capital Letter");
 				this.byId("iconAddress").setEnabled(false);
-				// return ("no_letter");
-			} else if (!reg.test(str)) {
-				oControl.setValueState("Error");
-				oControl.setValueStateText("Password should have at least 1 Special character");
-			} else {
+				this.confirm = false;
 				if (this.byId("inpConfirm").getValue() !== "") {
 					if (this.byId("inpConfirm").getValue() !== str) {
 						this.byId("inpConfirm").setValueState("Error");
 						this.byId("inpConfirm").setValueStateText("Passwords do not match");
+						this.byId("iconAddress").setEnabled(false);
+					}
+				}
+				// return ("no_letter");
+			} else if (!reg.test(str)) {
+				this.confirm = false;
+				oControl.setValueState("Error");
+				oControl.setValueStateText("Password should have at least 1 Special character");
+				this.byId("iconAddress").setEnabled(false);
+				if (this.byId("inpConfirm").getValue() !== "") {
+					if (this.byId("inpConfirm").getValue() !== str) {
+						this.byId("inpConfirm").setValueState("Error");
+						this.byId("inpConfirm").setValueStateText("Passwords do not match");
+						this.byId("iconAddress").setEnabled(false);
+					}
+				}
+			} else {
+				this.confirm = true;
+				if (this.byId("inpConfirm").getValue() !== "") {
+					if (this.byId("inpConfirm").getValue() !== str) {
+						this.byId("inpConfirm").setValueState("Error");
+						this.byId("inpConfirm").setValueStateText("Passwords do not match");
+						this.byId("iconAddress").setEnabled(false);
 					} else {
 						this.byId("inpConfirm").setValueState("Success");
 						this.byId("inpConfirm").setValueStateText("Passwords match");
