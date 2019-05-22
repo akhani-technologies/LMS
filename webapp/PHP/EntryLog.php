@@ -14,10 +14,11 @@ $Username = mysqli_real_escape_string($conn, $_POST['Username']);
 $Date = mysqli_real_escape_string($conn, $_POST['Date']);
 $Time = mysqli_real_escape_string($conn, $_POST['Time']); 
 $Change = mysqli_real_escape_string($conn, $_POST['Change']);
+$CompanyCode= mysqli_real_escape_string($conn, $_POST['CompanyCode']);
 
 
-$sql = "INSERT INTO entrylogs(logID, Username, EntryDate, EntryTime, EntryChange ) 
-VALUES ('$logID','$Username', '$Date', '$Time', '$Change')";
+$sql = "INSERT INTO entrylogs(logID, Username, EntryDate, EntryTime, EntryChange,CompanyCode ) 
+VALUES ('$logID','$Username', '$Date', '$Time', '$Change', '$CompanyCode')";
 
 if ($conn->query($sql) === TRUE) {
     echo "Entry Logged";
