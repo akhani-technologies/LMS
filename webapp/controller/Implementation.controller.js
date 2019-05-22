@@ -321,7 +321,6 @@ sap.ui.define([
 						},
 						//successfully logged on 
 						success: function(data, response, xhr) {
-
 							if (i === 4) {
 								this.AddEntryLog("Created a Post-Implementation Plan");
 								var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
@@ -549,6 +548,7 @@ sap.ui.define([
 			oData.Date = this._getLogDate();
 			oData.Time = this._getLogTime();
 			oData.Change = change;
+			oData.CompanyCode = this.CompanyCode;
 
 			$.ajax({
 				type: "POST",

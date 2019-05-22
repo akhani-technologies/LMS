@@ -41,6 +41,10 @@ sap.ui.define([
 			this.byId("cmbClock").setSelectedItem(null);
 			this.byId("txtNotes").setValue(null);
 			this.byId("finger1").setSrc("images/index.png");
+
+			var loggedUser = sap.ui.getCore().getModel("loggedUser");
+			var user = loggedUser.getData();
+			this.CompanyCode = user.CompanyCode;
 		},
 
 		onGetFacilitators: function() {
@@ -114,6 +118,7 @@ sap.ui.define([
 			oData.Clock = this.byId("cmbClock").getSelectedItem().getText();
 			oData.Notes = this.byId("txtNotes").getValue();
 			oData.Status = "Verified";
+			oData.CompanyCode = this.CompanyCode;
 			var dt = new Date();
 			oData.Stamp = dt.toString();
 			if (oData.UserType === "Learner") {

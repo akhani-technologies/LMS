@@ -22,6 +22,10 @@ sap.ui.define([
 		},
 
 		_onObjectMatched: function(oEvent) {
+
+			var loggedUser = sap.ui.getCore().getModel("loggedUser");
+			var user = loggedUser.getData();
+			this.CompanyCode = user.CompanyCode;
 			// this.sdk = new Fingerprint.WebApi;
 			var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
 			this.sdk.onDeviceConnected = function(e) {
@@ -219,7 +223,7 @@ sap.ui.define([
 		onNavBack: function() {
 			this.oRouter.navTo("LearnerMenu");
 		},
-		
+
 		onSelectEmployment: function(oEvent) {
 			var idx = oEvent.getSource().getSelectedIndex();
 			if (idx === -1 || idx === 0) {
@@ -274,6 +278,7 @@ sap.ui.define([
 			oData.EmploymentStart = this.byId("EmpDPStart").getValue();
 			oData.EmployementEnd = this.byId("EmpDPEnd").getValue();
 			oData.Status = "enrolled";
+			oData.CompanyCode = this.CompanyCode;
 
 			sLearnerModel.setData(oData);
 			sap.ui.getCore().setModel(sLearnerModel, "sLearnerModel");
@@ -329,6 +334,7 @@ sap.ui.define([
 			oData.Date = this._getLogDate();
 			oData.Time = this._getLogTime();
 			oData.Change = change;
+			oData.CompanyCode = this.CompanyCode;
 
 			$.ajax({
 				type: "POST",
@@ -359,7 +365,8 @@ sap.ui.define([
 						LearnerID: LearnerID,
 						Type: this.Attachments[i].Type,
 						Content: this.Attachments[i].Content,
-						DocType: this.Attachments[i].DocType
+						DocType: this.Attachments[i].DocType,
+						CompanyCode: this.CompanyCode
 					},
 					//successfully logged on 
 					success: function(data, response, xhr) {

@@ -29,6 +29,9 @@ sap.ui.define([
 			this.onGetLearner();
 			this.onGetVenue();
 			this.onGetFacilitator();
+			var loggedUser = sap.ui.getCore().getModel("loggedUser");
+			var user = loggedUser.getData();
+			this.CompanyCode = user.CompanyCode;
 		},
 
 		onGetLearner: function() {
@@ -139,6 +142,7 @@ sap.ui.define([
 			oData.Description = this.byId("txtDescr").getValue();
 			oData.Details = this.byId("txtDetails").getValue();
 			oData.Attachment = window.Content;
+			oData.CompanyCode = this.CompanyCode;
 
 			$.ajax({
 				type: "POST",
@@ -187,6 +191,7 @@ sap.ui.define([
 			oData.Date = this._getLogDate();
 			oData.Time = this._getLogTime();
 			oData.Change = change;
+			oData.CompanyCode = this.CompanyCode;
 
 			$.ajax({
 				type: "POST",

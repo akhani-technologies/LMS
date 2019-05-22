@@ -19,10 +19,11 @@ $ProofOfReg = mysqli_real_escape_string($conn, $_POST['ProofOfReg']);
 $IDNumber = mysqli_real_escape_string($conn, $_POST['IDNumber']);
 $Surname = mysqli_real_escape_string($conn, $_POST['Surname']);
 $ServiceProvider = mysqli_real_escape_string($conn, $_POST['ServiceProvider']);
+$CompanyCode = mysqli_real_escape_string($conn, $_POST['CompanyCode']);
 
 
-$sql = "INSERT INTO assessormod(PersonID, PersonType, Name, OfficeNumber, MobileNumber, Email,ProofOfReg, IDNumber,Surname,ServiceProvider) 
-VALUES ('$PersonID','$PersonType', '$Name','$OfficeNumber', '$MobileNumber', '$Email','$ProofOfReg','$IDNumber','$Surname', '$ServiceProvider')";
+$sql = "INSERT INTO assessormod(PersonID, PersonType, Name, OfficeNumber, MobileNumber, Email,ProofOfReg, IDNumber,Surname,ServiceProvider, CompanyCode) 
+VALUES ('$PersonID','$PersonType', '$Name','$OfficeNumber', '$MobileNumber', '$Email','$ProofOfReg','$IDNumber','$Surname', '$ServiceProvider', '$CompanyCode')";
 
 if ($conn->query($sql) === TRUE) {
     echo "Page saved!";

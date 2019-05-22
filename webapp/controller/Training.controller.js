@@ -14,6 +14,9 @@ sap.ui.define([
 		},
 
 		_onObjectMatched: function() {
+			var loggedUser = sap.ui.getCore().getModel("loggedUser");
+			var user = loggedUser.getData();
+			this.CompanyCode = user.CompanyCode;
 			this.ResetFields();
 		},
 
@@ -187,6 +190,7 @@ sap.ui.define([
 			oData.TrainingProviderName = this.byId("inpContactPerson").getValue();
 			oData.RegistrationNumber = this.byId("inpRegNum").getValue();
 			oData.CSDReport = window.CSDContent;
+			oData.CompanyCode = this.CompanyCode;
 
 			$.ajax({
 				type: "POST",
@@ -219,7 +223,8 @@ sap.ui.define([
 						ETQA: oItems[i].mAggregations.cells[1].getProperty("value"),
 						ExpiryDate: oItems[i].mAggregations.cells[2].getProperty("value"),
 						AccreditationAttach: this.AttachArray[i],
-						LearningProgram: oItems[i].mAggregations.cells[3].getProperty("value")
+						LearningProgram: oItems[i].mAggregations.cells[3].getProperty("value"),
+						CompanyCode : this.CompanyCode
 					},
 					//successfully logged on 
 					success: function(data, response, xhr) {
@@ -263,6 +268,7 @@ sap.ui.define([
 			oData.Date = this._getLogDate();
 			oData.Time = this._getLogTime();
 			oData.Change = change;
+			oData.CompanyCode = this.CompanyCode;
 
 			$.ajax({
 				type: "POST",

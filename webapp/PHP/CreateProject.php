@@ -13,9 +13,10 @@ $ProjectID = mysqli_real_escape_string($conn, $_POST['ProjectID']);
 $ProjectName = mysqli_real_escape_string($conn, $_POST['ProjectName']);
 $ProjectStartDate = mysqli_real_escape_string($conn, $_POST['ProjectStartDate']);
 $ProjectEndDate = mysqli_real_escape_string($conn, $_POST['ProjectEndDate']);
+$CompanyCode = mysqli_real_escape_string($conn, $_POST['CompanyCode']);
 
-$sql = "INSERT INTO projects(ProjectID, ProjectName, ProjectStartDate, ProjectEndDate)
-VALUES ('$ProjectID','$ProjectName','$ProjectStartDate', '$ProjectEndDate')";
+$sql = "INSERT INTO projects(ProjectID, ProjectName, ProjectStartDate, ProjectEndDate, CompanyCode)
+VALUES ('$ProjectID','$ProjectName','$ProjectStartDate', '$ProjectEndDate', '$CompanyCode')";
 
 if ($conn->query($sql) === TRUE) {
     echo "Page saved!";

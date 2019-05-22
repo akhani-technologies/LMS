@@ -16,10 +16,10 @@ $ETQA = mysqli_real_escape_string($conn, $_POST['ETQA']);
 $ExpiryDate = mysqli_real_escape_string($conn, $_POST['ExpiryDate']);
 $AccreditationAttach = mysqli_real_escape_string($conn, $_POST['AccreditationAttach']); 
 $LearningProgram = mysqli_real_escape_string($conn, $_POST['LearningProgram']);
+$CompanyCode = mysqli_real_escape_string($conn, $_POST['CompanyCode']);
 
-
-$sql = "INSERT INTO accreditationdetails(AccreditationID, TrainingID, AccreditationNumber, ETQA, ExpiryDate, AccreditationAttach, LearningProgram) 
-VALUES ('$AccreditationID','$TrainingID', '$AccreditationNumber', '$ETQA','$ExpiryDate', '$AccreditationAttach', '$LearningProgram')";
+$sql = "INSERT INTO accreditationdetails(AccreditationID, TrainingID, AccreditationNumber, ETQA, ExpiryDate, AccreditationAttach, LearningProgram, CompanyCode) 
+VALUES ('$AccreditationID','$TrainingID', '$AccreditationNumber', '$ETQA','$ExpiryDate', '$AccreditationAttach', '$LearningProgram', '$CompanyCode')";
 
 if ($conn->query($sql) === TRUE) {
     echo "Page saved!";

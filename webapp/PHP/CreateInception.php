@@ -22,11 +22,11 @@ $Implementation = mysqli_real_escape_string($conn, $_POST['Implementation']);
 $Successes = mysqli_real_escape_string($conn, $_POST['Successes']);
 $Recommendations = mysqli_real_escape_string($conn, $_POST['Recommendations']);
 $ClosingRemarks = mysqli_real_escape_string($conn, $_POST['ClosingRemarks']);
-
+$CompanyCode = mysqli_real_escape_string($conn, $_POST['CompanyCode']);
 
 $sql = "INSERT INTO InceptionReport(Project, ContractualA, Establishment, Service, Recruitment, Arrange, Conduct, Upload, Invoicing, Implementation,
-Successes, Recommendations, ClosingRemarks)
-VALUES ('$Project','$ContractualA','$Establishment', '$Service','$Recruitment', '$Arrange','$Conduct','$Upload', '$Invoicing','$Implementation', '$Successes', '$Recommendations','$ClosingRemarks')";
+Successes, Recommendations, ClosingRemarks,CompanyCode)
+VALUES ('$Project','$ContractualA','$Establishment', '$Service','$Recruitment', '$Arrange','$Conduct','$Upload', '$Invoicing','$Implementation', '$Successes', '$Recommendations','$ClosingRemarks', '$CompanyCode')";
 
 if ($conn->query($sql) === TRUE) {
     echo "Report saved!";

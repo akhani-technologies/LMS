@@ -19,6 +19,9 @@ sap.ui.define([
 
 		},
 		_onObjectMatched: function() {
+			var loggedUser = sap.ui.getCore().getModel("loggedUser");
+			var user = loggedUser.getData();
+			this.CompanyCode = user.CompanyCode;
 			this.ResetFields();
 		},
 
@@ -126,6 +129,7 @@ sap.ui.define([
 			oData.IDNumber = this.byId("inpID").getValue();
 			oData.Surname = this.byId("inpSurname").getValue();
 			oData.ServiceProvider = this.byId("cmbProvider").getSelectedItem().getText();
+			oData.CompanyCode = this.CompanyCode;
 
 			$.ajax({
 				type: "POST",
@@ -174,6 +178,7 @@ sap.ui.define([
 			oData.Date = this._getLogDate();
 			oData.Time = this._getLogTime();
 			oData.Change = change;
+			oData.CompanyCode = this.CompanyCode;
 
 			$.ajax({
 				type: "POST",

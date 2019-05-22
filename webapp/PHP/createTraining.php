@@ -22,9 +22,10 @@ $BankProof =  mysqli_real_escape_string($conn, $_POST['BankProof']);
 $TrainingProviderName = mysqli_real_escape_string($conn, $_POST['TrainingProviderName']);
 $RegistrationNumber = mysqli_real_escape_string($conn, $_POST['RegistrationNumber']);
 $CSDReport = mysqli_real_escape_string($conn, $_POST['CSDReport']);
+$CompanyCode = mysqli_real_escape_string($conn, $_POST['CompanyCode']);
 
-$sql = "INSERT INTO training(TrainingID, AccreditationNumber, Position, OfficeNumber, MobileNumber, Email, BankName, AccountNumber, AccountType, BankProof, TrainingProviderName, RegistrationNumber, CSDReport) 
-VALUES ('$TrainingID','$AccreditationNumber', '$Position', '$OfficeNumber', '$MobileNumber','$Email','$BankName', '$AccountNumber', '$AccountType', '$BankProof', '$TrainingProviderName', '$RegistrationNumber', '$CSDReport')";
+$sql = "INSERT INTO training(TrainingID, AccreditationNumber, Position, OfficeNumber, MobileNumber, Email, BankName, AccountNumber, AccountType, BankProof, TrainingProviderName, RegistrationNumber, CSDReport, CompanyCode) 
+VALUES ('$TrainingID','$AccreditationNumber', '$Position', '$OfficeNumber', '$MobileNumber','$Email','$BankName', '$AccountNumber', '$AccountType', '$BankProof', '$TrainingProviderName', '$RegistrationNumber', '$CSDReport', '$CompanyCode')";
 
 if ($conn->query($sql) === TRUE) {
     echo "Page saved!";

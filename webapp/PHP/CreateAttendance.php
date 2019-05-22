@@ -18,10 +18,11 @@ $Notes = mysqli_real_escape_string($conn, $_POST['Notes']);
 $Status = mysqli_real_escape_string($conn, $_POST['Status']);
 $Name = mysqli_real_escape_string($conn, $_POST['Name']);
 $Stamp = mysqli_real_escape_string($conn, $_POST['Stamp']);
+$CompanyCode= mysqli_real_escape_string($conn, $_POST['CompanyCode']);
 
 
-$sql = "INSERT INTO attendance(AttendanceID, UserType, ConfirmationType, IDNumber, Clock, Notes, Status, Name, Stamp) 
-VALUES ('$AttendanceID','$UserType', '$ConfirmationType','$IDNumber', '$Clock', '$Notes','$Status','$Name', '$Stamp' )";
+$sql = "INSERT INTO attendance(AttendanceID, UserType, ConfirmationType, IDNumber, Clock, Notes, Status, Name, Stamp, CompanyCode) 
+VALUES ('$AttendanceID','$UserType', '$ConfirmationType','$IDNumber', '$Clock', '$Notes','$Status','$Name', '$Stamp', '$CompanyCode' )";
 
 if ($conn->query($sql) === TRUE) {
     echo "Page saved!";

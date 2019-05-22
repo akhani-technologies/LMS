@@ -15,10 +15,11 @@ $TypeInfo = mysqli_real_escape_string($conn, $_POST['TypeInfo']);
 $Description = mysqli_real_escape_string($conn, $_POST['Description']);
 $Details = mysqli_real_escape_string($conn, $_POST['Details']);
 $Attachment = mysqli_real_escape_string($conn, $_POST['Attachment']);
+$CompanyCode = mysqli_real_escape_string($conn, $_POST['CompanyCode']);
 
 
-$sql = "INSERT INTO Incidents(IncidentID, Type, TypeInfo,Description, Details, Attachment)
-VALUES ('$IncidentID','$Type','$TypeInfo', '$Description','$Details', '$Attachment')";
+$sql = "INSERT INTO Incidents(IncidentID, Type, TypeInfo,Description, Details, Attachment, CompanyCode)
+VALUES ('$IncidentID','$Type','$TypeInfo', '$Description','$Details', '$Attachment', '$CompanyCode')";
 
 if ($conn->query($sql) === TRUE) {
     echo "Incident saved!";

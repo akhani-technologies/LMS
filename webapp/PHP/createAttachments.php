@@ -14,9 +14,10 @@ $LearnerID = mysqli_real_escape_string($conn, $_POST['LearnerID']);
 $Type = mysqli_real_escape_string($conn, $_POST['Type']);
 $Content = mysqli_real_escape_string($conn, $_POST['Content']);
 $DocType = mysqli_real_escape_string($conn, $_POST['DocType']); 
+$CompanyCode = mysqli_real_escape_string($conn, $_POST['CompanyCode']);
 
-$sql = "INSERT INTO attachments(DocID, LearnerID, Type, Content, DocType) 
-VALUES ('$DocID','$LearnerID','$Type', '$Content', '$DocType')";
+$sql = "INSERT INTO attachments(DocID, LearnerID, Type, Content, DocType, CompanyCode) 
+VALUES ('$DocID','$LearnerID','$Type', '$Content', '$DocType', '$CompanyCode')";
 
 if ($conn->query($sql) === TRUE) {
     echo "Page saved!";

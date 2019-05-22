@@ -11,7 +11,9 @@ sap.ui.define([
 		 * @memberOf programmeMotse.view.Projects
 		 */
 		onInit: function() {
-
+			var loggedUser = sap.ui.getCore().getModel("loggedUser");
+			var user = loggedUser.getData();
+			this.CompanyCode = user.CompanyCode;
 		},
 
 		onAddProject: function(oEvent) {
@@ -34,6 +36,8 @@ sap.ui.define([
 			oData.ProjectName = sap.ui.getCore().byId("inpProjectName").getValue();
 			oData.ProjectStartDate = sap.ui.getCore().byId("inpStartDate").getValue();
 			oData.ProjectEndDate = sap.ui.getCore().byId("inpEndDate").getValue();
+			oData.CompanyCode = this.CompanyCode;
+			
 			var columnListItemNewLine = new sap.m.ColumnListItem({
 				cells: [
 					new sap.m.Text({
@@ -102,6 +106,7 @@ sap.ui.define([
 			oData.Date = this._getLogDate();
 			oData.Time = this._getLogTime();
 			oData.Change = change;
+			oData.CompanyCode = this.CompanyCode;
 
 			$.ajax({
 				type: "POST",

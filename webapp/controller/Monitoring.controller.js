@@ -14,6 +14,9 @@ sap.ui.define([
 		onInit: function() {
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			this.oRouter.getRoute("Monitoring").attachPatternMatched(this._onObjectMatched, this);
+			var loggedUser = sap.ui.getCore().getModel("loggedUser");
+			var user = loggedUser.getData();
+			this.CompanyCode = user.CompanyCode;
 		},
 
 		onSaveDetails: function() {
@@ -34,6 +37,8 @@ sap.ui.define([
 				oData.Successes = this.byId("inpSeccesses").getValue();
 				oData.Recommendations = this.byId("inpRecommendations").getValue();
 				oData.ClosingRemarks = this.byId("inpClosing").getValue();
+				oData.CompanyCode = this.CompanyCode;
+				
 				$.ajax({
 					type: "POST",
 					async: false,
@@ -91,6 +96,7 @@ sap.ui.define([
 			oData.Date = this._getLogDate();
 			oData.Time = this._getLogTime();
 			oData.Change = change;
+			oData.CompanyCode = this.CompanyCode;
 
 			$.ajax({
 				type: "POST",
