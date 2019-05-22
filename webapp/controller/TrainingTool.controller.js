@@ -21,18 +21,20 @@ sap.ui.define([
 		_onObjectMatched: function() {
 			this.learnerModel = new sap.ui.model.json.JSONModel();
 			var oTable = this.byId("__table0");
-				var loggedUser = sap.ui.getCore().getModel("loggedUser");
+			var loggedUser = sap.ui.getCore().getModel("loggedUser");
 			var user = loggedUser.getData();
 			this.CompanyCode = user.CompanyCode;
+			var learnerArr = [];
 			$.ajax({
 				url: 'PHP/learnerDetails.php',
 				async: false,
-				data:{
-					CompanyCode : this.CompanyCode
-				},
 				success: function(data) {
-					var oData = data.result;
-					this.learnerModel.setData(oData);
+					for (var i = 0; i < data.result.length; i++){
+						if(data.result[i].CompanyCode === this.CompanyCode){
+							learnerArr.push(data.result[i]);
+						}
+					}
+					this.learnerModel.setData(learnerArr);
 					oTable.setModel(this.learnerModel);
 					sap.ui.getCore().setModel(this.learnerModel, "learnerModel");
 				}.bind(this),
@@ -103,7 +105,7 @@ sap.ui.define([
 					data: this.ArrData[i],
 					//successfully logged on 
 					success: function(data, response, xhr) {
-						if(i === this.ArrData.length -1){
+						if (i === this.ArrData.length - 1) {
 							this.AddEntryLog("Updated learner Tools");
 						}
 						this.handleSuccessMessageBoxPress();

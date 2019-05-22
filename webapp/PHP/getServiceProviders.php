@@ -21,7 +21,7 @@ $CompanyCode = mysqli_real_escape_string($conn, $_POST['CompanyCode']);
  
  while($row = mysqli_fetch_array($res)){
  array_push($result, 
- array('TrainingProviderName'=>$row[10]));
+ array('TrainingProviderName'=>$row[10],'CompanyCode'=>$row[14]));
  }
  header('Content-Type: application/json');
  echo json_encode(array('result'=>$result));

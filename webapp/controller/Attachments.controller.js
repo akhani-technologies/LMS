@@ -26,15 +26,17 @@ sap.ui.define([
 		onGetLearner: function() {
 			this.learnerModel = new sap.ui.model.json.JSONModel();
 			var oSelect = this.byId("cmbLearner");
+			var learnerArr = [];
 			$.ajax({
 				url: 'PHP/learnerDetails.php',
 				async: false,
-				data:{
-					CompanyCode : this.CompanyCode
-				},
 				success: function(data) {
-					var oData = data.result;
-					this.learnerModel.setData(oData);
+					for (var i = 0; i < data.result.length; i++){
+						if(data.result[i].CompanyCode === this.CompanyCode){
+							learnerArr.push(data.result[i]);
+						}
+					}
+					this.learnerModel.setData(learnerArr);
 					oSelect.setModel(this.learnerModel);
 				}.bind(this),
 				error: function(err) {
@@ -48,15 +50,17 @@ sap.ui.define([
 			this.AttendModel = new sap.ui.model.json.JSONModel();
 			this.facilitatorModel = new sap.ui.model.json.JSONModel();
 			var Select = this.byId("cmbFacilitor");
+			var facilitatorArr = [];
 			$.ajax({
 				url: 'PHP/getFacilitators.php',
 				async: false,
-				data:{
-					CompanyCode : this.CompanyCode
-				},
 				success: function(data) {
-					var oData = data.result;
-					this.facilitatorModel.setData(oData);
+					for (var i = 0; i < data.result.length; i++){
+						if(data.result[i].CompanyCode === this.CompanyCode){
+							facilitatorArr.push(data.result[i]);
+						}
+					}
+					this.facilitatorModel.setData(facilitatorArr);
 					Select.setModel(this.facilitatorModel);
 				}.bind(this),
 				error: function(err, e, xhr) {
@@ -68,15 +72,17 @@ sap.ui.define([
 		onGetVenue: function() {
 			this.venueModel = new sap.ui.model.json.JSONModel();
 			var Select = this.byId("cmbVenue");
+			var venueArr = [];
 			$.ajax({
 				url: 'PHP/getVenue.php',
 				async: false,
-				data:{
-					CompanyCode : this.CompanyCode
-				},
 				success: function(data) {
-					var oData = data.result;
-					this.venueModel.setData(oData);
+					for (var i = 0; i < data.result.length; i++){
+						if(data.result[i].CompanyCode === this.CompanyCode){
+							venueArr.push(data.result[i]);
+						}
+					}
+					this.venueModel.setData(venueArr);
 					Select.setModel(this.venueModel);
 				}.bind(this),
 				error: function(err, e, xhr) {

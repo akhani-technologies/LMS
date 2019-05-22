@@ -38,15 +38,17 @@ sap.ui.define([
 			this.CompanyCode = user.CompanyCode;
 			this.AttendModel = new sap.ui.model.json.JSONModel();
 			var oTable = this.byId("tblAttendance");
+			var attendArr = [];
 			$.ajax({
 				url: 'PHP/getAttendance.php',
 				async: false,
-				data: {
-					CompanyCode: this.CompanyCode
-				},
 				success: function(data) {
-					var oData = data.result;
-					this.AttendModel.setData(oData);
+					for (var i = 0; i < data.result.length; i++){
+						if(data.result[i].CompanyCode === this.CompanyCode){
+							attendArr.push(data.result[i]);
+						}
+					}
+					this.AttendModel.setData(attendArr);
 					oTable.setModel(this.AttendModel);
 					sap.ui.getCore().setModel(this.AttendModel, "AttendModel");
 				}.bind(this),

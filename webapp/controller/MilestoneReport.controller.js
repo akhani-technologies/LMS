@@ -48,15 +48,17 @@ sap.ui.define([
 
 			var oSelect = this.byId("tblImp");
 			this.ImpModel = new sap.ui.model.json.JSONModel();
+			var ImpArr = [];
 			$.ajax({
 				url: 'PHP/getImplementation.php',
 				async: false,
-				data: {
-					CompanyCode: this.CompanyCode
-				},
 				success: function(data) {
-					var oData = data.result;
-					this.ImpModel.setData(oData);
+					for (var i = 0; i < data.result.length; i++) {
+						if (data.result[i].CompanyCode === this.CompanyCode) {
+							ImpArr.push(data.result[i]);
+						}
+					}
+					this.ImpModel.setData(ImpArr);
 					oSelect.setModel(this.ImpModel);
 				}.bind(this),
 				error: function(err, e, xhr) {
@@ -68,15 +70,17 @@ sap.ui.define([
 		onGetPreImplementation: function() {
 			var oSelect = this.byId("tblPre");
 			this.PreModel = new sap.ui.model.json.JSONModel();
+			var PreArr = [];
 			$.ajax({
 				url: 'PHP/getPreImplement.php',
 				async: false,
-				data: {
-					CompanyCode: this.CompanyCode
-				},
 				success: function(data) {
-					var oData = data.result;
-					this.PreModel.setData(oData);
+					for (var i = 0; i < data.result.length; i++) {
+						if (data.result[i].CompanyCode === this.CompanyCode) {
+							PreArr.push(data.result[i]);
+						}
+					}
+					this.PreModel.setData(PreArr);
 					oSelect.setModel(this.PreModel);
 				}.bind(this),
 				error: function(err, e, xhr) {
@@ -88,15 +92,17 @@ sap.ui.define([
 		onGetPostImplementation: function() {
 			var oSelect = this.byId("tblPost");
 			this.PostModel = new sap.ui.model.json.JSONModel();
+			var PostArr = [];
 			$.ajax({
 				url: 'PHP/getPostImplement.php',
 				async: false,
-				data: {
-					CompanyCode: this.CompanyCode
-				},
 				success: function(data) {
-					var oData = data.result;
-					this.PostModel.setData(oData);
+					for (var i = 0; i < data.result.length; i++) {
+						if (data.result[i].CompanyCode === this.CompanyCode) {
+							PostArr.push(data.result[i]);
+						}
+					}
+					this.PostModel.setData(PostArr);
 					oSelect.setModel(this.PostModel);
 				}.bind(this),
 				error: function(err, e, xhr) {

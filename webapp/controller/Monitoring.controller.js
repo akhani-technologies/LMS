@@ -23,15 +23,17 @@ sap.ui.define([
 		onGetProjects: function() {
 			var ProjectsModel = new sap.ui.model.json.JSONModel();
 			var PreCombo = this.byId("inpProject");
+			var projectArr = [];
 			$.ajax({
 				url: 'PHP/getProjects.php',
 				async: false,
-				data:{
-					CompanyCode : this.CompanyCode
-				},
 				success: function(data) {
-					var oData = data.result;
-					ProjectsModel.setData(oData);
+					for (var i = 0; i < data.result.length; i++){
+						if(data.result[i].CompanyCode === this.CompanyCode){
+							projectArr.push(data.result[i]);
+						}
+					}
+					ProjectsModel.setData(projectArr);
 					PreCombo.setModel(ProjectsModel);
 				}.bind(this),
 				error: function(err, e, xhr) {

@@ -26,16 +26,18 @@ sap.ui.define([
 			var incidentsModel = new sap.ui.model.json.JSONModel();
 			var loggedUser = sap.ui.getCore().getModel("loggedUser");
 			var user = loggedUser.getData();
+			var incidentsArr = [];
 			this.CompanyCode = user.CompanyCode;
 			$.ajax({
 				url: 'PHP/getIncidents.php',
 				async: false,
-				data: {
-					CompanyCode: this.CompanyCode
-				},
 				success: function(data) {
-					var oData = data.result;
-					incidentsModel.setData(oData);
+					for (var i = 0; i < data.result.length; i++){
+						if(data.result[i].CompanyCode === this.CompanyCode){
+							incidentsArr.push(data.result[i]);
+						}
+					}
+					incidentsModel.setData(incidentsArr);
 					oTable.setModel(incidentsModel);
 					sap.ui.getCore().setModel(incidentsModel, "incidentsModel");
 				},

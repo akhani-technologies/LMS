@@ -25,15 +25,17 @@ sap.ui.define([
 			var loggedUser = sap.ui.getCore().getModel("loggedUser");
 			var user = loggedUser.getData();
 			this.CompanyCode = user.CompanyCode;
+			var learnerArr = [];
 			$.ajax({
 				url: 'PHP/learnerDetails.php',
 				async: false,
-				data: {
-					CompanyCode: this.CompanyCode
-				},
 				success: function(data) {
-					var oData = data.result;
-					learnerModel.setData(oData);
+					for (var i = 0; i < data.result.length; i++){
+						if(data.result[i].CompanyCode === this.CompanyCode){
+							learnerArr.push(data.result[i]);
+						}
+					}
+					learnerModel.setData(learnerArr);
 					oTable.setModel(learnerModel);
 					sap.ui.getCore().setModel(learnerModel, "learnerModel");
 				},

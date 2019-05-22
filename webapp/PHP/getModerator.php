@@ -12,9 +12,7 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
-$CompanyCode = mysqli_real_escape_string($conn, $_POST['CompanyCode']);
-
- $sql = "select * from assessormod where CompanyCode='$CompanyCode'";
+ $sql = "select * from assessormod";
  
  $res = mysqli_query($conn,$sql);
  
@@ -22,7 +20,7 @@ $CompanyCode = mysqli_real_escape_string($conn, $_POST['CompanyCode']);
  
  while($row = mysqli_fetch_array($res)){
  array_push($result, 
- array('PersonID'=>$row[0],'Type'=>$row[1],'Name'=>$row[2],'oNumber'=>$row[3],'mNumber'=>$row[4], 'Email'=>$row[5], 'IDNumber'=>$row[7],'Surname'=>$row[8] ));
+ array('PersonID'=>$row[0],'Type'=>$row[1],'Name'=>$row[2],'oNumber'=>$row[3],'mNumber'=>$row[4], 'Email'=>$row[5], 'IDNumber'=>$row[7],'Surname'=>$row[8],'CompanyCode'=>$row[9]));
  }
  header('Content-Type: application/json');
  echo json_encode(array('result'=>$result));

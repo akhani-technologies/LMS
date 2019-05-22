@@ -572,15 +572,17 @@ sap.ui.define([
 			var PreCombo = this.byId("PreCombo");
 			var ImpCombo = this.byId("ImpCombo");
 			var PostCombo = this.byId("PostCombo");
+			var projectArr = [];
 			$.ajax({
 				url: 'PHP/getProjects.php',
 				async: false,
-				data:{
-					CompanyCode : this.CompanyCode
-				},
 				success: function(data) {
-					var oData = data.result;
-					ProjectsModel.setData(oData);
+					for (var i = 0; i < data.result.length; i++){
+						if(data.result[i].CompanyCode === this.CompanyCode){
+							projectArr.push(data.result[i]);
+						}
+					}
+					ProjectsModel.setData(projectArr);
 					PreCombo.setModel(ProjectsModel);
 					ImpCombo.setModel(ProjectsModel);
 					PostCombo.setModel(ProjectsModel);

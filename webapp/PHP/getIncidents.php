@@ -11,9 +11,7 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
-$CompanyCode = mysqli_real_escape_string($conn, $_POST['CompanyCode']);
-
-$sql = "select * from incidents where CompanyCode= '$CompanyCode'";
+$sql = "select * from incidents ";
  
  $res = mysqli_query($conn,$sql);
  
@@ -21,7 +19,7 @@ $sql = "select * from incidents where CompanyCode= '$CompanyCode'";
  
  while($row = mysqli_fetch_array($res)){
  array_push($result, 
- array('IncidentID'=>$row[0],'Type'=>$row[1],'TypeInfo'=>$row[2],'Description'=>$row[3],'Details'=>$row[4],'Image'=>$row[5]));
+ array('IncidentID'=>$row[0],'Type'=>$row[1],'TypeInfo'=>$row[2],'Description'=>$row[3],'Details'=>$row[4],'Image'=>$row[5],'CompanyCode'=>$row[5] ));
  }
  header('Content-Type: application/json');
  echo json_encode(array('result'=>$result));

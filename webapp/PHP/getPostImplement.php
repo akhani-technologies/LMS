@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 
 $CompanyCode = mysqli_real_escape_string($conn, $_POST['CompanyCode']);
 
- $sql = "select * from postimplementation where CompanyCode= '$CompanyCode'";
+ $sql = "select * from postimplementation ";
  
  $res = mysqli_query($conn,$sql);
  
@@ -22,7 +22,7 @@ $CompanyCode = mysqli_real_escape_string($conn, $_POST['CompanyCode']);
  
  while($row = mysqli_fetch_array($res)){
  array_push($result, 
- array('Project'=>$row[0],'Description'=>$row[1],'Date'=>$row[2],'Rate'=>$row[3]));
+ array('Project'=>$row[0],'Description'=>$row[1],'Date'=>$row[2],'Rate'=>$row[3],'CompanyCode'=>$row[4]));
  }
  
  header('Content-Type: application/json');

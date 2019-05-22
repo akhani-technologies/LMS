@@ -54,15 +54,17 @@ sap.ui.define([
 		onGetServiceProviders: function() {
 			this.serviceModel = new sap.ui.model.json.JSONModel();
 			var Select = this.byId("cmbProvider");
+			var serviceArr = [];
 			$.ajax({
 				url: 'PHP/getServiceProviders.php',
 				async: false,
-				data:{
-					CompanyCode : this.CompanyCode
-				},
 				success: function(data) {
-					var oData = data.result;
-					this.serviceModel.setData(oData);
+					for (var i = 0; i < data.result.length; i++){
+						if(data.result[i].CompanyCode === this.CompanyCode){
+							serviceArr.push(data.result[i]);
+						}
+					}
+					this.serviceModel.setData(serviceArr);
 					Select.setModel(this.serviceModel);
 				}.bind(this),
 				error: function(err, e, xhr) {

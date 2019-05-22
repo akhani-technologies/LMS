@@ -33,6 +33,9 @@ sap.ui.define([
 					}
 				);
 			};
+			var loggedUser = sap.ui.getCore().getModel("loggedUser");
+			var user = loggedUser.getData();
+			this.CompanyCode = user.CompanyCode;
 			this.onGetFacilitators();
 			this.onGetLearner();
 
@@ -42,23 +45,23 @@ sap.ui.define([
 			this.byId("txtNotes").setValue(null);
 			this.byId("finger1").setSrc("images/index.png");
 
-			var loggedUser = sap.ui.getCore().getModel("loggedUser");
-			var user = loggedUser.getData();
-			this.CompanyCode = user.CompanyCode;
+			
 		},
 
 		onGetFacilitators: function() {
 			var oSelect = this.byId("cmbFacilitator");
 			this.facilitatorModel = new sap.ui.model.json.JSONModel();
+			var facilitatorArr = [];
 			$.ajax({
 				url: 'PHP/getFacilitators.php',
 				async: false,
-				data:{
-					CompanyCode : this.CompanyCode
-				},
 				success: function(data) {
-					var oData = data.result;
-					this.facilitatorModel.setData(oData);
+					for (var i = 0; i < data.result.length; i++){
+						if(data.result[i].CompanyCode === this.CompanyCode){
+							facilitatorArr.push(data.result[i]);
+						}
+					}
+					this.facilitatorModel.setData(facilitatorArr);
 					oSelect.setModel(this.facilitatorModel);
 				}.bind(this),
 				error: function(err, e, xhr) {
@@ -70,15 +73,17 @@ sap.ui.define([
 		onGetVenue: function() {
 			this.venueModel = new sap.ui.model.json.JSONModel();
 			var Select = this.byId("cmbVenue");
+			var venueArr = [];
 			$.ajax({
 				url: 'PHP/getVenue.php',
 				async: false,
-				data:{
-					CompanyCode : this.CompanyCode
-				},
 				success: function(data) {
-					var oData = data.result;
-					this.venueModel.setData(oData);
+					for (var i = 0; i < data.result.length; i++){
+						if(data.result[i].CompanyCode === this.CompanyCode){
+							venueArr.push(data.result[i]);
+						}
+					}
+					this.venueModel.setData(venueArr);
 					Select.setModel(this.venueModel);
 				}.bind(this),
 				error: function(err, e, xhr) {
@@ -90,15 +95,17 @@ sap.ui.define([
 		onGetLearner: function() {
 			this.LearnerModel = new sap.ui.model.json.JSONModel();
 			var Select = this.byId("cmbLearner");
+			var learnerArr = [];
 			$.ajax({
 				url: 'PHP/learnerDetails.php',
 				async: false,
-				data:{
-					CompanyCode : this.CompanyCode
-				},
 				success: function(data) {
-					var oData = data.result;
-					this.LearnerModel.setData(oData);
+					for (var i = 0; i < data.result.length; i++){
+						if(data.result[i].CompanyCode === this.CompanyCode){
+							learnerArr.push(data.result[i]);
+						}
+					}
+					this.LearnerModel.setData(learnerArr);
 					Select.setModel(this.LearnerModel);
 				}.bind(this),
 				error: function(err, e, xhr) {
