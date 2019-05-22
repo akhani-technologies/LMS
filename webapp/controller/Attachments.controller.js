@@ -112,12 +112,13 @@ sap.ui.define([
 		},
 
 		handleSuccessMessageBoxPress: function(oEvent) {
+			var that = this;
 			var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
 			MessageBox.success(
 				"Attachments successfully submitted", {
 					styleClass: bCompact ? "sapUiSizeCompact" : "",
 					onClose: function(sAction) {
-						this.oRouter.navTo("MenuPage");
+						that.oRouter.navTo("MenuPage");
 					}.bind(this)
 				}
 			);
