@@ -13,26 +13,26 @@
 							type="Monitor" visible="{viewModel>/onShowCreate}"/>
 						<StandardTile class="border tile" title="Attendance" icon="images/attendace.png" infoState="Warning" removable="false"
 							press="onAttendencePress" type="Monitor" visible="{viewModel>/onShowCreate}"/>
-						<StandardTile class="border tile" title="Facilitators" icon="images/monitor.png" activeIcon="sap-icon://customer" infoState="Success"
-							removable="false" press="onMonitorPress" type="Monitor" visible="{viewModel>/onShowCreate}"/>
 					</FlexBox>
 					<FlexBox alignContent="Center" alignItems="Center" justifyContent="Center">
+						<StandardTile class="border tile" title="Facilitators" icon="images/monitor.png" activeIcon="sap-icon://customer" infoState="Success"
+							removable="false" press="onMonitorPress" type="Monitor" visible="{viewModel>/onShowCreate}"/>
 						<StandardTile class="border tile" title="Learner management" icon="images/learner.png" activeIcon="sap-icon://customer" infoState="Success"
 							removable="false" press="onLearnerInfoPress" type="Monitor"/>
 						<StandardTile class="border tile" title="Assessor/Moderator" icon="images/user.png" type="Monitor" activeIcon="sap-icon://customer"
 							infoState="Success" press="onModAssesor" visible="{viewModel>/onShowCreate}"/>
 						<StandardTile class="border tile" title="Report Incidents" icon="images/incident.png" type="Monitor" activeIcon="sap-icon://customer"
 							infoState="Success" press="onIncidentReport" visible="{viewModel>/onShowCreate}"/>
+					</FlexBox>
+					<FlexBox width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
 						<StandardTile class="border tile" title="Monitor and Evaluation" icon="images/monitor.png" type="Monitor" activeIcon="sap-icon://customer"
 							infoState="Success" press="onMonitor" visible="{viewModel>/onShowCreate}"/>
 						<StandardTile class="border tile" title="Reporting" icon="images/report.png" infoState="Warning" removable="false" press="onReportingPress"
 							type="Monitor"/>
-					</FlexBox>
-					<FlexBox width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
 						<StandardTile class="border tile" title="Add Attachments" icon="images/attach.png" infoState="Warning" removable="false"
 							press="onAddAttachments" type="Monitor"/>
-						<StandardTile class="border tile" title="Add Project" icon="images/project.png" infoState="Warning" removable="false"
-							press="onAddProject" type="Monitor"/>
+						<StandardTile class="border tile" title="Add Project" icon="images/project.png" infoState="Warning" removable="false" press="onAddProject"
+							type="Monitor"/>
 					</FlexBox>
 					<!--<TileContainer allowAdd="true" class="sapUiTinyMarginTop">-->
 					<!--	<tiles>-->

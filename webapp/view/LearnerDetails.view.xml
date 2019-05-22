@@ -52,7 +52,7 @@
 											</ComboBox>
 											<Label xmlns="sap.m" text="Highest Qualification" width="100%"/>
 											<Label text="Enrollment Status"/>
-											<Input enabled="{viewModel>/View}" value="{/Status}" width="70%" id="inpLine2"/>
+											<Input enabled="{viewModel>/View}" value="{/Status}" width="70%" />
 											<ComboBox visible="{viewModel>/Edit}" width="70%" id="slctStatus">
 												<items>
 													<core:ListItem xmlns:core="sap.ui.core" text="enrolled"/>

@@ -8,11 +8,11 @@
 							<Image width="auto" height="300px" src="images/LMS_small.png" backgroundPosition="center"/>
 						</items>
 					</HBox>
-					<!--<FlexBox class="sapUiTinyMarginTop sapUiLargeMarginBottom" width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">-->
-					<!--	<items>-->
-					<!--		<Title class="txtTitle" text="Welcome to the Learning Management System" width="100%" textAlign="Center" titleStyle="H1" level="H1"/>-->
-					<!--	</items>-->
-					<!--</FlexBox>-->
+					<FlexBox class="sapUiTinyMarginTop sapUiLargeMarginBottom" width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
+						<items>
+							<Title class="txtTitle" text="Welcome to the Learning Management System" width="100%" textAlign="Center" titleStyle="H1" level="H1"/>
+						</items>
+					</FlexBox>
 					<sap.ui.layout.form:Form xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" class="sapUiMediumMarginBegin sapUiLargeMarginTop">
 						<sap.ui.layout.form:formContainers>
 							<sap.ui.layout.form:FormContainer>
