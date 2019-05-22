@@ -18,9 +18,15 @@ sap.ui.define([
 		_onObjectMatched: function() {
 			var AuditModel = new sap.ui.model.json.JSONModel();
 			var oTable = this.byId("auditTable");
+				var loggedUser = sap.ui.getCore().getModel("loggedUser");
+			var user = loggedUser.getData();
+			this.CompanyCode = user.CompanyCode;
 			$.ajax({
 				url: 'PHP/getLoggedEntries.php',
 				async: false,
+				data:{
+					CompanyCode : this.CompanyCode
+				},
 				success: function(data) {
 					var oData = data.result;
 					AuditModel.setData(oData);

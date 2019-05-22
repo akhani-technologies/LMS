@@ -41,6 +41,9 @@ sap.ui.define([
 			$.ajax({
 				url: 'PHP/getVenue.php',
 				async: false,
+				data:{
+					CompanyCode : this.CompanyCode
+				},
 				success: function(data) {
 					var oData = data.result;
 					this.venueModel.setData(oData);

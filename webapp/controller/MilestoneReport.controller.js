@@ -26,6 +26,9 @@ sap.ui.define([
 			this.getPreProjects();
 			this.getImpProjects();
 			this.getPostProjects();
+			var loggedUser = sap.ui.getCore().getModel("loggedUser");
+			var user = loggedUser.getData();
+			this.CompanyCode = user.CompanyCode;
 
 		},
 
@@ -42,11 +45,15 @@ sap.ui.define([
 		},
 
 		onGetImplementation: function() {
+
 			var oSelect = this.byId("tblImp");
 			this.ImpModel = new sap.ui.model.json.JSONModel();
 			$.ajax({
 				url: 'PHP/getImplementation.php',
 				async: false,
+				data: {
+					CompanyCode: this.CompanyCode
+				},
 				success: function(data) {
 					var oData = data.result;
 					this.ImpModel.setData(oData);
@@ -64,6 +71,9 @@ sap.ui.define([
 			$.ajax({
 				url: 'PHP/getPreImplement.php',
 				async: false,
+				data: {
+					CompanyCode: this.CompanyCode
+				},
 				success: function(data) {
 					var oData = data.result;
 					this.PreModel.setData(oData);
@@ -81,6 +91,9 @@ sap.ui.define([
 			$.ajax({
 				url: 'PHP/getPostImplement.php',
 				async: false,
+				data: {
+					CompanyCode: this.CompanyCode
+				},
 				success: function(data) {
 					var oData = data.result;
 					this.PostModel.setData(oData);
@@ -118,7 +131,7 @@ sap.ui.define([
 		},
 
 		onPrint: function(oEvent) {
-			
+
 			var oTarget = this.getView();
 
 			if (oTarget) {

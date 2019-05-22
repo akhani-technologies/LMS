@@ -57,6 +57,9 @@ sap.ui.define([
 			$.ajax({
 				url: 'PHP/getServiceProviders.php',
 				async: false,
+				data:{
+					CompanyCode : this.CompanyCode
+				},
 				success: function(data) {
 					var oData = data.result;
 					this.serviceModel.setData(oData);

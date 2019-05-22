@@ -12,7 +12,9 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
- $sql = "select * from learner";
+$CompanyCode = mysqli_real_escape_string($conn, $_POST['CompanyCode']);
+
+ $sql = "select * from learner where CompanyCode='$CompanyCode' ";
  
  $res = mysqli_query($conn,$sql);
  

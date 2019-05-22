@@ -33,11 +33,17 @@ sap.ui.define([
 		},
 
 		onGetAttendance: function() {
+			var loggedUser = sap.ui.getCore().getModel("loggedUser");
+			var user = loggedUser.getData();
+			this.CompanyCode = user.CompanyCode;
 			this.AttendModel = new sap.ui.model.json.JSONModel();
 			var oTable = this.byId("tblAttendance");
 			$.ajax({
 				url: 'PHP/getAttendance.php',
 				async: false,
+				data: {
+					CompanyCode: this.CompanyCode
+				},
 				success: function(data) {
 					var oData = data.result;
 					this.AttendModel.setData(oData);
@@ -95,7 +101,6 @@ sap.ui.define([
 				jQuery.sap.log.error("onPrint needs a valid target container [view|data:targetId=\"SID\"]");
 			}
 		}
-
 
 		/**
 		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered

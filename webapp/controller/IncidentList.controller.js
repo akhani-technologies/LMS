@@ -24,9 +24,15 @@ sap.ui.define([
 		onGetIncidents: function() {
 			var oTable = this.byId("tblIncidents");
 			var incidentsModel = new sap.ui.model.json.JSONModel();
+			var loggedUser = sap.ui.getCore().getModel("loggedUser");
+			var user = loggedUser.getData();
+			this.CompanyCode = user.CompanyCode;
 			$.ajax({
 				url: 'PHP/getIncidents.php',
 				async: false,
+				data: {
+					CompanyCode: this.CompanyCode
+				},
 				success: function(data) {
 					var oData = data.result;
 					incidentsModel.setData(oData);

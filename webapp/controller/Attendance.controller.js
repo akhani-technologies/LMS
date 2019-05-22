@@ -53,6 +53,9 @@ sap.ui.define([
 			$.ajax({
 				url: 'PHP/getFacilitators.php',
 				async: false,
+				data:{
+					CompanyCode : this.CompanyCode
+				},
 				success: function(data) {
 					var oData = data.result;
 					this.facilitatorModel.setData(oData);
@@ -70,6 +73,9 @@ sap.ui.define([
 			$.ajax({
 				url: 'PHP/getVenue.php',
 				async: false,
+				data:{
+					CompanyCode : this.CompanyCode
+				},
 				success: function(data) {
 					var oData = data.result;
 					this.venueModel.setData(oData);
@@ -87,6 +93,9 @@ sap.ui.define([
 			$.ajax({
 				url: 'PHP/learnerDetails.php',
 				async: false,
+				data:{
+					CompanyCode : this.CompanyCode
+				},
 				success: function(data) {
 					var oData = data.result;
 					this.LearnerModel.setData(oData);

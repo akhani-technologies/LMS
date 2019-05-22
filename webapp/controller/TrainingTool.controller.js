@@ -21,9 +21,15 @@ sap.ui.define([
 		_onObjectMatched: function() {
 			this.learnerModel = new sap.ui.model.json.JSONModel();
 			var oTable = this.byId("__table0");
+				var loggedUser = sap.ui.getCore().getModel("loggedUser");
+			var user = loggedUser.getData();
+			this.CompanyCode = user.CompanyCode;
 			$.ajax({
 				url: 'PHP/learnerDetails.php',
 				async: false,
+				data:{
+					CompanyCode : this.CompanyCode
+				},
 				success: function(data) {
 					var oData = data.result;
 					this.learnerModel.setData(oData);

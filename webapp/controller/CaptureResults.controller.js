@@ -25,10 +25,17 @@ sap.ui.define([
 
 			this.learnerModel = new sap.ui.model.json.JSONModel();
 			var oSelect = this.byId("slctLearner");
+			
+			var loggedUser = sap.ui.getCore().getModel("loggedUser");
+			var user = loggedUser.getData();
+			this.CompanyCode = user.CompanyCode;
 
 			$.ajax({
 				url: 'PHP/learnerDetails.php',
 				async: false,
+				data:{
+					CompanyCode : this.CompanyCode
+				},
 				success: function(data) {
 					var oData = data.result;
 					this.learnerModel.setData(oData);

@@ -11,7 +11,9 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
- $sql = "select * from entrylogs";
+$CompanyCode = mysqli_real_escape_string($conn, $_POST['CompanyCode']);
+
+ $sql = "select * from entrylogs where CompanyCode='$CompanyCode'";
  
  $res = mysqli_query($conn,$sql);
  

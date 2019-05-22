@@ -40,6 +40,9 @@ sap.ui.define([
 			$.ajax({
 				url: 'PHP/learnerDetails.php',
 				async: false,
+				data:{
+					CompanyCode : this.CompanyCode
+				},
 				success: function(data) {
 					var oData = data.result;
 					this.learnerModel.setData(oData);
@@ -52,11 +55,17 @@ sap.ui.define([
 		},
 
 		onGetFacilitator: function() {
+			var loggedUser = sap.ui.getCore().getModel("loggedUser");
+			var user = loggedUser.getData();
+			this.CompanyCode = user.CompanyCode;
 			this.facilitatorModel = new sap.ui.model.json.JSONModel();
 			var Select = this.byId("cmbFacilitor");
 			$.ajax({
 				url: 'PHP/getFacilitators.php',
 				async: false,
+				data:{
+					CompanyCode : this.CompanyCode
+				},
 				success: function(data) {
 					var oData = data.result;
 					this.facilitatorModel.setData(oData);

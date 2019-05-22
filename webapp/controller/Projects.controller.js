@@ -11,6 +11,7 @@ sap.ui.define([
 		 * @memberOf programmeMotse.view.Projects
 		 */
 		onInit: function() {
+			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			var loggedUser = sap.ui.getCore().getModel("loggedUser");
 			var user = loggedUser.getData();
 			this.CompanyCode = user.CompanyCode;

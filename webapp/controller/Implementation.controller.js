@@ -253,7 +253,7 @@ sap.ui.define([
 						//successfully logged on 
 						success: function(data, response, xhr) {
 							if (i === 18) {
-								this.this.AddEntryLog("Created a Pre-Implementation Plan");
+								this.AddEntryLog("Created a Pre-Implementation Plan");
 								var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
 								MessageBox.success(
 									"Implementation rates successfully saved", {
@@ -566,15 +566,18 @@ sap.ui.define([
 			});
 
 		},
+		
 		onGetProjects: function() {
 			var ProjectsModel = new sap.ui.model.json.JSONModel();
 			var PreCombo = this.byId("PreCombo");
 			var ImpCombo = this.byId("ImpCombo");
 			var PostCombo = this.byId("PostCombo");
-
 			$.ajax({
 				url: 'PHP/getProjects.php',
 				async: false,
+				data:{
+					CompanyCode : this.CompanyCode
+				},
 				success: function(data) {
 					var oData = data.result;
 					ProjectsModel.setData(oData);

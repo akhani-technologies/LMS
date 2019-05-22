@@ -17,9 +17,30 @@ sap.ui.define([
 			var loggedUser = sap.ui.getCore().getModel("loggedUser");
 			var user = loggedUser.getData();
 			this.CompanyCode = user.CompanyCode;
+			this.onGetProjects();
 		},
 
-		onSaveDetails: function() {
+		onGetProjects: function() {
+			var ProjectsModel = new sap.ui.model.json.JSONModel();
+			var PreCombo = this.byId("inpProject");
+			$.ajax({
+				url: 'PHP/getProjects.php',
+				async: false,
+				data:{
+					CompanyCode : this.CompanyCode
+				},
+				success: function(data) {
+					var oData = data.result;
+					ProjectsModel.setData(oData);
+					PreCombo.setModel(ProjectsModel);
+				}.bind(this),
+				error: function(err, e, xhr) {
+
+				}
+			});
+		},
+
+			onSaveDetails: function() {
 			var oData = {};
 			if (this.byId("inpProject").getSelectedItem() === undefined) {
 				this.handleWarningMessageBoxPress();
@@ -38,7 +59,7 @@ sap.ui.define([
 				oData.Recommendations = this.byId("inpRecommendations").getValue();
 				oData.ClosingRemarks = this.byId("inpClosing").getValue();
 				oData.CompanyCode = this.CompanyCode;
-				
+
 				$.ajax({
 					type: "POST",
 					async: false,
