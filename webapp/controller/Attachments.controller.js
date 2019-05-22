@@ -11,7 +11,60 @@ sap.ui.define([
 		 * @memberOf programmeMotse.view.Attachments
 		 */
 		onInit: function() {
+			this.onGetLearner();
+			this.onGetVenue();
+			this.onGetFacilitator();
+		},
 
+		onGetLearner: function() {
+			this.learnerModel = new sap.ui.model.json.JSONModel();
+			var oSelect = this.byId("cmbLearner");
+			$.ajax({
+				url: 'PHP/learnerDetails.php',
+				async: false,
+				success: function(data) {
+					var oData = data.result;
+					this.learnerModel.setData(oData);
+					oSelect.setModel(this.learnerModel);
+				}.bind(this),
+				error: function(err) {
+
+				}
+			});
+		},
+
+		onGetFacilitator: function() {
+			this.facilitatorModel = new sap.ui.model.json.JSONModel();
+			var Select = this.byId("cmbFacilitor");
+			$.ajax({
+				url: 'PHP/getFacilitators.php',
+				async: false,
+				success: function(data) {
+					var oData = data.result;
+					this.facilitatorModel.setData(oData);
+					Select.setModel(this.facilitatorModel);
+				}.bind(this),
+				error: function(err, e, xhr) {
+
+				}
+			});
+		},
+
+		onGetVenue: function() {
+			this.venueModel = new sap.ui.model.json.JSONModel();
+			var Select = this.byId("cmbVenue");
+			$.ajax({
+				url: 'PHP/getVenue.php',
+				async: false,
+				success: function(data) {
+					var oData = data.result;
+					this.venueModel.setData(oData);
+					Select.setModel(this.venueModel);
+				}.bind(this),
+				error: function(err, e, xhr) {
+
+				}
+			});
 		},
 
 		onSelectFor: function(oEvent) {
