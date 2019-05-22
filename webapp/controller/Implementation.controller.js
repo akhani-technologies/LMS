@@ -20,6 +20,9 @@ sap.ui.define([
 		_onObjectMatched: function(oEvent) {
 			this.onGetProjects();
 			this.resetFields();
+			var loggedUser = sap.ui.getCore().getModel("loggedUser");
+			var user = loggedUser.getData();
+			this.CompanyCode = user.CompanyCode;
 		},
 
 		resetFields: function() {
@@ -244,7 +247,8 @@ sap.ui.define([
 							Project: implData[i].Project,
 							Description: implData[i].Description,
 							Date: implData[i].Date,
-							Rate: implData[i].Rate
+							Rate: implData[i].Rate,
+							CompanyCode: this.CompanyCode
 						},
 						//successfully logged on 
 						success: function(data, response, xhr) {
@@ -312,7 +316,8 @@ sap.ui.define([
 							Project: implData[i].Project,
 							Description: implData[i].Description,
 							Date: implData[i].Date,
-							Rate: implData[i].Rate
+							Rate: implData[i].Rate,
+							CompanyCode: this.CompanyCode
 						},
 						//successfully logged on 
 						success: function(data, response, xhr) {
@@ -476,7 +481,8 @@ sap.ui.define([
 							Project: implData[i].Project,
 							Description: implData[i].Description,
 							Date: implData[i].Date,
-							Rate: implData[i].Rate
+							Rate: implData[i].Rate,
+							CompanyCode: this.CompanyCode
 						},
 						//successfully logged on 
 						success: function(data, response, xhr) {

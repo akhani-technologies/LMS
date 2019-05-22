@@ -13,10 +13,11 @@ $Project = mysqli_real_escape_string($conn, $_POST['Project']);
 $Description = mysqli_real_escape_string($conn, $_POST['Description']); 
 $Date = mysqli_real_escape_string($conn, $_POST['Date']);
 $Rate = mysqli_real_escape_string($conn, $_POST['Rate']); 
+$CompanyCode = mysqli_real_escape_string($conn, $_POST['CompanyCode']);
 
 
-$sql = "INSERT INTO preimplemetation(Project, Description, Date, Rate)
-VALUES ('$Project','$Description','$Date', '$Rate')";
+$sql = "INSERT INTO preimplemetation(Project, Description, Date, Rate, CompanyCode)
+VALUES ('$Project','$Description','$Date', '$Rate', '$CompanyCode')";
 
 if ($conn->query($sql) === TRUE) {
     echo "Page saved!";

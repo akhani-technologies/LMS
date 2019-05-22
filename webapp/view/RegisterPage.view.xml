@@ -22,11 +22,11 @@
 											</ComboBox>
 											<Label text="Organisation" required="true"/>
 											<ComboBox id="cmbOrg" width="50%" required="true" change="onValidateGeneral">
-												<core:Item key="TC1" text="Training Company1"/>
-												<core:Item key="TC2"  text="Training Company2"/>
-												<core:Item key="TC3"  text="Training Company3"/>
-												<core:Item key="TC4"  text="Training Company4"/>
-												<core:Item key="TC5"  text="Training Company5"/>
+												<core:Item key="TC1" text="Training Company 1"/>
+												<core:Item key="TC2"  text="Training Company 2"/>
+												<core:Item key="TC3"  text="Training Company 3"/>
+												<core:Item key="TC4"  text="Training Company 4"/>
+												<core:Item key="TC5"  text="Training Company 5"/>
 											</ComboBox>
 											<Label text="Name" required="true"/>
 											<Input width="50%" id="inpName" required="true" liveChange="onValidateGeneral"/>
