@@ -12,6 +12,8 @@ sap.ui.define([
 		 * @memberOf programmeMotse.view.Attachments
 		 */
 		onInit: function() {
+			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			this.oRouter.getRoute("Attachments").attachPatternMatched(this._onObjectMatched, this);
 			this.onGetLearner();
 			this.onGetVenue();
 			this.onGetFacilitator();
