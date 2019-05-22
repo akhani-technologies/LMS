@@ -1,6 +1,7 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller"
-], function(Controller) {
+	"sap/ui/core/mvc/Controller",
+	'sap/m/MessageBox'
+], function(Controller, MessageBox) {
 	"use strict";
 
 	return Controller.extend("programmeMotse.controller.Attachments", {
@@ -106,6 +107,18 @@ sap.ui.define([
 				this.byId("lblOther").setVisible(true);
 				this.byId("inpOther").setVisible(true);
 			}
+		},
+
+		handleSuccessMessageBoxPress: function(oEvent) {
+			var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
+			MessageBox.success(
+				"Attachments successfully submitted", {
+					styleClass: bCompact ? "sapUiSizeCompact" : "",
+					onClose: function(sAction) {
+						this.oRouter.navTo("MenuPage");
+					}.bind(this)
+				}
+			);
 		}
 
 		/**

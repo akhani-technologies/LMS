@@ -1,5 +1,4 @@
-<mvc:View xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
-	xmlns:html="http://www.w3.org/1999/xhtml" controllerName="programmeMotse.controller.Attachments">
+<mvc:View xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="programmeMotse.controller.Attachments">
 	<App>
 		<pages>
 			<Page>
@@ -34,14 +33,20 @@
 								</items>
 							</ComboBox>
 							<Label text="Learner Contract"/>
-							<u:FileUploader id="fileUploader" width="70%" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server"
-								uploadComplete="handleUploadComplete"/>
-							<Label text="Other documents" />
-							<u:FileUploader id="fileUploaderOther" width="70%" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server"
-								uploadComplete="handleUploadComplete"/>
+							<u:FileUploader id="fileUploader" width="70%" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
+							<Label text="Other documents"/>
+							<u:FileUploader id="fileUploaderOther" width="70%" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
 						</sap.ui.layout.form:content>
 					</sap.ui.layout.form:SimpleForm>
 				</content>
+			<footer>
+			    <Toolbar width="100%" id="__toolbar1">
+			        <content>
+			            <ToolbarSpacer id="__spacer0"/>
+			            <Button text="Save attachments" width="auto" type="Accept" icon="sap-icon://save" press="handleSuccessMessageBoxPress"/>
+			        </content>
+			    </Toolbar>
+			</footer>
 			</Page>
 		</pages>
 	</App>
