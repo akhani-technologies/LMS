@@ -36,9 +36,8 @@
 											<Label text="Enter password" width="100%" required="true"/>
 											<Label text="Enter password" required="true"/>
 											<Input width="50%" id="inpPassword" type="Password" required="true" liveChange="checkPwd"/>
-											<Text text="Password should contain Capital letter, special character, number and at least 6 characters"/>
 											<Label/>
-											<MessageStrip text="Password should contain Capital letter, special character, number and at least 6 characters" showIcon="true"/>
+											<Text text="Password should contain Capital letter, special character, number and at least 6 characters"/>
 											<Label text="Repeat password" width="100%" required="true"/>
 											<Input width="50%" id="inpConfirm" type="Password" liveChange="onConfirmPassword" required="true"/>
 											
