@@ -16,6 +16,9 @@ sap.ui.define([
 
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			this.oRouter.getRoute("IncidentReport").attachPatternMatched(this._onObjectMatched, this);
+			this.onGetLearner();
+			this.onGetVenue();
+			this.onGetFacilitator();
 
 		},
 

@@ -17,6 +17,9 @@ sap.ui.define([
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			this.oRouter.getRoute("MilestoneReport").attachPatternMatched(this._onObjectMatched, this);
 			this.FilterTable = null;
+			this.onGetImplementation();
+			this.onGetPreImplementation();
+			this.onGetPostImplementation();
 		},
 
 		_onObjectMatched: function() {

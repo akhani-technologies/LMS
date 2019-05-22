@@ -19,7 +19,7 @@ $sql = "select * from incidents ";
  
  while($row = mysqli_fetch_array($res)){
  array_push($result, 
- array('IncidentID'=>$row[0],'Type'=>$row[1],'TypeInfo'=>$row[2],'Description'=>$row[3],'Details'=>$row[4],'Image'=>$row[5],'CompanyCode'=>$row[5] ));
+ array('IncidentID'=>$row[0],'Type'=>$row[1],'TypeInfo'=>$row[2],'Description'=>$row[3],'Details'=>$row[4],'Image'=>$row[5],'CompanyCode'=>$row[6] ));
  }
  header('Content-Type: application/json');
  echo json_encode(array('result'=>$result));

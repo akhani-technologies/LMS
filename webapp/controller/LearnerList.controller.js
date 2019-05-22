@@ -38,7 +38,7 @@ sap.ui.define([
 					learnerModel.setData(learnerArr);
 					oTable.setModel(learnerModel);
 					sap.ui.getCore().setModel(learnerModel, "learnerModel");
-				},
+				}.bind(this),
 				error: function(err) {
 
 				}

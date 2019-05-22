@@ -172,7 +172,7 @@ sap.ui.define([
 
 		onSelectFacilitator: function(oEvent) {
 			var sPath = oEvent.getSource().getSelectedItem().getBindingContext().getPath();
-			var properties = this.facilitatorModell.getProperty(sPath);
+			var properties = this.facilitatorModel.getProperty(sPath);
 			this.FacilitatorID = properties.IDNumber;
 			this.FacilitatorName = properties.Name + " " + properties.Surname;
 		},
