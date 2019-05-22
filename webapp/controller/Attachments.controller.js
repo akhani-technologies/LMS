@@ -122,6 +122,11 @@ sap.ui.define([
 					}.bind(this)
 				}
 			);
+		},
+		
+		onNavBack: function() {
+			this.oRouter.navTo("MenuPage");
+
 		}
 
 		/**

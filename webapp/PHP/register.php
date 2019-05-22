@@ -22,9 +22,11 @@ $Province = mysqli_real_escape_string($conn, $_POST['Province']);
 $Number = mysqli_real_escape_string($conn, $_POST['Number']);
 $Email = mysqli_real_escape_string($conn, $_POST['Email']);
 $UserType = mysqli_real_escape_string($conn, $_POST['UserType']);
+$CompanyName = mysqli_real_escape_string($conn, $_POST['CompanyName']);
+$CompanyCode = mysqli_real_escape_string($conn, $_POST['CompanyCode']);
 
-$sql = " INSERT INTO user(UserID, Name, Surname, DOB, Password, Email, Number, AddressLine1, AddressLine2, Suburb, PostalCode, Region, UserType)
-VALUES ('$UserID' ,'$Name','$Surname','$DOB','$Password','$Email','$Number','$AddressLine1','$AddressLine2','$Suburb','$PostalCode','$Province', '$UserType')";
+$sql = " INSERT INTO user(UserID, Name, Surname, DOB, Password, Email, Number, AddressLine1, AddressLine2, Suburb, PostalCode, Region, UserType, CompanyName, CompanyCode)
+VALUES ('$UserID' ,'$Name','$Surname','$DOB','$Password','$Email','$Number','$AddressLine1','$AddressLine2','$Suburb','$PostalCode','$Province', '$UserType', '$CompanyName', '$CompanyCode')";
 
 
 if ($conn->query($sql) === TRUE) {

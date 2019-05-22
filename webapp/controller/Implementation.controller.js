@@ -25,9 +25,9 @@ sap.ui.define([
 		resetFields: function() {
 			var oIconTabBar = this.byId("ImplementationBar");
 			oIconTabBar.setSelectedKey("Pre");
-			this.byId("inpImpPorject").setValue(null);
-			this.byId("inpPostPorject").setValue(null);
-			this.byId("inpPrePorject").setValue();
+			this.byId("ImpCombo").setSelectedItem(null);
+			this.byId("PostCombo").setSelectedItem(null);
+			this.byId("PreCombo").setSelectedItem(null);
 			this.byId("TT").setValue(0);
 			this.byId("AR").setValue(0);
 			this.byId("SOAR").setValue(0);

@@ -59,6 +59,8 @@ sap.ui.define([
 			oData.Number = this.byId("contactNumber").getValue();
 			oData.Email = this.byId("email").getValue().toLowerCase();
 			oData.UserType = this.byId("cmbType").getSelectedItem().getText();
+			oData.CompanyName = this.byId("cmbOrg").getSelectedItem().getText();
+			oData.CompanyCode = this.byId("cmbOrg").getSelectedKey();
 
 			$.ajax({
 				type: "POST",

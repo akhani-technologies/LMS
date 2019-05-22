@@ -1,4 +1,5 @@
-<mvc:View xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="programmeMotse.controller.RegisterPage">
+<mvc:View xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	xmlns:html="http://www.w3.org/1999/xhtml" controllerName="programmeMotse.controller.RegisterPage">
 	<App>
 		<pages>
 			<Page title="User Registration">
@@ -18,6 +19,14 @@
 												<core:Item text="Training Service Provider Representative"/>
 												<core:Item text="Funder Representative"/>
 												<core:Item text="Client Representative"/>
+											</ComboBox>
+											<Label text="Organisation" required="true"/>
+											<ComboBox id="cmbOrg" width="50%" required="true" change="onValidateGeneral">
+												<core:Item key="TC1" text="Training Company1"/>
+												<core:Item key="TC2"  text="Training Company2"/>
+												<core:Item key="TC3"  text="Training Company3"/>
+												<core:Item key="TC4"  text="Training Company4"/>
+												<core:Item key="TC5"  text="Training Company5"/>
 											</ComboBox>
 											<Label text="Name" required="true"/>
 											<Input width="50%" id="inpName" required="true" liveChange="onValidateGeneral"/>

@@ -118,6 +118,10 @@ sap.ui.define([
 				}
 			});
 
+		},
+		onNavBack: function() {
+			this.oRouter.navTo("MenuPage");
+
 		}
 
 		/**

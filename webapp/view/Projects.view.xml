@@ -2,7 +2,7 @@
 	controllerName="programmeMotse.controller.Projects">
 	<App>
 		<pages>
-			<Page>
+			<Page showNavButton="true" navButtonPress="onNavBack">
 				<content>
 					<ObjectHeader title="Add Projects" introActive="true" titleActive="true" icon="sap-icon://add-activity"/>
 					<Table id="projectTable" noDataText="Click the &quot;+&quot; to add a project">
