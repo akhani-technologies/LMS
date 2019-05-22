@@ -36,7 +36,7 @@
 											<Label text="City" width="100%"/>
 											<Input enabled="{viewModel>/Edit}" value="{/City}" width="70%" id="inpCity"/>
 											<Label xmlns="sap.m" text="Province" width="100%"/>
-											<Input visible="{viewModel>/View}" value="{/Province}" width="70%" enabled="{viewModel>/Edit}"/>
+											<Input visible="{viewModel>/View}" value="{/Province}" width="70%"/>
 											<ComboBox visible="{viewModel>/Edit}" width="70%" id="slctProv">
 												<items>
 													<core:ListItem text="Eastern Cape" key="EC"/>
@@ -52,7 +52,7 @@
 											</ComboBox>
 											<Label xmlns="sap.m" text="Highest Qualification" width="100%"/>
 											<Label text="Enrollment Status"/>
-											<Input enabled="{viewModel>/View}" value="{/Status}" width="70%" />
+											<Input visible="{viewModel>/View}"  value="{/Status}" width="70%" />
 											<ComboBox visible="{viewModel>/Edit}" width="70%" id="slctStatus">
 												<items>
 													<core:ListItem xmlns:core="sap.ui.core" text="enrolled"/>
@@ -60,6 +60,7 @@
 													<core:ListItem xmlns:core="sap.ui.core" text="de-registered"/>
 												</items>
 											</ComboBox>
+											<Label text="Highest Qualification"/>
 											<Text visible="{viewModel>/View}" text="{/HighestQualification}"/>
 											<ComboBox visible="{viewModel>/Edit}" width="70%" id="slctQual">
 												<items>
