@@ -16,9 +16,6 @@ sap.ui.define([
 
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			this.oRouter.getRoute("IncidentReport").attachPatternMatched(this._onObjectMatched, this);
-			this.onGetLearner();
-			this.onGetVenue();
-			this.onGetFacilitator();
 
 		},
 
@@ -29,12 +26,13 @@ sap.ui.define([
 			this.byId("txtDescr").setValue(null);
 			this.byId("txtDetails").setValue(null);
 			this.byId("attach").setValue(null);
-			this.onGetLearner();
-			this.onGetVenue();
-			this.onGetFacilitator();
+
 			var loggedUser = sap.ui.getCore().getModel("loggedUser");
 			var user = loggedUser.getData();
 			this.CompanyCode = user.CompanyCode;
+			this.onGetLearner();
+			this.onGetVenue();
+			this.onGetFacilitator();
 		},
 
 		onGetLearner: function() {

@@ -19,11 +19,12 @@ sap.ui.define([
 		},
 
 		_onObjectMatched: function() {
-			this.learnerModel = new sap.ui.model.json.JSONModel();
-			var oTable = this.byId("__table0");
+			
 			var loggedUser = sap.ui.getCore().getModel("loggedUser");
 			var user = loggedUser.getData();
 			this.CompanyCode = user.CompanyCode;
+			this.learnerModel = new sap.ui.model.json.JSONModel();
+			var oTable = this.byId("__table0");
 			var learnerArr = [];
 			$.ajax({
 				url: 'PHP/learnerDetails.php',

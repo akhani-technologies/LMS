@@ -17,21 +17,19 @@ sap.ui.define([
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			this.oRouter.getRoute("MilestoneReport").attachPatternMatched(this._onObjectMatched, this);
 			this.FilterTable = null;
-			this.onGetImplementation();
-			this.onGetPreImplementation();
-			this.onGetPostImplementation();
 		},
 
 		_onObjectMatched: function() {
+			var loggedUser = sap.ui.getCore().getModel("loggedUser");
+			var user = loggedUser.getData();
+			this.CompanyCode = user.CompanyCode;
 			this.onGetImplementation();
 			this.onGetPreImplementation();
 			this.onGetPostImplementation();
 			this.getPreProjects();
 			this.getImpProjects();
 			this.getPostProjects();
-			var loggedUser = sap.ui.getCore().getModel("loggedUser");
-			var user = loggedUser.getData();
-			this.CompanyCode = user.CompanyCode;
+			
 
 		},
 

@@ -40,7 +40,7 @@ sap.ui.define([
 					incidentsModel.setData(incidentsArr);
 					oTable.setModel(incidentsModel);
 					sap.ui.getCore().setModel(incidentsModel, "incidentsModel");
-				},
+				}.bind(this),
 				error: function(err, e, xhr) {
 
 				}

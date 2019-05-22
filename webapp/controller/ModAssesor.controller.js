@@ -15,7 +15,7 @@ sap.ui.define([
 		onInit: function() {
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			this.oRouter.getRoute("ModAssesor").attachPatternMatched(this._onObjectMatched, this);
-			this.onGetServiceProviders();
+			
 
 		},
 		_onObjectMatched: function() {
@@ -23,6 +23,7 @@ sap.ui.define([
 			var user = loggedUser.getData();
 			this.CompanyCode = user.CompanyCode;
 			this.ResetFields();
+			this.onGetServiceProviders();
 		},
 
 		ResetFields: function() {

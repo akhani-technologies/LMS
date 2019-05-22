@@ -18,11 +18,12 @@ sap.ui.define([
 		},
 
 		_onObjectMatched: function(oEvent) {
-			this.onGetProjects();
-			this.resetFields();
+		
 			var loggedUser = sap.ui.getCore().getModel("loggedUser");
 			var user = loggedUser.getData();
 			this.CompanyCode = user.CompanyCode;
+				this.onGetProjects();
+			this.resetFields();
 		},
 
 		resetFields: function() {
