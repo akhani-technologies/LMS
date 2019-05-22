@@ -34,6 +34,7 @@
 											<Label text="Date of birth" width="100%" required="true"/>
 											<DatePicker width="50%" id="inpDOB" required="true" change="onValidateGeneral"/>
 											<Label text="Enter password" width="100%" required="true"/>
+											<Label/>
 											<Input width="50%" id="inpPassword" type="Password" required="true" liveChange="checkPwd"/>
 											<MessageStrip text="Password should contain Capital letter, special character, number and at least 6 characters" showIcon="true" showCloseButton="true" id="__strip0"/>
 											<Label text="Repeat password" width="100%" required="true"/>
