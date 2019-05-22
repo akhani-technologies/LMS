@@ -76,7 +76,7 @@
 									</sap.ui.layout.form:SimpleForm>
 								</content>
 							</IconTabFilter>
-							<IconTabFilter text="Additional Info" enabled="true" id="IconAdditional" icon="sap-icon://task" iconColor="Critical" design="Horizontal"
+							<IconTabFilter text="Additional Info" enabled="false" id="IconAdditional" icon="sap-icon://task" iconColor="Critical" design="Horizontal"
 								key="Key2">
 								<content>
 									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" id="AdditionalFrm" editable="true"
@@ -139,7 +139,7 @@
 									</sap.ui.layout.form:SimpleForm>
 								</content>
 							</IconTabFilter>
-							<IconTabFilter enabled="true" id="PhotoIcon" text="Add image" iconColor="Neutral" icon="sap-icon://add-photo" key="Key3"
+							<IconTabFilter enabled="false" id="PhotoIcon" text="Add image" iconColor="Neutral" icon="sap-icon://add-photo" key="Key3"
 								design="Horizontal">
 								<content>
 									<HBox width="auto" alignContent="Center" alignItems="Center" justifyContent="Center">
@@ -166,7 +166,7 @@
 									</HBox>
 								</content>
 							</IconTabFilter>
-							<IconTabFilter enabled="true" id="PrintsIcon" text="Finger prints" icon="sap-icon://mri-scan" iconColor="Critical" key="Key4"
+							<IconTabFilter enabled="false" id="PrintsIcon" text="Finger prints" icon="sap-icon://mri-scan" iconColor="Critical" key="Key4"
 								design="Horizontal">
 								<content>
 									<MessageStrip text="Please take a finger print of your right thumb" showIcon="true" showCloseButton="true"/>
@@ -189,7 +189,7 @@
 									</HBox>
 								</content>
 							</IconTabFilter>
-							<IconTabFilter enabled="true" text="Banking details" icon="sap-icon://money-bills" iconColor="Negative" key="Key5" id="IconBank"
+							<IconTabFilter enabled="false" text="Banking details" icon="sap-icon://money-bills" iconColor="Negative" key="Key5" id="IconBank"
 								design="Horizontal">
 								<content>
 									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" id="formBank" editable="true" layout="ResponsiveGridLayout">
@@ -228,7 +228,7 @@
 									</HBox>
 								</content>
 							</IconTabFilter>
-							<IconTabFilter enabled="true" id="ProgramIcon" text="Programme enrolment" icon="sap-icon://course-program" iconColor="Positive" key="Key6"
+							<IconTabFilter enabled="false" id="ProgramIcon" text="Programme enrolment" icon="sap-icon://course-program" iconColor="Positive" key="Key6"
 								design="Horizontal">
 								<content>
 									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" id="formProgram" editable="true" layout="ResponsiveGridLayout">
@@ -249,7 +249,7 @@
 									</HBox>
 								</content>
 							</IconTabFilter>
-							<IconTabFilter enabled="true" id="attach" text="Attachments" icon="sap-icon://attachment" iconColor="Critical" design="Horizontal"
+							<IconTabFilter enabled="false" id="attach" text="Attachments" icon="sap-icon://attachment" iconColor="Critical" design="Horizontal"
 								key="Key7">
 								<content>
 									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout">
@@ -283,7 +283,7 @@
 									</sap.ui.layout.form:SimpleForm>
 								</content>
 							</IconTabFilter>
-							<IconTabFilter enabled="true" id="SummIcon" text="Summary" icon="sap-icon://list" key="Key8" design="Horizontal">
+							<IconTabFilter enabled="false" id="SummIcon" text="Summary" icon="sap-icon://list" key="Key8" design="Horizontal">
 								<content>
 									<sap.ui.layout.form:Form xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true">
 										<sap.ui.layout.form:formContainers>
@@ -477,7 +477,7 @@
 									</FlexBox>
 								</content>
 							</IconTabFilter>
-							<IconTabFilter key="Key9" id="ContractIcon" enabled="true" text="Generate Contract" icon="sap-icon://signature" design="Horizontal"
+							<IconTabFilter key="Key9" id="ContractIcon" enabled="false" text="Generate Contract" icon="sap-icon://signature" design="Horizontal"
 								iconColor="Negative">
 								<content>
 									<f:SimpleForm editable="true" layout="ResponsiveGridLayout">
@@ -501,7 +501,7 @@
 					<Toolbar width="100%">
 						<content>
 							<ToolbarSpacer/>
-							<Button text="Save details" width="auto" type="Reject" icon="sap-icon://save" press="onSaveDetails" enabled="true" id="btnSaveDets"/>
+							<Button text="Save details" width="auto" type="Reject" icon="sap-icon://save" press="onSaveDetails" enabled="false" id="btnSaveDets"/>
 						</content>
 					</Toolbar>
 				</footer>

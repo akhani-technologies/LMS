@@ -34,7 +34,7 @@ sap.ui.define([
 					AuditModel.setData(AuditArr);
 					oTable.setModel(AuditModel);
 					sap.ui.getCore().setModel(AuditModel, "learnerModel");
-				},
+				}.bind(this),
 				error: function(err) {
 
 				}

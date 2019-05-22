@@ -19,7 +19,7 @@ if ($conn->connect_error) {
  
  while($row = mysqli_fetch_array($res)){
  array_push($result, 
- array('TrainingProviderName'=>$row[10],'CompanyCode'=>$row[14]));
+ array('TrainingProviderName'=>$row[10],'CompanyCode'=>$row[13]));
  }
  header('Content-Type: application/json');
  echo json_encode(array('result'=>$result));

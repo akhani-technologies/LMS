@@ -37,8 +37,11 @@
 											<Label text="Enter password" required="true"/>
 											<Input width="50%" id="inpPassword" type="Password" required="true" liveChange="checkPwd"/>
 											<Label/>
-											<!--<core:Icon src="sap-icon://message-information" size="1em"/>-->
-											<Text text="Password should contain Capital letter, special character, number and at least 6 characters"/>
+											<HBox>
+												<core:Icon src="sap-icon://message-information" size="1em"/>
+											<Text text="Password should contain a capital letter, special character, number and at least 6 characters"/>
+											</HBox>
+											
 											<Label text="Repeat password" width="100%" required="true"/>
 											<Input width="50%" id="inpConfirm" type="Password" liveChange="onConfirmPassword" required="true"/>
 							
