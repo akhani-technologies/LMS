@@ -623,6 +623,7 @@ sap.ui.define([
 			this.byId("SummIcon").setEnabled(true);
 			oIconTabBar.setSelectedKey("Key8");
 			this.onSummaryPageFill();
+			this.byId("btnSaveDets").setEnabled(true);
 		},
 
 		onAttachmentChange: function(oEvent) {
