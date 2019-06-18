@@ -1,4 +1,5 @@
-<mvc:View xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="programmeMotse.controller.RegisterPage">
+<mvc:View xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	xmlns:html="http://www.w3.org/1999/xhtml" controllerName="programmeMotse.controller.RegisterPage">
 	<App>
 		<pages>
 			<Page title="User Registration">
@@ -21,11 +22,7 @@
 											</ComboBox>
 											<Label text="Organisation" required="true"/>
 											<ComboBox id="cmbOrg" width="50%" required="true" change="onValidateGeneral">
-												<core:Item key="TC1" text="Training Company 1"/>
-												<core:Item key="TC2" text="Training Company 2"/>
-												<core:Item key="TC3" text="Training Company 3"/>
-												<core:Item key="TC4" text="Training Company 4"/>
-												<core:Item key="TC5" text="Training Company 5"/>
+												<core:Item key="TC1" text="Motse"/>
 											</ComboBox>
 											<Label text="Name" required="true"/>
 											<Input width="50%" id="inpName" required="true" liveChange="onValidateGeneral"/>
@@ -39,12 +36,10 @@
 											<Label/>
 											<HBox>
 												<core:Icon src="sap-icon://message-information" size="1em"/>
-											<Text text="Password should contain a capital letter, special character, number and at least 6 characters"/>
+												<Text text="Password should contain a capital letter, special character, number and at least 6 characters"/>
 											</HBox>
-											
 											<Label text="Repeat password" width="100%" required="true"/>
 											<Input width="50%" id="inpConfirm" type="Password" liveChange="onConfirmPassword" required="true"/>
-							
 										</sap.ui.layout.form:content>
 									</sap.ui.layout.form:SimpleForm>
 								</content>
