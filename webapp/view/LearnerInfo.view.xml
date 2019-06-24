@@ -184,7 +184,7 @@
 									</FlexBox>
 									<HBox width="100%" alignContent="End" alignItems="End" justifyContent="End">
 										<items>
-											<Button enabled="false" id="btnPrints" text="Next" press="onNextPrint" width="auto" icon="sap-icon://arrow-right" type="Reject"/>
+											<Button enabled="true" id="btnPrints" text="Next" press="onNextPrint" width="auto" icon="sap-icon://arrow-right" type="Reject"/>
 										</items>
 									</HBox>
 								</content>

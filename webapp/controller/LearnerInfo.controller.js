@@ -277,7 +277,12 @@ sap.ui.define([
 			oData.EmployerContact = this.byId("inpEmpCont").getValue();
 			oData.EmploymentStart = this.byId("EmpDPStart").getValue();
 			oData.EmployementEnd = this.byId("EmpDPEnd").getValue();
-			oData.Status = "enrolled";
+			if (this.fingerprint === undefined) {
+				oData.Status = "in progress";
+			} else {
+				oData.Status = "enrolled";
+			}
+
 			oData.CompanyCode = this.CompanyCode;
 
 			sLearnerModel.setData(oData);
