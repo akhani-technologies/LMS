@@ -130,6 +130,29 @@
 									</sap.ui.layout.form:SimpleForm>
 								</content>
 							</IconTabFilter>
+							<IconTabFilter visible="false" id="PrintsIcon" text="Finger prints" icon="sap-icon://mri-scan" iconColor="Critical" key="Key4"
+								design="Horizontal">
+								<content>
+									<MessageStrip text="Please take a finger print of your right thumb" showIcon="true" showCloseButton="true"/>
+									<FlexBox width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
+										<items>
+											<Button class="sapUiLargeMarginEnd" text="Start" width="auto" icon="sap-icon://restart" type="Emphasized" press="onStartFingerPrint"/>
+											<!--<Button class="sapUiLargeMarginEnd" text="Clear" width="auto" icon="sap-icon://cancel" type="Reject"/>-->
+											<Button class="sapUiLargeMarginEnd" text="Save" width="auto" icon="sap-icon://save" type="Accept" press="enrolOrVerify"/>
+										</items>
+									</FlexBox>
+									<FlexBox width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
+										<items>
+											<Image class="signatureB sapUiLargeMarginEnd" src="images/index.png" width="340px" height="340px" id="finger1"/>
+										</items>
+									</FlexBox>
+									<HBox width="100%" alignContent="End" alignItems="End" justifyContent="End">
+										<items>
+											<Button enabled="true" id="btnPrints" text="Next" press="onNextPrint" width="auto" icon="sap-icon://arrow-right" type="Reject"/>
+										</items>
+									</HBox>
+								</content>
+							</IconTabFilter>
 							<IconTabFilter text="Banking details" icon="sap-icon://money-bills" iconColor="Negative" key="key5" id="IconBank" design="Horizontal">
 								<content>
 									<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout">

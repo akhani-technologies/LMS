@@ -26,6 +26,13 @@ sap.ui.define([
 			var learnerModel = sap.ui.getCore().getModel("learnerModel");
 			var LearnerPath = "/" + oEvent.getParameter("arguments").learnerPath;
 			this.oProperties = learnerModel.getProperty(LearnerPath);
+
+			if (this.oProperties.Status === "in progress") {
+				this.byId("PrintsIcon").setVisible(true);
+			} else {
+				this.byId("PrintsIcon").setVisible(false);
+			}
+
 			this.LearnerID = this.oProperties.LearnerID;
 			var detailsModel = new sap.ui.model.json.JSONModel(this.oProperties);
 			this.getView().setModel(detailsModel);
@@ -165,6 +172,69 @@ sap.ui.define([
 			var ScanTime = new Date().toLocaleTimeString('en-GB');
 			ScanTime = ScanTime.replace(/:/g, "");
 			return ScanTime;
+		},
+
+		onStartFingerPrint: function() {
+			this.sdk.startAcquisition(Fingerprint.SampleFormat.PngImage).then(function() {
+				this.onSampleAcquired();
+			}.bind(this), function(error) {
+				console.log(error.message);
+			});
+
+		},
+
+		onStopFingerPrint: function() {
+			this.sdk.stopAcquisition().then(function() {
+				console.log("Capturing stopped !!!");
+			}, function(error) {
+				showMessage(error.message);
+			});
+		},
+
+		onSampleAcquired: function() {
+			var fingerprint = this.byId("finger1");
+			this.sdk.onSamplesAcquired = function(s) {
+				var samples = JSON.parse(s.samples);
+				var sampleObject = Fingerprint.b64UrlTo64(samples[0]);
+				fingerprint.setSrc("data:image/png;base64," + sampleObject);
+				this.fingerprint = sampleObject;
+				//console.log("WSQ Format  " + this.fingerprint);
+
+			}.bind(this);
+		},
+
+		enrolOrVerify: function() {
+			var IdNumber = this.byId("inpID").getValue();
+			if (!this.fingerprint) {
+				var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
+				MessageBox.warning(
+					"Please scan the learners right hand thumb before saving", {
+						styleClass: bCompact ? "sapUiSizeCompact" : ""
+					}
+				);
+			} else {
+				var fingerprintStatusRequest = {
+					"action": "ENROL", // Dynamically load the action depending on the workflow
+					"idNumber": IdNumber, // Dynamically load the ID number from the UI
+					"fingerprintIndex": 1, //for now you may hard code it to 1. This must not hard coded  if many fingers are enrolled
+					"fingerprintData": this.fingerprint
+				};
+
+				var fingerprintStatusRequestJson;
+				fingerprintStatusRequestJson = JSON.stringify(fingerprintStatusRequest);
+
+				var URL = "http://102.133.161.46:8080/api/fingerprint/enrol-verify";
+				var xmlhttp = new XMLHttpRequest();
+
+				xmlhttp.open("POST", URL, false);
+				xmlhttp.setRequestHeader("Content-Type", "application/json");
+
+				// xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
+				xmlhttp.send(fingerprintStatusRequestJson);
+
+				xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
+				// this.byId("btnPrints").setEnabled(true);
+			}
 		},
 
 		AddEntryLog: function(change) {
