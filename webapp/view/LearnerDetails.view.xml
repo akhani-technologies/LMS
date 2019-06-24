@@ -5,9 +5,6 @@
 			<Page title="Learner details" showNavButton="true" navButtonPress="onNavBack">
 				<content>
 					<ObjectHeader title="{/Name}{/Surname}" introActive="true" titleActive="true" icon="sap-icon://person-placeholder">
-						<!--<statuses>-->
-						<!--	<ObjectStatus title="status" text="{/Status}"/>-->
-						<!--</statuses>-->
 					</ObjectHeader>
 					<IconTabBar id="IconBar" select="onSelect">
 						<items>
@@ -146,11 +143,6 @@
 											<Image class="signatureB sapUiLargeMarginEnd" src="images/index.png" width="340px" height="340px" id="finger1"/>
 										</items>
 									</FlexBox>
-									<HBox width="100%" alignContent="End" alignItems="End" justifyContent="End">
-										<items>
-											<Button enabled="true" id="btnPrints" text="Next" press="onNextPrint" width="auto" icon="sap-icon://arrow-right" type="Reject"/>
-										</items>
-									</HBox>
 								</content>
 							</IconTabFilter>
 							<IconTabFilter text="Banking details" icon="sap-icon://money-bills" iconColor="Negative" key="key5" id="IconBank" design="Horizontal">
